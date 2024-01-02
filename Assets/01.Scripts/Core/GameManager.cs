@@ -31,6 +31,8 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public Transform player { get; private set; }
+
     private void Update()
     {
         if(!isGameEnd)

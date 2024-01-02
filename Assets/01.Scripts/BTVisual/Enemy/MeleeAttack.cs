@@ -19,7 +19,7 @@ public class MeleeAttack : EnemyAttack
 
             if (collider != null)
             {
-
+                //collider.GetComponent<Player>().TakeDamage();
             }
         }
     }

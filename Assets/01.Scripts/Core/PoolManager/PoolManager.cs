@@ -11,6 +11,7 @@ public enum PoolingType
     RevolverEnemy,
     SniperEnemy,
     ShieldEnemy,
+    RevolverEnemyBullet,
 }
 
 public class PoolManager
