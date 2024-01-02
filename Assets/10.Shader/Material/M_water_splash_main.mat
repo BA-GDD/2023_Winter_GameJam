@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_steam
-  m_Shader: {fileID: 4800000, guid: 49eef3458f2f3cb4d9f3bdf959505c62, type: 3}
+  m_Name: M_water_splash_main
+  m_Shader: {fileID: 4800000, guid: 60dc1c4ae21276b4aa6c11f06b319632, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _USE_MASK_ON
-  - _USE_PANNER_ON
+  - _USE_CUSTOMDATA_ON
+  - _USE_PIXELIZE_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -29,6 +29,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Dissolve_Texture:
+        m_Texture: {fileID: 2800000, guid: b596cfc99f088c14b9506aa3405f64a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Dissolve_Texture1:
         m_Texture: {fileID: 2800000, guid: b596cfc99f088c14b9506aa3405f64a0, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -38,8 +42,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 566deb42bff0d2149a540b520ef244bf, type: 3}
-        m_Scale: {x: 0.9, y: -1}
+        m_Texture: {fileID: 2800000, guid: 9e2c4821de9de4c4a94fe05ab0e2d863, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 0}
@@ -72,24 +76,30 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _Dissolve: 1
     - _Dissolve1: 1
     - _EnableExternalAlpha: 0
     - _FadeIstance: 4.2
+    - _Fade_Ditance: 0
     - _Keyword0: 0
-    - _Main_Ins: 6.2
+    - _Main_Ins: 2.94
     - _Main_Pow: 3.67
+    - _Opacity: 1
+    - _Pixelize: 17
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Use_Customdata: 0
+    - _Use_Customdata: 1
+    - _Use_Customdata1: 0
     - _main_upanner: 0
     - _main_vpanner: -0.5
     - _use_mask: 1
-    - _use_panner: 1
+    - _use_panner: 0
+    - _use_pixelize: 1
     - _use_polar_coord: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0}
+    - _Main_Color: {r: 1.4980395, g: 1.4980395, b: 1.4980395, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
