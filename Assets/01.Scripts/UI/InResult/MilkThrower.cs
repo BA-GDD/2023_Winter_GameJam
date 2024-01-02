@@ -17,6 +17,14 @@ public class MilkThrower : MonoBehaviour
 
     [SerializeField] private GameResultSceneUI _gameResultSceneUI;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ThrwoMilk(10);
+        }
+    }
+
     public void ThrwoMilk(int milkCount)
     {
         StartCoroutine(ThrowMilkCo(milkCount));

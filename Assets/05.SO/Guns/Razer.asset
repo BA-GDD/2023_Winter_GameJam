@@ -16,7 +16,8 @@ MonoBehaviour:
   gunProfile: {fileID: 0}
   flavorText: "\uBB34\uCC38\uD788 \uC801\uC744<br>\uAD00\uD1B5\uD558\uB294<br> \uAC15\uB825\uD55C
     \uBB3C\uCD1D"
-  skillText: 
+  skillText: "\uC5B4\uB9C8\uC5B4\uB9C8 \uD55C<br>\uBB3C\uB300\uD3EC\uB97C \uC3F4<br>\uC801\uB4E4\uC744<br>
+    \uC12C\uBA78\uD55C\uB2E4."
   gunAnimator: {fileID: 0}
   shootDelay: 0
   maximumCapacity: 0
