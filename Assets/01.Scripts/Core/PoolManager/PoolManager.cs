@@ -12,6 +12,7 @@ public enum PoolingType
     StatusInfoPanel,
     PlayerBullet,
     EnemyBullet
+    FallingMilk
 }
 
 public class PoolManager
