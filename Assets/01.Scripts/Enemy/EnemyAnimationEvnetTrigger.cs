@@ -23,6 +23,8 @@ public class EnemyAnimationEvnetTrigger : MonoBehaviour
 
     public void EnemyDieEventHandle()
     {
-        //(_enemy as MobBrain).
+        Vector2 pos = _enemy.transform.position;
+        //MapManager.instance.SetTile(pos, TileType.Water);
+        PoolManager.Instance.Push(_enemy);
     }
 }

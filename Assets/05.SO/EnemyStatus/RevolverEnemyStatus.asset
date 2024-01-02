@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13f9d99740e87c48a320c8bcaded978, type: 3}
   m_Name: RevolverEnemyStatus
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  atkRange: 5
-  atkDelayTime: 1
+  moveSpeed: 3
+  atkRange: 15
+  atkDelayTime: 2
   type: 1

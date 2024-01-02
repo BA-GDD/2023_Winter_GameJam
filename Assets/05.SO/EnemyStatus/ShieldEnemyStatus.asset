@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c13f9d99740e87c48a320c8bcaded978, type: 3}
-  m_Name: MeleeEnemyStatus
+  m_Name: ShieldEnemyStatus
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   atkRange: 0.5
   atkDelayTime: 2
-  type: 0
+  type: 3

@@ -9,7 +9,11 @@ public enum PoolingType
     DialogueEffect,
     SwordAura,
     StatusInfoPanel,
-    Bullet
+    Bullet,
+    RevolverEnemy,
+    MeleeEnemy,
+    SniperEnemy,
+    ShieldEnemy,
 }
 
 public class PoolManager

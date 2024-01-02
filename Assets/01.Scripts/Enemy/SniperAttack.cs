@@ -18,11 +18,8 @@ public class SniperAttack : EnemyAttack
 
     public override void Attack()
     {
-        if (_attackTimer >= _brain.status.atkDelayTime && _isAttack)
-        {
-            _isChasing = false;
-            StartCoroutine(Sniping());
-        }
+        _isChasing = false;
+        StartCoroutine(Sniping());
     }
 
     private IEnumerator Sniping()
