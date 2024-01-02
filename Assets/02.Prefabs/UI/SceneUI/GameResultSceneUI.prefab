@@ -264,9 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0329e1477f6c70d47858cd82c847cb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentScore: {fileID: 0}
-  _beforeScore: {fileID: 0}
-  _bestScore: {fileID: 0}
+  _currentScore: {fileID: 3530347308447232512}
+  _beforeScore: {fileID: 8938476538030201435}
+  _bestScore: {fileID: 5334158370877703886}
 --- !u!1 &1512133721386435214
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +756,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myUIType: 3
   _partyFX: {fileID: 5262189691127274944, guid: b0704cfdb780f4741a61d7d4dfa71ae4, type: 3}
+  _scoreSetEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7367551443838951381}
+        m_TargetAssemblyTypeName: ScoreTextGroup, Assembly-CSharp
+        m_MethodName: SetScoreText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isEndTimeLine: 0
 --- !u!1 &4271020389466661944
 GameObject:
