@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public enum TileType
@@ -33,16 +34,33 @@ public class MapManager : MonoBehaviour
     [SerializeField] private TileBase _holeTile;
     [SerializeField] private TileBase _groundTile;
 
-    [SerializeField] private Vector2Int defaultSpaSize;
+    [SerializeField] private Vector2Int _defaultSpaSize;
+
+    public float WaterFillAmount()
+    {
+        int waterCnt = _holeMap.GetTilesBlock(_holeMap.cellBounds).Length;
+        int groundCnt = _groundMap.GetTilesBlock(_groundMap.cellBounds).Length;
+        return (float)waterCnt / groundCnt;
+    }
 
 
     private void Start()
     {
-        Vector2Int minPos = Vector2Int.zero - defaultSpaSize / 2;
-        Vector2Int maxPos = Vector2Int.zero + defaultSpaSize / 2;
+        Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
+        Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
         _holeMap.BoxFill(Vector3Int.zero, _holeTile, minPos.x, minPos.y, maxPos.x, maxPos.y);
-    }
 
+        _holeMap.CompressBounds();
+        _groundMap.CompressBounds();
+    }
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition),TileType.Water);
+        }
+        print(WaterFillAmount());
+    }
     public bool CheckWater(Vector3 pos)
     {
         pos.z = 0;
@@ -53,8 +71,8 @@ public class MapManager : MonoBehaviour
     public void SetTile(Vector2 pos, TileType type)
     {
         Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y));
-        print(intVec);
         DrawTile(intVec, type);
+        _holeMap.CompressBounds();
     }
     private void DrawTile(Vector3Int pos, TileType type)
     {

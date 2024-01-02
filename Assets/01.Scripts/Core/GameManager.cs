@@ -8,17 +8,19 @@ public class GameManager : MonoSingleton<GameManager>
     [HideInInspector]
     public Camera mainCamera;
 
-    [Header("°ÔÀÓ ÀÌº¥Æ®")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
     public UnityEvent onScoreChanged;
 
-    [Header("°ÔÀÓ¿¡ ÇÊ¿äÇÑ ¼öÄ¡")]
-    public float gameTime = 5.0f; //ÃÊ´ÜÀ§
-    private float _curTime = 5.0f; //ÃÊ´ÜÀ§
+    [Header("ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡")]
+    public float gameTime = 5.0f; //ï¿½Ê´ï¿½ï¿½ï¿½
+    private float _curTime = 5.0f; //ï¿½Ê´ï¿½ï¿½ï¿½
     [Range(0f, 100f)]
-    public float occupationPercent = 0.0f; //0~100±îÁö
+    public float occupationPercent = 0.0f; //0~100ï¿½ï¿½ï¿½ï¿½
     public bool isGameEnd = false;
+
+    private GameData _gameData;
 
     private float _score;
     public float Score
@@ -48,6 +50,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
+        _gameData = new GameData();
     }
 
     private void Start()
