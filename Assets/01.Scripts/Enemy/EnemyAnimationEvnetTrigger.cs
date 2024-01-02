@@ -20,4 +20,9 @@ public class EnemyAnimationEvnetTrigger : MonoBehaviour
     {
         _enemy.attack.Attack();
     }
+
+    public void EnemyDieEventHandle()
+    {
+        //(_enemy as MobBrain).
+    }
 }

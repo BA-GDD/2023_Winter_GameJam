@@ -20,7 +20,7 @@ public class RevolverAttack : EnemyAttack
 
         PoolableMono pam = PoolManager.Instance.Pop(PoolingType.Bullet);
         pam.transform.position = _brain.firePos.position;
-        Vector2 dir = (playerTrm.position - transform.position).normalized;
+        Vector2 dir = (playerTrm.position - pam.transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion angleAxis = Quaternion.AngleAxis(angle, Vector3.forward);
         pam.transform.rotation = angleAxis;

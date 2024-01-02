@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class EnemyBrain : PoolableMono
+public class EnemyBrain : PoolableMono, IDamageable
 {
     [HideInInspector]
     public EnemyAttack attack;
@@ -20,6 +21,9 @@ public class EnemyBrain : PoolableMono
     public CharacterController characterController;
 
     public Vector2 dir;
+
+    public UnityEvent onDieTrigger;
+    UnityEvent IDamageable.OnDieTrigger => onDieTrigger;
 
     protected virtual void Awake()
     {
@@ -74,4 +78,6 @@ public class EnemyBrain : PoolableMono
     {
         isAnimFinised = true;
     }
+
+    
 }
