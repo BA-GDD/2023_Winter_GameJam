@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemyBrain : Entity
+public class EnemyBrain : PoolableMono
 {
     [HideInInspector]
     public EnemyAttack attack;
@@ -12,10 +12,13 @@ public class EnemyBrain : Entity
     public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;
+    public bool isAnimFinised;
+    public Transform firePos;
 
+    public Action animationEvent;
     protected virtual void Awake()
     {
-
+        attack = transform.GetComponent<EnemyAttack>();
     }
 
     protected async virtual void OnEnable()
@@ -26,6 +29,25 @@ public class EnemyBrain : Entity
     protected virtual void Start()
     {
         StartChase();
+    }
+
+    protected virtual void Update()
+    {
+        if (isDead)
+        {
+            if (isChase)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+
+        }
     }
 
     public override void Init()
@@ -46,5 +68,9 @@ public class EnemyBrain : Entity
     public virtual void StopChase()
     {
         isChase = false;
+    }
+    public void EndAnimation()
+    {
+        isAnimFinised = true;
     }
 }

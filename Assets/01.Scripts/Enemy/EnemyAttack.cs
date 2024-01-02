@@ -23,7 +23,7 @@ public abstract class EnemyAttack : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _brain = transform.parent.GetComponent<EnemyBrain>();
+        _brain = transform.GetComponent<EnemyBrain>();
     }
 
     protected virtual void Update()

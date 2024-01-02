@@ -33,8 +33,28 @@ public class GameManager : MonoSingleton<GameManager>
 
     public Transform player { get; private set; }
 
+    [SerializeField]
+    private PoolListSO _poolList;
+
+    private void Awake()
+    {
+        PoolManager poolManager = new PoolManager(transform);
+        foreach(var item in _poolList.poolList)
+        {
+            poolManager.CreatePool(item.prefab, item.type, item.count);
+        }
+        PoolManager.Instance = poolManager;
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("Player").transform;
+    }
+
     private void Update()
     {
+        player = GameObject.Find("Player").transform;
+
         if(!isGameEnd)
             _curTime -= Time.deltaTime;
 
