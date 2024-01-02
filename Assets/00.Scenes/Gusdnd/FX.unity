@@ -173,6 +173,9 @@ MonoBehaviour:
   onGameStartTrigger:
     m_PersistentCalls:
       m_Calls: []
+  onScoreChanged:
+    m_PersistentCalls:
+      m_Calls: []
   gameTime: 5
   occupationPercent: 0
   isGameEnd: 0
