@@ -70,16 +70,6 @@ public class UIManager : MonoBehaviour
         //ChangeScene(_startUIType);
     }
 
-    public Vector2 ScreenPointPos(Vector3 pos)
-    {
-        pos.z = _canvas.planeDistance; // 캔버스의 planeDistance를 설정합니다.
-
-        Vector3 worldPos = _mainCam.ScreenToWorldPoint(pos);
-        Vector2 localPos = _canvas.transform.InverseTransformPoint(worldPos);
-
-        return localPos;
-    }
-
     public void ChangeScene(UIType toChangeScene)
     {
         if(_currentScene != null)
