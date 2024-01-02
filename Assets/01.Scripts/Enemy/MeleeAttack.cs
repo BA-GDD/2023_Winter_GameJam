@@ -21,6 +21,8 @@ public class MeleeAttack : EnemyAttack
             {
                 //collider.GetComponent<Player>().TakeDamage();
             }
+
+            _attackTimer = 0;
         }
     }
 }
