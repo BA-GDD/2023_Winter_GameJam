@@ -17,6 +17,12 @@ public class OnsenWaterGage : MonoBehaviour
 
     private Sequence _notAllowSeq;
 
+    private void Awake()
+    {
+        _gageImg.material.SetFloat("_amount", 0);
+        _waterImg.material.SetFloat("_amount", 0);
+    }
+
     public void ChangeWaterValue(float changingValue)
     {
         if(_currentWaterValue + changingValue < 0)
@@ -35,11 +41,6 @@ public class OnsenWaterGage : MonoBehaviour
             _waterImg.material.SetFloat("_amount", _currentWaterValue);
 
             _percentText.text = $"{Mathf.RoundToInt(Mathf.Clamp(_currentWaterValue * 100, 0, 100))}%";
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeWaterValue(0.2f);
         }
     }
 

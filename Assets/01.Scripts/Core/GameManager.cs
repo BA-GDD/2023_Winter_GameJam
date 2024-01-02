@@ -16,6 +16,8 @@ public class GameManager : MonoSingleton<GameManager>
     [Header("���ӿ� �ʿ��� ��ġ")]
     public float gameTime = 5.0f; //�ʴ���
     private float _curTime = 5.0f; //�ʴ���
+    public float CurrentTime => _curTime;
+
     [Range(0f, 100f)]
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
