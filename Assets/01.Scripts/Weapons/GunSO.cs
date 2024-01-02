@@ -7,6 +7,7 @@ public class GunSO : ScriptableObject
 {
     [Header("Features")]
     public string gunName;
+    public Sprite gunProfile;
     [Multiline(5)]
     public string flavorText;
     public Animator gunAnimator;
@@ -16,4 +17,5 @@ public class GunSO : ScriptableObject
     public float maximumCapacity;
     public float fillCapacityPerSecond;
     public float useCapacityPerShoot;
+    public float priceValue;
 }

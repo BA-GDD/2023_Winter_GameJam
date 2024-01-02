@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LobbyButtonAction : MonoBehaviour
 {
+    [SerializeField] private OptionPanel _optionPanelPrefab;
+    [SerializeField] private GameExitPanel _askGameExitPanelPrefab;
+
     public void EnterInGame()
     {
 
@@ -11,16 +14,16 @@ public class LobbyButtonAction : MonoBehaviour
 
     public void EnterStore()
     {
-
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.Store);
     }
 
     public void ActiveOption()
     {
-
+        UIManager.Instanace.CreatePanel(_optionPanelPrefab);
     }
 
     public void AskExitGame()
     {
-
+        UIManager.Instanace.CreatePanel(_askGameExitPanelPrefab);
     }
 }
