@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_water_splash_main
+  m_Name: M_water_splash_floor
   m_Shader: {fileID: 4800000, guid: 60dc1c4ae21276b4aa6c11f06b319632, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -30,7 +30,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Dissolve_Texture:
-        m_Texture: {fileID: 2800000, guid: 5a7df70658cc6bc4f912e4b058735992, type: 3}
+        m_Texture: {fileID: 2800000, guid: b596cfc99f088c14b9506aa3405f64a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Dissolve_Texture1:
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 31d3aa9d7e3ff1c448c8dc1dc55f98bb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1d067cac45e6c9148b86a171553882ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
