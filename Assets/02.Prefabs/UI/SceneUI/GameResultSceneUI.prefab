@@ -755,6 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myUIType: 3
+  _partyFX: {fileID: 5262189691127274944, guid: b0704cfdb780f4741a61d7d4dfa71ae4, type: 3}
   isEndTimeLine: 0
 --- !u!1 &4271020389466661944
 GameObject:
