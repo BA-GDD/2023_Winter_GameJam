@@ -18,7 +18,7 @@ public class RevolverAttack : EnemyAttack
     {
         Transform playerTrm = GameManager.Instance.player;
 
-        PoolableMono pam = PoolManager.Instance.Pop(PoolingType.RevolverEnemyBullet);
+        PoolableMono pam = PoolManager.Instance.Pop(PoolingType.Bullet);
         pam.transform.position = _brain.firePos.position;
         Vector2 dir = (playerTrm.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

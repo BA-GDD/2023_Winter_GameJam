@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public Camera mainCamera;
+
     [Header("게임 이벤트")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
@@ -44,6 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
             poolManager.CreatePool(item.prefab, item.type, item.count);
         }
         PoolManager.Instance = poolManager;
+        mainCamera = Camera.main;
     }
 
     private void Start()
@@ -53,8 +56,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Update()
     {
-        player = GameObject.Find("Player").transform;
-
         if(!isGameEnd)
             _curTime -= Time.deltaTime;
 

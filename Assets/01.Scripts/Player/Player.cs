@@ -17,7 +17,6 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private float _dashDuration;
     private Vector2 _dashDirection;
-    private Camera _mainCamera;
     private CharacterController _characterController;
     private Transform _gunSocket;
     private Gun _equipedGun;
@@ -28,7 +27,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
@@ -88,7 +86,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (_dashTimer <= 0f)
         {
-            _dashDirection = _mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
+            _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
 
             _dashDirection.Normalize();
             StartCoroutine(DashCoroutine());
