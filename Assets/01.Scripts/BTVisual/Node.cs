@@ -16,6 +16,7 @@ namespace BTVisual
         [HideInInspector] public bool started = false;
         [HideInInspector] public string guid;
         [HideInInspector] public Vector2 position;
+        [HideInInspector] public EnemyBrain brain;
 
         public State Update()
         {
