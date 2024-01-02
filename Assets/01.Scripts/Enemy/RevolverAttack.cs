@@ -20,6 +20,8 @@ public class RevolverAttack : EnemyAttack
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion angleAxis = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
             pam.transform.rotation = angleAxis;
+
+            _attackTimer = 0;
         }
     }
 }
