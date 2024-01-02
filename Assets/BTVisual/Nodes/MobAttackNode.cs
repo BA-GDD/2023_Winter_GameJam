@@ -19,7 +19,9 @@ public class MobAttackNode : ActionNode
 
     protected override void OnStop()
     {
+        _mBrain = (brain as MobBrain);
         _mBrain.Animator.SetIsMove(true);
+        brain.StartChase();
         _mBrain.Animator.SetIsAttack(brain.attack.IsAttack = false);
     }
 

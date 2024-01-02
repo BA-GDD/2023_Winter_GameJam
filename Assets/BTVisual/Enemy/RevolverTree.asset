@@ -271,7 +271,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: ab944db648fa6f94cae1aa45b63b1698
-  position: {x: -172.13994, y: 483.51}
+  position: {x: -187.32, y: 483.19998}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}

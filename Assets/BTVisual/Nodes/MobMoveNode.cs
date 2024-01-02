@@ -23,8 +23,9 @@ public class MobMoveNode : ActionNode
     {
         if (_brain.status.atkRange < Vector2.Distance(_brain.transform.position, GameManager.Instance.player.position))
         {
-            return State.SUCCESS;
+            _brain.characterController.Move(_brain.dir * _brain.status.moveSpeed * Time.deltaTime);
+            return State.RUNNING;
         }
-        return State.RUNNING;
+        return State.SUCCESS;
     }
 }

@@ -16,6 +16,11 @@ public class EnemyBrain : PoolableMono
     public Transform firePos;
 
     public Action animationEvent;
+
+    public CharacterController characterController;
+
+    public Vector2 dir;
+
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
@@ -33,21 +38,17 @@ public class EnemyBrain : PoolableMono
 
     protected virtual void Update()
     {
-        if (isDead)
+        dir = GameManager.Instance.player.position - transform.position;
+        dir.Normalize();
+        if(dir.x * transform.localScale.x < 0)
         {
-            if (isChase)
-            {
-
-            }
-            else
-            {
-
-            }
+            Flip();
         }
-        else
-        {
+    }
 
-        }
+    private void Flip()
+    {
+        transform.localScale *= new Vector2(-1, 1);
     }
 
     public override void Init()

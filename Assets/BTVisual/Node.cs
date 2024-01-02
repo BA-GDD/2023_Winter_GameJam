@@ -29,6 +29,7 @@ namespace BTVisual
             }
 
             state = OnUpdate();
+            Debug.Log(name);
 
             if (state == State.FAILURE || state == State.SUCCESS)
             {
