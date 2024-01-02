@@ -25,7 +25,7 @@ public class MobBrain : EnemyBrain
         _animator.SetDieTrigger(true);
     }
 
-    public void OnHit()
+    public void OnHitHandle()
     {
         SetDead();
         (this as IDamageable).OnHit();

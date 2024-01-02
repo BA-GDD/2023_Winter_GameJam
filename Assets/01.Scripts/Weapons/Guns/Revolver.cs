@@ -9,11 +9,12 @@ public class Revolver : Gun
     {
         if (CanShoot())
         {
-            Vector2 lookAtDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - firePosition.position;
-            Bullet bullet = PoolManager.Instance.Pop(PoolingType.Bullet) as Bullet;
+            PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+            bullet.transform.position = firePosition.position;
+            Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position).normalized;
+            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
 
-            bullet.transform.LookAt(lookAtDirection);
-            base.Skill();
+            base.Shoot();
         }
     }
 

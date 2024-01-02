@@ -17,17 +17,18 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private float _dashDuration;
     private Vector2 _dashDirection;
-    private CharacterController _characterController;
+    private Rigidbody2D _rigidbody2D;
     private Transform _gunSocket;
     private Gun _equipedGun;
     private PlayerAnimator _playerAnimator;
     private bool _isDash;
+    private bool _isDead;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
         _dashTimer = 0f;
@@ -36,6 +37,9 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
+
+        // Debug
+        EquipGun(GunType.Revolver);
     }
 
     private void Update()
@@ -82,6 +86,19 @@ public class Player : MonoBehaviour, IDamageable
         _equipedGun = null;
     }
 
+    public void OnHitHandle()
+    {
+        if (_isDead)
+        {
+            return;
+        }
+
+        _isDead = true;
+
+        UnequipGun();
+        (this as IDamageable).OnHit();
+    }
+
     private void Dash()
     {
         if (_dashTimer <= 0f)
@@ -100,9 +117,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Movement(Vector2 direction, float speed)
     {
-        _characterController.Move(direction * speed * Time.deltaTime);
+        _rigidbody2D.velocity = direction * speed;
 
-        if (_characterController.velocity.x != 0f || _characterController.velocity.y != 0f)
+        if (_rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f)
         {
             _playerAnimator.SetMove(true);
         }

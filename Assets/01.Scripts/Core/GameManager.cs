@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    [HideInInspector]
     public Camera mainCamera;
 
     [Header("게임 이벤트")]
@@ -51,7 +52,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = FindFirstObjectByType<Player>().transform;
     }
 
     private void Update()

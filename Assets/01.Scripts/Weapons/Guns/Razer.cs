@@ -10,7 +10,7 @@ public class Razer : Gun
         {
 
 
-            base.Skill();
+            base.Shoot();
         }
     }
 
