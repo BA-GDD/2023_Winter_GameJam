@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionPanel : PanelBase
 {
@@ -10,12 +11,17 @@ public class OptionPanel : PanelBase
     [SerializeField] private float _bgmNormalValue;
     [SerializeField] private float _sfxNormalValue;
 
+    [Header("슬라이더")]
+    [SerializeField] private Slider _mainVolumeSlider;
+    [SerializeField] private Slider _bgmVolumeSlider;
+    [SerializeField] private Slider _sfxVolumeSlider;
+
     public override void SetUpPanel()
     {
         // 사운드 값 받아오기
-        //HandleSetMainSoundValue(저장한 값);
-        //HandleSetBGMSoundValue(저장한 값);
-        //HandleSetSFXSoundValue(저장한 값);
+        _mainVolumeSlider.value = SoundManager.masterVolume;
+        _bgmVolumeSlider.value = SoundManager.bgmVolume;
+        _sfxVolumeSlider.value = SoundManager.sfxVolume;
 
         _blackPanelEndCallback += () => Destroy(gameObject);
         ActiveBlackPanel(true);
@@ -36,16 +42,16 @@ public class OptionPanel : PanelBase
 
     public void HandleSetMainSoundValue(float value)
     {
-
+        SoundManager.masterVolume = value;
     }
 
     public void HandleSetBGMSoundValue(float value)
     {
-
+        SoundManager.bgmVolume = value;
     }
 
     public void HandleSetSFXSoundValue(float value)
     {
-
+        SoundManager.sfxVolume = value;
     }
 }

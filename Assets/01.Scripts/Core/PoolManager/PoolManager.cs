@@ -6,7 +6,8 @@ public enum PoolingType
 {
     DamageText,
     DialogueEffect,
-    SwordAura
+    SwordAura,
+    StatusInfoPanel
 }
 
 public class PoolManager
@@ -19,6 +20,7 @@ public class PoolManager
     public PoolManager(Transform parentTrm)
     {
         _parentTrm = parentTrm;
+        Instance = this;
     }
 
     public void CreatePool(PoolableMono prefab, PoolingType poolingType, int count = 10)

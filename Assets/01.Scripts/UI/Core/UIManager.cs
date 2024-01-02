@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private Camera _mainCam;
     private static UIManager _instance;
     public static UIManager Instanace
     {
@@ -21,8 +22,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private Transform _canvasTrm;
-    public Transform CanvasTrm => _canvasTrm;
+    private Canvas _canvas;
+    public Transform CanvasTrm => _canvas.transform;
 
     [SerializeField] private UIType _startUIType;
     [SerializeField] private SceneUIBase[] _sceneUIGroup;
@@ -34,6 +35,8 @@ public class UIManager : MonoBehaviour
     private Transform _panelTrm;
     private PanelBase _onActivePanel;
 
+    [SerializeField] private PoolListSO _list;
+
     private void Awake()
     {
         if (_instance != null)
@@ -43,19 +46,38 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        _canvasTrm = transform.Find("UICANVAS").transform;
-        _sceneUITrm = _canvasTrm.Find("SceneUIParent").transform;
-        _panelTrm = _canvasTrm.Find("PanelParent").transform;
+        _canvas = transform.Find("UICANVAS").GetComponent<Canvas>();
+        _sceneUITrm = CanvasTrm.Find("SceneUIParent").transform;
+        _panelTrm = CanvasTrm.Find("PanelParent").transform;
 
         foreach(SceneUIBase sceneObj in _sceneUIGroup)
         {
             _uiSelecter.Add(sceneObj.myUIType, sceneObj);
         }
+
+        PoolManager pm = new PoolManager(CanvasTrm);
+
+        foreach(PoolingItem p in _list.poolList)
+        {
+            pm.CreatePool(p.prefab, p.type, p.count);
+        }
+        
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
         //ChangeScene(_startUIType);
+    }
+
+    public Vector2 ScreenPointPos(Vector3 pos)
+    {
+        pos.z = _canvas.planeDistance; // 캔버스의 planeDistance를 설정합니다.
+
+        Vector3 worldPos = _mainCam.ScreenToWorldPoint(pos);
+        Vector2 localPos = _canvas.transform.InverseTransformPoint(worldPos);
+
+        return localPos;
     }
 
     public void ChangeScene(UIType toChangeScene)
@@ -66,6 +88,7 @@ public class UIManager : MonoBehaviour
         }
 
         _currentScene = Instantiate(_uiSelecter[toChangeScene], _sceneUITrm);
+        _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();
     }
 
@@ -73,5 +96,16 @@ public class UIManager : MonoBehaviour
     {
         _onActivePanel = Instantiate(toCreatePanel, _panelTrm);
         _onActivePanel.SetUpPanel();
+    }
+
+    public PanelBase CreatePanel(PanelBase toCreatePanel, bool isSetUp)
+    {
+        _onActivePanel = Instantiate(toCreatePanel, _panelTrm);
+
+        if (!isSetUp) return _onActivePanel;
+
+        _onActivePanel.SetUpPanel();
+
+        return _onActivePanel;
     }
 }
