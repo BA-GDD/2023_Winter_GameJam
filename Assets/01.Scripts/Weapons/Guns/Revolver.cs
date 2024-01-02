@@ -8,7 +8,19 @@ public class Revolver : Gun
     {
         if (CanShoot())
         {
-            // Shoot
+
+
+            base.Skill();
+        }
+    }
+
+    public override void Skill()
+    {
+        if (CanUseSkill())
+        {
+
+
+            base.Skill();
         }
     }
 }

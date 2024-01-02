@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -10,18 +11,118 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private InputReader _inputReader;
     [SerializeField]
-    private float _moveSpeed;
+    private float _movementSpeed;
+    [SerializeField]
+    private float _dashDelay;
+    [SerializeField]
+    private float _dashDuration;
+    private Vector2 _dashDirection;
+    private Camera _mainCamera;
     private CharacterController _characterController;
+    private Transform _gunSocket;
+    private Gun _equipedGun;
+    private PlayerAnimator _playerAnimator;
+    private bool _isDash;
+    private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
-
 
     private void Awake()
     {
+        _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
+        _gunSocket = transform.Find("GunSocket");
+        _playerAnimator = GetComponent<PlayerAnimator>();
+        _dashTimer = 0f;
     }
 
-    public void Movement()
+    private void Start()
     {
-        _characterController.Move(_inputReader.movementDirection * _moveSpeed * Time.deltaTime);
+        _inputReader.onDashEvent += Dash;
+    }
+
+    private void Update()
+    {
+        _dashTimer -= Time.deltaTime;
+
+        if (transform.localScale.x * _inputReader.movementDirection.x < 0f)
+        {
+            Flip();
+        }
+
+        if (_isDash)
+        {
+            if (transform.localScale.x * _dashDirection.x < 0f)
+            {
+                Flip();
+            }
+
+            Movement(_dashDirection, _movementSpeed * 5f);
+        }
+        else
+        {
+            Movement(_inputReader.movementDirection, _movementSpeed);
+        }
+    }
+
+    public void EquipGun(GunType gunType)
+    {
+        _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
+        _inputReader.onReloadEvent += _equipedGun.Reload;
+        _inputReader.onShootEvent += _equipedGun.Shoot;
+        _inputReader.onSkillEvent += _equipedGun.Skill;
+
+        _equipedGun.gameObject.SetActive(true);
+    }
+
+    public void UnequipGun()
+    {
+        _equipedGun.gameObject.SetActive(false);
+
+        _inputReader.onReloadEvent -= _equipedGun.Reload;
+        _inputReader.onShootEvent -= _equipedGun.Shoot;
+        _inputReader.onSkillEvent -= _equipedGun.Skill;
+        _equipedGun = null;
+    }
+
+    private void Dash()
+    {
+        if (_dashTimer <= 0f)
+        {
+            _dashDirection = _mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
+
+            _dashDirection.Normalize();
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private void Flip()
+    {
+        transform.localScale *= new Vector2(-1f, 1f);
+    }
+
+    private void Movement(Vector2 direction, float speed)
+    {
+        _characterController.Move(direction * speed * Time.deltaTime);
+
+        if (_characterController.velocity.x != 0f || _characterController.velocity.y != 0f)
+        {
+            _playerAnimator.SetMove(true);
+        }
+        else
+        {
+            _playerAnimator.SetMove(false);
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        _isDash = true;
+        _dashTimer = _dashDelay;
+
+        _playerAnimator.SetDashTrigger(_isDash);
+
+        yield return new WaitForSeconds(_dashDuration);
+
+        _isDash = false;
     }
 }

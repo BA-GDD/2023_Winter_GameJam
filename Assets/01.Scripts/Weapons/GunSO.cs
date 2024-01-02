@@ -16,4 +16,6 @@ public class GunSO : ScriptableObject
     public float maximumCapacity;
     public float fillCapacityPerSecond;
     public float useCapacityPerShoot;
+    public float requireSkillGauge;
+    public float fillSkillGaugePerSecond;
 }
