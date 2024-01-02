@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldEnemyBrain : EnemyBrain
+public class MobBrain : EnemyBrain
 {
-
+    
 }
