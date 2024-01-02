@@ -6,6 +6,6 @@ namespace UIDefine
         Lobby,
         InGame,
         GameResult,
-        Store
+        Store,
     }
 }

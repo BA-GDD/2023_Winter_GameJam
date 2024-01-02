@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UIDefine;
-using System;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -25,8 +24,11 @@ public class UIManager : MonoBehaviour
     private Transform _canvasTrm;
     public Transform CanvasTrm => _canvasTrm;
 
-    [SerializeField] private SceneUI[] _sceneUIGroup;
-    private Dictionary<UIType, SceneUI> _uiSelecter = new Dictionary<UIType, SceneUI>();
+    [SerializeField] private UIType _startUIType;
+    [SerializeField] private SceneUIBase[] _sceneUIGroup;
+    private Dictionary<UIType, SceneUIBase> _uiSelecter = new Dictionary<UIType, SceneUIBase>();
+
+    private SceneUIBase _currentScene;
 
     private void Awake()
     {
@@ -37,11 +39,27 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        _canvasTrm = GameObject.Find("UICANVAS").transform;
+        _canvasTrm = transform.Find("UICANVAS").transform;
 
-        foreach(SceneUI sceneObj in _sceneUIGroup)
+        foreach(SceneUIBase sceneObj in _sceneUIGroup)
         {
             _uiSelecter.Add(sceneObj.myUIType, sceneObj);
         }
+    }
+
+    private void Start()
+    {
+        //ChangeScene(_startUIType);
+    }
+
+    public void ChangeScene(UIType toChangeScene)
+    {
+        if(_currentScene != null)
+        {
+            Destroy(_currentScene.gameObject);
+        }
+
+        _currentScene = Instantiate(_uiSelecter[toChangeScene], _canvasTrm);
+        _currentScene.Init();
     }
 }
