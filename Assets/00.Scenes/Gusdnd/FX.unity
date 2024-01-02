@@ -193,7 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930290e370d779a48a0a8544228fc248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer:
+  audioMixerMaster: {fileID: 24100000, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
+  audioMixers:
   - {fileID: 24300002, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   - {fileID: -5902500965924720288, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   - {fileID: 8947346983817735521, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
