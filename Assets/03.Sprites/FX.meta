@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/00.Scenes/Busung.meta
-guid: 9a44a845f9cb70f43a82561c3e3a0eda
+<<<<<<<< HEAD:Assets/01.Scripts/Core.meta
+guid: 2ba9970e9faa3084a93a3ec57757aa5a
 ========
 guid: 0467790f63bc2974aa7d41574b6f1d73
->>>>>>>> origin/Gusdnd:Assets/03.Sprites/FX.meta
+>>>>>>>> Gusdnd:Assets/03.Sprites/FX.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

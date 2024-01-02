@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/00.Scenes/Minsu.meta
 guid: cf138dd3ecb0a964ab033c94f6ddd5c6
+========
+guid: bfc441e86b9bcff42be0bd5651cea2eb
+>>>>>>>> Gusdnd:Assets/01.Scripts/BTVisual.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
