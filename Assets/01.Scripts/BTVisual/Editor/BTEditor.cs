@@ -40,7 +40,7 @@ public class BTEditor : EditorWindow
         root.Add(template);
 
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>
-                        ("Assets/BTVisual/Editor/BTEditor.uss");
+                        ("Assets/01.Scripts/BTVisual/Editor/BTEditor.uss");
         root.styleSheets.Add(styleSheet);
 
         _treeView = root.Q<BehaviourTreeView>("tree-view");
