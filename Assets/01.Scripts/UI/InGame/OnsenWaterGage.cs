@@ -11,7 +11,6 @@ public class OnsenWaterGage : MonoBehaviour
 
     public void ChangeWaterValue(float changingValue, float easingTime)
     {
-
         _currentWaterValue = Mathf.Clamp01(_currentWaterValue + changingValue);
         _waterTrm.DOLocalMoveY(_waterTrm.localPosition.y + _distance * changingValue, easingTime);
     }
