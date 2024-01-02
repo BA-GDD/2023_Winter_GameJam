@@ -5,9 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/Gun")]
 public class GunSO : ScriptableObject
 {
+    [Header("Features")]
     public string gunName;
+    [Multiline(5)]
     public string flavorText;
     public Animator gunAnimator;
+
+    [Header("Statistics")]
     public float shootDelay;
     public float maximumCapacity;
     public float fillCapacityPerSecond;

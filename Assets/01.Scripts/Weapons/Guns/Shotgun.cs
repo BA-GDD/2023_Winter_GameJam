@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Shotgun : Gun
 {
-    public override void Reload()
-    {
-
-    }
-
     public override void Shoot()
     {
-
+        if (CanShoot())
+        {
+            // Shoot
+        }
     }
 }
