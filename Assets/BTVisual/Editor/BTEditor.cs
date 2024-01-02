@@ -41,7 +41,8 @@ public class BTEditor : EditorWindow
     public void CreateGUI()
     {
         VisualElement root = rootVisualElement;
-        
+
+
         // Instantiate UXML
         var template = m_VisualTreeAsset.Instantiate();
         template.style.flexGrow = 1;

@@ -12,10 +12,13 @@ public class EnemyBrain : PoolableMono
     public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;
+    public bool isAnimFinised;
+    public Transform firePos;
 
+    public Action animationEvent;
     protected virtual void Awake()
     {
-
+        attack = transform.GetComponent<EnemyAttack>();
     }
 
     protected async virtual void OnEnable()
@@ -65,5 +68,9 @@ public class EnemyBrain : PoolableMono
     public virtual void StopChase()
     {
         isChase = false;
+    }
+    public void EndAnimation()
+    {
+        isAnimFinised = true;
     }
 }

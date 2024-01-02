@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class MobMoveNode : ActionNode
 {
+    private MobBrain _brain;
     protected override void OnStart()
     {
         brain.StartChase();
-        (brain as MobBrain).Animator.SetIsAttack(brain.attack.IsAttack = false);
-        (brain as MobBrain).Animator.SetIsMove(true);
+        _brain = (brain as MobBrain);
+        _brain.Animator.SetIsAttack(brain.attack.IsAttack = false);
+        _brain.Animator.SetIsMove(true);
     }
 
     protected override void OnStop()
@@ -19,6 +21,10 @@ public class MobMoveNode : ActionNode
 
     protected override State OnUpdate()
     {
-        return State.SUCCESS;
+        if (_brain.status.atkRange < Vector2.Distance(_brain.transform.position, GameManager.Instance.player.position))
+        {
+            return State.SUCCESS;
+        }
+        return State.RUNNING;
     }
 }

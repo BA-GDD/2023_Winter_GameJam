@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d671d8712a11fa048829f2123e9c1120, type: 3}
   m_Name: PoolList
   m_EditorClassIdentifier: 
-  poolList: []
+  poolList:
+  - type: 7
+    prefab: {fileID: 3906221314880394207, guid: c919ead191ad3574ebbba5c60a8bdc2a, type: 3}
+    count: 20

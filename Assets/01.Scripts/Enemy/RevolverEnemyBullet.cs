@@ -12,6 +12,6 @@ public class RevolverEnemyBullet : PoolableMono
 
     void Update()
     {
-        rb.velocity = transform.right;
+        rb.velocity = transform.right * 3000f;
     }
 }

@@ -17,6 +17,6 @@ public class InRangeNode : ActionNode
 
     protected override State OnUpdate()
     {
-        return Vector3.Distance(brain.transform.position, GameManager.instance.player.position) > brain.status.atkRange ? State.FAILURE : State.SUCCESS;
+        return Vector3.Distance(brain.transform.position, GameManager.Instance.player.position) > (brain as MobBrain).status.atkRange ? State.FAILURE : State.SUCCESS;
     }
 }

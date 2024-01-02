@@ -5,20 +5,31 @@ using UnityEngine;
 
 public class MobAttackNode : ActionNode
 {
+    private MobBrain _mBrain;
+
     protected override void OnStart()
     {
         brain.StopChase();
-        (brain as MobBrain).Animator.SetIsMove(false);
-        (brain as MobBrain).Animator.SetIsAttack(brain.attack.IsAttack = true);
+        _mBrain = (brain as MobBrain);
+        _mBrain.Animator.SetIsMove(false);
+        _mBrain.Animator.SetIsAttack(brain.attack.IsAttack = true);
+        _mBrain.isAnimFinised = false;
+        _mBrain.Animator.SetAttackTrigger(true);
     }
 
     protected override void OnStop()
     {
-
+        _mBrain.Animator.SetIsMove(true);
+        _mBrain.Animator.SetIsAttack(brain.attack.IsAttack = false);
     }
 
     protected override State OnUpdate()
     {
-        return State.SUCCESS;
+        if (_mBrain.isAnimFinised)
+        {
+            return State.SUCCESS;
+
+        }
+        else return State.RUNNING;
     }
 }
