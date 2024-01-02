@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Revolver, // 중거리
-    Sniper, // 저격
-    Shield, // 방패
-    Melee, // 근접
+    Melee,
+    Revolver,
+    Sniper,
+    Shield,
 }
 
 [CreateAssetMenu(menuName = "SO/EnemyStatus")]
@@ -16,6 +16,6 @@ public class EnemyStatusSO : ScriptableObject
     public float moveSpeed;
     public float atkRange;
     public float atkDelay;
-    public Sprite sprite;
+    public Animator animator;
     public EnemyType type;
 }

@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemyBrain : MonoBehaviour // 나중에 PoolableMono로 바꿔야함
+public class EnemyBrain : PoolableMono
 {
     [HideInInspector]
     public EnemyAttack attack;
     [HideInInspector]
     public bool isDead;
     public EnemyStatusSO status;
-
     public bool isChase;
 
     protected virtual void Awake()
@@ -27,6 +26,11 @@ public class EnemyBrain : MonoBehaviour // 나중에 PoolableMono로 바꿔야함
     protected virtual void Start()
     {
         StartChase();
+    }
+
+    public override void Init()
+    {
+
     }
 
     public virtual void SetDead()

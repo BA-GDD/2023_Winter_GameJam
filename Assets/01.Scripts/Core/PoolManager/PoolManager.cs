@@ -6,7 +6,11 @@ public enum PoolingType
 {
     DamageText,
     DialogueEffect,
-    SwordAura
+    SwordAura,
+    MeleeEnemy,
+    RevolverEnemy,
+    SniperEnemy,
+    ShieldEnemy,
 }
 
 public class PoolManager
