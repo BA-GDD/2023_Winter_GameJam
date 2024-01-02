@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &152558613
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -10250,7 +10250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &720213240
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -15369,7 +15369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1088990702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20488,7 +20488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1325581392
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -25392,7 +25392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1346737791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45003,6 +45003,10 @@ PrefabInstance:
     - target: {fileID: 3557429223895153112, guid: b5145cc1c09206442b077190625ddc99, type: 3}
       propertyPath: m_Name
       value: P_party_poper
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557429223895153112, guid: b5145cc1c09206442b077190625ddc99, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
