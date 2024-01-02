@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [Header("게임 시작 및 끝 이벤트")]
+    [Header("게임 이벤트")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
+    public UnityEvent onScoreChanged;
 
     [Header("게임에 필요한 수치")]
     public float gameTime = 5.0f; //초단위
@@ -16,10 +17,18 @@ public class GameManager : MonoSingleton<GameManager>
     public float occupationPercent = 0.0f; //0~100까지
     public bool isGameEnd = false;
 
-    [ContextMenu("is i have instance?")]
-    public void IsIHaveInstance()
+    private float _score;
+    public float Score
     {
-        print(Instance != null ? "yes" : "no");
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            onScoreChanged?.Invoke();
+        }
     }
 
     private void Update()
