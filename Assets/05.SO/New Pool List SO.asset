@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: New Pool List SO
   m_EditorClassIdentifier: 
   poolList:
-  - type: 7
-    prefab: {fileID: 751200279348038526, guid: 343da9370060c8e46a4bdf9106c951db, type: 3}
-    count: 125
+  - type: 3
+    prefab: {fileID: 68570937909055863, guid: 02ea9a1424519c744b012e604b3db002, type: 3}
+    count: 5
