@@ -17,6 +17,8 @@ public class GameManager : MonoSingleton<GameManager>
     public float occupationPercent = 0.0f; //0~100±îÁö
     public bool isGameEnd = false;
 
+    private GameData _gameData;
+
     private float _score;
     public float Score
     {
@@ -29,6 +31,11 @@ public class GameManager : MonoSingleton<GameManager>
             _score = value;
             onScoreChanged?.Invoke();
         }
+    }
+
+    private void Awake()
+    {
+        _gameData = new GameData();
     }
 
     private void Update()
