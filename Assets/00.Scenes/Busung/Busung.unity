@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 48990079}
   - component: {fileID: 48990078}
-  - component: {fileID: 48990080}
   m_Layer: 0
   m_Name: ShieldEnemy
   m_TagString: Untagged
@@ -208,23 +207,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &48990080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48990077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dfbe74753b3134da5c0a2a946d06c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolingType: 6
-  attack: {fileID: 0}
-  isDead: 0
-  status: {fileID: 0}
-  isChase: 0
 --- !u!1 &143739895
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +217,6 @@ GameObject:
   m_Component:
   - component: {fileID: 143739897}
   - component: {fileID: 143739896}
-  - component: {fileID: 143739898}
   m_Layer: 0
   m_Name: RevolverEnemy
   m_TagString: Untagged
@@ -310,23 +291,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &143739898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143739895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c2c8ea51678754f8865e54d21c9cd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolingType: 4
-  attack: {fileID: 0}
-  isDead: 0
-  status: {fileID: 0}
-  isChase: 0
 --- !u!1 &289737216
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +301,6 @@ GameObject:
   m_Component:
   - component: {fileID: 289737218}
   - component: {fileID: 289737217}
-  - component: {fileID: 289737219}
   m_Layer: 0
   m_Name: SniperEnemy
   m_TagString: Untagged
@@ -412,23 +375,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &289737219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289737216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbcada9812391784388619b6f0f4d2b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolingType: 5
-  attack: {fileID: 0}
-  isDead: 0
-  status: {fileID: 0}
-  isChase: 0
 --- !u!1 &1716865931
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +477,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2064049704}
   - component: {fileID: 2064049703}
-  - component: {fileID: 2064049705}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -606,23 +551,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2064049705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064049702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253b64d152dd61141a662249cf436804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolingType: 3
-  attack: {fileID: 0}
-  isDead: 0
-  status: {fileID: 0}
-  isChase: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

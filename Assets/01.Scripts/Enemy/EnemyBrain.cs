@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class EnemyBrain : PoolableMono
+public class EnemyBrain : Entity
 {
     [HideInInspector]
     public EnemyAttack attack;
