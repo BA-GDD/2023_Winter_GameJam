@@ -8,7 +8,8 @@ public enum PoolingType
     DialogueEffect,
     SwordAura,
     StatusInfoPanel,
-    RevolverEnemyBullet
+    RevolverEnemyBullet,
+    FallingMilk
 }
 
 public class PoolManager
