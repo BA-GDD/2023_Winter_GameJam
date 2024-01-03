@@ -25,10 +25,13 @@ public class OptionPanel : PanelBase
 
         _blackPanelEndCallback += () => Destroy(gameObject);
         ActiveBlackPanel(true);
+
+        Time.timeScale = 0;
     }
 
     public override void InitPanel()
     {
+        Time.timeScale = 1;
         _blockContent.SetActive(false);
         ActiveBlackPanel(false);
     }
