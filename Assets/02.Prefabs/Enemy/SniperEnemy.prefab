@@ -441,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 3221885041633824980, guid: 2a46c12d18da3dd4b860de75b6fb92ec, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3921076000457171682, guid: 2a46c12d18da3dd4b860de75b6fb92ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -479,6 +483,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3921076000457171682, guid: 2a46c12d18da3dd4b860de75b6fb92ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963951256393566358, guid: 2a46c12d18da3dd4b860de75b6fb92ec, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095448716195368131, guid: 2a46c12d18da3dd4b860de75b6fb92ec, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
