@@ -40,10 +40,10 @@ public class Player : MonoBehaviour, IDamageable
     public AudioClip dashClip;
     private void Awake()
     {
-        _material = GetComponent<SpriteRenderer>().material;
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
+        _material = _playerAnimator.animator.GetComponent<SpriteRenderer>().material;
+        _gunSocket = _playerAnimator.animator.transform.Find("GunSocket");
         _dashTimer = 0f;
 
         _mainCam = Camera.main;
@@ -121,6 +121,9 @@ public class Player : MonoBehaviour, IDamageable
         if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
         {
             _equipedGun.gameObject.SetActive(!_canReload);
+
+            _playerAnimator.animator.transform.localPosition = new Vector2(0f, -0.1f * (_canReload ? 1f : 0f));
+
             _playerAnimator.SetReload(_canReload);
         }
     }
@@ -153,7 +156,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        if (_isDead)
+        /*if (_isDead)
         {
             return;
         }
@@ -162,7 +165,7 @@ public class Player : MonoBehaviour, IDamageable
         _rigidbody2D.velocity = Vector3.zero;
 
         UnequipGun();
-        (this as IDamageable).OnHit();
+        (this as IDamageable).OnHit();*/
     }
 
     private void Dash()

@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Revolver : Gun
 {
+    private readonly int _isOutlineHash = Shader.PropertyToID("_isOutline");
     [SerializeField]
     private Transform _skillRangeCircle;
     [SerializeField]
@@ -45,6 +44,18 @@ public class Revolver : Gun
                 _rangeCircleRadius = 0f;
                 _skillRangeCircle.localScale = Vector2.zero;
 
+                foreach (var target in _targets)
+                {
+                    if (target.TryGetComponent(out MobBrain brain))
+                    {
+                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 0);
+                    }
+                    else
+                    {
+                        target.GetComponent<SpriteRenderer>().material.SetInt(_isOutlineHash, 0);
+                    }
+                }
+
                 StartCoroutine(SkillProcess());
             }
             else
@@ -54,6 +65,18 @@ public class Revolver : Gun
                 _rangeCircleRadius = Mathf.Clamp(_rangeCircleRadius, 0f, _rangeCircleMaxRadius);
                 _skillRangeCircle.localScale = new Vector2(_rangeCircleRadius * 2f, _rangeCircleRadius * 2f);
                 _targets = Physics2D.OverlapCircleAll(_skillRangeCircle.position, _rangeCircleRadius * 5f, enemyLayerMask).ToList();
+
+                foreach (var target in _targets)
+                {
+                    if (target.TryGetComponent(out MobBrain brain))
+                    {
+                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 1);
+                    }
+                    else
+                    {
+                        target.GetComponent<SpriteRenderer>().material.SetInt(_isOutlineHash, 1);
+                    }
+                }
             }
         }
     }
@@ -64,6 +87,11 @@ public class Revolver : Gun
 
         foreach (var target in _targets)
         {
+            if (!target.TryGetComponent(out MobBrain brain))
+            {
+                continue;
+            }
+
             Transform gunSocket = transform.parent;
             Vector2 direction = target.transform.position - gunSocket.position;
 
