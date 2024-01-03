@@ -19,8 +19,10 @@ MonoBehaviour:
   skillText: "\uC5B4\uB9C8\uC5B4\uB9C8 \uD55C<br>\uBB3C\uB300\uD3EC\uB97C \uC3F4<br>\uC801\uB4E4\uC744<br>
     \uC12C\uBA78\uD55C\uB2E4."
   gunAnimator: {fileID: 0}
-  shootDelay: 0
+  shootDelay: 0.5
   maximumCapacity: 0
   fillCapacityPerSecond: 0
   useCapacityPerShoot: 0
+  requireSkillGauge: 0
+  fillSkillGaugePerSecond: 0
   priceValue: 0

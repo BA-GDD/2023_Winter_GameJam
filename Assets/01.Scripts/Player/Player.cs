@@ -39,7 +39,8 @@ public class Player : MonoBehaviour, IDamageable
         _inputReader.onDashEvent += Dash;
 
         // Debug
-        EquipGun(GunType.Shotgun);
+        EquipGun(GunType.Razer);
+        PoolManager.Instance.Pop(PoolingType.PlayerRazer);
     }
 
     private void Update()

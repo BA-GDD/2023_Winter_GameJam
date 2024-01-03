@@ -16,23 +16,21 @@ public class Shotgun : Gun
     [SerializeField]
     private int _shotsAmount = 7;
 
-    public override void Shoot()
+    public override void ShootProcess()
     {
-        if (CanShoot())
+        for (int i = 0; i < _shotsAmount; ++i)
         {
-            for (int i = 0; i < _shotsAmount; ++i)
-            {
-                Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
-                bullet.bulletSpeed = _bulletSpeed;
-                bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
-                bullet.lifeTime = _lifeTime;
-                bullet.transform.position = firePosition.position;
-                Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position).normalized;
-                float angle = Random.Range(-_shotAngleRange * 0.5f, _shotAngleRange * 0.5f);
-                bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angle, Vector3.forward);
-            }
+            Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
+            bullet.bulletSpeed = _bulletSpeed;
+            bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
+            bullet.lifeTime = _lifeTime;
+            bullet.transform.position = firePosition.position;
+            Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
 
-            base.Shoot();
+            direction.Normalize();
+
+            float angle = Random.Range(-_shotAngleRange * 0.5f, _shotAngleRange * 0.5f);
+            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angle, Vector3.forward);
         }
     }
 
