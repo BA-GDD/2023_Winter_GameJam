@@ -30,7 +30,7 @@ public class GameResultSceneUI : SceneUIBase
 
     public override void SetUp()
     {
-        _milkThrowEvent?.Invoke(Mathf.FloorToInt(GameManager.Instance.Score * 0.1f));
+        _milkThrowEvent?.Invoke(Mathf.FloorToInt(10));
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
                                GameManager.Instance.GameData.beforeTime,
                                GameManager.Instance.GameData.bestTime);

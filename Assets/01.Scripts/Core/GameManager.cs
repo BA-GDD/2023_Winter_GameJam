@@ -62,7 +62,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Start()
     {
-        player = FindObjectOfType<Player>().transform;
+        //player = FindObjectOfType<Player>().transform;
     }
 
     private void Update()
@@ -70,10 +70,10 @@ public class GameManager : MonoSingleton<GameManager>
         if(!isGameEnd)
             _curTime -= Time.deltaTime;
 
-        if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
-        {
-            GameEnd();
-        }
+        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        //{
+        //    GameEnd();
+        //}
     }
 
     public void GameStart()
