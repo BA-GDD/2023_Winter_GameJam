@@ -60,7 +60,8 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(_bgmClip, 1, 1, 1);
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+
     }
 
     private void Update()

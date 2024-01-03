@@ -26,6 +26,8 @@ public class Player : MonoBehaviour, IDamageable
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
+    public AudioClip dashClip;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -39,7 +41,6 @@ public class Player : MonoBehaviour, IDamageable
         _inputReader.onDashEvent += Dash;
 
         // Debug
-        EquipGun(GunType.Shotgun);
     }
 
     private void Update()
@@ -104,7 +105,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_dashTimer <= 0f)
         {
             _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
-
+            SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
             _dashDirection.Normalize();
             StartCoroutine(DashCoroutine());
         }

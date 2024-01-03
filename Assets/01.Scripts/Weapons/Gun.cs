@@ -24,6 +24,9 @@ public abstract class Gun : MonoBehaviour
     private float _usableCapacity;
     private float _currentSkillGauge;
 
+    public AudioClip shootClip;
+
+
     protected virtual void OnEnable()
     {
         _animator = GetComponent<Animator>();
@@ -71,6 +74,8 @@ public abstract class Gun : MonoBehaviour
         if (CanShoot())
         {
             SetShootTrigger(true);
+
+            SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
 
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;

@@ -216,6 +216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _spriteRenderer: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 68dd3dd8083738f49b72fc3ab8581a38, type: 3}
   _animator: {fileID: 8262602653970714215}
 --- !u!114 &738967738803681707
 MonoBehaviour:
