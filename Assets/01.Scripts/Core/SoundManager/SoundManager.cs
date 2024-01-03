@@ -35,6 +35,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         audioMixerMaster.SetFloat("master", masterVolume);
         audioMixerMaster.SetFloat("bgm", bgmVolume);
         audioMixerMaster.SetFloat("sfx", sfxVolume);
+        UIManager.Instanace.EveryButtonClickCallback += PlayBtnSE;
     }
 
     public void Play(AudioClip clip, float volume = 1f, float pitch = 1f, int channel = 0, bool loop=false)
@@ -85,6 +86,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayBtnSE()
     {
-        Play(btnClip, 1, 1, 1, false);
+        Play(btnClip, 3, 1, 1, false);
     }
 }

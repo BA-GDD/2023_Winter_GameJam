@@ -465,6 +465,7 @@ MonoBehaviour:
   - {fileID: -5902500965924720288, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   - {fileID: 8947346983817735521, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   audioObject: {fileID: 7336378116389815741, guid: 30df244d6594c844a8c17b9a626d8ddf, type: 3}
+  btnClip: {fileID: 8300000, guid: 87b1e1bba2921674eb8e448d57bab676, type: 3}
 --- !u!4 &1588420983
 Transform:
   m_ObjectHideFlags: 0
