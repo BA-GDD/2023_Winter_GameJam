@@ -16,7 +16,6 @@ public enum PoolingType
     ShieldEnemy,
     SpaSmoke,
     EnemyExplosion,
-    PlayerRazer,
 }
 
 public class PoolManager
