@@ -42,10 +42,8 @@ public class SniperAttack : EnemyAttack
 
     private void Aim()
     {
-        Debug.Log(_brain == null);
-        Debug.Log(_brain.firePos == null);
         _line.SetPosition(0, _brain.firePos.position);
-        _line.SetPosition(1, GameManager.Instance.player.position);
+        _line.SetPosition(1, (GameManager.Instance.player.position - _brain.firePos.position).normalized * 100);
     }
 
     private IEnumerator Sniping()
@@ -60,6 +58,10 @@ public class SniperAttack : EnemyAttack
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, (_target - _brain.transform.position).normalized, 100, _playerLayerMask);
 
         _mainModule.startSizeX = 100;
+        Vector2 direction = _line.GetPosition(1) - _brain.firePos.position;
+        direction.Normalize();
+
+        _sniperParticle.gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
 
         if (hit.Length > 0)
         {
@@ -72,6 +74,7 @@ public class SniperAttack : EnemyAttack
             }
 
         }
+        _line.SetPosition(1, _brain.firePos.position);
         _sniperParticle.Play();
         _attackTimer = 0;
         yield return new WaitForSeconds(0.5f);

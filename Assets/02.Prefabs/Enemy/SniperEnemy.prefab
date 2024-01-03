@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6243425e5845c6a4794a4ca05bf2a4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 8
+  poolingType: 11
   attack: {fileID: 0}
   isDead: 0
   status: {fileID: 11400000, guid: 50d38fcce8774394f85cf800483643cd, type: 2}
