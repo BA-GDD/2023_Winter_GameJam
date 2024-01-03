@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDamageable
         _playerAnimator = GetComponent<PlayerAnimator>();
         _dashTimer = 0f;
 
+        EquipGun(GameManager.Instance.selectGunType);
         _mainCam = Camera.main;
     }
 
@@ -165,6 +166,8 @@ public class Player : MonoBehaviour, IDamageable
 
         UnequipGun();
         (this as IDamageable).OnHit();
+
+        GameManager.Instance.GameEnd();
     }
 
     private void Dash()

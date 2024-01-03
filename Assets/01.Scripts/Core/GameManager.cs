@@ -33,12 +33,17 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField]
     private PoolListSO _poolList;
+    [SerializeField]
+    private Transform _poolTrm;
 
     private GameData _gameData;
     public GameData GameData => _gameData;
 
     [SerializeField]
     private AudioClip _bgmClip;
+
+    [SerializeField]
+    private InputReader _inputReader;
 
     private float _score;
     public float Score
@@ -56,14 +61,23 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        string data = PlayerPrefs.GetString("GameData", string.Empty);
-        if (string.IsNullOrEmpty(data))
+        if (instance != null)
         {
-            _gameData = new GameData();
+            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Destroy(gameObject);
+            return;
         }
-        _gameData = JsonUtility.FromJson<GameData>(data); ;
+        instance = this;
 
-        PoolManager poolManager = new PoolManager(transform);
+        _inputReader.DisablePlayer();
+        string data = PlayerPrefs.GetString("GameData", string.Empty);
+        //if (string.IsNullOrEmpty(data))
+        //{
+        //}
+        //_gameData = JsonUtility.FromJson<GameData>(data);
+            _gameData = new GameData();
+
+        PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)
         {
             poolManager.CreatePool(item.prefab, item.type, item.count);
@@ -92,24 +106,29 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameStart()
     {
+        _inputReader.EnablePlayer();
         isGameEnd = false;
         _curTime = gameTime;
-
         onGameStartTrigger?.Invoke();
     }
 
     public void GameEnd()
     {
+        if (isGameEnd) return;
         isGameEnd = true;
         _curTime = 0.0f;
 
+        _inputReader.DisablePlayer();
+        _poolTrm.BroadcastMessage("GotoPool");
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        SceneChange("Result");
         onGameEndTrigger?.Invoke();
     }
-    public void SceneChange(string sceneName, Action callback)
+    public void SceneChange(string sceneName, Action callback = null)
     {
         StartCoroutine(SceneChangeCor(sceneName, callback));
     }
-    private IEnumerator SceneChangeCor(string sceneName, Action callback)
+    private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);

@@ -3029,7 +3029,7 @@ MonoBehaviour:
     weight: 1
   - type: 2
     tintColor: {r: 0.56, g: 0.56, b: 0.56, a: 1}
-    weight: 10
+    weight: 1
   _groundMap: {fileID: 1718860052}
   _holeMap: {fileID: 403735629}
   _decoMap: {fileID: 457553772}

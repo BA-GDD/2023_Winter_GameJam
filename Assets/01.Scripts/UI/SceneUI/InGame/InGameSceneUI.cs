@@ -9,7 +9,6 @@ public class InGameSceneUI : SceneUIBase
     public override void SetUp()
     {
         _player = FindObjectOfType<Player>();
-        _player.EquipGun(GameManager.Instance.selectGunType);
 
         _onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
         _player.SetWaterGaugeHandle(_onsenWater);
