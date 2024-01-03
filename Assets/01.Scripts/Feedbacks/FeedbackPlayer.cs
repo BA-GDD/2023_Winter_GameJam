@@ -21,6 +21,7 @@ public class FeedbackPlayer : MonoBehaviour
         }
     }
 
+    #region Debug
     private void Update()
     {
         if (Keyboard.current.gKey.wasPressedThisFrame)
@@ -28,4 +29,5 @@ public class FeedbackPlayer : MonoBehaviour
             PlayFeedback();
         }
     }
+    #endregion
 }
