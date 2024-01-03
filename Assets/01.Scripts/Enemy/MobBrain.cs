@@ -18,7 +18,7 @@ public class MobBrain : EnemyBrain
     public override void Init()
     {
         isDead = false;
-        _animator.SetIsMove(true);
+        _animator.SetIsMove(false);
         _animator.SetIsAttack(false);
         _animator.SetAttackTrigger(false);
         _animator.SetShootTrigger(false);
