@@ -16,6 +16,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     public GameObject audioObject;
 
     Queue<SoundObject> audioQueue = new Queue<SoundObject>();
+
+    public AudioClip btnClip;
     
     private void Awake()
     {
@@ -79,5 +81,10 @@ public class SoundManager : MonoSingleton<SoundManager>
                 print("잘못된 값!");
                 break;
         }
+    }
+
+    public void PlayBtnSE()
+    {
+        Play(btnClip, 1, 1, 1, false);
     }
 }
