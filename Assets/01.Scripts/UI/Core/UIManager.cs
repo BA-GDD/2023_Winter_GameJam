@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //ChangeScene(_startUIType);
+        ChangeScene(_startUIType);
     }
 
     public void ChangeScene(UIType toChangeScene)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
+using UnityEngine.UI;
 
 public class EquipGunSystem : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EquipGunSystem : MonoBehaviour
     [SerializeField] private Transform _weaponBar;
     [SerializeField] private Transform _capZone;
     [SerializeField] private Animator _lobbyCapAnimator;
+    [SerializeField] private Image _gunImg;
 
     [Header("¼ÂÆÃ °ª")]
     [SerializeField] private Vector2 _normalCapPos;
@@ -39,12 +41,10 @@ public class EquipGunSystem : MonoBehaviour
         if (_inEquipping) return;
         _lobbyCapAnimator.enabled = false;
     }
-
     public void OnPointerDownCapybara()
     {
         _capybaraEquipEvent?.Invoke();
     }
-
     public void StartEquip()
     {
         _lobbyCapAnimator.enabled = false;
@@ -61,7 +61,6 @@ public class EquipGunSystem : MonoBehaviour
         _capybaraEquipEvent -= StartEquip;
         _capybaraEquipEvent += CompleteEquip;
     }
-
     public void CompleteEquip()
     {
         Sequence seq = DOTween.Sequence();
@@ -73,9 +72,15 @@ public class EquipGunSystem : MonoBehaviour
         seq.Join(_weaponBar.DOLocalMove(_weaponBarNormalPos, 0.3f));
         seq.AppendCallback(() => _inEquipping = false);
 
-        _lobbyCapAnimator.enabled = true;
-
         _capybaraEquipEvent += StartEquip;
         _capybaraEquipEvent -= CompleteEquip;
+    }
+
+    public void EquipGun(GunType type, Sprite gs, Vector2 gPos, Vector2 gScale)
+    {
+        GameManager.Instance.selectGunType = type;
+        _gunImg.sprite = gs;
+        _gunImg.transform.localPosition = gPos;
+        _gunImg.transform.localScale = gScale;
     }
 }

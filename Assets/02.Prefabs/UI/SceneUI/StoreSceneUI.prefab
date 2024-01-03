@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7987619031124083484}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.56808853
+  m_Size: 0.5680886
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3020,6 +3020,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3476586964271547684, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8febf06b435ac254790c58b9798181e9, type: 3}
+    - target: {fileID: 3476586964271547684, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -3050,6 +3054,10 @@ PrefabInstance:
     - target: {fileID: 5502215461329058651, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7519088021823922738, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 8132882274269778106, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_HorizontalAlignment

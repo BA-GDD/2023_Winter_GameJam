@@ -15,6 +15,8 @@ public class GameManager : MonoSingleton<GameManager>
     private float _curTime = 5.0f; //초단위
     public float CurrentTime => _curTime;
     public Transform player { get; set; }
+    public Camera mainCamera;
+    public GunType selectGunType;
 
     [Range(0f, 100f)]
     public float occupationPercent = 0.0f; //0~100까지
