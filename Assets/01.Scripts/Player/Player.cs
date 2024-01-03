@@ -18,6 +18,8 @@ public class Player : MonoBehaviour, IDamageable
     private float _dashDuration;
     [SerializeField]
     private ParticleSystem _playerDashFX;
+    [SerializeField]
+    private ParticleSystem _playerWalkFX;
     private Vector2 _dashDirection;
     private Rigidbody2D _rigidbody2D;
     private Transform _gunSocket;
@@ -147,6 +149,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f)
         {
             _playerAnimator.SetMove(true);
+            _playerWalkFX.Play();
         }
         else
         {
