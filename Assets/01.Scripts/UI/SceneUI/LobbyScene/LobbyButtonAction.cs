@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,10 @@ public class LobbyButtonAction : MonoBehaviour
 
     public void EnterInGame()
     {
-        GameManager.Instance.SceneChange("Game", () => UIManager.Instanace.ChangeScene(UIDefine.UIType.InGame));
+        Action callback = null;
+        callback += () => UIManager.Instanace.ChangeScene(UIDefine.UIType.InGame);
+        callback += () => GameManager.Instance.GameStart();
+        GameManager.Instance.SceneChange("Game", callback);
     }
 
     public void EnterStore()
