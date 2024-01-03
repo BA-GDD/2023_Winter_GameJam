@@ -10,8 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     private UnityEvent _onDieTrigger;
     [SerializeField]
     private InputReader _inputReader;
-    [SerializeField]
-    private float _movementSpeed;
+    public float movementSpeed;
     [SerializeField]
     private float _dashDelay;
     [SerializeField]
@@ -66,11 +65,11 @@ public class Player : MonoBehaviour, IDamageable
                 Flip();
             }
 
-            Movement(_dashDirection, _movementSpeed * 5f);
+            Movement(_dashDirection, movementSpeed * 5f);
         }
         else
         {
-            Movement(_inputReader.movementDirection, _movementSpeed);
+            Movement(_inputReader.movementDirection, movementSpeed);
         }
     }
 
