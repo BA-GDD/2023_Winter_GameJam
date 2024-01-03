@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b289804bbc7ab7f4094594962ce60394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 5
+  poolingType: 2
   bulletSpeed: 10
   lifeTime: 3
   _rigidbody2d: {fileID: 4789000781721827222}
