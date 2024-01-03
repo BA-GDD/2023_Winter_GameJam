@@ -109,6 +109,8 @@ public abstract class Gun : MonoBehaviour
             _shootDelayTimer = gunScriptableObject.shootDelay;
 
             usableCapacityChanged?.Invoke(-((before - _usableCapacity) / gunScriptableObject.maximumCapacity));
+
+            ShootProcess();
         }
     }
 

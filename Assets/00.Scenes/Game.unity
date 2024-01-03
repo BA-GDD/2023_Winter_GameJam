@@ -2074,7 +2074,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.5
+  orthographic size: 0.1627079
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2194,10 +2194,26 @@ PrefabInstance:
       propertyPath: shootClip
       value: 
       objectReference: {fileID: 8300000, guid: b1853caa8c625d24896e1191f42af939, type: 3}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[4]
+      value: 663456329
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[5]
+      value: 1329947265
+      objectReference: {fileID: 0}
     - target: {fileID: 1368366047296914287, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1856431051}
+    - target: {fileID: 2343808455236176631, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2380723362336200449, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Name
       value: Capybara
@@ -2212,7 +2228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3664788862436194133, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 6.5
+      value: 0.1627079
       objectReference: {fileID: 0}
     - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: shootClip
@@ -3010,10 +3026,10 @@ MonoBehaviour:
     weight: 1
   - type: 1
     tintColor: {r: 1, g: 0.7294118, b: 0.47843137, a: 1}
-    weight: 10
+    weight: 1
   - type: 2
     tintColor: {r: 0.56, g: 0.56, b: 0.56, a: 1}
-    weight: 1
+    weight: 10
   _groundMap: {fileID: 1718860052}
   _holeMap: {fileID: 403735629}
   _decoMap: {fileID: 457553772}
@@ -58475,7 +58491,7 @@ GameObject:
   - component: {fileID: 1839694456}
   - component: {fileID: 1839694455}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: GlobalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
