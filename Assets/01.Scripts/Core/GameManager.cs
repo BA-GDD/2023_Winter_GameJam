@@ -76,8 +76,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Start()
     {
+        //player = FindObjectOfType<Player>().transform;
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
-
     }
 
     private void Update()
@@ -89,6 +89,10 @@ public class GameManager : MonoSingleton<GameManager>
         {
             GameEnd();
         }
+        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        //{
+        //    GameEnd();
+        //}
     }
 
     public void GameStart()

@@ -15,7 +15,12 @@ public class DebugSound : MonoBehaviour
     [ContextMenu("PlaySound")]
     public void DebugPlay()
     {
-        SoundManager.Instance.Play(debugClip,volume,pitch,channel);
+        SoundManager.Instance.Play(debugClip,volume,pitch,channel,true, "name");
+    }
+
+    private void DebugStop()
+    {
+        SoundManager.Instance.Stop("name");
     }
 
     public void Update()
@@ -23,6 +28,10 @@ public class DebugSound : MonoBehaviour
         if (Keyboard.current.gKey.wasPressedThisFrame)
         {
             DebugPlay();
+        }
+        if (Keyboard.current.hKey.wasPressedThisFrame)
+        {
+            DebugStop();
         }
     }
 }
