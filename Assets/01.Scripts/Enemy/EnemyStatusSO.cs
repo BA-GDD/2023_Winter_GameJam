@@ -15,7 +15,6 @@ public class EnemyStatusSO : ScriptableObject
 {
     public float moveSpeed;
     public float atkRange;
-    public float atkDelayTime;
-    public Animator animator;
-    public EnemyType type;
+    public float spawnPercent;
+    public PoolingType type;
 }

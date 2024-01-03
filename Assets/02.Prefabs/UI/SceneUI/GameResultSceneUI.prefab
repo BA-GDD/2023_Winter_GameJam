@@ -218,8 +218,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6118400838269067203}
+  - component: {fileID: 7367551443838951381}
   m_Layer: 5
-  m_Name: TextGroup
+  m_Name: ScoreTextGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +252,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7367551443838951381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337153829245578782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0329e1477f6c70d47858cd82c847cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentScore: {fileID: 3530347308447232512}
+  _beforeScore: {fileID: 8938476538030201435}
+  _bestScore: {fileID: 5334158370877703886}
 --- !u!1 &1512133721386435214
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: After
+  m_text: Best
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7d8ed26977810dd45b75e069c31a5f69, type: 2}
   m_sharedMaterial: {fileID: 5827012684525641580, guid: 7d8ed26977810dd45b75e069c31a5f69, type: 2}
@@ -716,8 +732,9 @@ RectTransform:
   - {fileID: 1484571013314245372}
   - {fileID: 1732401562230615088}
   - {fileID: 6930647449430012657}
-  - {fileID: 6118400838269067203}
+  - {fileID: 621126989878453674}
   - {fileID: 5237914588045839237}
+  - {fileID: 6118400838269067203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -738,6 +755,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myUIType: 3
+  _partyFX: {fileID: 5262189691127274944, guid: b0704cfdb780f4741a61d7d4dfa71ae4, type: 3}
+  _scoreSetEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7367551443838951381}
+        m_TargetAssemblyTypeName: ScoreTextGroup, Assembly-CSharp
+        m_MethodName: SetScoreText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isEndTimeLine: 0
 --- !u!1 &4271020389466661944
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,8 +783,9 @@ GameObject:
   - component: {fileID: 5237914588045839237}
   - component: {fileID: 7399138211754606665}
   - component: {fileID: 2136265202369211120}
+  - component: {fileID: 2020563889087808788}
   m_Layer: 5
-  m_Name: UnderBar
+  m_Name: UnderMilk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,15 +830,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
+  m_Material: {fileID: 2100000, guid: 11cf726a27d8427439d9732969767d50, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 402dc300d310dea449791ebb931c66cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -813,6 +848,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2020563889087808788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271020389466661944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd01af19d0e7a44ebf65b95e2748e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _milkRectTransform: {fileID: 5237914588045839237}
 --- !u!1 &4413754934516118164
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +1007,7 @@ GameObject:
   - component: {fileID: 2498732635144582094}
   - component: {fileID: 5334158370877703886}
   m_Layer: 5
-  m_Name: AterScore
+  m_Name: BestScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,6 +1129,62 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5932427230207302267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 621126989878453674}
+  - component: {fileID: 3099097410029173813}
+  m_Layer: 5
+  m_Name: MilkThrower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &621126989878453674
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932427230207302267}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6741226812499476391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3099097410029173813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932427230207302267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4248b423141d746b335c6fdd86b471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxXvalue: 865
+  _minXValue: -865
+  _minAngle: 0
+  _maxAngle: 360
+  _underMilk: {fileID: 2020563889087808788}
+  _milkStampPrefab: {fileID: 4550514818463847927, guid: dd414cdbece80df488c3491e35b23c10, type: 3}
+  _stampPos: {x: 430, y: 150}
+  _gameResultSceneUI: {fileID: 5817304806659701176}
 --- !u!1 &6557301020537945181
 GameObject:
   m_ObjectHideFlags: 0

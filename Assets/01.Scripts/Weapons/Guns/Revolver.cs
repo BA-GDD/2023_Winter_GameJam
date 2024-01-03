@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Revolver : Gun
 {
@@ -8,7 +9,22 @@ public class Revolver : Gun
     {
         if (CanShoot())
         {
-            // Shoot
+            PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+            bullet.transform.position = firePosition.position;
+            Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position).normalized;
+            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+
+            base.Shoot();
+        }
+    }
+
+    public override void Skill()
+    {
+        if (CanUseSkill())
+        {
+
+
+            base.Skill();
         }
     }
 }

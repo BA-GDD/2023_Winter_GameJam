@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MobBrain : EnemyBrain
 {
@@ -23,6 +24,11 @@ public class MobBrain : EnemyBrain
     {
         base.SetDead();
         _animator.SetDieTrigger(true);
+    }
 
+    public void OnHitHandle()
+    {
+        SetDead();
+        (this as IDamageable).OnHit();
     }
 }

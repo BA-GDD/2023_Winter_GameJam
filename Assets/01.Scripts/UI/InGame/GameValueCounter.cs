@@ -35,6 +35,6 @@ public class GameValueCounter : MonoBehaviour
     {
         CurrentTime = GameManager.Instance.CurrentTime;
         _scoreText.text = GameManager.Instance.Score.ToString();
-        //_occupyText.text = Mathf.FloorToInt(GameManager.Instance.Á¡·Éµµ);
+        _occupyText.text = Mathf.FloorToInt(GameManager.Instance.occupationPercent).ToString();
     }
 }
