@@ -82,11 +82,6 @@ public class Revolver : Gun
             bullet.bulletSpeed = 20f;
             bullet.lifeTime = 10f;
             bullet.transform.position = firePosition.position;
-            direction = target.transform.position - bullet.transform.position;
-
-            direction.Normalize();
-
-            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
 
             yield return new WaitForSeconds(_skillShootDelay);
         }

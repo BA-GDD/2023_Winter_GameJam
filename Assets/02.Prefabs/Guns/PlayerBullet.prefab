@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4789000781721827222}
   - component: {fileID: 7357494194976219517}
   - component: {fileID: 994276585857340380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4895,11 +4895,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 2
+  targetOfMissile: {fileID: 0}
   particle: {fileID: 0}
-  _rigidbody2d: {fileID: 4789000781721827222}
+  isMissileMode: 0
+  rigidbody2d: {fileID: 4789000781721827222}
   bulletSpeed: 10
   lifeTime: 3
-  _shootClip: {fileID: 8300000, guid: 684c574eecc620b4dbddefa3ee2bbccb, type: 3}
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!199 &994276585857340380
 ParticleSystemRenderer:
   serializedVersion: 6
