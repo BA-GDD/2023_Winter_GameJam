@@ -6,7 +6,7 @@ public class InGameSceneUI : SceneUIBase
 {
     private Player _player;
     private OnsenWaterGage _onsenWater;
-    [SerializeField] private OptionPanel _optionPanel;
+    [SerializeField] private GameExitPanel _exitPanel;
 
     public override void SetUp()
     {
@@ -26,7 +26,9 @@ public class InGameSceneUI : SceneUIBase
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            UIManager.Instanace.CreatePanel(_optionPanel);
+            GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
+            exp.SetText("정말 로비로 퇴장<br>하시겠습니까?");
+            exp.SetUpPanel();
         }
     }
 }

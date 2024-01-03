@@ -14,6 +14,20 @@ public abstract class PanelBase : MonoBehaviour
     public abstract void SetUpPanel();
     public abstract void InitPanel();
 
+    public List<Button> FindButtonInPanel()
+    {
+        List<Button> btns = new List<Button>();
+        foreach(Transform t in transform)
+        {
+            if(t.TryGetComponent<Button>(out Button btn))
+            {
+                btns.Add(btn);
+            }
+        }
+
+        return btns;
+    }
+
     public void ActiveBlackPanel(bool isActive)
     {
         if (_blackPanel == null)

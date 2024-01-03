@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UIDefine;
-using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -35,6 +37,11 @@ public class UIManager : MonoBehaviour
     private Transform _panelTrm;
     private PanelBase _onActivePanel;
 
+    public UIType currentUIType;
+
+    public Action EveryButtonHoverCallback;
+    public Action EveryButtonClickCallback;
+
     private void Awake()
     {
         if (_instance != null)
@@ -58,7 +65,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //ChangeScene(_startUIType);
+        ChangeScene(_startUIType);
     }
 
     public void ChangeScene(UIType toChangeScene)
@@ -69,14 +76,33 @@ public class UIManager : MonoBehaviour
         }
 
         _currentScene = Instantiate(_uiSelecter[toChangeScene], _sceneUITrm);
+        currentUIType = toChangeScene;
         _currentScene.name = _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();
+
+        ButtonGenerate();
+    }
+
+    private void ButtonGenerate()
+    {
+        Button[] btns = FindObjectsOfType<Button>();
+
+        foreach (Button b in btns)
+        {
+            b.onClick.RemoveAllListeners();
+            b.onClick.AddListener(() => EveryButtonClickCallback?.Invoke());
+        }
     }
 
     public void CreatePanel(PanelBase toCreatePanel)
     {
         _onActivePanel = Instantiate(toCreatePanel, _panelTrm);
         _onActivePanel.SetUpPanel();
+
+        foreach (Button b in _onActivePanel.FindButtonInPanel())
+        {
+            b.onClick.AddListener(() => EveryButtonClickCallback?.Invoke());
+        }
     }
 
     public PanelBase CreatePanel(PanelBase toCreatePanel, bool isSetUp)
