@@ -17,6 +17,12 @@ public class InRangeNode : ActionNode
 
     protected override State OnUpdate()
     {
+        float dis = Vector2.Distance(brain.transform.position, GameManager.Instance.player.position);
+        float range = (brain as MobBrain).status.atkRange;
+        if (dis > range)
+        {
+
+        }
         return Vector3.Distance(brain.transform.position, GameManager.Instance.player.position) > (brain as MobBrain).status.atkRange ? State.FAILURE : State.SUCCESS;
     }
 }

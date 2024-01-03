@@ -30,6 +30,7 @@ public class ShieldAttack : EnemyAttack
                 p.OnHitHandle();
             }
         }
+        SoundManager.Instance.Play(_brain.shootClip, 1, 1, 1, false);
         _shieldParticle.Play();
 
         _attackTimer = 0;
