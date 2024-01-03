@@ -89,13 +89,6 @@ public class MapManager : MonoSingleton<MapManager>
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition), TileType.Water);
-        }
-    }
     public bool CheckWater(Vector3 pos)
     {
         pos.z = 0;

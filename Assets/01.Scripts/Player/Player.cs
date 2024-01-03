@@ -42,29 +42,29 @@ public class Player : MonoBehaviour, IDamageable
         EquipGun(GunType.Shotgun);
     }
 
-    //private void Update()
-    //{
-    //    _dashTimer -= Time.deltaTime;
+    private void Update()
+    {
+        _dashTimer -= Time.deltaTime;
 
-    //    if (transform.localScale.x * _inputReader.movementDirection.x < 0f)
-    //    {
-    //        Flip();
-    //    }
+        if (transform.localScale.x * _inputReader.movementDirection.x < 0f)
+        {
+            Flip();
+        }
 
-    //    if (_isDash)
-    //    {
-    //        if (transform.localScale.x * _dashDirection.x < 0f)
-    //        {
-    //            Flip();
-    //        }
+        if (_isDash)
+        {
+            if (transform.localScale.x * _dashDirection.x < 0f)
+            {
+                Flip();
+            }
 
-    //        Movement(_dashDirection, _movementSpeed * 5f);
-    //    }
-    //    else
-    //    {
-    //        Movement(_inputReader.movementDirection, _movementSpeed);
-    //    }
-    //}
+            Movement(_dashDirection, _movementSpeed * 5f);
+        }
+        else
+        {
+            Movement(_inputReader.movementDirection, _movementSpeed);
+        }
+    }
 
     public void EquipGun(GunType gunType)
     {

@@ -58,7 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        //player = FindFirstObjectByType<Player>().transform;
+        player = FindFirstObjectByType<Player>().transform;
     }
 
     private void Update()
