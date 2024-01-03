@@ -70,6 +70,7 @@ public class SniperAttack : EnemyAttack
                 if (h.transform.TryGetComponent<Player>(out Player p))
                 {
                     _mainModule.startSizeX = Vector2.Distance(_brain.firePos.position, _line.GetPosition(1));
+                    p.OnHitHandle();
                 }
             }
 
