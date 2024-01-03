@@ -15,7 +15,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioMixerGroup[] audioMixers;
     public GameObject audioObject;
 
-    public Dictionary<string,SoundObject> soundObjects;
+    public Dictionary<string,SoundObject> soundObjects = new Dictionary<string, SoundObject>();
 
     Queue<SoundObject> audioQueue = new Queue<SoundObject>();
     
