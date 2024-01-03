@@ -91,7 +91,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_canReload)
         {
-            Movement(_inputReader.movementDirection, _movementSpeed * 0.25f);
+            Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
             {
@@ -109,12 +109,12 @@ public class Player : MonoBehaviour, IDamageable
                 Flip();
             }
 
-            Movement(_dashDirection, _movementSpeed * 5f);
+            Movement(_dashDirection, movementSpeed * 5f);
             _material.SetFloat(_materialHalfAmountHash, 1f);
         }
         else
         {
-            Movement(_inputReader.movementDirection, _movementSpeed);
+            Movement(_inputReader.movementDirection, movementSpeed);
             _material.SetFloat(_materialHalfAmountHash, 1f);
         }
 

@@ -2322,6 +2322,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 730379091811406550, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 1985502215765008119, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_SortingLayer
       value: 4
@@ -2333,6 +2337,18 @@ PrefabInstance:
     - target: {fileID: 1985502215765008119, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_SortingLayerID
       value: 663456329
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2380723362336200449, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Name
@@ -2382,9 +2398,29 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 663456329
       objectReference: {fileID: 0}
+    - target: {fileID: 4122843826214843097, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 684c574eecc620b4dbddefa3ee2bbccb, type: 3}
+    - target: {fileID: 4122843826214843097, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 4882285943590525256, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828763268188315218, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1856431051}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _skillRangeCircle
+      value: 
+      objectReference: {fileID: 1243891851}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6410305213685556727, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_SortingLayer
@@ -2397,6 +2433,10 @@ PrefabInstance:
     - target: {fileID: 6410305213685556727, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_SortingLayerID
       value: 663456329
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599837468685112314, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2438,6 +2478,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7626573098431155408, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626573098431155408, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -474469565
+      objectReference: {fileID: 0}
     - target: {fileID: 8550524735213127117, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -2477,6 +2525,11 @@ PrefabInstance:
 --- !u!4 &1243891850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+  m_PrefabInstance: {fileID: 1243891849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1243891851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
   m_PrefabInstance: {fileID: 1243891849}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292264298
