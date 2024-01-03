@@ -39,6 +39,7 @@ public class MapManager : MonoSingleton<MapManager>
     [SerializeField] private Vector2Int _defaultSpaSize;
 
     private Spa _spa;
+    private SpaEffect[] smokes;
 
     public float WaterFillAmount()
     {
@@ -50,20 +51,23 @@ public class MapManager : MonoSingleton<MapManager>
 
     private void Start()
     {
+
         SetRandomSpa();
 
         Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
+        _groundMap.CompressBounds();
+        smokes = new SpaEffect[_groundMap.GetTilesBlock(_groundMap.cellBounds).Length];
         for (int x = minPos.x; x <= maxPos.x; x++)
         {
             for (int y = minPos.y; y <= maxPos.y; y++)
             {
                 _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
-                
+                SpaEffect fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as SpaEffect;
+                fx.transform.position = new Vector2(x, y);
             }
         }
         _holeMap.CompressBounds();
-        _groundMap.CompressBounds();
     }
 
     private void SetRandomSpa()
@@ -124,6 +128,8 @@ public class MapManager : MonoSingleton<MapManager>
                     for (int y = minPos.y; y <= maxPos.y; y++)
                     {
                         _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
+                        SpaEffect fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as SpaEffect;
+                        fx.transform.position = new Vector2(x, y);
                     }
                 }
                 //_holeMap.SetTile(new Vector3Int(pos.x, pos.y), _holeTile);

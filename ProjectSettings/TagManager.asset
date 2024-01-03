@@ -44,6 +44,9 @@ TagManager:
   - name: TileMap
     uniqueID: 3718789307
     locked: 0
+  - name: MapEffect
+    uniqueID: 1329947265
+    locked: 0
   - name: Bullet
     uniqueID: 3820497731
     locked: 0
