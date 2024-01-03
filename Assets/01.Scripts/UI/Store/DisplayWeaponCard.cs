@@ -17,7 +17,7 @@ public class DisplayWeaponCard : MonoBehaviour
     [Header("참조 값들")]
     [SerializeField] private GameObject _unHasBlock;
     [SerializeField] private TextMeshProUGUI _alreadyHaveText;
-    private StoreSceneUI _storeSceneUI;
+    [SerializeField] private StoreSceneUI _storeSceneUI;
     [SerializeField] private GunSO _myInfo;
 
     private float _waitingTime = 0.3f;
@@ -39,11 +39,6 @@ public class DisplayWeaponCard : MonoBehaviour
     }
 
     private StatusInfoPanel _stInfoPanel;
-
-    private void Awake()
-    {
-        _storeSceneUI = GameObject.Find("UIManager/UICANVAS/SceneUIParent/StoreSceneUI(Clone)").GetComponent<StoreSceneUI>();
-    }
 
     private void Start()
     {
@@ -92,7 +87,7 @@ public class DisplayWeaponCard : MonoBehaviour
             _stInfoPanel.transform.localPosition = _InfoTrm.localPosition;
             _stInfoPanel.SetUpPanel(_myInfo);
         }
-        else
+        else if(_stInfoPanel != null)
         {
             PoolManager.Instance.Push(_stInfoPanel);
         }

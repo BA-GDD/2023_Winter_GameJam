@@ -13,11 +13,15 @@ public class GameManager : MonoSingleton<GameManager>
     [Header("게임에 필요한 수치")]
     public float gameTime = 5.0f; //초단위
     private float _curTime = 5.0f; //초단위
+    public float CurrentTime => _curTime;
+    public Transform player { get; set; }
+
     [Range(0f, 100f)]
     public float occupationPercent = 0.0f; //0~100까지
     public bool isGameEnd = false;
 
     private GameData _gameData;
+    public GameData GameData => _gameData;
 
     private float _score;
     public float Score
