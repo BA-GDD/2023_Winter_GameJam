@@ -222,7 +222,7 @@ MonoBehaviour:
   onScoreChanged:
     m_PersistentCalls:
       m_Calls: []
-  gameTime: 5
+  gameTime: 100
   mainCamera: {fileID: 592973263}
   selectGunType: 0
   occupationPercent: 1

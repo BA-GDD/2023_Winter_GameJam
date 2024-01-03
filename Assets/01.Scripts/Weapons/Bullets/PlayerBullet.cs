@@ -49,7 +49,8 @@ public class PlayerBullet : Bullet
         {
             if (collision == targetOfMissile)
             {
-                collision.GetComponent<MobBrain>().OnHitHandle();
+                if(collision.TryGetComponent<MobBrain>(out MobBrain brain))
+                    brain.OnHitHandle();
 
                 targetOfMissile = null;
                 isMissileMode = false;

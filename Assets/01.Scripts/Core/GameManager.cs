@@ -90,7 +90,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
-
+        isGameEnd = true;
     }
 
     private void Update()
