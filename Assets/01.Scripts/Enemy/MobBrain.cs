@@ -23,6 +23,11 @@ public class MobBrain : EnemyBrain
     {
         base.SetDead();
         _animator.SetDieTrigger(true);
+    }
 
+    public void OnHitHandle()
+    {
+        SetDead();
+        (this as IDamageable).OnHit();
     }
 }

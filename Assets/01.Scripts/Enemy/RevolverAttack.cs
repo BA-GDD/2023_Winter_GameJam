@@ -11,17 +11,15 @@ public class RevolverAttack : EnemyAttack
 
     public override void Attack()
     {
-        if (_attackTimer >= _brain.status.atkDelayTime && _isAttack)
-        {
-            Transform playerTrm = GameManager.Instance.player;
+        Transform playerTrm = GameManager.Instance.player;
 
-            Vector2 dir = (playerTrm.position - transform.position).normalized;
-            PoolableMono pam = PoolManager.Instance.Pop(PoolingType.RevolverEnemyBullet);
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Quaternion angleAxis = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
-            pam.transform.rotation = angleAxis;
+        PoolableMono pam = PoolManager.Instance.Pop(PoolingType.EnemyBullet);
+        pam.transform.position = _brain.firePos.position;
+        Vector2 dir = (playerTrm.position - pam.transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion angleAxis = Quaternion.AngleAxis(angle, Vector3.forward);
+        pam.transform.rotation = angleAxis;
 
-            _attackTimer = 0;
-        }
+        _attackTimer = 0;
     }
 }
