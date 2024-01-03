@@ -7,7 +7,8 @@ public abstract class Spa
     protected Player _player;
     public Spa()
     {
-        //_player = GameManager.Instance.player.GetComponent<Player>();
+        _player = GameManager.Instance.player.GetComponent<Player>();
     }
     public abstract void Enter();
+    public abstract void Exit();
 }

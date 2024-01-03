@@ -40,7 +40,6 @@ public abstract class Gun : MonoBehaviour
     {
         _mainCam = Camera.main;
     }
-
     protected virtual void OnEnable()
     {
         _animator = GetComponent<Animator>();

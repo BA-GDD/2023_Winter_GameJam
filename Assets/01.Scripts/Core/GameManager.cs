@@ -51,9 +51,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    [SerializeField]
-    private AudioClip _bgmClip;
-
     private void Awake()
     {
         string data = PlayerPrefs.GetString("GameData", string.Empty);
@@ -73,6 +70,11 @@ public class GameManager : MonoSingleton<GameManager>
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
         DontDestroyOnLoad(this);
+    }
+    private void Start()
+    {
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+
     }
 
     private void Update()

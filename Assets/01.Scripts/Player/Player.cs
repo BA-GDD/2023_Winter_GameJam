@@ -12,12 +12,15 @@ public class Player : MonoBehaviour, IDamageable
     private UnityEvent _onDieTrigger;
     [SerializeField]
     private InputReader _inputReader;
-    [SerializeField]
-    private float _movementSpeed;
+    public float movementSpeed;
     [SerializeField]
     private float _dashDelay;
     [SerializeField]
     private float _dashDuration;
+    [SerializeField]
+    private ParticleSystem _playerDashFX;
+    [SerializeField]
+    private ParticleSystem _playerWalkFX;
     private Vector2 _dashDirection;
     private Material _material;
     private Rigidbody2D _rigidbody2D;
@@ -32,10 +35,9 @@ public class Player : MonoBehaviour, IDamageable
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
-    public AudioClip dashClip;
-
     private Camera _mainCam;
     
+    public AudioClip dashClip;
     private void Awake()
     {
         _material = GetComponent<SpriteRenderer>().material;
@@ -171,6 +173,17 @@ public class Player : MonoBehaviour, IDamageable
             SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
 
             _dashDirection.Normalize();
+            var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();
+            if(transform.localScale.x < 0.0f)
+            {
+
+                module.flip = new Vector3(1,0,0);
+            }
+            else
+            {
+                module.flip = new Vector3(0, 0, 0);
+            }
+            _playerDashFX.Play();
             StartCoroutine(DashCoroutine());
         }
     }
@@ -184,6 +197,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         _rigidbody2D.velocity = direction * speed;
         _isMove = _rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f;
+
 
         _playerAnimator.SetMove(_isMove);
     }
