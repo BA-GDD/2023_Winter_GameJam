@@ -78,7 +78,7 @@ public abstract class Gun : MonoBehaviour
         _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
         _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
 
-        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime/ gunScriptableObject.maximumCapacity);
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
     }
 
     public virtual void Skill(bool occurSkill)
@@ -117,7 +117,7 @@ public abstract class Gun : MonoBehaviour
             float after = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;
 
-            usableCapacityChanged?.Invoke(-(before - after)/gunScriptableObject.maximumCapacity);
+            usableCapacityChanged?.Invoke(-(before - after) / gunScriptableObject.maximumCapacity);
         }
     }
 
