@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class EnemySpawner : MonoSingleton<EnemySpawner>
 {
-    private float _spawnPeriod = 10f;
-    private float _timer = 0f;
     private List<EnemyStatusSO> enemyStatusSOList;
-    private List<GameObject> _enemyList;
+    private int _enemyCount;
     [SerializeField]
     private int _spawnCount = 10;
 
     [SerializeField]
     private List<Transform> _spawnPoints;
 
+    private void Start()
+    {
+        for(int i = 0; i < _spawnCount; ++i)
+        {
+            SpawnEnemy();
+        }
+    }
+
     private void Update()
     {
-        if(_enemyList.Count <= 0)
+        if(_enemyCount <= 0)
         {
-            _spawnCount++;
             for(int i = 0; i < _spawnCount; ++i)
             {
                 SpawnEnemy();
@@ -59,5 +64,11 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
                 percent -= enemyStatusSOList[i].spawnPercent;
             }
         }
+    }
+
+    public void DeSpawnEnemy(PoolableMono item)
+    {
+        _enemyCount--;
+        PoolManager.Instance.Push(item);
     }
 }
