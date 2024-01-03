@@ -73,7 +73,10 @@ public class MapManager : MonoSingleton<MapManager>
         {
             for (int y = minPos.y; y <= maxPos.y; y++)
             {
-                _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
+                Vector3Int intPos = new Vector3Int(x, y);
+                if (_decoMap.HasTile(intPos)) continue;
+
+                _holeMap.SetTile(intPos, _holeTile);
                 EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                 fx.StartPlay(-1);
                 fx.transform.position = new Vector2(x + 1, y + 1);
@@ -139,11 +142,14 @@ public class MapManager : MonoSingleton<MapManager>
                     {
                         Vector3Int intPos = new Vector3Int(x, y);
                         if (_decoMap.HasTile(intPos)) continue;
-                            
+
                         y = Mathf.Clamp(y, bounds.yMin, bounds.yMax);
+                        if (_holeMap.HasTile(intPos))
+                        {
+                            PoolManager.Instance.Push(_smokes[x + Mathf.FloorToInt(_mapSize.x * 0.5f), y + Mathf.FloorToInt(_mapSize.y * 0.5f)]);
+                            _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
+                        }
                         _holeMap.SetTile(intPos, null);
-                        PoolManager.Instance.Push(_smokes[x, y]);
-                        _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
                         if (GameManager.Instance.occupationPercent < WaterFillAmount())
                             GameManager.Instance.GameEnd();
                     }
