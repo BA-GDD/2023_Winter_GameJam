@@ -32,6 +32,7 @@ public class MapManager : MonoSingleton<MapManager>
     [SerializeField] private List<SpaData> hotSprings;
     [SerializeField] private Tilemap _groundMap;
     [SerializeField] private Tilemap _holeMap;
+    [SerializeField] private Tilemap _decoMap;
 
     [SerializeField] private TileBase _holeTile;
     [SerializeField] private TileBase _groundTile;
@@ -136,8 +137,11 @@ public class MapManager : MonoSingleton<MapManager>
                     x = Mathf.Clamp(x, bounds.xMin, bounds.xMax);
                     for (int y = minPos.y; y <= maxPos.y; y++)
                     {
+                        Vector3Int intPos = new Vector3Int(x, y);
+                        if (_decoMap.HasTile(intPos)) continue;
+                            
                         y = Mathf.Clamp(y, bounds.yMin, bounds.yMax);
-                        _holeMap.SetTile(new Vector3Int(x, y), null);
+                        _holeMap.SetTile(intPos, null);
                         PoolManager.Instance.Push(_smokes[x, y]);
                         _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
                         if (GameManager.Instance.occupationPercent < WaterFillAmount())
@@ -153,6 +157,9 @@ public class MapManager : MonoSingleton<MapManager>
                     {
                         y = Mathf.Clamp(y, bounds.yMin, bounds.yMax);
                         Vector3Int intPos = new Vector3Int(x, y);
+
+                        if (_decoMap.HasTile(intPos)) continue;
+
                         if (!_holeMap.HasTile(intPos))
                         {
                             EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;

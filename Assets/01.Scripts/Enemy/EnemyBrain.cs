@@ -44,11 +44,15 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
-        //MapManager.instance.SetTile(transform.position, TileType.Ground);
+        if (MapManager.Instance.CheckWater(transform.position))
+        {
+            MapManager.Instance.SetTile(transform.position, TileType.Ground);
+        }
+
 
         dir = GameManager.Instance.player.position - transform.position;
         dir.Normalize();
-        if(dir.x * transform.localScale.x < 0)
+        if (dir.x * transform.localScale.x < 0)
         {
             Flip();
         }
@@ -96,5 +100,5 @@ public class EnemyBrain : PoolableMono, IDamageable
         isAnimFinised = true;
     }
 
-    
+
 }
