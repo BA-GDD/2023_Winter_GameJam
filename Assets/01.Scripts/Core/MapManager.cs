@@ -52,12 +52,16 @@ public class MapManager : MonoSingleton<MapManager>
     {
         SetRandomSpa();
 
-
-
         Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
-        _holeMap.BoxFill(Vector3Int.zero, _holeTile, minPos.x, minPos.y, maxPos.x, maxPos.y);
-
+        for (int x = minPos.x; x <= maxPos.x; x++)
+        {
+            for (int y = minPos.y; y <= maxPos.y; y++)
+            {
+                _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
+                
+            }
+        }
         _holeMap.CompressBounds();
         _groundMap.CompressBounds();
     }
