@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d16fe6fa1a58574781d78336c78a204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 3
+  poolingType: 1
   _shootDelayText: {fileID: 7647607193907201441}
   _maxCapacityText: {fileID: 4509042445392200249}
   _fillCapSecText: {fileID: 1482448014011072724}

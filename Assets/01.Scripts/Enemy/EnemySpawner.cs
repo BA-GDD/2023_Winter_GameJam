@@ -15,20 +15,15 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     private void Start()
     {
-        for(int i = 0; i < _spawnCount; ++i)
-        {
-            SpawnEnemy();
-        }
+
+        SpawnEnemy();
     }
 
     private void Update()
     {
-        if(_enemyCount <= 0)
+        if (_enemyCount <= 0)
         {
-            for(int i = 0; i < _spawnCount; ++i)
-            {
-                SpawnEnemy();
-            }
+            SpawnEnemy();
         }
 
         //_timer += Time.deltaTime;
@@ -51,6 +46,15 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     public void SpawnEnemy()
     {
+
+        Vector2 spawnPos = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+        for (int i = 0; i < _spawnCount; ++i)
+        {
+            RandomEnemy(spawnPos);
+        }
+    }
+    private void RandomEnemy(Vector2 spawnPos)
+    {
         float percent = Random.value * 100f;
         for (int i = 0; i < enemyStatusSOList.Count; ++i)
         {
@@ -58,7 +62,9 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             {
                 int rand = Random.Range(0, 7);
                 PoolableMono enemy = PoolManager.Instance.Pop(enemyStatusSOList[i].type);
-                enemy.transform.position = _spawnPoints[i].position;
+                enemy.transform.position = spawnPos + Random.insideUnitCircle * 3f;
+                ++_enemyCount;
+                break;
             }
             else
             {
@@ -66,7 +72,6 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             }
         }
     }
-
     public void DeSpawnEnemy(PoolableMono item)
     {
         _enemyCount--;

@@ -88,6 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7698976052045428821482327a1bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 8
+  poolingType: 4
   _fallingSecond: 1.4
   _targetY: -610

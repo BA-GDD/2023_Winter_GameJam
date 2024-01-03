@@ -1,33 +1,35 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using System;
 
 public enum TileType
 {
     Ground,
     Water
 }
-public class MapManager : MonoBehaviour
+public enum SpaType
 {
-    private static MapManager _instnace;
-    public static MapManager instance
-    {
-        get
-        {
-            if (_instnace == null)
-            {
-                _instnace = FindObjectOfType<MapManager>();
-            }
-            if (_instnace)
-            {
-                Debug.LogError($"존재하지않다[{typeof(MapManager)}].");
-            }
-            return _instnace;
-        }
-    }
+    None,
+    SpeedUp,
+    Blind,
 
+}
+
+[System.Serializable]
+public struct SpaData
+{
+    public SpaType type;
+    public Color tintColor;
+    public int weight;
+}
+
+public class MapManager : MonoSingleton<MapManager>
+{
+    [SerializeField] private List<SpaData> hotSprings;
     [SerializeField] private Tilemap _groundMap;
     [SerializeField] private Tilemap _holeMap;
 
@@ -36,6 +38,9 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] private Vector2Int _defaultSpaSize;
 
+    private Spa _spa;
+    private EffectPlayer[,] _smokes;
+    private Vector2Int _mapSize;
     public float WaterFillAmount()
     {
         int waterCnt = _holeMap.GetTilesBlock(_holeMap.cellBounds).Length;
@@ -46,21 +51,52 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
+
+        SetRandomSpa();
+
         Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
-        _holeMap.BoxFill(Vector3Int.zero, _holeTile, minPos.x, minPos.y, maxPos.x, maxPos.y);
-
-        _holeMap.CompressBounds();
         _groundMap.CompressBounds();
-    }
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
+        BoundsInt bounds = _groundMap.cellBounds;
+        _mapSize = new Vector2Int(bounds.xMax+Mathf.Abs(bounds.xMin), bounds.yMax + Mathf.Abs(bounds.yMin));
+        _smokes = new EffectPlayer[_mapSize.x, _mapSize.y];
+        for (int x = minPos.x; x <= maxPos.x; x++)
         {
-            SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition),TileType.Water);
+            for (int y = minPos.y; y <= maxPos.y; y++)
+            {
+                _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
+                EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
+                fx.StartPlay(-1);
+                fx.transform.position = new Vector2(x, y);
+                _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
+            }
         }
-        print(WaterFillAmount());
+        _holeMap.CompressBounds();
     }
+
+    private void SetRandomSpa()
+    {
+        int total = 0;
+        foreach (var item in hotSprings)
+        {
+            total += item.weight;
+        }
+        hotSprings.OrderBy((x) => x.weight);
+        float pivot = UnityEngine.Random.value;
+        float value = 0;
+        foreach (var item in hotSprings)
+        {
+            value += (float)item.weight / total;
+            if (value >= pivot)
+            {
+                Type t = Type.GetType($"{item.type}Spa");
+                _spa = Activator.CreateInstance(t) as Spa;
+                _holeMap.color = item.tintColor;
+                break;
+            }
+        }
+    }
+
     public bool CheckWater(Vector3 pos)
     {
         pos.z = 0;
@@ -73,6 +109,7 @@ public class MapManager : MonoBehaviour
         Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y));
         DrawTile(intVec, type);
         _holeMap.CompressBounds();
+
     }
     private void DrawTile(Vector3Int pos, TileType type)
     {
@@ -86,15 +123,25 @@ public class MapManager : MonoBehaviour
                     for (int y = minPos.y; y <= maxPos.y; y++)
                     {
                         _holeMap.SetTile(new Vector3Int(x, y), null);
+                        PoolManager.Instance.Push(_smokes[x, y]);
+                        _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
                     }
                 }
                 break;
             case TileType.Water:
-                for (int x = minPos.x; x < maxPos.x; x++)
+                for (int x = minPos.x; x <= maxPos.x; x++)
                 {
-                    for (int y = minPos.y; y < maxPos.y; y++)
+                    for (int y = minPos.y; y <= maxPos.y; y++)
                     {
-                        _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
+                        Vector3Int intPos = new Vector3Int(x, y);
+                        if (!_holeMap.HasTile(intPos))
+                        {
+                            EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
+                            fx.transform.position = intPos;
+                            _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
+                        }
+                        _holeMap.SetTile(intPos, _holeTile);
+
                     }
                 }
                 //_holeMap.SetTile(new Vector3Int(pos.x, pos.y), _holeTile);

@@ -17,14 +17,6 @@ public class MilkThrower : MonoBehaviour
 
     [SerializeField] private GameResultSceneUI _gameResultSceneUI;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ThrwoMilk(10);
-        }
-    }
-
     public void ThrwoMilk(int milkCount)
     {
         StartCoroutine(ThrowMilkCo(milkCount));
@@ -43,7 +35,7 @@ public class MilkThrower : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
         }
 
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(2f);
 
         MilkStamp ms = Instantiate(_milkStampPrefab, transform);
         ms.transform.localPosition = _stampPos;

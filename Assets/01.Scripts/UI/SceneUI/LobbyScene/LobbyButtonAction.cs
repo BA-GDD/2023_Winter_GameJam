@@ -9,7 +9,7 @@ public class LobbyButtonAction : MonoBehaviour
 
     public void EnterInGame()
     {
-
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.InGame);
     }
 
     public void EnterStore()
