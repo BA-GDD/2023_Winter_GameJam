@@ -24,7 +24,7 @@ public class FeedbackPlayer : MonoBehaviour
     #region Debug
     private void Update()
     {
-        if (Keyboard.current.gKey.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             PlayFeedback();
         }
