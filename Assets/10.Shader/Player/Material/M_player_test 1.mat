@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_bullet
-  m_Shader: {fileID: 4800000, guid: 49eef3458f2f3cb4d9f3bdf959505c62, type: 3}
+  m_Name: M_player_test 1
+  m_Shader: {fileID: 4800000, guid: 8917bc9a924e9894c85b0c7984397231, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,20 +27,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Dissolve_Texture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Dissolve_Texture1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4edca27ce27b0db448831594f5302f83, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 4edca27ce27b0db448831594f5302f83, type: 3}
+        m_Texture: {fileID: 2800000, guid: a767ceabc58b5f1498e72b04789cf2b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -51,8 +39,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _mask_tex:
-        m_Texture: {fileID: 2800000, guid: 8c4a7fca2884fab419769ccc0355c0c1, type: 3}
+    - _main_tex:
+        m_Texture: {fileID: 2800000, guid: ada94478ccda55741b41d54482078e84, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -74,28 +62,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _Dissolve: 1
-    - _Dissolve1: 1
     - _EnableExternalAlpha: 0
-    - _FadeIstance: 0
-    - _Fade_Ditance: 0
-    - _Main_Ins: 1
-    - _Main_Pow: 0.52
-    - _Opacity: 0.35
-    - _Pixelize: 1
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Use_Customdata: 0
-    - _Use_Customdata1: 1
-    - _main_upanner: 0
-    - _use_mask: 0
-    - _use_panner: 0
-    - _use_pixelize: 0
-    - _use_polar_coord: 0
+    - _blink_amount: 0.241
+    - _player_half_amount: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 1, g: 1, b: 1, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _blink_color: {r: 5.992156, g: 5.992156, b: 5.992156, a: 0}
   m_BuildTextureStacks: []
