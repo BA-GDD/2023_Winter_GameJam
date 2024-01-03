@@ -26,8 +26,7 @@ public class MobBrain : EnemyBrain
         _animator.SetDieTrigger(true);
     }
 
-    // 총알 맞으면 이거 실행시켜주면 됨
-    public void OnHit()
+    public void OnHitHandle()
     {
         SetDead();
         (this as IDamageable).OnHit();

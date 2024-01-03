@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class RevolverAttack : EnemyAttack
 {
-    private void AnimationEventHandle()
-    {
-
-    }
-
     protected override void Update()
     {
         base.Update();
@@ -18,7 +13,7 @@ public class RevolverAttack : EnemyAttack
     {
         Transform playerTrm = GameManager.Instance.player;
 
-        PoolableMono pam = PoolManager.Instance.Pop(PoolingType.Bullet);
+        PoolableMono pam = PoolManager.Instance.Pop(PoolingType.EnemyBullet);
         pam.transform.position = _brain.firePos.position;
         Vector2 dir = (playerTrm.position - pam.transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

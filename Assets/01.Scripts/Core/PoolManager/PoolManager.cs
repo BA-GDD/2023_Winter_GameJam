@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public enum PoolingType
@@ -9,7 +10,10 @@ public enum PoolingType
     DialogueEffect,
     SwordAura,
     StatusInfoPanel,
-    Bullet,
+    PlayerBullet,
+    EnemyBullet,
+    PlayerRazer,
+    FallingMilk,
     RevolverEnemy,
     MeleeEnemy,
     SniperEnemy,
@@ -39,6 +43,12 @@ public class PoolManager
             _poolDic[obj.poolingType].Push(obj);
         else
             Debug.LogError($"not have ${obj.name} pool");
+    }
+    public async void Push(PoolableMono obj, float second)
+    {
+        int delay = (int)(second * 1000);
+        await Task.Delay(delay);
+        _poolDic[obj.poolingType].Push(obj);
     }
     public PoolableMono Pop(PoolingType type)
     {
