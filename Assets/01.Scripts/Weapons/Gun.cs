@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public abstract class Gun : MonoBehaviour
     private float _shootDelayTimer;
     private float _usableCapacity;
     private float _currentSkillGauge;
+
+    public event Action<float> usableCapacityChanged;
 
     protected virtual void OnEnable()
     {
@@ -54,6 +57,8 @@ public abstract class Gun : MonoBehaviour
         _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
         _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
         _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime/ gunScriptableObject.maximumCapacity);
     }
 
     public virtual void Skill()
@@ -72,8 +77,12 @@ public abstract class Gun : MonoBehaviour
         {
             SetShootTrigger(true);
 
+            float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
+            float after = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;
+
+            usableCapacityChanged?.Invoke(-(before - after)/gunScriptableObject.maximumCapacity);
         }
     }
 

@@ -13,7 +13,8 @@ public class GameResultSceneUI : SceneUIBase
 
     public void GoToLobby()
     {
-        GameManager.Instance.GameData.Save(GameManager.Instance.Score);
+        GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
+        GameManager.Instance.GameData.Save();
         UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
     }
 

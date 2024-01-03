@@ -75,6 +75,14 @@ public class Player : MonoBehaviour, IDamageable
 
         _equipedGun.gameObject.SetActive(true);
     }
+    public void SetWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
+    }
+    public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
+    }
 
     public void UnequipGun()
     {
