@@ -37,6 +37,9 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
+    [SerializeField]
+    private AudioClip _bgmClip;
+
     private float _score;
     public float Score
     {

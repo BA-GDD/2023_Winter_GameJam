@@ -29,6 +29,7 @@ public class MeleeAttack : EnemyAttack
                 p.OnHitHandle();
             }
         }
+        SoundManager.Instance.Play(_brain.shootClip, 1, 1, 1, false);
         _meleeParticle.Play();
 
         _attackTimer = 0;
