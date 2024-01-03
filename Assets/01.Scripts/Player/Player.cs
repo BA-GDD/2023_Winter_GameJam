@@ -148,11 +148,12 @@ public class Player : MonoBehaviour, IDamageable
         if (_rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f)
         {
             _playerAnimator.SetMove(true);
-            _playerWalkFX.Play();
+            _playerWalkFX.gameObject.SetActive(true);
         }
         else
         {
             _playerAnimator.SetMove(false);
+            _playerWalkFX.gameObject.SetActive(false);
         }
     }
 
