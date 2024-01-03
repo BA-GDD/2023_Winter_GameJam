@@ -5,16 +5,21 @@ using UnityEngine.Events;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [Header("°ÔÀÓ ÀÌº¥Æ®")]
+    [HideInInspector]
+    public Camera mainCamera;
+
+    [Header("ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
     public UnityEvent onScoreChanged;
 
-    [Header("°ÔÀÓ¿¡ ÇÊ¿äÇÑ ¼öÄ¡")]
-    public float gameTime = 5.0f; //ÃÊ´ÜÀ§
-    private float _curTime = 5.0f; //ÃÊ´ÜÀ§
+    [Header("ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡")]
+    public float gameTime = 5.0f; //ï¿½Ê´ï¿½ï¿½ï¿½
+    private float _curTime = 5.0f; //ï¿½Ê´ï¿½ï¿½ï¿½
+    public float CurrentTime => _curTime;
+
     [Range(0f, 100f)]
-    public float occupationPercent = 0.0f; //0~100±îÁö
+    public float occupationPercent = 0.0f; //0~100ï¿½ï¿½ï¿½ï¿½
     public bool isGameEnd = false;
 
     public GameData gameData;
@@ -33,9 +38,27 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public Transform player { get; private set; }
+
+    [SerializeField]
+    private PoolListSO _poolList;
+
     private void Awake()
     {
         gameData = new GameData();
+        PoolManager poolManager = new PoolManager(transform);
+        foreach(var item in _poolList.poolList)
+        {
+            poolManager.CreatePool(item.prefab, item.type, item.count);
+        }
+        PoolManager.Instance = poolManager;
+        mainCamera = Camera.main;
+        _gameData = new GameData();
+    }
+
+    private void Start()
+    {
+        player = FindFirstObjectByType<Player>().transform;
     }
 
     private void Update()

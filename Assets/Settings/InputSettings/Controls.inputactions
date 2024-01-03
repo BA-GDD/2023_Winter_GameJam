@@ -1,10 +1,19 @@
 {
-    "name": "InputActions",
+    "name": "Controls",
     "maps": [
         {
             "name": "Player",
             "id": "4bd48066-5466-4231-8835-1318a2f67b1c",
             "actions": [
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "e5a5577c-f0f5-4006-96b6-ba9a57d4834e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "Movement",
                     "type": "Value",
@@ -13,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "36a75b6e-5241-4474-b467-dcbf4d7d9ace",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Shoot",
@@ -24,9 +42,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Reload",
+                    "name": "Skill",
                     "type": "Button",
-                    "id": "36a75b6e-5241-4474-b467-dcbf4d7d9ace",
+                    "id": "eb575102-4e67-412b-a0a3-53698a30ab35",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -97,6 +115,28 @@
                     "processors": "",
                     "groups": "KeyboardAndMouse",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "61ca3d15-4a03-485d-bd28-e47faf1e4aac",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5999f2e-d980-4ed6-8819-b9145365ac0c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
