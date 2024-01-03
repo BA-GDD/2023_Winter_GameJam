@@ -23,6 +23,9 @@ public class GameManager : MonoSingleton<GameManager>
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
 
+    [SerializeField]
+    private PoolListSO _poolList;
+
     private GameData _gameData;
     public GameData GameData => _gameData;
 
@@ -50,6 +53,10 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
+    }
+    private void Start()
+    {
+        player = FindObjectOfType<Player>().transform;
     }
 
     private void Update()
