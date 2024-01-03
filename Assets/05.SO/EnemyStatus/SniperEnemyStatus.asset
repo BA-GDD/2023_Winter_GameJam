@@ -15,4 +15,4 @@ MonoBehaviour:
   moveSpeed: 3
   atkRange: 20
   spawnPercent: 20
-  type: 2
+  type: 7

@@ -56275,6 +56275,66 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1471484723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471484725}
+  - component: {fileID: 1471484724}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1471484724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471484723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16645e738c4f09459833b983de6c85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStatusSOList:
+  - {fileID: 11400000, guid: dca8cb5108ae59443adf0498b28429e6, type: 2}
+  - {fileID: 11400000, guid: 4c074bf5ed0cd2948bfdb736e7126735, type: 2}
+  - {fileID: 11400000, guid: c432c8ff2fd1caa42a59c68d37e59fae, type: 2}
+  - {fileID: 11400000, guid: 50d38fcce8774394f85cf800483643cd, type: 2}
+  _spawnCount: 10
+  _spawnPoints:
+  - {fileID: 998071025}
+  - {fileID: 973193025}
+  - {fileID: 1479965434}
+  - {fileID: 545664658}
+  - {fileID: 851867520}
+  - {fileID: 587742117}
+  - {fileID: 68131041}
+  - {fileID: 1828705724}
+  - {fileID: 102952894}
+--- !u!4 &1471484725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471484723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.2791758, y: 1.1321927, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1479965433
 GameObject:
   m_ObjectHideFlags: 0
@@ -56483,3 +56543,4 @@ SceneRoots:
   - {fileID: 1945433664}
   - {fileID: 1000089380}
   - {fileID: 1351176000}
+  - {fileID: 1471484725}

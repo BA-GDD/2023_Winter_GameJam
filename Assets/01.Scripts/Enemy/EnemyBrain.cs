@@ -63,6 +63,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     public virtual void SetDead()
     {
+        MapManager.Instance.SetTile(transform.position, TileType.Water);
         isDead = true;
     }
 

@@ -110,7 +110,7 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7224952263188783058}
-    m_Position: {x: 220, y: 20, z: 0}
+    m_Position: {x: 300, y: 20, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 7699493693010349316}

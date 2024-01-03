@@ -94,7 +94,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         _isDead = true;
-
+        _playerAnimator.SetDieTrigger(_isDead);
         UnequipGun();
         (this as IDamageable).OnHit();
     }
