@@ -9,7 +9,6 @@ public class EnemyBrain : PoolableMono, IDamageable
 {
     [HideInInspector]
     public EnemyAttack attack;
-    [HideInInspector]
     public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;

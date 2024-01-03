@@ -19,7 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     public Camera mainCamera;
     public GunType selectGunType;
 
-    [Range(0f, 100f)]
+    [Range(0f, 1f)]
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
 
@@ -64,7 +64,7 @@ public class GameManager : MonoSingleton<GameManager>
         if(!isGameEnd)
             _curTime -= Time.deltaTime;
 
-        if (_curTime <= 0.0f)
+        if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
         {
             GameEnd();
         }
