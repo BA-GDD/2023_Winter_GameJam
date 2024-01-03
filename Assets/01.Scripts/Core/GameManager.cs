@@ -37,6 +37,9 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
+    [SerializeField]
+    private AudioClip _bgmClip;
+
     private float _score;
     public float Score
     {
@@ -73,6 +76,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
     }
 
     private void Update()

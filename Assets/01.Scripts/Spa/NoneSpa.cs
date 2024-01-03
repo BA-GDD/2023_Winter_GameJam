@@ -10,5 +10,11 @@ public class NoneSpa : Spa
     }
     public override void Enter()
     {
+
+    }
+
+    public override void Exit()
+    {
+
     }
 }

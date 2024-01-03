@@ -42,7 +42,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bee33bf613d34c64ea57d67b271d9107
-  position: {x: -95.85003, y: 630}
+  position: {x: -262, y: 630}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -51,6 +51,31 @@ MonoBehaviour:
       m_Bits: 0
   brain: {fileID: 0}
   description: 
+--- !u!114 &-6034724217222095188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d91b306dc394437b47f70453c7ce0e8, type: 3}
+  m_Name: DebugNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 7e9ed1d45d76af7468be4d737a9509b6
+  position: {x: -75.00003, y: 631.99994}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    enemySpotPosition: {x: 0, y: 0, z: 0}
+    whatIsEnemy:
+      serializedVersion: 2
+      m_Bits: 0
+  brain: {fileID: 0}
+  description: 
+  message: "\uB118\uC5B4\uC634"
 --- !u!114 &-4984394622454007042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +91,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: eb43d0020aad48746a1a9ebee6f37a12
-  position: {x: -286.3999, y: 606.3999}
+  position: {x: -461, y: 630}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -177,6 +202,7 @@ MonoBehaviour:
   - {fileID: -7890465054939770846}
   - {fileID: 2699008869598233291}
   - {fileID: -1560733231174557039}
+  - {fileID: -6034724217222095188}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -222,7 +248,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: c234a41bdd2c81049ad8860eb22b1a80
-  position: {x: -286.39993, y: 772.7917}
+  position: {x: -461, y: 797}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -283,3 +309,4 @@ MonoBehaviour:
   children:
   - {fileID: -4984394622454007042}
   - {fileID: -7890465054939770846}
+  - {fileID: -6034724217222095188}

@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class MeleeAttack : EnemyAttack
 {
+    private ParticleSystem _meleeParticle;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _meleeParticle = transform.Find("P_Toon_Circle_Dissolve").GetComponent<ParticleSystem>();
+        _meleeParticle.transform.position = _brain.transform.position;
+        _meleeParticle.transform.rotation = new Quaternion(180, 0, 0, 0);
+    }
     protected override void Update()
     {
         base.Update();
@@ -15,9 +24,14 @@ public class MeleeAttack : EnemyAttack
         
         if(collider != null)
         {
-            // 플레이어 사망 처리
+            if (collider.gameObject.transform.TryGetComponent<Player>(out Player p))
+            {
+                p.OnHitHandle();
+            }
         }
-        
+        SoundManager.Instance.Play(_brain.shootClip, 1, 1, 1, false);
+        _meleeParticle.Play();
+
         _attackTimer = 0;
     }
 }
