@@ -57,11 +57,12 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         string data = PlayerPrefs.GetString("GameData", string.Empty);
-        if (string.IsNullOrEmpty(data))
-        {
-            _gameData = new GameData();
-        }
-        _gameData = JsonUtility.FromJson<GameData>(data); ;
+        //if (string.IsNullOrEmpty(data))
+        //{
+            
+        //}
+        _gameData = new GameData();
+        //_gameData = JsonUtility.FromJson<GameData>(data); 
 
         PoolManager poolManager = new PoolManager(transform);
         foreach (var item in _poolList.poolList)
