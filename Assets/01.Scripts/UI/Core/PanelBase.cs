@@ -25,6 +25,7 @@ public abstract class PanelBase : MonoBehaviour
         _blackPanel.color = new Color(0, 0, 0, 0);
 
         Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
         seq.Append(_blackPanel.DOFade(Convert.ToInt32(isActive) * 0.5f, _blackPanelEasingTime));
 
         if(!isActive)

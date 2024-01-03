@@ -6,6 +6,8 @@ public class InGameSceneUI : SceneUIBase
 {
     private Player _player;
     private OnsenWaterGage _onsenWater;
+    [SerializeField] private OptionPanel _optionPanel;
+
     public override void SetUp()
     {
         _player = FindObjectOfType<Player>();
@@ -18,5 +20,13 @@ public class InGameSceneUI : SceneUIBase
     {
         _player.UnequipGun();
         _player.DeleteWaterGaugeHandle(_onsenWater);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            UIManager.Instanace.CreatePanel(_optionPanel);
+        }
     }
 }
