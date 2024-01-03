@@ -319,17 +319,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &629012327 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8103557217266700547, guid: d8082412f4deed94a865895ce7ad8cd1, type: 3}
-  m_PrefabInstance: {fileID: 1639731304}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fd759e30352564f89ef17e36c2327a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &666222079
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,56 +422,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1269105387 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2135319026482097433, guid: d8082412f4deed94a865895ce7ad8cd1, type: 3}
-  m_PrefabInstance: {fileID: 1639731304}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1269105391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269105387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 629012327}
-          m_TargetAssemblyTypeName: EquipGunSystem, Assembly-CSharp
-          m_MethodName: OnPointerCapybara
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 629012327}
-          m_TargetAssemblyTypeName: EquipGunSystem, Assembly-CSharp
-          m_MethodName: OutPointerCapybara
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1602182423
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,14 +605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LobbySceneUI
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7936873226733210946, guid: d8082412f4deed94a865895ce7ad8cd1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2135319026482097433, guid: d8082412f4deed94a865895ce7ad8cd1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1269105391}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8082412f4deed94a865895ce7ad8cd1, type: 3}
 --- !u!224 &1639731305 stripped
 RectTransform:
