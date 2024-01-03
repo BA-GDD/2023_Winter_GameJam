@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class Spa
 {
-    protected Player player;
+    protected Player _player;
     public Spa()
     {
-        //player = GameManager.instance
+        //_player = GameManager.Instance.player.GetComponent<Player>();
     }
     public abstract void Enter();
 }

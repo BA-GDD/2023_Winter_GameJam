@@ -6,12 +6,9 @@ using UnityEngine;
 public enum PoolingType
 {
     None,
-    DamageText,
-    DialogueEffect,
-    SwordAura,
     StatusInfoPanel,
     PlayerBullet,
-    EnemyBullet
+    EnemyBullet,
     FallingMilk
 }
 

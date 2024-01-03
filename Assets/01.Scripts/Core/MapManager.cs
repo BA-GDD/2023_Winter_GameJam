@@ -27,25 +27,8 @@ public struct SpaData
     public int weight;
 }
 
-public class MapManager : MonoBehaviour
+public class MapManager : MonoSingleton<MapManager>
 {
-    private static MapManager _instnace;
-    public static MapManager instance
-    {
-        get
-        {
-            if (_instnace == null)
-            {
-                _instnace = FindObjectOfType<MapManager>();
-            }
-            if (_instnace)
-            {
-                Debug.LogError($"존재하지않다[{typeof(MapManager)}].");
-            }
-            return _instnace;
-        }
-    }
-
     [SerializeField] private List<SpaData> hotSprings;
     [SerializeField] private Tilemap _groundMap;
     [SerializeField] private Tilemap _holeMap;
@@ -55,7 +38,7 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] private Vector2Int _defaultSpaSize;
 
-    private Spa spa;
+    private Spa _spa;
 
     public float WaterFillAmount()
     {
@@ -92,16 +75,14 @@ public class MapManager : MonoBehaviour
         foreach (var item in hotSprings)
         {
             value += (float)item.weight / total;
-                print(value);
             if (value >= pivot)
             {
                 Type t = Type.GetType($"{item.type}Spa");
-                spa = Activator.CreateInstance(t) as Spa;
+                _spa = Activator.CreateInstance(t) as Spa;
                 _holeMap.color = item.tintColor;
                 break;
             }
         }
-
     }
 
     private void Update()
@@ -110,7 +91,6 @@ public class MapManager : MonoBehaviour
         {
             SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition), TileType.Water);
         }
-        print(WaterFillAmount());
     }
     public bool CheckWater(Vector3 pos)
     {
@@ -124,6 +104,7 @@ public class MapManager : MonoBehaviour
         Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y));
         DrawTile(intVec, type);
         _holeMap.CompressBounds();
+
     }
     private void DrawTile(Vector3Int pos, TileType type)
     {
@@ -141,9 +122,9 @@ public class MapManager : MonoBehaviour
                 }
                 break;
             case TileType.Water:
-                for (int x = minPos.x; x < maxPos.x; x++)
+                for (int x = minPos.x; x <= maxPos.x; x++)
                 {
-                    for (int y = minPos.y; y < maxPos.y; y++)
+                    for (int y = minPos.y; y <= maxPos.y; y++)
                     {
                         _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
                     }

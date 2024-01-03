@@ -53,12 +53,11 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-        _gameData = new GameData();
     }
 
     private void Start()
     {
-        player = FindFirstObjectByType<Player>().transform;
+        //player = FindFirstObjectByType<Player>().transform;
     }
 
     private void Update()
