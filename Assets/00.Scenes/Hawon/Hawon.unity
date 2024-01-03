@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90428a528bcb35046816f952e24799d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   onGameEndTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -464,7 +465,11 @@ MonoBehaviour:
   selectGunType: 0
   occupationPercent: 0
   isGameEnd: 0
+<<<<<<< HEAD
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
+=======
+  _poolList: {fileID: 0}
+>>>>>>> Gusdnd
 --- !u!4 &1602182425
 Transform:
   m_ObjectHideFlags: 0

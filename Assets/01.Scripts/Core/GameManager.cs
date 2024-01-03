@@ -51,9 +51,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    [SerializeField]
-    private AudioClip _bgmClip;
-
     private void Awake()
     {
         string data = PlayerPrefs.GetString("GameData", string.Empty);
