@@ -8,10 +8,11 @@ using UnityEngine.InputSystem;
 public class InputReader : ScriptableObject, Controls.IPlayerActions
 {
     public event Action onDashEvent;
-    public event Action onReloadEvent;
     public event Action onShootEvent;
-    public event Action onSkillEvent;
     public Vector2 movementDirection;
+    public bool isReload;
+    public bool isSkillOccur;
+    public bool isSkillPrepare;
     private Controls _controls;
 
     private void OnEnable()
@@ -43,7 +44,11 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
         {
-            onReloadEvent?.Invoke();
+            isReload = true;
+        }
+        else if (context.canceled)
+        {
+            isReload = false;
         }
     }
 
@@ -59,7 +64,11 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
         {
-            onSkillEvent?.Invoke();
+            isSkillPrepare = true;
+        }
+        else if (context.canceled)
+        {
+            isSkillOccur = true;
         }
     }
 }

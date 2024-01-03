@@ -25,6 +25,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             obj.gameObject.SetActive(false);
             audioQueue.Enqueue(obj);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

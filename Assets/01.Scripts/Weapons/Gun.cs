@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +15,15 @@ public enum GunType
 public abstract class Gun : MonoBehaviour
 {
     private readonly int _shootTriggerHash = Animator.StringToHash("shoot");
+    [HideInInspector]
+    public Player owner;
+    [SerializeField]
+    protected LayerMask enemyLayerMask;
     [SerializeField]
     protected Transform firePosition;
     [SerializeField]
     protected GunSO gunScriptableObject;
-    private Vector2 _direction;
+    protected bool isSkillProcess;
     private Animator _animator;
     private Transform _gunSocket;
     private float _shootDelayTimer;
@@ -26,7 +32,14 @@ public abstract class Gun : MonoBehaviour
 
     public AudioClip shootClip;
 
+    protected Camera _mainCam;
 
+    public event Action<float> usableCapacityChanged;
+
+    private void Awake()
+    {
+        _mainCam = Camera.main;
+    }
     protected virtual void OnEnable()
     {
         _animator = GetComponent<Animator>();
@@ -38,15 +51,22 @@ public abstract class Gun : MonoBehaviour
 
     protected virtual void Update()
     {
-        _shootDelayTimer -= Time.deltaTime;
-        _direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
+        if (isSkillProcess)
+        {
+            return;
+        }
 
-        if (GameManager.Instance.player.transform.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
+        _shootDelayTimer -= Time.deltaTime;
+        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
+
+        direction.Normalize();
+
+        if (owner.transform.localScale.x * _gunSocket.localScale.x * direction.x < 0f)
         {
             Flip();
         }
 
-        _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg + (_direction.x < 0f ? 180f : 0f), Vector3.forward);
+        _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (direction.x < 0f ? 180f : 0f), Vector3.forward);
     }
 
     public abstract void ShootProcess();
@@ -57,9 +77,11 @@ public abstract class Gun : MonoBehaviour
         _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
         _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
         _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime/ gunScriptableObject.maximumCapacity);
     }
 
-    public virtual void Skill()
+    public virtual void Skill(bool occurSkill)
     {
         _currentSkillGauge = 0f;
     }
@@ -67,6 +89,19 @@ public abstract class Gun : MonoBehaviour
     public void Flip()
     {
         _gunSocket.localScale *= new Vector2(-1f, 1f);
+    }
+
+    public void Reload(ref bool canReload)
+    {
+        canReload = CanReload();
+
+        if (canReload)
+        {
+            _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
+            _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
+            _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+            _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+        }
     }
 
     public void Shoot()
@@ -77,14 +112,13 @@ public abstract class Gun : MonoBehaviour
 
             SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
 
+            float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
+            float after = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;
-        }
-    }
 
-    protected bool CanShoot()
-    {
-        return _usableCapacity >= gunScriptableObject.useCapacityPerShoot && _shootDelayTimer <= 0f;
+            usableCapacityChanged?.Invoke(-(before - after)/gunScriptableObject.maximumCapacity);
+        }
     }
 
     protected bool CanUseSkill()
@@ -102,5 +136,15 @@ public abstract class Gun : MonoBehaviour
         {
             _animator.ResetTrigger(_shootTriggerHash);
         }
+    }
+
+    private bool CanReload()
+    {
+        return MapManager.Instance.CheckWater(owner.transform.position);
+    }
+
+    private bool CanShoot()
+    {
+        return _usableCapacity >= gunScriptableObject.useCapacityPerShoot && _shootDelayTimer <= 0f;
     }
 }

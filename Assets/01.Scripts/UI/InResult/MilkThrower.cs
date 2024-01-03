@@ -19,6 +19,7 @@ public class MilkThrower : MonoBehaviour
 
     public void ThrwoMilk(int milkCount)
     {
+        GameManager.Instance.GameData.milkCoount += milkCount;
         StartCoroutine(ThrowMilkCo(milkCount));
     }
 
@@ -28,6 +29,7 @@ public class MilkThrower : MonoBehaviour
         {
             FallingMilk fm = PoolManager.Instance.Pop(PoolingType.FallingMilk) as FallingMilk;
             fm.transform.SetParent(transform);
+            fm.transform.localScale = Vector3.one * 1.3f;
             fm.transform.localPosition = new Vector2(Random.Range(_minXValue, _maxXvalue), spawnY);
             fm.transform.localEulerAngles = new Vector3(0, 0, Random.Range(_minAngle, _maxAngle));
             fm.Fall(_underMilk);

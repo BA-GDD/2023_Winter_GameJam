@@ -825,7 +825,7 @@ MonoBehaviour:
   gameTime: 5
   mainCamera: {fileID: 0}
   selectGunType: 0
-  occupationPercent: 24.5
+  occupationPercent: 1
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
 --- !u!4 &1000089380
@@ -56152,7 +56152,7 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -67, y: -70, z: 0}
   m_Size: {x: 163, y: 134, z: 1}
-  m_TileAnchor: {x: -0.5, y: -0.5, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1
@@ -56615,7 +56615,7 @@ Tilemap:
   m_Color: {r: 1, g: 0.7273897, b: 0.4764151, a: 1}
   m_Origin: {x: -24, y: -20, z: 0}
   m_Size: {x: 49, y: 40, z: 1}
-  m_TileAnchor: {x: -0.5, y: -0.5, z: 0}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
     e00: 1

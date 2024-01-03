@@ -19,6 +19,6 @@ public class StatusInfoPanel : PoolableMono
         _shootDelayText.text = $"공격속도 : {target.shootDelay}";
         _maxCapacityText.text = $"물 용량 : {target.maximumCapacity}";
         _fillCapSecText.text = $"장전 속도 : {target.fillCapacityPerSecond}";
-        _useCapShotText.text = $"쏘는 물 양 :{target.useCapacityPerShoot}";
+        _useCapShotText.text = $"쏘는 물 양 : {target.useCapacityPerShoot}";
     }
 }
