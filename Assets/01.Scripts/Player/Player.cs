@@ -157,6 +157,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         _isDead = true;
+        _rigidbody2D.velocity = Vector3.zero;
 
         UnequipGun();
         (this as IDamageable).OnHit();

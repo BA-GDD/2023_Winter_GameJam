@@ -70,7 +70,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-        player = FindObjectOfType<Player>().transform;
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
         DontDestroyOnLoad(this);
