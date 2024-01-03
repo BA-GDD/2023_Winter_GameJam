@@ -299,16 +299,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 268222889130920734, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2898878081853443733, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
       propertyPath: m_Name
       value: SniperEnemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3676279085836914507, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
-      propertyPath: playOnAwake
+    - target: {fileID: 2898878081853443733, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5477531635129973018, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
@@ -349,10 +345,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477531635129973018, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9064253163588604764, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -506,6 +498,67 @@ MonoBehaviour:
   _onDieTrigger:
     m_PersistentCalls:
       m_Calls: []
+  _inputReader: {fileID: 0}
+  _movementSpeed: 0
+  _dashDelay: 0
+  _dashDuration: 0
+--- !u!1001 &1212290573
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426371159766894956, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164086868388052412, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+      propertyPath: m_Name
+      value: RevolverEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
 --- !u!1 &1668872574
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,3 +897,4 @@ SceneRoots:
   - {fileID: 1737116648}
   - {fileID: 1668872575}
   - {fileID: 768148422}
+  - {fileID: 1212290573}
