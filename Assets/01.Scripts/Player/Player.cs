@@ -16,6 +16,8 @@ public class Player : MonoBehaviour, IDamageable
     private float _dashDelay;
     [SerializeField]
     private float _dashDuration;
+    [SerializeField]
+    private ParticleSystem _playerDashFX;
     private Vector2 _dashDirection;
     private Rigidbody2D _rigidbody2D;
     private Transform _gunSocket;
@@ -106,6 +108,17 @@ public class Player : MonoBehaviour, IDamageable
             _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
 
             _dashDirection.Normalize();
+            var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();
+            if(transform.localScale.x < 0.0f)
+            {
+
+                module.flip = new Vector3(1,0,0);
+            }
+            else
+            {
+                module.flip = new Vector3(0, 0, 0);
+            }
+            _playerDashFX.Play();
             StartCoroutine(DashCoroutine());
         }
     }

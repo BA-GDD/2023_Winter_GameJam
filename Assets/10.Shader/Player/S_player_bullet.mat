@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_player_test 1
-  m_Shader: {fileID: 4800000, guid: 8917bc9a924e9894c85b0c7984397231, type: 3}
+  m_Name: S_player_bullet
+  m_Shader: {fileID: 4800000, guid: 62f8f43308681d64ca8107e512268ed2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,24 +23,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a767ceabc58b5f1498e72b04789cf2b3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _main_tex:
-        m_Texture: {fileID: 2800000, guid: ada94478ccda55741b41d54482078e84, type: 3}
+        m_Texture: {fileID: 2800000, guid: dfb038e21b1a533459f0b5bc03d0d3d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -62,13 +46,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _EnableExternalAlpha: 0
-    - _blink_amount: 0.241
-    - _player_half_amount: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 1.3041189, g: 1.3041189, b: 1.3041189, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _blink_color: {r: 5.992156, g: 5.992156, b: 5.992156, a: 0}
   m_BuildTextureStacks: []
