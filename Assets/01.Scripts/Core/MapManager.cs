@@ -1,14 +1,32 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using System;
 
 public enum TileType
 {
     Ground,
     Water
 }
+public enum SpaType
+{
+    None,
+    SpeedUp,
+    Blind,
+
+}
+
+[System.Serializable]
+public struct SpaData
+{
+    public SpaType type;
+    public Color tintColor;
+    public int weight;
+}
+
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instnace;
@@ -28,6 +46,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private List<SpaData> hotSprings;
     [SerializeField] private Tilemap _groundMap;
     [SerializeField] private Tilemap _holeMap;
 
@@ -35,6 +54,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] private TileBase _groundTile;
 
     [SerializeField] private Vector2Int _defaultSpaSize;
+
+    private Spa spa;
 
     public float WaterFillAmount()
     {
@@ -46,6 +67,10 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
+        SetRandomSpa();
+
+
+
         Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
         _holeMap.BoxFill(Vector3Int.zero, _holeTile, minPos.x, minPos.y, maxPos.x, maxPos.y);
@@ -53,11 +78,37 @@ public class MapManager : MonoBehaviour
         _holeMap.CompressBounds();
         _groundMap.CompressBounds();
     }
+
+    private void SetRandomSpa()
+    {
+        int total = 0;
+        foreach (var item in hotSprings)
+        {
+            total += item.weight;
+        }
+        hotSprings.OrderBy((x) => x.weight);
+        float pivot = UnityEngine.Random.value;
+        float value = 0;
+        foreach (var item in hotSprings)
+        {
+            value += (float)item.weight / total;
+                print(value);
+            if (value >= pivot)
+            {
+                Type t = Type.GetType($"{item.type}Spa");
+                spa = Activator.CreateInstance(t) as Spa;
+                _holeMap.color = item.tintColor;
+                break;
+            }
+        }
+
+    }
+
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition),TileType.Water);
+            SetTile(Camera.main.ScreenToWorldPoint(Input.mousePosition), TileType.Water);
         }
         print(WaterFillAmount());
     }
