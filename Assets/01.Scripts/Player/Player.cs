@@ -40,7 +40,6 @@ public class Player : MonoBehaviour, IDamageable
 
         // Debug
         EquipGun(GunType.Razer);
-        PoolManager.Instance.Pop(PoolingType.PlayerRazer);
     }
 
     private void Update()

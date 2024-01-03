@@ -9857,7 +9857,7 @@ GameObject:
   - component: {fileID: 1283428273561675317}
   - component: {fileID: -8931858333513738915}
   m_Layer: 0
-  m_Name: PlayerRazer
+  m_Name: RazerEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14687,7 +14687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b9cc13b5e81d84c9a616ca049fb803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 7
+  poolingType: 4
   particle: {fileID: 0}
   _rigidbody2d: {fileID: 0}
   bulletSpeed: 0
