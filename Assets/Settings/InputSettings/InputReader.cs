@@ -46,7 +46,7 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
         {
-            SoundManager.Instance.Play(reloadClip, 100, 1, 2, true, "ReloadSE");
+            SoundManager.Instance.Play(reloadClip, 1, 1, 2, true, "ReloadSE");
             isReload = true;
         }
         else if (context.canceled)
