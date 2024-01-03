@@ -8,7 +8,7 @@ public class EnemyBullet : Bullet
     {
         if (collision.TryGetComponent(out Player player))
         {
-            player.OnHitHandle();
+            //player.OnHitHandle();
             PoolManager.Instance.Push(this);
         }
     }

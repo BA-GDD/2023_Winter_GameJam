@@ -10,6 +10,19 @@ public class MobAnimator : MonoBehaviour
     private readonly int _isAttackHash = Animator.StringToHash("is_attack");
     private readonly int _attackTriggerHash = Animator.StringToHash("attack");
     private readonly int _dieTriggerHash = Animator.StringToHash("die");
+    private readonly int _shootTriggerHash = Animator.StringToHash("shoot");
+
+    public void SetShootTrigger(bool value)
+    {
+        if (value)
+        {
+            _animator.SetTrigger(_shootTriggerHash);
+        }
+        else
+        {
+            _animator.ResetTrigger(_shootTriggerHash);
+        }
+    }
 
     public void SetIsMove(bool value)
     {
