@@ -42,6 +42,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
+        //MapManager.instance.SetTile(transform.position, TileType.Ground);
 
         dir = GameManager.Instance.player.position - transform.position;
         dir.Normalize();

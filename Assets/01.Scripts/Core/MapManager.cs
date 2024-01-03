@@ -58,7 +58,7 @@ public class MapManager : MonoSingleton<MapManager>
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
         _groundMap.CompressBounds();
         BoundsInt bounds = _groundMap.cellBounds;
-        _mapSize = new Vector2Int(bounds.xMax, bounds.yMax);
+        _mapSize = new Vector2Int(bounds.xMax+Mathf.Abs(bounds.xMin), bounds.yMax + Mathf.Abs(bounds.yMin));
         _smokes = new EffectPlayer[_mapSize.x, _mapSize.y];
         for (int x = minPos.x; x <= maxPos.x; x++)
         {
@@ -68,7 +68,7 @@ public class MapManager : MonoSingleton<MapManager>
                 EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                 fx.StartPlay(-1);
                 fx.transform.position = new Vector2(x, y);
-                _smokes[Mathf.FloorToInt(x + bounds.xMax * 0.5f), Mathf.FloorToInt(y + bounds.yMax * 0.5f)] = fx;
+                _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
             }
         }
         _holeMap.CompressBounds();

@@ -6,9 +6,6 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [HideInInspector]
-    public Camera mainCamera;
-
     [Header("���� �̺�Ʈ")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
@@ -18,12 +15,16 @@ public class GameManager : MonoSingleton<GameManager>
     public float gameTime = 5.0f; //�ʴ���
     private float _curTime = 5.0f; //�ʴ���
     public float CurrentTime => _curTime;
+    public Transform player { get; set; }
+    public Camera mainCamera;
+    public GunType selectGunType;
 
     [Range(0f, 100f)]
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
 
-    public GameData gameData;
+    private GameData _gameData;
+    public GameData GameData => _gameData;
 
     private float _score;
     public float Score
@@ -39,14 +40,9 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public Transform player { get; private set; }
-
-    [SerializeField]
-    private PoolListSO _poolList;
-
     private void Awake()
     {
-        gameData = new GameData();
+        _gameData = new GameData();
         PoolManager poolManager = new PoolManager(transform);
         foreach(var item in _poolList.poolList)
         {
@@ -54,11 +50,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-    }
-
-    private void Start()
-    {
-        player = FindFirstObjectByType<Player>().transform;
     }
 
     private void Update()
