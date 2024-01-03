@@ -11,7 +11,7 @@ public enum PoolingType
     SwordAura,
     StatusInfoPanel,
     PlayerBullet,
-    EnemyBullet
+    EnemyBullet,
     FallingMilk
 }
 

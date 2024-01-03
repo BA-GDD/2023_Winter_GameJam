@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class Bullet : PoolableMono
 {
-    public float bulletSpeed = 5f;
-    public float lifeTime = 3f;
+    [HideInInspector]
+    public ParticleSystem particle;
     [SerializeField]
     private Rigidbody2D _rigidbody2d;
+    public float bulletSpeed = 5f;
+    public float lifeTime = 3f;
+
+    private void Awake()
+    {
+        particle = GetComponent<ParticleSystem>();
+    }
 
     private async void OnEnable()
     {
@@ -21,6 +28,10 @@ public class Bullet : PoolableMono
 
     public override void Init()
     {
+        var mainParticle = particle.main;
+        mainParticle.startLifetime = lifeTime;
+
+        particle.Play();
         PoolManager.Instance.Push(this, lifeTime);
     }
 }

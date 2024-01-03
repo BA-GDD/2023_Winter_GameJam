@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Shotgun : Gun
 {
+    [SerializeField]
+    private float _bulletSpeed;
+    [SerializeField]
+    private float _lifeTime;
     [Range(0f, 180f), SerializeField]
     private float _shotAngleRange = 100f;
     [SerializeField]
@@ -19,9 +23,9 @@ public class Shotgun : Gun
             for (int i = 0; i < _shotsAmount; ++i)
             {
                 Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
-                bullet.bulletSpeed = 10f;
+                bullet.bulletSpeed = _bulletSpeed;
                 bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
-                bullet.lifeTime = 0.5f;
+                bullet.lifeTime = _lifeTime;
                 bullet.transform.position = firePosition.position;
                 Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position).normalized;
                 float angle = Random.Range(-_shotAngleRange * 0.5f, _shotAngleRange * 0.5f);

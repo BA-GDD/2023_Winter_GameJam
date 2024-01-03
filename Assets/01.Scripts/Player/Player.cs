@@ -39,7 +39,7 @@ public class Player : MonoBehaviour, IDamageable
         _inputReader.onDashEvent += Dash;
 
         // Debug
-        EquipGun(GunType.Revolver);
+        EquipGun(GunType.Shotgun);
     }
 
     private void Update()
