@@ -71,6 +71,7 @@ public class EquipGunSystem : MonoBehaviour
         seq.Join(_capybaraTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, -13), 0.2f));
         seq.Join(_weaponBar.DOLocalMove(_weaponBarNormalPos, 0.3f));
         seq.AppendCallback(() => _inEquipping = false);
+        seq.AppendCallback(() => _lobbyCapAnimator.enabled = true);
 
         _capybaraEquipEvent += StartEquip;
         _capybaraEquipEvent -= CompleteEquip;
