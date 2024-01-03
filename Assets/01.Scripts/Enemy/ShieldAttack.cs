@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class ShieldAttack : EnemyAttack
 {
+    private ParticleSystem _shieldParticle;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _shieldParticle = transform.Find("P_Toon_Circle_Dissolve").GetComponent<ParticleSystem>();
+        _shieldParticle.transform.position = _brain.firePos.position;
+        _shieldParticle.transform.rotation = new Quaternion(180, 0, 0, 0);
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -15,9 +25,12 @@ public class ShieldAttack : EnemyAttack
 
         if (collider != null)
         {
-            // 플레이어 사망 처리
-            Debug.Log("hit");
+            if (collider.gameObject.transform.TryGetComponent<Player>(out Player p))
+            {
+                p.OnHitHandle();
+            }
         }
+        _shieldParticle.Play();
 
         _attackTimer = 0;
     }
