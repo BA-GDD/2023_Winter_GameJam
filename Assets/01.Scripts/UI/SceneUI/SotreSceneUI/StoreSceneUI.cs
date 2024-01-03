@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class StoreSceneUI : SceneUIBase
 {
-    [SerializeField] private int _haveMilks;
-    private List<GunSO> _hasPurchaseGunList = new List<GunSO>();
     [SerializeField] private ResultOfPurchasePanel _resultPanel;
 
     public override void SetUp()
@@ -25,12 +23,24 @@ public class StoreSceneUI : SceneUIBase
     public void PurchaseThisGun(GunSO target)
     {
         ResultOfPurchasePanel rpp = (ResultOfPurchasePanel)UIManager.Instanace.CreatePanel(_resultPanel, true);
-        if (_haveMilks >= target.priceValue)
+        if (GameManager.Instance.GameData.milkCoount >= target.priceValue)
         {
-            _haveMilks -= target.priceValue;
+            GameManager.Instance.GameData.milkCoount -= target.priceValue;
             rpp.SetText($"{target.name} 구매를\n 성공하셨습니다.");
 
-            _hasPurchaseGunList.Add(target);
+            switch (target.myType)
+            {
+                case GunType.Revolver:
+                    GameManager.Instance.GameData.openRevolver = true;
+                    break;
+                case GunType.Razer:
+                    GameManager.Instance.GameData.Razer = true;
+                    break;
+                case GunType.Shotgun:
+                    GameManager.Instance.GameData.Shotgun = true;
+                    break;
+            }
+            
         }
         else
         {
@@ -40,6 +50,16 @@ public class StoreSceneUI : SceneUIBase
 
     public bool CheckHasPurchaseThisGun(GunSO target)
     {
-        return _hasPurchaseGunList.Contains(target);
+        switch (target.myType)
+        {
+            case GunType.Revolver:
+                return GameManager.Instance.GameData.openRevolver;
+            case GunType.Razer:
+                return GameManager.Instance.GameData.Razer;
+            case GunType.Shotgun:
+                return GameManager.Instance.GameData.Shotgun;
+            default:
+                return false;
+        }
     }
 }

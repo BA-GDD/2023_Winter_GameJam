@@ -6,6 +6,7 @@ using UnityEngine;
 public class GunSO : ScriptableObject
 {
     [Header("Features")]
+    public GunType myType;
     public string gunName;
     public Sprite gunProfile;
     [Multiline(5)]

@@ -67,8 +67,15 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
+<<<<<<< HEAD
 
         DontDestroyOnLoad(this);
+=======
+    }
+    private void Start()
+    {
+        //player = FindObjectOfType<Player>().transform;
+>>>>>>> hawon
     }
 
     private void Update()
@@ -76,10 +83,17 @@ public class GameManager : MonoSingleton<GameManager>
         if (!isGameEnd)
             _curTime -= Time.deltaTime;
 
+<<<<<<< HEAD
         if (_curTime <= 0.0f)
         {
             GameEnd();
         }
+=======
+        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        //{
+        //    GameEnd();
+        //}
+>>>>>>> hawon
     }
 
     public void GameStart()
