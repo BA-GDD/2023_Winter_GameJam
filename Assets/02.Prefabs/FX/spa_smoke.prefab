@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2009719801300992898}
   - component: {fileID: 8991106164709580809}
   - component: {fileID: 8763237162160261158}
-  - component: {fileID: 6778273238325771325}
+  - component: {fileID: 5841491551788566067}
   m_Layer: 0
   m_Name: spa_smoke
   m_TagString: Untagged
@@ -4831,7 +4831,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6778273238325771325
+--- !u!114 &5841491551788566067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4840,10 +4840,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5578540983546221911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1231ed967d65821439ec8b4af03fd87f, type: 3}
+  m_Script: {fileID: 11500000, guid: 90f22bb5cc7c0554593c37fef84f4155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 9
+  _particles:
+  - {fileID: 8991106164709580809}
+  _effects: []
 --- !u!1001 &7035094437753916235
 PrefabInstance:
   m_ObjectHideFlags: 0

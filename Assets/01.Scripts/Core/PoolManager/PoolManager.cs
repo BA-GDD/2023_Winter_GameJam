@@ -14,7 +14,8 @@ public enum PoolingType
     MeleeEnemy,
     SniperEnemy,
     ShieldEnemy,
-    SpaSmoke
+    SpaSmoke,
+    EnemyExplosion,
 }
 
 public class PoolManager

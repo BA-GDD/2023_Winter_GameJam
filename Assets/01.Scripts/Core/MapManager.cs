@@ -39,8 +39,8 @@ public class MapManager : MonoSingleton<MapManager>
     [SerializeField] private Vector2Int _defaultSpaSize;
 
     private Spa _spa;
-    private SpaEffect[] smokes;
-
+    private EffectPlayer[,] _smokes;
+    private Vector2Int _mapSize;
     public float WaterFillAmount()
     {
         int waterCnt = _holeMap.GetTilesBlock(_holeMap.cellBounds).Length;
@@ -57,14 +57,18 @@ public class MapManager : MonoSingleton<MapManager>
         Vector2Int minPos = Vector2Int.zero - _defaultSpaSize / 2;
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
         _groundMap.CompressBounds();
-        smokes = new SpaEffect[_groundMap.GetTilesBlock(_groundMap.cellBounds).Length];
+        BoundsInt bounds = _groundMap.cellBounds;
+        _mapSize = new Vector2Int(bounds.xMax, bounds.yMax);
+        _smokes = new EffectPlayer[_mapSize.x, _mapSize.y];
         for (int x = minPos.x; x <= maxPos.x; x++)
         {
             for (int y = minPos.y; y <= maxPos.y; y++)
             {
                 _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
-                SpaEffect fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as SpaEffect;
+                EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
+                fx.StartPlay(-1);
                 fx.transform.position = new Vector2(x, y);
+                _smokes[Mathf.FloorToInt(x + bounds.xMax * 0.5f), Mathf.FloorToInt(y + bounds.yMax * 0.5f)] = fx;
             }
         }
         _holeMap.CompressBounds();
@@ -119,6 +123,8 @@ public class MapManager : MonoSingleton<MapManager>
                     for (int y = minPos.y; y <= maxPos.y; y++)
                     {
                         _holeMap.SetTile(new Vector3Int(x, y), null);
+                        PoolManager.Instance.Push(_smokes[x, y]);
+                        _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
                     }
                 }
                 break;
@@ -127,9 +133,15 @@ public class MapManager : MonoSingleton<MapManager>
                 {
                     for (int y = minPos.y; y <= maxPos.y; y++)
                     {
-                        _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
-                        SpaEffect fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as SpaEffect;
-                        fx.transform.position = new Vector2(x, y);
+                        Vector3Int intPos = new Vector3Int(x, y);
+                        if (!_holeMap.HasTile(intPos))
+                        {
+                            EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
+                            fx.transform.position = intPos;
+                            _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
+                        }
+                        _holeMap.SetTile(intPos, _holeTile);
+
                     }
                 }
                 //_holeMap.SetTile(new Vector3Int(pos.x, pos.y), _holeTile);

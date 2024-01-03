@@ -64,6 +64,9 @@ public class EnemyBrain : PoolableMono, IDamageable
     public virtual void SetDead()
     {
         MapManager.Instance.SetTile(transform.position, TileType.Water);
+        EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;
+        fx.transform.position = transform.position;
+        fx.StartPlay(5f);
         isDead = true;
     }
 
