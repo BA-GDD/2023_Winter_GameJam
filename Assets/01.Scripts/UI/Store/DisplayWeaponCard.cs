@@ -38,6 +38,8 @@ public class DisplayWeaponCard : MonoBehaviour
         }
     }
 
+    private bool _isHavenThisGun => _storeSceneUI.CheckHasPurchaseThisGun(_myInfo);
+
     private StatusInfoPanel _stInfoPanel;
 
     private void Start()
@@ -48,10 +50,8 @@ public class DisplayWeaponCard : MonoBehaviour
         _gunProfile.sprite = _myInfo.gunProfile;
         _priceText.text = $"X {_myInfo.priceValue}";
 
-        bool isHaveThisGun = _storeSceneUI.CheckHasPurchaseThisGun(_myInfo);
-
-        _unHasBlock.SetActive(!isHaveThisGun);
-        _alreadyHaveText.gameObject.SetActive(isHaveThisGun);
+        _unHasBlock.SetActive(!_isHavenThisGun);
+        _alreadyHaveText.gameObject.SetActive(_isHavenThisGun);
     }
 
     private void Update()
@@ -92,5 +92,15 @@ public class DisplayWeaponCard : MonoBehaviour
         {
             PoolManager.Instance.Push(_stInfoPanel);
         }
+    }
+
+    public void PurchaseThisItem()
+    {
+        if (_isHavenThisGun) return;
+
+        _storeSceneUI.PurchaseThisGun(_myInfo);
+
+        _unHasBlock.SetActive(!_isHavenThisGun);
+        _alreadyHaveText.gameObject.SetActive(_isHavenThisGun);
     }
 }
