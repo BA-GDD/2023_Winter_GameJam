@@ -100,6 +100,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayBtnSE()
     {
-        Play(btnClip, 3, 1, 1, false);
+        Play(btnClip, 3, 1, 2, false);
     }
 }

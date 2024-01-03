@@ -15,6 +15,8 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     public bool isSkillPrepare;
     private Controls _controls;
 
+    public AudioClip reloadClip;
+
     private void OnEnable()
     {
         if (_controls == null)
@@ -44,10 +46,12 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
         {
+            SoundManager.Instance.Play(reloadClip, 100, 1, 2, true, "ReloadSE");
             isReload = true;
         }
         else if (context.canceled)
         {
+            SoundManager.Instance.Stop("ReloadSE");
             isReload = false;
         }
     }

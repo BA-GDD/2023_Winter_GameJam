@@ -110,7 +110,7 @@ public abstract class Gun : MonoBehaviour
         {
             SetShootTrigger(true);
 
-            SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
+            SoundManager.Instance.Play(shootClip, 0.7f, 1, 2, false);
 
             float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
