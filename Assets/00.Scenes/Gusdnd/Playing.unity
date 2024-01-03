@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 232611074}
   - component: {fileID: 232611073}
   m_Layer: 0
-  m_Name: Deco_bottme
+  m_Name: Deco_bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59493,7 +59493,7 @@ MonoBehaviour:
     weight: 1
   _groundMap: {fileID: 1163447697}
   _holeMap: {fileID: 1375474601}
-  _decoMap: {fileID: 0}
+  _decoMap: {fileID: 232611072}
   _holeTile: {fileID: 11400000, guid: 3f384d7077ca3c241802dac4e17afa78, type: 2}
   _groundTile: {fileID: 11400000, guid: ec7219d52da4f0c439b42f2191939e7b, type: 2}
   _defaultSpaSize: {x: 4, y: 4}

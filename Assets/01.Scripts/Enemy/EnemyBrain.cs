@@ -44,7 +44,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
-        if (MapManager.Instance.CheckWater(transform.position))
+        if (!isDead && MapManager.Instance.CheckWater(transform.position))
         {
             MapManager.Instance.SetTile(transform.position, TileType.Ground);
         }
