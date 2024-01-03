@@ -28,6 +28,11 @@ public class GameResultSceneUI : SceneUIBase
         }
     }
 
+    private void Start()
+    {
+        SetUp();
+    }
+
     public override void SetUp()
     {
         _milkThrowEvent?.Invoke(Mathf.FloorToInt(10));

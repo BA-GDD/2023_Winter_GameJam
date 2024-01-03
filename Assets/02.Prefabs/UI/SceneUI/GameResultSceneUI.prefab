@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentScore: {fileID: 3530347308447232512}
-  _beforeScore: {fileID: 8938476538030201435}
+  _beforeScore: {fileID: 7437153097252839637}
   _bestScore: {fileID: 5334158370877703886}
 --- !u!1 &1512133721386435214
 GameObject:

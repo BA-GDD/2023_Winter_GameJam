@@ -85,6 +85,7 @@ public class DisplayWeaponCard : MonoBehaviour
             _stInfoPanel = PoolManager.Instance.Pop(PoolingType.StatusInfoPanel) as StatusInfoPanel;
             _stInfoPanel.transform.SetParent(transform);
             _stInfoPanel.transform.localPosition = _InfoTrm.localPosition;
+            _stInfoPanel.transform.localScale = Vector3.one;
             _stInfoPanel.SetUpPanel(_myInfo);
         }
         else if(_stInfoPanel != null)
