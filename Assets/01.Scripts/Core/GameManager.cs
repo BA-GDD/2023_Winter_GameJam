@@ -43,6 +43,9 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    [SerializeField]
+    private AudioClip _bgmClip;
+
     private void Awake()
     {
         _gameData = new GameData();
@@ -57,6 +60,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         player = FindObjectOfType<Player>().transform;
+        SoundManager.Instance.Play(_bgmClip, 1, 1, 1);
     }
 
     private void Update()
