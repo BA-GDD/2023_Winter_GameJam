@@ -34,13 +34,19 @@ public class Shotgun : Gun
         }
     }
 
-    public override void Skill()
+    public override void Skill(bool occurSkill)
     {
         if (CanUseSkill())
         {
+            if (!occurSkill)
+            {
 
+                base.Skill(occurSkill);
+            }
+            else
+            {
 
-            base.Skill();
+            }
         }
     }
 }

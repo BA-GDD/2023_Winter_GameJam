@@ -7,31 +7,38 @@ using UnityEngine.InputSystem;
 public class Razer : Gun
 {
     [SerializeField]
-    private LayerMask _enemyLayerMask;
+    private PlayerRazer _razerEffect;
 
     public override void ShootProcess()
     {
-        //Bullet razer = PoolManager.Instance.Pop(PoolingType.PlayerRazer) as Bullet;
-        //razer.transform.position = firePosition.transform.position;
-        //Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - razer.transform.position;
+        _razerEffect.gameObject.SetActive(true);
 
-        //direction.Normalize();
+        _razerEffect.transform.position = firePosition.transform.position;
+        Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _razerEffect.transform.position;
 
-        //razer.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+        direction.Normalize();
 
-        //Physics2D.RaycastAll(razer.transform.position, direction, razer.particle.main.startSizeX.constant, _enemyLayerMask).ToList().ForEach(enemy =>
-        //{
-        //    enemy.transform.GetComponent<MobBrain>().OnHitHandle();
-        //});
+        _razerEffect.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (transform.parent.localScale.x * direction.x < 0f ? 180f : 0f), Vector3.forward);
+
+        Physics2D.RaycastAll(_razerEffect.transform.position, direction, _razerEffect.particle.main.startSizeX.constant, enemyLayerMask).ToList().ForEach(enemy =>
+        {
+            enemy.transform.GetComponent<MobBrain>().OnHitHandle();
+        });
     }
 
-    public override void Skill()
+    public override void Skill(bool occurSkill)
     {
         if (CanUseSkill())
         {
+            if (!occurSkill)
+            {
 
+                base.Skill(occurSkill);
+            }
+            else
+            {
 
-            base.Skill();
+            }
         }
     }
 }

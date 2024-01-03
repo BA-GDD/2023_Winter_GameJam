@@ -1,3 +1,4 @@
+using AmplifyShaderEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    //[SerializeField]
+    private readonly int _materialHalfAmountHash = Shader.PropertyToID("_player_half_amount");
+    [SerializeField]
     private UnityEvent _onDieTrigger;
     [SerializeField]
     private InputReader _inputReader;
@@ -20,12 +22,16 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private ParticleSystem _playerWalkFX;
     private Vector2 _dashDirection;
+    private Material _material;
     private Rigidbody2D _rigidbody2D;
     private Transform _gunSocket;
     private Gun _equipedGun;
     private PlayerAnimator _playerAnimator;
+    private bool _canReload;
     private bool _isDash;
     private bool _isDead;
+    private bool _isMove;
+    public bool IsMove => _isMove;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
@@ -34,6 +40,7 @@ public class Player : MonoBehaviour, IDamageable
     public AudioClip dashClip;
     private void Awake()
     {
+        _material = GetComponent<SpriteRenderer>().material;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
@@ -45,11 +52,15 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
-
     }
 
     private void Update()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         _dashTimer -= Time.deltaTime;
 
         if (transform.localScale.x * _inputReader.movementDirection.x < 0f)
@@ -57,27 +68,68 @@ public class Player : MonoBehaviour, IDamageable
             Flip();
         }
 
-        if (_isDash)
+        if (_inputReader.isReload)
+        {
+            _equipedGun.Reload(ref _canReload);
+        }
+        else
+        {
+            _canReload = false;
+        }
+
+        if (_inputReader.isSkillOccur)
+        {
+            _inputReader.isSkillOccur = false;
+            _inputReader.isSkillPrepare = false;
+
+            _equipedGun.Skill(true);
+        }
+        else if (_inputReader.isSkillPrepare)
+        {
+            _equipedGun.Skill(false);
+        }
+
+        if (_canReload)
+        {
+            Movement(_inputReader.movementDirection, _movementSpeed * 0.25f);
+
+            if (_isMove)
+            {
+                _material.SetFloat(_materialHalfAmountHash, -(1f / 6f * 4f + 1f / 6f * 10f / 34f));
+            }
+            else
+            {
+                _material.SetFloat(_materialHalfAmountHash, -(1f / 6f * 3f + 1f / 6f * 10f / 34f));
+            }
+        }
+        else if (_isDash)
         {
             if (transform.localScale.x * _dashDirection.x < 0f)
             {
                 Flip();
             }
 
-            Movement(_dashDirection, movementSpeed * 5f);
+            Movement(_dashDirection, _movementSpeed * 5f);
+            _material.SetFloat(_materialHalfAmountHash, 1f);
         }
         else
         {
-            Movement(_inputReader.movementDirection, movementSpeed);
+            Movement(_inputReader.movementDirection, _movementSpeed);
+            _material.SetFloat(_materialHalfAmountHash, 1f);
+        }
+
+        if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
+        {
+            _equipedGun.gameObject.SetActive(!_canReload);
+            _playerAnimator.SetReload(_canReload);
         }
     }
 
     public void EquipGun(GunType gunType)
     {
         _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
-        _inputReader.onReloadEvent += _equipedGun.Reload;
+        _equipedGun.owner = this;
         _inputReader.onShootEvent += _equipedGun.Shoot;
-        _inputReader.onSkillEvent += _equipedGun.Skill;
 
         _equipedGun.gameObject.SetActive(true);
     }
@@ -94,9 +146,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         _equipedGun.gameObject.SetActive(false);
 
-        _inputReader.onReloadEvent -= _equipedGun.Reload;
         _inputReader.onShootEvent -= _equipedGun.Shoot;
-        _inputReader.onSkillEvent -= _equipedGun.Skill;
+        _equipedGun.owner = null;
         _equipedGun = null;
     }
 
@@ -108,7 +159,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         _isDead = true;
-        _playerAnimator.SetDieTrigger(_isDead);
+
         UnequipGun();
         (this as IDamageable).OnHit();
     }
@@ -119,7 +170,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             _dashDirection = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
             SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
-            
+
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();
             if(transform.localScale.x < 0.0f)
@@ -144,17 +195,10 @@ public class Player : MonoBehaviour, IDamageable
     private void Movement(Vector2 direction, float speed)
     {
         _rigidbody2D.velocity = direction * speed;
+        _isMove = _rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f;
 
-        if (_rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f)
-        {
-            _playerAnimator.SetMove(true);
-            _playerWalkFX.gameObject.SetActive(true);
-        }
-        else
-        {
-            _playerAnimator.SetMove(false);
-            _playerWalkFX.gameObject.SetActive(false);
-        }
+
+        _playerAnimator.SetMove(_isMove);
     }
 
     private IEnumerator DashCoroutine()

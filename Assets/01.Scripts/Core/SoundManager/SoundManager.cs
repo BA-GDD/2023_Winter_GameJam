@@ -36,7 +36,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void Play(AudioClip clip, float volume = 1f, float pitch = 1f, int channel = 0, bool loop=false)
     {
-        SoundObject obj = null;
+        /*SoundObject obj = null;
         if (audioQueue.Count > 0)
         {
             obj = audioQueue.Dequeue();
@@ -51,7 +51,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         if (!loop)
         {
             StartCoroutine(DQ(clip.length, obj));
-        }
+        }*/
     }
 
     IEnumerator DQ(float time, SoundObject obj)

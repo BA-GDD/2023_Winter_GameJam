@@ -1,28 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerRazer : Bullet
+public class PlayerRazer : MonoBehaviour
 {
-    protected override void Awake()
+    [HideInInspector]
+    public ParticleSystem particle;
+    private float _lifeTime;
+
+    private void Awake()
     {
         particle = transform.Find("line").GetComponent<ParticleSystem>();
     }
 
-    protected override async void OnEnable()
-    {
-        await Task.Delay(1);
-
-        Init();
-    }
-
-    public override void Init()
+    private void OnEnable()
     {
         var mainParticle = particle.main;
-        lifeTime = mainParticle.startLifetime.constant;
+        _lifeTime = mainParticle.startLifetime.constant;
 
-        GetComponent<ParticleSystem>().Play();
-        PoolManager.Instance.Push(this, lifeTime);
+        particle.Play();
+        StartCoroutine(RazerLifeTime());
+    }
+
+    private IEnumerator RazerLifeTime()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+
+        gameObject.SetActive(false);
     }
 }

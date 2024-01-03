@@ -3,7 +3,7 @@ using UnityEngine;
 
 class Pool<T> where T : PoolableMono
 {
-    private Stack<T> _pool = new Stack<T>();
+    private Queue<T> _pool = new Queue<T>();
     private T _prefab; //오리지날 저장
     private Transform _parent;
     private PoolingType _poolingType;
@@ -20,7 +20,7 @@ class Pool<T> where T : PoolableMono
             obj.poolingType = _poolingType;
             obj.gameObject.name = _poolingType.ToString();
             obj.gameObject.SetActive(false);
-            _pool.Push(obj);
+            _pool.Enqueue(obj);
         }
     }
 
@@ -35,7 +35,7 @@ class Pool<T> where T : PoolableMono
         }
         else
         {
-            obj = _pool.Pop();
+            obj = _pool.Dequeue();
             obj.gameObject.SetActive(true);
         }
         return obj;
@@ -49,6 +49,6 @@ class Pool<T> where T : PoolableMono
         }
 
         obj.gameObject.SetActive(false);
-        _pool.Push(obj);
+        _pool.Enqueue(obj);
     }
 }

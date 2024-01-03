@@ -6,9 +6,13 @@ using UnityEngine;
 public class Bullet : PoolableMono
 {
     [HideInInspector]
+    public Collider2D targetOfMissile;
+    [HideInInspector]
     public ParticleSystem particle;
+    [HideInInspector]
+    public bool isMissileMode;
     [SerializeField]
-    private Rigidbody2D _rigidbody2d;
+    protected Rigidbody2D rigidbody2d;
     public float bulletSpeed = 5f;
     public float lifeTime = 3f;
 
@@ -21,7 +25,7 @@ public class Bullet : PoolableMono
     {
         await Task.Delay(1);
 
-        _rigidbody2d.velocity = transform.right * bulletSpeed;
+        rigidbody2d.velocity = transform.right * bulletSpeed;
 
         Init();
     }
@@ -33,6 +37,5 @@ public class Bullet : PoolableMono
 
         particle.Play();
         PoolManager.Instance.Push(this, lifeTime);
-        
     }
 }

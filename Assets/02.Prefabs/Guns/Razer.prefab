@@ -120,8 +120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfaa61899a84124ea9bdccf55e19f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   firePosition: {fileID: 4345421249368949826}
   gunScriptableObject: {fileID: 11400000, guid: acee184634a1cf9429b2284192c00aab, type: 2}
+  shootClip: {fileID: 0}
+  _razerEffect: {fileID: 0}
 --- !u!1 &7488689908606532538
 GameObject:
   m_ObjectHideFlags: 0
