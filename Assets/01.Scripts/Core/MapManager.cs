@@ -65,7 +65,7 @@ public class MapManager : MonoSingleton<MapManager>
         Vector2Int maxPos = Vector2Int.zero + _defaultSpaSize / 2;
         _groundMap.CompressBounds();
         BoundsInt bounds = _groundMap.cellBounds;
-        _mapSize = new Vector2Int(bounds.xMax+Mathf.Abs(bounds.xMin), bounds.yMax + Mathf.Abs(bounds.yMin));
+        _mapSize = new Vector2Int(bounds.xMax+Mathf.Abs(bounds.xMin)+1, bounds.yMax + Mathf.Abs(bounds.yMin)+1);
         _smokes = new EffectPlayer[_mapSize.x, _mapSize.y];
         for (int x = minPos.x; x <= maxPos.x; x++)
         {
@@ -75,7 +75,7 @@ public class MapManager : MonoSingleton<MapManager>
                 EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                 fx.StartPlay(-1);
                 fx.transform.position = new Vector2(x+1, y+1);
-                _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
+                _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y+1 + _mapSize.y * 0.5f)] = fx;
             }
         }
         _holeMap.CompressBounds();
@@ -134,6 +134,8 @@ public class MapManager : MonoSingleton<MapManager>
                         _holeMap.SetTile(new Vector3Int(x, y), null);
                         PoolManager.Instance.Push(_smokes[x, y]);
                         _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
+                        if (GameManager.Instance.occupationPercent < WaterFillAmount())
+                            GameManager.Instance.GameEnd();
                     }
                 }
                 break;
@@ -147,6 +149,7 @@ public class MapManager : MonoSingleton<MapManager>
                         {
                             EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                             fx.transform.position = intPos + (Vector3Int)Vector2Int.one;
+
                             _smokes[x + Mathf.FloorToInt(_mapSize.x * 0.5f), y + Mathf.FloorToInt(_mapSize.y * 0.5f)] = fx;
                         }
                         _holeMap.SetTile(intPos, _holeTile);

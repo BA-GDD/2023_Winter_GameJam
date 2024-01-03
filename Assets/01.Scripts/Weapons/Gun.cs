@@ -25,7 +25,14 @@ public abstract class Gun : MonoBehaviour
     private float _usableCapacity;
     private float _currentSkillGauge;
 
+    protected Camera _mainCam;
+
     public event Action<float> usableCapacityChanged;
+
+    private void Awake()
+    {
+        _mainCam = Camera.main;
+    }
 
     protected virtual void OnEnable()
     {
@@ -39,7 +46,7 @@ public abstract class Gun : MonoBehaviour
     protected virtual void Update()
     {
         _shootDelayTimer -= Time.deltaTime;
-        _direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
+        _direction = (_mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
 
         if (GameManager.Instance.player.transform.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
         {

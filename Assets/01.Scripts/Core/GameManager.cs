@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -15,7 +17,13 @@ public class GameManager : MonoSingleton<GameManager>
     public float gameTime = 5.0f; //�ʴ���
     private float _curTime = 5.0f; //�ʴ���
     public float CurrentTime => _curTime;
-    public Transform player { get; set; }
+    public Transform player
+    {
+        get
+        {
+            return FindObjectOfType<Player>().transform;
+        }
+    }
     public Camera mainCamera;
     public GunType selectGunType;
 
@@ -53,24 +61,22 @@ public class GameManager : MonoSingleton<GameManager>
         _gameData = JsonUtility.FromJson<GameData>(data); ;
 
         PoolManager poolManager = new PoolManager(transform);
-        foreach(var item in _poolList.poolList)
+        foreach (var item in _poolList.poolList)
         {
             poolManager.CreatePool(item.prefab, item.type, item.count);
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-    }
-    private void Start()
-    {
-        player = FindObjectOfType<Player>().transform;
+
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
-        if(!isGameEnd)
+        if (!isGameEnd)
             _curTime -= Time.deltaTime;
 
-        if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        if (_curTime <= 0.0f)
         {
             GameEnd();
         }
@@ -90,5 +96,15 @@ public class GameManager : MonoSingleton<GameManager>
         _curTime = 0.0f;
 
         onGameEndTrigger?.Invoke();
+    }
+    public void SceneChange(string sceneName, Action callback)
+    {
+        StartCoroutine(SceneChangeCor(sceneName, callback));
+    }
+    private IEnumerator SceneChangeCor(string sceneName, Action callback)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        yield return new WaitUntil(() => operation.isDone);
+        callback?.Invoke();
     }
 }

@@ -25,7 +25,7 @@ public class Shotgun : Gun
             bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
             bullet.lifeTime = _lifeTime;
             bullet.transform.position = firePosition.position;
-            Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
+            Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
 
             direction.Normalize();
 
