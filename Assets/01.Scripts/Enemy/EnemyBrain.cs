@@ -26,6 +26,9 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     public SpriteRenderer _spriteRenderer;
 
+    public AudioClip hitClip;
+    public AudioClip shootClip;
+
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
@@ -70,6 +73,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     public virtual void SetDead()
     {
+        SoundManager.Instance.Play(hitClip, 1, 1, 1, false);
         MapManager.Instance.SetTile(transform.position, TileType.Water);
         StartCoroutine(Hit());
         EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;

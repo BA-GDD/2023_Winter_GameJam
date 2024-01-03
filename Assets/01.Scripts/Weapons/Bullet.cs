@@ -33,5 +33,6 @@ public class Bullet : PoolableMono
 
         particle.Play();
         PoolManager.Instance.Push(this, lifeTime);
+        
     }
 }

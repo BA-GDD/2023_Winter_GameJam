@@ -60,7 +60,6 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         {
             if (percent < enemyStatusSOList[i].spawnPercent)
             {
-                int rand = Random.Range(0, 7);
                 PoolableMono enemy = PoolManager.Instance.Pop(enemyStatusSOList[i].type);
                 enemy.transform.position = spawnPos + Random.insideUnitCircle * 3f;
                 ++_enemyCount;

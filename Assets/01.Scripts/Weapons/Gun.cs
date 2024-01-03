@@ -33,6 +33,8 @@ public abstract class Gun : MonoBehaviour
     {
         _mainCam = Camera.main;
     }
+    public AudioClip shootClip;
+
 
     protected virtual void OnEnable()
     {
@@ -83,6 +85,8 @@ public abstract class Gun : MonoBehaviour
         if (CanShoot())
         {
             SetShootTrigger(true);
+
+            SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
 
             float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;

@@ -65,6 +65,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _spriteRenderer: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 68dd3dd8083738f49b72fc3ab8581a38, type: 3}
+  shootClip: {fileID: 8300000, guid: 68dd3dd8083738f49b72fc3ab8581a38, type: 3}
   _animator: {fileID: 5804424914908572822}
 --- !u!114 &5804424914908572822
 MonoBehaviour:
@@ -140,8 +142,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0721674, y: 0.7481811}
-  m_Size: {x: 0.89692116, y: 1.4227729}
+  m_Offset: {x: -0.0635612, y: 0.7998173}
+  m_Size: {x: 1.1551023, y: 1.6637421}
   m_Direction: 0
 --- !u!50 &949376400677042408
 Rigidbody2D:

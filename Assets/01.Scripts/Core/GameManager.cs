@@ -51,6 +51,9 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    [SerializeField]
+    private AudioClip _bgmClip;
+
     private void Awake()
     {
         string data = PlayerPrefs.GetString("GameData", string.Empty);
@@ -67,15 +70,12 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-<<<<<<< HEAD
 
         DontDestroyOnLoad(this);
-=======
     }
     private void Start()
     {
-        //player = FindObjectOfType<Player>().transform;
->>>>>>> hawon
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
     }
 
     private void Update()
@@ -83,17 +83,10 @@ public class GameManager : MonoSingleton<GameManager>
         if (!isGameEnd)
             _curTime -= Time.deltaTime;
 
-<<<<<<< HEAD
         if (_curTime <= 0.0f)
         {
             GameEnd();
         }
-=======
-        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
-        //{
-        //    GameEnd();
-        //}
->>>>>>> hawon
     }
 
     public void GameStart()
