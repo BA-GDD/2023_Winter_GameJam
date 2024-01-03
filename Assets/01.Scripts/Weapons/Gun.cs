@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -31,6 +32,14 @@ public abstract class Gun : MonoBehaviour
 
     public AudioClip shootClip;
 
+    protected Camera _mainCam;
+
+    public event Action<float> usableCapacityChanged;
+
+    private void Awake()
+    {
+        _mainCam = Camera.main;
+    }
 
     protected virtual void OnEnable()
     {
@@ -49,7 +58,7 @@ public abstract class Gun : MonoBehaviour
         }
 
         _shootDelayTimer -= Time.deltaTime;
-        Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
+        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
 
         direction.Normalize();
 
@@ -62,6 +71,16 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void ShootProcess();
+
+    public virtual void Reload()
+    {
+        _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
+        _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
+        _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime/ gunScriptableObject.maximumCapacity);
+    }
 
     public virtual void Skill(bool occurSkill)
     {
@@ -94,8 +113,12 @@ public abstract class Gun : MonoBehaviour
 
             SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
 
+            float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
+            float after = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;
+
+            usableCapacityChanged?.Invoke(-(before - after)/gunScriptableObject.maximumCapacity);
         }
     }
 

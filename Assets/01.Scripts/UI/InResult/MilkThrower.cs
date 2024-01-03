@@ -19,6 +19,7 @@ public class MilkThrower : MonoBehaviour
 
     public void ThrwoMilk(int milkCount)
     {
+        GameManager.Instance.GameData.milkCoount += milkCount;
         StartCoroutine(ThrowMilkCo(milkCount));
     }
 

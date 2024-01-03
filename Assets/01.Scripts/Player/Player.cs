@@ -34,6 +34,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public AudioClip dashClip;
 
+    private Camera _mainCam;
+    
     private void Awake()
     {
         _material = GetComponent<SpriteRenderer>().material;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour, IDamageable
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
         _dashTimer = 0f;
+
+        _mainCam = Camera.main;
     }
 
     private void Start()
@@ -127,6 +131,14 @@ public class Player : MonoBehaviour, IDamageable
 
         _equipedGun.gameObject.SetActive(true);
     }
+    public void SetWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
+    }
+    public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
+    }
 
     public void UnequipGun()
     {
@@ -139,7 +151,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        /*if (_isDead)
+        if (_isDead)
         {
             return;
         }
@@ -147,15 +159,16 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
 
         UnequipGun();
-        (this as IDamageable).OnHit();*/
+        (this as IDamageable).OnHit();
     }
 
     private void Dash()
     {
         if (_dashTimer <= 0f)
         {
-            _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
+            _dashDirection = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
             SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
+
             _dashDirection.Normalize();
             StartCoroutine(DashCoroutine());
         }
