@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90428a528bcb35046816f952e24799d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   onGameEndTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -460,10 +461,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gameTime: 5
-  mainCamera: {fileID: 0}
-  selectGunType: 0
   occupationPercent: 0
   isGameEnd: 0
+  selectGunType: 0
+  _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
 --- !u!4 &1602182425
 Transform:
   m_ObjectHideFlags: 0
@@ -551,6 +552,7 @@ MonoBehaviour:
   - {fileID: 4843451791284579702, guid: 7cf95d64b867b2349bbc9c13dc5839ef, type: 3}
   - {fileID: 7883981793306648618, guid: becf321868750064aaf95048f49c7a50, type: 3}
   - {fileID: 5817304806659701176, guid: cec0ef289a79bd845bb055fa20bf65a7, type: 3}
+  milkCount: 0
   _list: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
 --- !u!4 &1773294575
 Transform:

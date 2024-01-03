@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
     private Transform _panelTrm;
     private PanelBase _onActivePanel;
 
+    public int milkCount;
+
     [SerializeField] private PoolListSO _list;
 
     private void Awake()

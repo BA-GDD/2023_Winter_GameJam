@@ -13,7 +13,7 @@ public class GameResultSceneUI : SceneUIBase
 
     public void GoToLobby()
     {
-        GameManager.Instance.GameData.Save(GameManager.Instance.Score);
+        GameManager.Instance.gameData.Save(GameManager.Instance.Score);
         UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
     }
 
@@ -31,8 +31,8 @@ public class GameResultSceneUI : SceneUIBase
     {
         _milkThrowEvent?.Invoke(Mathf.FloorToInt(GameManager.Instance.Score * 0.1f));
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
-                               GameManager.Instance.GameData.beforeTime,
-                               GameManager.Instance.GameData.bestTime);
+                               GameManager.Instance.gameData.beforeTime,
+                               GameManager.Instance.gameData.bestTime);
         _remainFX = Instantiate(_partyFX);
     }
 

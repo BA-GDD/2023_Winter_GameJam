@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   gunName: "\uBB3C\uB7AD\uC0F7\uAC74"
-  gunProfile: {fileID: 0}
+  gunProfile: {fileID: 21300000, guid: 768fc3ff81b86324b9b79c6eb4ffa35d, type: 3}
   flavorText: "\uB180\uC774\uD130\uC5D0\n\uB4E4\uACE0\uC624\uBA74\n\uC778\uC2F8 \uB418\uB294\n'\uADF8'
     \uBB3C\uCD1D"
   skillText: 
@@ -22,4 +22,6 @@ MonoBehaviour:
   maximumCapacity: 0
   fillCapacityPerSecond: 0
   useCapacityPerShoot: 0
+  requireSkillGauge: 0
+  fillSkillGaugePerSecond: 0
   priceValue: 0

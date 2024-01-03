@@ -24,6 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
     public bool isGameEnd = false;
 
     public GameData gameData;
+    public GunType selectGunType;
 
     private float _score;
     public float Score

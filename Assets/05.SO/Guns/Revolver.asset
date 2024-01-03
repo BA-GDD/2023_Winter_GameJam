@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   gunName: "\uC6CC\uD130 \uC0F7"
-  gunProfile: {fileID: 0}
+  gunProfile: {fileID: 21300000, guid: 8febf06b435ac254790c58b9798181e9, type: 3}
   flavorText: "\uADFC\uBCF8 \uBB3C\uCD1D.\n\uC2A4\uD0E0\uB2E4\uB4DC \uD55C\n\uC190
     \uB9DB\uC774 \uC788\uB2E4."
   skillText: 
@@ -22,4 +22,6 @@ MonoBehaviour:
   maximumCapacity: 0
   fillCapacityPerSecond: 0
   useCapacityPerShoot: 0
+  requireSkillGauge: 0
+  fillSkillGaugePerSecond: 0
   priceValue: 0

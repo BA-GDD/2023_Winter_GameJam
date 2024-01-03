@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class StoreSceneUI : SceneUIBase
 {
-    [SerializeField] private int _haveMilks;
+    private int _haveMilks;
     private List<GunSO> _hasPurchaseGunList = new List<GunSO>();
     [SerializeField] private ResultOfPurchasePanel _resultPanel;
 
     public override void SetUp()
     {
+        _haveMilks = UIManager.Instanace.milkCount;
     }
 
     public override void Init()
