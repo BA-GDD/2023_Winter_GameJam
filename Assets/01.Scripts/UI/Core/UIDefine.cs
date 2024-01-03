@@ -7,5 +7,6 @@ namespace UIDefine
         InGame,
         GameResult,
         Store,
+        Prologue
     }
 }

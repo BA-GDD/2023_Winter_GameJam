@@ -382,7 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be1118ffaa6efd4d9ccf702b193020e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stampFX: {fileID: 6693300501265587130, guid: f00164d8c8963e945871a2413469fe5f, type: 3}
   _milkCountText: {fileID: 6177119925268064926}
+  count: 0
 --- !u!1 &7208963252680410590
 GameObject:
   m_ObjectHideFlags: 0

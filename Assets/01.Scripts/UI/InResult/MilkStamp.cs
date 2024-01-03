@@ -6,6 +6,7 @@ using TMPro;
 
 public class MilkStamp : MonoBehaviour
 {
+    [SerializeField] private Transform _stampFX;
     [SerializeField] private TextMeshProUGUI _milkCountText;
     private RectTransform _myRect;
     private Vector2 _normalValue;
@@ -25,6 +26,10 @@ public class MilkStamp : MonoBehaviour
         seq.Append(transform.DOScale(_normalValue, 0.4f).SetEase(Ease.InQuart));
         seq.AppendInterval(0.2f);
         seq.AppendCallback(() => SetText());
+        seq.AppendCallback(() =>
+        {
+            Instantiate(_stampFX, transform);
+        });
     }
 
     private void SetText()
