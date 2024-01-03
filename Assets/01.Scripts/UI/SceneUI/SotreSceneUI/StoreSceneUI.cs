@@ -10,7 +10,6 @@ public class StoreSceneUI : SceneUIBase
 
     public override void SetUp()
     {
-        _haveMilks = UIManager.Instanace.milkCount;
     }
 
     public override void Init()
