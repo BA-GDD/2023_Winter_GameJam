@@ -9,7 +9,7 @@ public enum PoolingType
     StatusInfoPanel,
     PlayerBullet,
     EnemyBullet,
-    FallingMilk
+    FallingMilk,
     RevolverEnemy,
     MeleeEnemy,
     SniperEnemy,

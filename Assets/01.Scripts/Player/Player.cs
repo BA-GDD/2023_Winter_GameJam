@@ -66,25 +66,25 @@ public class Player : MonoBehaviour, IDamageable
     //    }
     //}
 
-    //public void EquipGun(GunType gunType)
-    //{
-    //    _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
-    //    _inputReader.onReloadEvent += _equipedGun.Reload;
-    //    _inputReader.onShootEvent += _equipedGun.Shoot;
-    //    _inputReader.onSkillEvent += _equipedGun.Skill;
+    public void EquipGun(GunType gunType)
+    {
+        _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
+        _inputReader.onReloadEvent += _equipedGun.Reload;
+        _inputReader.onShootEvent += _equipedGun.Shoot;
+        _inputReader.onSkillEvent += _equipedGun.Skill;
 
-    //    _equipedGun.gameObject.SetActive(true);
-    //}
+        _equipedGun.gameObject.SetActive(true);
+    }
 
-    //public void UnequipGun()
-    //{
-    //    _equipedGun.gameObject.SetActive(false);
+    public void UnequipGun()
+    {
+        _equipedGun.gameObject.SetActive(false);
 
-    //    _inputReader.onReloadEvent -= _equipedGun.Reload;
-    //    _inputReader.onShootEvent -= _equipedGun.Shoot;
-    //    _inputReader.onSkillEvent -= _equipedGun.Skill;
-    //    _equipedGun = null;
-    //}
+        _inputReader.onReloadEvent -= _equipedGun.Reload;
+        _inputReader.onShootEvent -= _equipedGun.Shoot;
+        _inputReader.onSkillEvent -= _equipedGun.Skill;
+        _equipedGun = null;
+    }
 
     public void OnHitHandle()
     {
@@ -105,15 +105,15 @@ public class Player : MonoBehaviour, IDamageable
         {
             _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
 
-    //        _dashDirection.Normalize();
-    //        StartCoroutine(DashCoroutine());
-    //    }
-    //}
+            _dashDirection.Normalize();
+            StartCoroutine(DashCoroutine());
+        }
+    }
 
-    //private void Flip()
-    //{
-    //    transform.localScale *= new Vector2(-1f, 1f);
-    //}
+    private void Flip()
+    {
+        transform.localScale *= new Vector2(-1f, 1f);
+    }
 
     private void Movement(Vector2 direction, float speed)
     {
@@ -129,15 +129,15 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    //private IEnumerator DashCoroutine()
-    //{
-    //    _isDash = true;
-    //    _dashTimer = _dashDelay;
+    private IEnumerator DashCoroutine()
+    {
+        _isDash = true;
+        _dashTimer = _dashDelay;
 
-    //    _playerAnimator.SetDashTrigger(_isDash);
+        _playerAnimator.SetDashTrigger(_isDash);
 
-    //    yield return new WaitForSeconds(_dashDuration);
+        yield return new WaitForSeconds(_dashDuration);
 
-    //    _isDash = false;
-    //}
+        _isDash = false;
+    }
 }
