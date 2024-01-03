@@ -35,8 +35,6 @@ public class UIManager : MonoBehaviour
     private Transform _panelTrm;
     private PanelBase _onActivePanel;
 
-    [SerializeField] private PoolListSO _list;
-
     private void Awake()
     {
         if (_instance != null)
@@ -55,19 +53,12 @@ public class UIManager : MonoBehaviour
             _uiSelecter.Add(sceneObj.myUIType, sceneObj);
         }
 
-        PoolManager pm = new PoolManager(CanvasTrm);
-
-        foreach(PoolingItem p in _list.poolList)
-        {
-            pm.CreatePool(p.prefab, p.type, p.count);
-        }
-        
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
-        //ChangeScene(_startUIType);
+        ChangeScene(_startUIType);
     }
 
     public void ChangeScene(UIType toChangeScene)
@@ -78,7 +69,7 @@ public class UIManager : MonoBehaviour
         }
 
         _currentScene = Instantiate(_uiSelecter[toChangeScene], _sceneUITrm);
-        _currentScene.name.Replace("(Clone)", "");
+        _currentScene.name = _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();
     }
 

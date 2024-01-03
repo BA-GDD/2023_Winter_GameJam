@@ -5,17 +5,15 @@ using UnityEngine.InputSystem;
 
 public class Revolver : Gun
 {
-    public override void Shoot()
+    public override void ShootProcess()
     {
-        if (CanShoot())
-        {
-            PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
-            bullet.transform.position = firePosition.position;
-            Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position).normalized;
-            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+        PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+        bullet.transform.position = firePosition.position;
+        Vector2 direction = (_mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position);
 
-            base.Shoot();
-        }
+        direction.Normalize();
+
+        bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
     }
 
     public override void Skill()

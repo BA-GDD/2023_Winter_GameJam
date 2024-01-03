@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoSingleton<EnemySpawner>
 {
-    public List<EnemyStatusSO> enemyStatusSOList;
+    [SerializeField]
+    private List<EnemyStatusSO> enemyStatusSOList;
     private int _enemyCount;
     [SerializeField]
     private int _spawnCount = 10;

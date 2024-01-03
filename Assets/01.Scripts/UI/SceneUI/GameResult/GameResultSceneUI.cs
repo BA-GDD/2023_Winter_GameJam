@@ -7,11 +7,14 @@ public class GameResultSceneUI : SceneUIBase
 {
     [SerializeField] private GameObject _partyFX;
     [SerializeField] private UnityEvent<float, float, float> _scoreSetEvent;
+    [SerializeField] private UnityEvent<int> _milkThrowEvent;
     private GameObject _remainFX;
     public bool isEndTimeLine;
 
     public void GoToLobby()
     {
+        GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
+        GameManager.Instance.GameData.Save();
         UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
     }
 
@@ -27,7 +30,10 @@ public class GameResultSceneUI : SceneUIBase
 
     public override void SetUp()
     {
-        //_scoreSetEvent?.Invoke();
+        _milkThrowEvent?.Invoke(Mathf.FloorToInt(GameManager.Instance.Score * 0.1f));
+        _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
+                               GameManager.Instance.GameData.beforeTime,
+                               GameManager.Instance.GameData.bestTime);
         _remainFX = Instantiate(_partyFX);
     }
 

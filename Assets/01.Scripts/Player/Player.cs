@@ -28,12 +28,16 @@ public class Player : MonoBehaviour, IDamageable
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
+    private Camera _mainCam;
+    
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
         _dashTimer = 0f;
+
+        _mainCam = Camera.main;
     }
 
     private void Start()
@@ -41,7 +45,7 @@ public class Player : MonoBehaviour, IDamageable
         _inputReader.onDashEvent += Dash;
 
         // Debug
-        EquipGun(GunType.Shotgun);
+        //EquipGun(GunType.Shotgun);
     }
 
     private void Update()
@@ -77,6 +81,14 @@ public class Player : MonoBehaviour, IDamageable
 
         _equipedGun.gameObject.SetActive(true);
     }
+    public void SetWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
+    }
+    public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
+    {
+        _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
+    }
 
     public void UnequipGun()
     {
@@ -105,7 +117,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (_dashTimer <= 0f)
         {
-            _dashDirection = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
+            _dashDirection = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
 
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();

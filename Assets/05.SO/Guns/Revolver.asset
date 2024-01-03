@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dddb7cd34c00f942b8c44fb9fba476e, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  gunName: Revolver
+  gunName: "\uC6CC\uD130 \uC0F7"
   gunProfile: {fileID: 0}
-  flavorText: 
+  flavorText: "\uADFC\uBCF8 \uBB3C\uCD1D.\n\uC2A4\uD0E0\uB2E4\uB4DC \uD55C\n\uC190
+    \uB9DB\uC774 \uC788\uB2E4."
   skillText: 
   gunAnimator: {fileID: 0}
-  shootDelay: 0.25
+  shootDelay: 0
   maximumCapacity: 0
   fillCapacityPerSecond: 0
   useCapacityPerShoot: 0
-  requireSkillGauge: 0
-  fillSkillGaugePerSecond: 0
   priceValue: 0

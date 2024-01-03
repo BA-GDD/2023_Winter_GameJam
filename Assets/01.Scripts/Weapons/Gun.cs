@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,18 +13,30 @@ public enum GunType
 
 public abstract class Gun : MonoBehaviour
 {
+    private readonly int _shootTriggerHash = Animator.StringToHash("shoot");
     [SerializeField]
     protected Transform firePosition;
     [SerializeField]
     protected GunSO gunScriptableObject;
     private Vector2 _direction;
+    private Animator _animator;
     private Transform _gunSocket;
     private float _shootDelayTimer;
     private float _usableCapacity;
     private float _currentSkillGauge;
 
+    protected Camera _mainCam;
+
+    public event Action<float> usableCapacityChanged;
+
+    private void Awake()
+    {
+        _mainCam = Camera.main;
+    }
+
     protected virtual void OnEnable()
     {
+        _animator = GetComponent<Animator>();
         _gunSocket = transform.parent;
         _shootDelayTimer = gunScriptableObject.shootDelay;
         _usableCapacity = gunScriptableObject.maximumCapacity;
@@ -33,7 +46,7 @@ public abstract class Gun : MonoBehaviour
     protected virtual void Update()
     {
         _shootDelayTimer -= Time.deltaTime;
-        _direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
+        _direction = (_mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
 
         if (GameManager.Instance.player.transform.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
         {
@@ -43,18 +56,16 @@ public abstract class Gun : MonoBehaviour
         _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg + (_direction.x < 0f ? 180f : 0f), Vector3.forward);
     }
 
+    public abstract void ShootProcess();
+
     public virtual void Reload()
     {
         _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
         _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
         _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
         _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
-    }
 
-    public virtual void Shoot()
-    {
-        _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
-        _shootDelayTimer = gunScriptableObject.shootDelay;
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime/ gunScriptableObject.maximumCapacity);
     }
 
     public virtual void Skill()
@@ -67,6 +78,21 @@ public abstract class Gun : MonoBehaviour
         _gunSocket.localScale *= new Vector2(-1f, 1f);
     }
 
+    public void Shoot()
+    {
+        if (CanShoot())
+        {
+            SetShootTrigger(true);
+
+            float before = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
+            _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
+            float after = _usableCapacity - gunScriptableObject.useCapacityPerShoot;
+            _shootDelayTimer = gunScriptableObject.shootDelay;
+
+            usableCapacityChanged?.Invoke(-(before - after)/gunScriptableObject.maximumCapacity);
+        }
+    }
+
     protected bool CanShoot()
     {
         return _usableCapacity >= gunScriptableObject.useCapacityPerShoot && _shootDelayTimer <= 0f;
@@ -75,5 +101,17 @@ public abstract class Gun : MonoBehaviour
     protected bool CanUseSkill()
     {
         return _currentSkillGauge >= gunScriptableObject.requireSkillGauge;
+    }
+
+    private void SetShootTrigger(bool value)
+    {
+        if (value)
+        {
+            _animator.SetTrigger(_shootTriggerHash);
+        }
+        else
+        {
+            _animator.ResetTrigger(_shootTriggerHash);
+        }
     }
 }

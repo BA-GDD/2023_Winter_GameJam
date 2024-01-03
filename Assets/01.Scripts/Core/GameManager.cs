@@ -1,14 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [HideInInspector]
-    public Camera mainCamera;
-
     [Header("���� �̺�Ʈ")]
     public UnityEvent onGameEndTrigger;
     public UnityEvent onGameStartTrigger;
@@ -18,12 +17,25 @@ public class GameManager : MonoSingleton<GameManager>
     public float gameTime = 5.0f; //�ʴ���
     private float _curTime = 5.0f; //�ʴ���
     public float CurrentTime => _curTime;
+    public Transform player
+    {
+        get
+        {
+            return FindObjectOfType<Player>().transform;
+        }
+    }
+    public Camera mainCamera;
+    public GunType selectGunType;
 
-    [Range(0f, 100f)]
+    [Range(0f, 1f)]
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
 
-    public GameData gameData;
+    [SerializeField]
+    private PoolListSO _poolList;
+
+    private GameData _gameData;
+    public GameData GameData => _gameData;
 
     private float _score;
     public float Score
@@ -39,31 +51,29 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public Transform player { get; private set; }
-
-    [SerializeField]
-    private PoolListSO _poolList;
-
     private void Awake()
     {
-        gameData = new GameData();
+        string data = PlayerPrefs.GetString("GameData", string.Empty);
+        if (string.IsNullOrEmpty(data))
+        {
+            _gameData = new GameData();
+        }
+        _gameData = JsonUtility.FromJson<GameData>(data); ;
+
         PoolManager poolManager = new PoolManager(transform);
-        foreach(var item in _poolList.poolList)
+        foreach (var item in _poolList.poolList)
         {
             poolManager.CreatePool(item.prefab, item.type, item.count);
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-    }
 
-    private void Start()
-    {
-        player = FindFirstObjectByType<Player>().transform;
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
-        if(!isGameEnd)
+        if (!isGameEnd)
             _curTime -= Time.deltaTime;
 
         if (_curTime <= 0.0f)
@@ -86,5 +96,15 @@ public class GameManager : MonoSingleton<GameManager>
         _curTime = 0.0f;
 
         onGameEndTrigger?.Invoke();
+    }
+    public void SceneChange(string sceneName, Action callback)
+    {
+        StartCoroutine(SceneChangeCor(sceneName, callback));
+    }
+    private IEnumerator SceneChangeCor(string sceneName, Action callback)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        yield return new WaitUntil(() => operation.isDone);
+        callback?.Invoke();
     }
 }
