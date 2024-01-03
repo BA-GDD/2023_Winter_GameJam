@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    [SerializeField]
+    //[SerializeField]
     private UnityEvent _onDieTrigger;
     [SerializeField]
     private InputReader _inputReader;
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         _isDead = true;
-
+        _playerAnimator.SetDieTrigger(_isDead);
         UnequipGun();
         (this as IDamageable).OnHit();
     }
