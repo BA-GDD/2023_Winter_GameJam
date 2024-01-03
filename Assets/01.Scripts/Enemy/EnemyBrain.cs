@@ -18,7 +18,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     public Action animationEvent;
 
-    public CharacterController characterController;
+    public Rigidbody2D rigidbody2d;
 
     public Vector2 dir;
 

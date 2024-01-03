@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   atkRange: 0.5
-  atkDelayTime: 2
+  spawnPercent: 30
   type: 0

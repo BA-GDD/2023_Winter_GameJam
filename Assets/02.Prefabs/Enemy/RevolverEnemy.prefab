@@ -133,7 +133,8 @@ GameObject:
   - component: {fileID: 4578350791432150205}
   - component: {fileID: 532025741026823756}
   - component: {fileID: 5345851325098245755}
-  - component: {fileID: 8135979945332770840}
+  - component: {fileID: 708426306419612432}
+  - component: {fileID: 5283148898449555854}
   m_Layer: 7
   m_Name: RevolverEnemy
   m_TagString: Untagged
@@ -177,7 +178,7 @@ MonoBehaviour:
   isChase: 0
   isAnimFinised: 0
   firePos: {fileID: 3053061905453596115}
-  characterController: {fileID: 8135979945332770840}
+  rigidbody2d: {fileID: 708426306419612432}
   dir: {x: 0, y: 0}
   onDieTrigger:
     m_PersistentCalls:
@@ -225,13 +226,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brain: {fileID: 2945752447944502275}
   tree: {fileID: 11400000, guid: a0fcf9ef3f67d224da100a543bab5a27, type: 2}
---- !u!143 &8135979945332770840
-CharacterController:
+--- !u!50 &708426306419612432
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4164086868388052412}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!70 &5283148898449555854
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164086868388052412}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -240,17 +270,24 @@ CharacterController:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -1, z: 0}
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.053592205, y: -1.1200792}
+  m_Size: {x: 0.9073019, y: 1.7610109}
+  m_Direction: 0
 --- !u!1 &7347578957162552261
 GameObject:
   m_ObjectHideFlags: 0
