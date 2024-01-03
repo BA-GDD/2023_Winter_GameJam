@@ -11,6 +11,11 @@ public class SniperAttack : EnemyAttack
     private ParticleSystem _sniperParticle;
     private ParticleSystem.MainModule _mainModule;
 
+    private void OnDisable()
+    {
+        _line.SetPosition(1, _brain.firePos.position);
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -77,6 +82,7 @@ public class SniperAttack : EnemyAttack
         }
         _line.SetPosition(1, _brain.firePos.position);
         _sniperParticle.Play();
+        SoundManager.Instance.Play(_brain.shootClip, 1, 1, 1, false);
         _attackTimer = 0;
         yield return new WaitForSeconds(0.5f);
         _isChasing = true;

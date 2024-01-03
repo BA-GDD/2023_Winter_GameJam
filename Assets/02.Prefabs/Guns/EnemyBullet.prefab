@@ -4899,6 +4899,7 @@ MonoBehaviour:
   _rigidbody2d: {fileID: 4789000781721827222}
   bulletSpeed: 10
   lifeTime: 3
+  _shootClip: {fileID: 8300000, guid: e79dd902e4319794eb88419e8b621c15, type: 3}
 --- !u!199 &3551899058279043343
 ParticleSystemRenderer:
   serializedVersion: 6

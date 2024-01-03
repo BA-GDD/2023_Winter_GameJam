@@ -13,13 +13,14 @@ public class SoundObject : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public void Play(AudioMixerGroup group,AudioClip clip, float volume = 1f, float pitch = 1f)
+    public void Play(AudioMixerGroup group,AudioClip clip, float volume = 1f, float pitch = 1f, bool loop = false)
     {
         print($"{group} : {volume} : {pitch}");
         source.outputAudioMixerGroup = group;
         source.clip = clip;
         source.volume = volume;
         source.pitch = pitch;
+        source.loop = loop;
         source.Play();
     }
 }
