@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,7 @@ public abstract class Gun : MonoBehaviour
     private Vector2 _direction;
     private Animator _animator;
     private Transform _gunSocket;
+    private Transform _player;
     private float _shootDelayTimer;
     private float _usableCapacity;
     private float _currentSkillGauge;
@@ -28,6 +30,7 @@ public abstract class Gun : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _gunSocket = transform.parent;
+        _player = GameManager.Instance.player.transform;
         _shootDelayTimer = gunScriptableObject.shootDelay;
         _usableCapacity = gunScriptableObject.maximumCapacity;
         _currentSkillGauge = 0f;
@@ -38,7 +41,7 @@ public abstract class Gun : MonoBehaviour
         _shootDelayTimer -= Time.deltaTime;
         _direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
 
-        if (GameManager.Instance.player.transform.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
+        if (_player.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
         {
             Flip();
         }
@@ -47,14 +50,6 @@ public abstract class Gun : MonoBehaviour
     }
 
     public abstract void ShootProcess();
-
-    public virtual void Reload()
-    {
-        _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
-        _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-        _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
-        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
-    }
 
     public virtual void Skill()
     {
@@ -66,6 +61,19 @@ public abstract class Gun : MonoBehaviour
         _gunSocket.localScale *= new Vector2(-1f, 1f);
     }
 
+    public void Reload(ref bool canReload)
+    {
+        canReload = CanReload();
+
+        if (canReload)
+        {
+            _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
+            _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
+            _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+            _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+        }
+    }
+
     public void Shoot()
     {
         if (CanShoot())
@@ -75,11 +83,6 @@ public abstract class Gun : MonoBehaviour
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
             _shootDelayTimer = gunScriptableObject.shootDelay;
         }
-    }
-
-    protected bool CanShoot()
-    {
-        return _usableCapacity >= gunScriptableObject.useCapacityPerShoot && _shootDelayTimer <= 0f;
     }
 
     protected bool CanUseSkill()
@@ -97,5 +100,15 @@ public abstract class Gun : MonoBehaviour
         {
             _animator.ResetTrigger(_shootTriggerHash);
         }
+    }
+
+    private bool CanReload()
+    {
+        return MapManager.Instance.CheckWater(_player.position);
+    }
+
+    private bool CanShoot()
+    {
+        return _usableCapacity >= gunScriptableObject.useCapacityPerShoot && _shootDelayTimer <= 0f;
     }
 }

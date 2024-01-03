@@ -53,9 +53,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-    }
-    private void Start()
-    {
         player = FindObjectOfType<Player>().transform;
     }
 

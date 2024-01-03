@@ -1,3 +1,4 @@
+using AmplifyShaderEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    //[SerializeField]
+    private readonly int _materialHalfAmountHash = Shader.PropertyToID("_player_half_amount");
+    [SerializeField]
     private UnityEvent _onDieTrigger;
     [SerializeField]
     private InputReader _inputReader;
@@ -17,17 +19,21 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField]
     private float _dashDuration;
     private Vector2 _dashDirection;
+    private Material _material;
     private Rigidbody2D _rigidbody2D;
     private Transform _gunSocket;
     private Gun _equipedGun;
     private PlayerAnimator _playerAnimator;
+    private bool _canReload;
     private bool _isDash;
     private bool _isDead;
+    private bool _isMove;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
     private void Awake()
     {
+        _material = GetComponent<SpriteRenderer>().material;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
@@ -37,9 +43,6 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
-
-        // Debug
-        EquipGun(GunType.Razer);
     }
 
     private void Update()
@@ -51,7 +54,29 @@ public class Player : MonoBehaviour, IDamageable
             Flip();
         }
 
-        if (_isDash)
+        if (_inputReader.isReload)
+        {
+            _equipedGun.Reload(ref _canReload);
+        }
+        else
+        {
+            _canReload = false;
+        }
+
+        if (_canReload)
+        {
+            Movement(_inputReader.movementDirection, _movementSpeed * 0.25f);
+
+            if (_isMove)
+            {
+                _material.SetFloat(_materialHalfAmountHash, -(1f / 6f * 4f + 1f / 6f * 10f / 34f));
+            }
+            else
+            {
+                _material.SetFloat(_materialHalfAmountHash, -(1f / 6f * 3f + 1f / 6f * 10f / 34f));
+            }
+        }
+        else if (_isDash)
         {
             if (transform.localScale.x * _dashDirection.x < 0f)
             {
@@ -59,17 +84,24 @@ public class Player : MonoBehaviour, IDamageable
             }
 
             Movement(_dashDirection, _movementSpeed * 5f);
+            _material.SetFloat(_materialHalfAmountHash, 1f);
         }
         else
         {
             Movement(_inputReader.movementDirection, _movementSpeed);
+            _material.SetFloat(_materialHalfAmountHash, 1f);
+        }
+
+        if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
+        {
+            _equipedGun.gameObject.SetActive(!_canReload);
+            _playerAnimator.SetReload(_canReload);
         }
     }
 
     public void EquipGun(GunType gunType)
     {
         _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
-        _inputReader.onReloadEvent += _equipedGun.Reload;
         _inputReader.onShootEvent += _equipedGun.Shoot;
         _inputReader.onSkillEvent += _equipedGun.Skill;
 
@@ -80,7 +112,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         _equipedGun.gameObject.SetActive(false);
 
-        _inputReader.onReloadEvent -= _equipedGun.Reload;
         _inputReader.onShootEvent -= _equipedGun.Shoot;
         _inputReader.onSkillEvent -= _equipedGun.Skill;
         _equipedGun = null;
@@ -94,7 +125,7 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         _isDead = true;
-        _playerAnimator.SetDieTrigger(_isDead);
+
         UnequipGun();
         (this as IDamageable).OnHit();
     }
@@ -118,15 +149,9 @@ public class Player : MonoBehaviour, IDamageable
     private void Movement(Vector2 direction, float speed)
     {
         _rigidbody2D.velocity = direction * speed;
+        _isMove = _rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f;
 
-        if (_rigidbody2D.velocity.x != 0f || _rigidbody2D.velocity.y != 0f)
-        {
-            _playerAnimator.SetMove(true);
-        }
-        else
-        {
-            _playerAnimator.SetMove(false);
-        }
+        _playerAnimator.SetMove(_isMove);
     }
 
     private IEnumerator DashCoroutine()

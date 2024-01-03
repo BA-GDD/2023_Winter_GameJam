@@ -20,7 +20,7 @@ public class Razer : Gun
 
         direction.Normalize();
 
-        _razerEffect.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+        _razerEffect.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (transform.parent.localScale.x * direction.x < 0f ? 180f : 0f), Vector3.forward);
 
         Physics2D.RaycastAll(_razerEffect.transform.position, direction, _razerEffect.particle.main.startSizeX.constant, _enemyLayerMask).ToList().ForEach(enemy =>
         {
