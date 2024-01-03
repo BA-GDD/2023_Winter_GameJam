@@ -6,7 +6,7 @@ Shader "2_based/player"
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
-		_main_tex("main_tex", 2D) = "white" {}
+		_MainTex("MainTex", 2D) = "white" {}
 		_player_half_amount("player_half_amount", Range( -1 , 1)) = -1
 		[HDR]_blink_color("blink_color", Color) = (1,1,1,0)
 		_blink_amount("blink_amount", Range( 0 , 0.5)) = 0
@@ -92,9 +92,9 @@ Shader "2_based/player"
 
 			
 
-			sampler2D _main_tex;
+			sampler2D _MainTex;
 			CBUFFER_START( UnityPerMaterial )
-			float4 _main_tex_ST;
+			float4 _MainTex_ST;
 			float4 _blink_color;
 			float _player_half_amount;
 			float _blink_amount;
@@ -168,8 +168,8 @@ Shader "2_based/player"
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX( IN );
 				float3 positionWS = IN.positionWS.xyz;
 
-				float2 uv_main_tex = IN.texCoord0.xy * _main_tex_ST.xy + _main_tex_ST.zw;
-				float4 tex2DNode5 = tex2D( _main_tex, uv_main_tex );
+				float2 uv_MainTex = IN.texCoord0.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 tex2DNode5 = tex2D( _MainTex, uv_MainTex );
 				float2 texCoord6 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 appendResult12 = (float4(tex2DNode5.r , tex2DNode5.g , tex2DNode5.b , ( tex2DNode5.a * step( 0.0 , ( texCoord6.y + _player_half_amount ) ) )));
 				float4 lerpResult13 = lerp( appendResult12 , _blink_color , _blink_amount);
@@ -232,9 +232,9 @@ Shader "2_based/player"
 
 			
 
-			sampler2D _main_tex;
+			sampler2D _MainTex;
 			CBUFFER_START( UnityPerMaterial )
-			float4 _main_tex_ST;
+			float4 _MainTex_ST;
 			float4 _blink_color;
 			float _player_half_amount;
 			float _blink_amount;
@@ -308,8 +308,8 @@ Shader "2_based/player"
 				UNITY_SETUP_INSTANCE_ID( IN );
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX( IN );
 
-				float2 uv_main_tex = IN.texCoord0.xy * _main_tex_ST.xy + _main_tex_ST.zw;
-				float4 tex2DNode5 = tex2D( _main_tex, uv_main_tex );
+				float2 uv_MainTex = IN.texCoord0.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 tex2DNode5 = tex2D( _MainTex, uv_MainTex );
 				float2 texCoord6 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 appendResult12 = (float4(tex2DNode5.r , tex2DNode5.g , tex2DNode5.b , ( tex2DNode5.a * step( 0.0 , ( texCoord6.y + _player_half_amount ) ) )));
 				float4 lerpResult13 = lerp( appendResult12 , _blink_color , _blink_amount);
@@ -363,9 +363,9 @@ Shader "2_based/player"
 
 			
 
-			sampler2D _main_tex;
+			sampler2D _MainTex;
 			CBUFFER_START( UnityPerMaterial )
-			float4 _main_tex_ST;
+			float4 _MainTex_ST;
 			float4 _blink_color;
 			float _player_half_amount;
 			float _blink_amount;
@@ -439,8 +439,8 @@ Shader "2_based/player"
 
 				float3 positionWS = IN.positionWS.xyz;
 
-				float2 uv_main_tex = IN.texCoord0.xy * _main_tex_ST.xy + _main_tex_ST.zw;
-				float4 tex2DNode5 = tex2D( _main_tex, uv_main_tex );
+				float2 uv_MainTex = IN.texCoord0.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 tex2DNode5 = tex2D( _MainTex, uv_MainTex );
 				float2 texCoord6 = IN.texCoord0.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 appendResult12 = (float4(tex2DNode5.r , tex2DNode5.g , tex2DNode5.b , ( tex2DNode5.a * step( 0.0 , ( texCoord6.y + _player_half_amount ) ) )));
 				float4 lerpResult13 = lerp( appendResult12 , _blink_color , _blink_amount);
@@ -509,9 +509,9 @@ Shader "2_based/player"
 
 			
 
-			sampler2D _main_tex;
+			sampler2D _MainTex;
 			CBUFFER_START( UnityPerMaterial )
-			float4 _main_tex_ST;
+			float4 _MainTex_ST;
 			float4 _blink_color;
 			float _player_half_amount;
 			float _blink_amount;
@@ -571,8 +571,8 @@ Shader "2_based/player"
 
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
-				float2 uv_main_tex = IN.ase_texcoord.xy * _main_tex_ST.xy + _main_tex_ST.zw;
-				float4 tex2DNode5 = tex2D( _main_tex, uv_main_tex );
+				float2 uv_MainTex = IN.ase_texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 tex2DNode5 = tex2D( _MainTex, uv_MainTex );
 				float2 texCoord6 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 appendResult12 = (float4(tex2DNode5.r , tex2DNode5.g , tex2DNode5.b , ( tex2DNode5.a * step( 0.0 , ( texCoord6.y + _player_half_amount ) ) )));
 				float4 lerpResult13 = lerp( appendResult12 , _blink_color , _blink_amount);
@@ -621,9 +621,9 @@ Shader "2_based/player"
 
         	
 
-			sampler2D _main_tex;
+			sampler2D _MainTex;
 			CBUFFER_START( UnityPerMaterial )
-			float4 _main_tex_ST;
+			float4 _MainTex_ST;
 			float4 _blink_color;
 			float _player_half_amount;
 			float _blink_amount;
@@ -681,8 +681,8 @@ Shader "2_based/player"
 
 			half4 frag(VertexOutput IN ) : SV_TARGET
 			{
-				float2 uv_main_tex = IN.ase_texcoord.xy * _main_tex_ST.xy + _main_tex_ST.zw;
-				float4 tex2DNode5 = tex2D( _main_tex, uv_main_tex );
+				float2 uv_MainTex = IN.ase_texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
+				float4 tex2DNode5 = tex2D( _MainTex, uv_MainTex );
 				float2 texCoord6 = IN.ase_texcoord.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 appendResult12 = (float4(tex2DNode5.r , tex2DNode5.g , tex2DNode5.b , ( tex2DNode5.a * step( 0.0 , ( texCoord6.y + _player_half_amount ) ) )));
 				float4 lerpResult13 = lerp( appendResult12 , _blink_color , _blink_amount);
@@ -707,7 +707,6 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;False;-1;
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;ASEMaterialInspector;0;1;New Amplify Shader;199187dac283dbe4a8cb1ea611d70c58;True;Sprite Forward;0;2;Sprite Forward;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;5;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;UniversalMaterialType=Lit;ShaderGraphShader=true;True;0;True;12;all;0;False;True;2;5;False;;10;False;;3;1;False;;10;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;2;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;ASEMaterialInspector;0;1;New Amplify Shader;199187dac283dbe4a8cb1ea611d70c58;True;SceneSelectionPass;0;3;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;5;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;UniversalMaterialType=Lit;ShaderGraphShader=true;True;0;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;ASEMaterialInspector;0;1;New Amplify Shader;199187dac283dbe4a8cb1ea611d70c58;True;ScenePickingPass;0;4;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;5;RenderPipeline=UniversalPipeline;RenderType=Transparent=RenderType;Queue=Transparent=Queue=0;UniversalMaterialType=Lit;ShaderGraphShader=true;True;0;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.SamplerNode;5;-1057,-133.5;Inherit;True;Property;_main_tex;main_tex;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TextureCoordinatesNode;6;-1076,85.5;Inherit;True;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleAddOpNode;8;-808,134.5;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.StepOpNode;10;-688,110.5;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0
@@ -717,6 +716,7 @@ Node;AmplifyShaderEditor.RangedFloatNode;9;-1132,344.5;Inherit;False;Property;_p
 Node;AmplifyShaderEditor.LerpOp;13;-185,-103.5;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;14;-443,86.5;Inherit;False;Property;_blink_color;blink_color;2;1;[HDR];Create;True;0;0;0;False;0;False;1,1,1,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RangedFloatNode;15;-429,281.5;Inherit;False;Property;_blink_amount;blink_amount;3;0;Create;True;0;0;0;False;0;False;0;0;0;0.5;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SamplerNode;5;-1057,-135.5;Inherit;True;Property;_MainTex;MainTex;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 WireConnection;0;1;13;0
 WireConnection;8;0;6;2
 WireConnection;8;1;9;0
@@ -731,4 +731,4 @@ WireConnection;13;0;12;0
 WireConnection;13;1;14;0
 WireConnection;13;2;15;0
 ASEEND*/
-//CHKSM=D9F5CF87A8715A8A24833EF3A903E0A1FF480330
+//CHKSM=B0753731ABB8F2B53CBE3EF8836CE4D501D1D7EB
