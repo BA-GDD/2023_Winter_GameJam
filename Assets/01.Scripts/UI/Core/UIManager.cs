@@ -35,8 +35,6 @@ public class UIManager : MonoBehaviour
     private Transform _panelTrm;
     private PanelBase _onActivePanel;
 
-    [SerializeField] private PoolListSO _list;
-
     private void Awake()
     {
         if (_instance != null)
@@ -55,13 +53,6 @@ public class UIManager : MonoBehaviour
             _uiSelecter.Add(sceneObj.myUIType, sceneObj);
         }
 
-        PoolManager pm = new PoolManager(CanvasTrm);
-
-        foreach(PoolingItem p in _list.poolList)
-        {
-            pm.CreatePool(p.prefab, p.type, p.count);
-        }
-        
         DontDestroyOnLoad(this.gameObject);
     }
 
