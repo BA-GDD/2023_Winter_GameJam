@@ -17,4 +17,5 @@ public class EnemyStatusSO : ScriptableObject
     public float atkRange;
     public float spawnPercent;
     public PoolingType type;
+    public float atkMinRange;
 }
