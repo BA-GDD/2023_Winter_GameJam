@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13f9d99740e87c48a320c8bcaded978, type: 3}
   m_Name: MeleeEnemyStatus
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  atkRange: 0
-  atkDelay: 0
-  animator: {fileID: 0}
+  moveSpeed: 5
+  atkRange: 0.5
+  spawnPercent: 30
   type: 0

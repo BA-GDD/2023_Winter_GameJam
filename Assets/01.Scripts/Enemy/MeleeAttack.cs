@@ -7,22 +7,17 @@ public class MeleeAttack : EnemyAttack
     protected override void Update()
     {
         base.Update();
-
-
     }
 
     public override void Attack()
     {
-        if(_attackTimer  >= _brain.status.atkDelayTime && _isAttack)
+        Collider2D collider = Physics2D.OverlapCircle(_brain.transform.position, 1.5f, 1 << 6);  
+        
+        if(collider != null)
         {
-            Collider2D collider = Physics2D.OverlapCircle(transform.position, _brain.status.atkRange, _playerLayerMask);
-
-            if (collider != null)
-            {
-                //collider.GetComponent<Player>().TakeDamage();
-            }
-
-            _attackTimer = 0;
+            // 플레이어 사망 처리
         }
+        
+        _attackTimer = 0;
     }
 }

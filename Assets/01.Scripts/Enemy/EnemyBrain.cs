@@ -18,7 +18,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     public Action animationEvent;
 
-    public CharacterController characterController;
+    public Rigidbody2D rigidbody2d;
 
     public Vector2 dir;
 
@@ -42,6 +42,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
+
         dir = GameManager.Instance.player.position - transform.position;
         dir.Normalize();
         if(dir.x * transform.localScale.x < 0)

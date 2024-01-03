@@ -10,6 +10,10 @@ public enum PoolingType
     PlayerBullet,
     EnemyBullet,
     FallingMilk
+    RevolverEnemy,
+    MeleeEnemy,
+    SniperEnemy,
+    ShieldEnemy,
 }
 
 public class PoolManager

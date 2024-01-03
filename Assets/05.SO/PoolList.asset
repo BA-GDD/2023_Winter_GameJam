@@ -22,3 +22,15 @@ MonoBehaviour:
   - type: 6
     prefab: {fileID: 7807168228155618667, guid: 28241bde5b3ddbf47984239ef534964f, type: 3}
     count: 20
+  - type: 6
+    prefab: {fileID: 2945752447944502275, guid: 90c095c16ed0c7046a5121337329cb34, type: 3}
+    count: 20
+  - type: 7
+    prefab: {fileID: 1911299084025825860, guid: 1ef3c255db886f045a1ba66db2ba04c2, type: 3}
+    count: 20
+  - type: 8
+    prefab: {fileID: 4770785407819693112, guid: 59c55708fd8a04a4497f407da0476e81, type: 3}
+    count: 20
+  - type: 9
+    prefab: {fileID: 231475890342244468, guid: c472a19a8a4dc6e4d9b59d4cd7f03e99, type: 3}
+    count: 20
