@@ -13,15 +13,17 @@ public class MobBrain : EnemyBrain
     protected override void OnEnable()
     {
         base.OnEnable();
-    }
-
-    public override void Init()
-    {
         isDead = false;
         _animator.SetIsMove(false);
         _animator.SetIsAttack(false);
         _animator.SetAttackTrigger(false);
         _animator.SetShootTrigger(false);
+        _animator.SetDieTrigger(false);
+    }
+
+    public override void Init()
+    {
+        
     }
 
     public override void SetDead()
