@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -22,7 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     public float occupationPercent = 0.0f; //0~100����
     public bool isGameEnd = false;
 
-    private GameData _gameData;
+    public GameData gameData;
 
     private float _score;
     public float Score
@@ -45,6 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
+        gameData = new GameData();
         PoolManager poolManager = new PoolManager(transform);
         foreach(var item in _poolList.poolList)
         {
@@ -52,7 +54,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-        _gameData = new GameData();
     }
 
     private void Start()

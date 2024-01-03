@@ -23,6 +23,6 @@ public class EnemyAnimationEvnetTrigger : MonoBehaviour
 
     public void EnemyDieEventHandle()
     {
-        //(_enemy as MobBrain).
+        EnemySpawner.Instance.DeSpawnEnemy(_enemy);
     }
 }

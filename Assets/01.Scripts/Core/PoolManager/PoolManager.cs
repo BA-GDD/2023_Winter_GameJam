@@ -6,14 +6,17 @@ using UnityEngine;
 public enum PoolingType
 {
     None,
-    DamageText,
-    DialogueEffect,
-    SwordAura,
     StatusInfoPanel,
     PlayerBullet,
     EnemyBullet,
     PlayerRazer,
-    FallingMilk
+    FallingMilk,
+    RevolverEnemy,
+    MeleeEnemy,
+    SniperEnemy,
+    ShieldEnemy,
+    SpaSmoke,
+    EnemyExplosion,
 }
 
 public class PoolManager
