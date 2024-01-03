@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
+        print("플레이어");
     }
 
     private void Update()
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _canReload = false;
+            MapManager.Instance.ExitSpa();
         }
 
         if (_inputReader.isSkillOccur)
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_canReload)
         {
+            MapManager.Instance.EnterSpa();
             Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
