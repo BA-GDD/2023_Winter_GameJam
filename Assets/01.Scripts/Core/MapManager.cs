@@ -43,7 +43,14 @@ public class MapManager : MonoSingleton<MapManager>
     private Vector2Int _mapSize;
     public float WaterFillAmount()
     {
-        int waterCnt = _holeMap.GetTilesBlock(_holeMap.cellBounds).Length;
+        int waterCnt = 0;
+        foreach (var item in _holeMap.GetTilesBlock(_holeMap.cellBounds))
+        {
+            if(item != null)
+            {
+                waterCnt++;
+            }
+        }
         int groundCnt = _groundMap.GetTilesBlock(_groundMap.cellBounds).Length;
         return (float)waterCnt / groundCnt;
     }
@@ -67,7 +74,7 @@ public class MapManager : MonoSingleton<MapManager>
                 _holeMap.SetTile(new Vector3Int(x, y), _holeTile);
                 EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                 fx.StartPlay(-1);
-                fx.transform.position = new Vector2(x, y);
+                fx.transform.position = new Vector2(x+1, y+1);
                 _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
             }
         }
@@ -100,13 +107,15 @@ public class MapManager : MonoSingleton<MapManager>
     public bool CheckWater(Vector3 pos)
     {
         pos.z = 0;
+        pos.x -= 1;
+        pos.y -= 1;
         return _holeMap.HasTile(Vector3Int.CeilToInt(pos));
     }
 
 
     public void SetTile(Vector2 pos, TileType type)
     {
-        Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x), Mathf.CeilToInt(pos.y));
+        Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x-1), Mathf.CeilToInt(pos.y-1));
         DrawTile(intVec, type);
         _holeMap.CompressBounds();
 
@@ -137,8 +146,8 @@ public class MapManager : MonoSingleton<MapManager>
                         if (!_holeMap.HasTile(intPos))
                         {
                             EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
-                            fx.transform.position = intPos;
-                            _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
+                            fx.transform.position = intPos + (Vector3Int)Vector2Int.one;
+                            _smokes[x + Mathf.FloorToInt(_mapSize.x * 0.5f), y + Mathf.FloorToInt(_mapSize.y * 0.5f)] = fx;
                         }
                         _holeMap.SetTile(intPos, _holeTile);
 

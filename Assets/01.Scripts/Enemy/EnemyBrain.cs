@@ -9,7 +9,6 @@ public class EnemyBrain : PoolableMono, IDamageable
 {
     [HideInInspector]
     public EnemyAttack attack;
-    [HideInInspector]
     public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;
@@ -25,9 +24,12 @@ public class EnemyBrain : PoolableMono, IDamageable
     public UnityEvent onDieTrigger;
     UnityEvent IDamageable.OnDieTrigger => onDieTrigger;
 
+    public SpriteRenderer _spriteRenderer;
+
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
+        _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
     }
 
     protected async virtual void OnEnable()
@@ -42,6 +44,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
+        //MapManager.instance.SetTile(transform.position, TileType.Ground);
 
         dir = GameManager.Instance.player.position - transform.position;
         dir.Normalize();
@@ -64,10 +67,19 @@ public class EnemyBrain : PoolableMono, IDamageable
     public virtual void SetDead()
     {
         MapManager.Instance.SetTile(transform.position, TileType.Water);
+        StartCoroutine(Hit());
         EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;
         fx.transform.position = transform.position;
         fx.StartPlay(5f);
         isDead = true;
+    }
+
+    private IEnumerator Hit()
+    {
+        Material mat = _spriteRenderer.material;
+        mat.SetFloat("_blink_amount", 0.5f);
+        yield return new WaitForSeconds(0.01f);
+        mat.SetFloat("_blink_amount", 0.0f);
     }
 
     public virtual void StartChase()

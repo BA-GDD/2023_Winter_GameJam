@@ -12,12 +12,12 @@ public class Bullet : PoolableMono
     public float bulletSpeed = 5f;
     public float lifeTime = 3f;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         particle = GetComponent<ParticleSystem>();
     }
 
-    private async void OnEnable()
+    protected virtual async void OnEnable()
     {
         await Task.Delay(1);
 

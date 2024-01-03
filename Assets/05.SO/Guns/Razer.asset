@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dddb7cd34c00f942b8c44fb9fba476e, type: 3}
   m_Name: Razer
   m_EditorClassIdentifier: 
-  gunName: "\uC218\uC555 \uB808\uC774\uC800 \uAC74"
-  gunProfile: {fileID: 21300000, guid: 5be25f42eb831e44c8ce3cbaa6d3afa5, type: 3}
-  flavorText: "\uBB34\uCC38\uD788 \uC801\uC744\n\uAD00\uD1B5\uD558\uB294\n\uAC15\uB825\uD55C
+  gunName: "\uB808\uC774\uC800 \uAC74"
+  gunProfile: {fileID: 0}
+  flavorText: "\uBB34\uCC38\uD788 \uC801\uC744<br>\uAD00\uD1B5\uD558\uB294<br> \uAC15\uB825\uD55C
     \uBB3C\uCD1D"
   skillText: "\uC5B4\uB9C8\uC5B4\uB9C8 \uD55C<br>\uBB3C\uB300\uD3EC\uB97C \uC3F4<br>\uC801\uB4E4\uC744<br>
     \uC12C\uBA78\uD55C\uB2E4."
   gunAnimator: {fileID: 0}
-  shootDelay: 1
-  maximumCapacity: 6
+  shootDelay: 0.5
+  maximumCapacity: 0
   fillCapacityPerSecond: 0
   useCapacityPerShoot: 0
   requireSkillGauge: 0

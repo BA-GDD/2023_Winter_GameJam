@@ -28,7 +28,10 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        onDashEvent?.Invoke();
+        if (context.performed)
+        {
+            onDashEvent?.Invoke();
+        }
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -38,16 +41,25 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 
     public void OnReload(InputAction.CallbackContext context)
     {
-        onReloadEvent?.Invoke();
+        if (context.performed)
+        {
+            onReloadEvent?.Invoke();
+        }
     }
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        onShootEvent?.Invoke();
+        if (context.performed)
+        {
+            onShootEvent?.Invoke();
+        }
     }
 
     public void OnSkill(InputAction.CallbackContext context)
     {
-        onSkillEvent?.Invoke();
+        if (context.performed)
+        {
+            onSkillEvent?.Invoke();
+        }
     }
 }
