@@ -1,28 +1,99 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Revolver : Gun
 {
+    [SerializeField]
+    private Transform _skillRangeCircle;
+    [SerializeField]
+    private float _rangeCircleExpandSpeed;
+    [SerializeField]
+    private float _rangeCircleMaxRadius;
+    [SerializeField]
+    private float _skillShootDelay;
+    private List<Collider2D> _targets;
+    private float _rangeCircleRadius;
+
     public override void ShootProcess()
     {
+        if (isSkillProcess)
+        {
+            return;
+        }
+
         PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
         bullet.transform.position = firePosition.position;
-        Vector2 direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position);
+        Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
 
         direction.Normalize();
 
         bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
     }
 
-    public override void Skill()
+    public override void Skill(bool occurSkill)
     {
         if (CanUseSkill())
         {
+            if (occurSkill)
+            {
+                Time.timeScale = 1f;
+                _rangeCircleRadius = 0f;
+                _skillRangeCircle.localScale = Vector2.zero;
 
-
-            base.Skill();
+                StartCoroutine(SkillProcess());
+            }
+            else
+            {
+                Time.timeScale = 0.2f;
+                _rangeCircleRadius += _rangeCircleExpandSpeed * Time.unscaledDeltaTime;
+                _rangeCircleRadius = Mathf.Clamp(_rangeCircleRadius, 0f, _rangeCircleMaxRadius);
+                _skillRangeCircle.localScale = new Vector2(_rangeCircleRadius * 2f, _rangeCircleRadius * 2f);
+                _targets = Physics2D.OverlapCircleAll(_skillRangeCircle.position, _rangeCircleRadius * 5f, enemyLayerMask).ToList();
+            }
         }
+    }
+
+    private IEnumerator SkillProcess()
+    {
+        isSkillProcess = true;
+
+        foreach (var target in _targets)
+        {
+            Transform gunSocket = transform.parent;
+            Vector2 direction = target.transform.position - gunSocket.position;
+
+            direction.Normalize();
+
+            if (owner.transform.localScale.x * gunSocket.localScale.x * direction.x < 0f)
+            {
+                Flip();
+            }
+
+            gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (direction.x < 0f ? 180f : 0f), Vector3.forward);
+
+            Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
+            bullet.isMissileMode = true;
+            bullet.targetOfMissile = target;
+            bullet.bulletSpeed = 20f;
+            bullet.lifeTime = 10f;
+            bullet.transform.position = firePosition.position;
+            direction = target.transform.position - bullet.transform.position;
+
+            direction.Normalize();
+
+            bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+
+            yield return new WaitForSeconds(_skillShootDelay);
+        }
+
+        isSkillProcess = false;
+
+        _targets.Clear();
+        base.Skill(true);
     }
 }

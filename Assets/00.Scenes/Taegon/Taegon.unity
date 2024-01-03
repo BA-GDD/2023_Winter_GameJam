@@ -631,6 +631,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &647830528 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+  m_PrefabInstance: {fileID: 2722099416305947878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792444573
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,10 +969,11 @@ MonoBehaviour:
       m_Calls: []
   gameTime: 5
   mainCamera: {fileID: 0}
-  selectGunType: 1
+  selectGunType: 0
   occupationPercent: 24.5
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
+  _bgmClip: {fileID: 0}
 --- !u!4 &1320543785
 Transform:
   m_ObjectHideFlags: 0
@@ -56614,8 +56620,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2343808455236176631, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 730379091811406550, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283461475207529754, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2380723362336200449, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
@@ -56623,13 +56641,41 @@ PrefabInstance:
       value: Capybara
       objectReference: {fileID: 0}
     - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: equipGunType
+      propertyPath: _onDieTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122843826214843097, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 5828763268188315218, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 271263094}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _skillShootDelay
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _skillRangeCircle
+      value: 
+      objectReference: {fileID: 647830528}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _rangeCircleMaxRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: enemyLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _rangeCircleExpandSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599837468685112314, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.6541758
@@ -56669,6 +56715,14 @@ PrefabInstance:
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626573098431155408, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626573098431155408, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -474469565
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

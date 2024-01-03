@@ -14,14 +14,17 @@ public enum GunType
 public abstract class Gun : MonoBehaviour
 {
     private readonly int _shootTriggerHash = Animator.StringToHash("shoot");
+    [HideInInspector]
+    public Player owner;
+    [SerializeField]
+    protected LayerMask enemyLayerMask;
     [SerializeField]
     protected Transform firePosition;
     [SerializeField]
     protected GunSO gunScriptableObject;
-    private Vector2 _direction;
+    protected bool isSkillProcess;
     private Animator _animator;
     private Transform _gunSocket;
-    private Transform _player;
     private float _shootDelayTimer;
     private float _usableCapacity;
     private float _currentSkillGauge;
@@ -30,7 +33,6 @@ public abstract class Gun : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _gunSocket = transform.parent;
-        _player = GameManager.Instance.player.transform;
         _shootDelayTimer = gunScriptableObject.shootDelay;
         _usableCapacity = gunScriptableObject.maximumCapacity;
         _currentSkillGauge = 0f;
@@ -38,20 +40,27 @@ public abstract class Gun : MonoBehaviour
 
     protected virtual void Update()
     {
-        _shootDelayTimer -= Time.deltaTime;
-        _direction = (GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position).normalized;
+        if (isSkillProcess)
+        {
+            return;
+        }
 
-        if (_player.localScale.x * _gunSocket.localScale.x * _direction.x < 0f)
+        _shootDelayTimer -= Time.deltaTime;
+        Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
+
+        direction.Normalize();
+
+        if (owner.transform.localScale.x * _gunSocket.localScale.x * direction.x < 0f)
         {
             Flip();
         }
 
-        _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg + (_direction.x < 0f ? 180f : 0f), Vector3.forward);
+        _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (direction.x < 0f ? 180f : 0f), Vector3.forward);
     }
 
     public abstract void ShootProcess();
 
-    public virtual void Skill()
+    public virtual void Skill(bool occurSkill)
     {
         _currentSkillGauge = 0f;
     }
@@ -104,7 +113,7 @@ public abstract class Gun : MonoBehaviour
 
     private bool CanReload()
     {
-        return MapManager.Instance.CheckWater(_player.position);
+        return MapManager.Instance.CheckWater(owner.transform.position);
     }
 
     private bool CanShoot()

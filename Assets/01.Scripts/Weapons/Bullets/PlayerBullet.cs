@@ -6,10 +6,25 @@ public class PlayerBullet : Bullet
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out MobBrain brain))
+        if (!isMissileMode)
         {
-            brain.OnHitHandle();
-            PoolManager.Instance.Push(this);
+            if (collision.TryGetComponent(out MobBrain brain))
+            {
+                brain.OnHitHandle();
+                PoolManager.Instance.Push(this);
+            }
+        }
+        else
+        {
+            if (collision == targetOfMissile)
+            {
+                collision.GetComponent<MobBrain>().OnHitHandle();
+
+                targetOfMissile = null;
+                isMissileMode = false;
+
+                PoolManager.Instance.Push(this);
+            }
         }
     }
 }

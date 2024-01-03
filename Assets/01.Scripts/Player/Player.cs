@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     private bool _isDash;
     private bool _isDead;
     private bool _isMove;
+    public bool IsMove => _isMove;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
@@ -47,6 +48,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         _dashTimer -= Time.deltaTime;
 
         if (transform.localScale.x * _inputReader.movementDirection.x < 0f)
@@ -61,6 +67,18 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _canReload = false;
+        }
+
+        if (_inputReader.isSkillOccur)
+        {
+            _inputReader.isSkillOccur = false;
+            _inputReader.isSkillPrepare = false;
+
+            _equipedGun.Skill(true);
+        }
+        else if (_inputReader.isSkillPrepare)
+        {
+            _equipedGun.Skill(false);
         }
 
         if (_canReload)
@@ -102,8 +120,8 @@ public class Player : MonoBehaviour, IDamageable
     public void EquipGun(GunType gunType)
     {
         _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
+        _equipedGun.owner = this;
         _inputReader.onShootEvent += _equipedGun.Shoot;
-        _inputReader.onSkillEvent += _equipedGun.Skill;
 
         _equipedGun.gameObject.SetActive(true);
     }
@@ -113,13 +131,13 @@ public class Player : MonoBehaviour, IDamageable
         _equipedGun.gameObject.SetActive(false);
 
         _inputReader.onShootEvent -= _equipedGun.Shoot;
-        _inputReader.onSkillEvent -= _equipedGun.Skill;
+        _equipedGun.owner = null;
         _equipedGun = null;
     }
 
     public void OnHitHandle()
     {
-        if (_isDead)
+        /*if (_isDead)
         {
             return;
         }
@@ -127,7 +145,7 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
 
         UnequipGun();
-        (this as IDamageable).OnHit();
+        (this as IDamageable).OnHit();*/
     }
 
     private void Dash()
