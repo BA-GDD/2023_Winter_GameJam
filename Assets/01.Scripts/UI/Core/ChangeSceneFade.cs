@@ -15,7 +15,10 @@ public class ChangeSceneFade : MonoBehaviour
         _myFadePanel.raycastTarget = true;
         Sequence seq = DOTween.Sequence();
         seq.Append(_myFadePanel.DOFade(1, _easingTime));
-        seq.AppendCallback(() => sceneChangeCallback?.Invoke());
+        seq.AppendCallback(() =>
+        {
+            sceneChangeCallback?.Invoke();
+        });
         seq.AppendInterval(0.2f);
         seq.Append(_myFadePanel.DOFade(0, _easingTime));
         seq.AppendCallback(() => _myFadePanel.raycastTarget = false);
