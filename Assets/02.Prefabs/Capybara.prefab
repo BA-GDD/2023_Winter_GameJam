@@ -221,8 +221,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7717250279753799156}
-  - {fileID: 8662437066119616160}
   - {fileID: 2283461475207529754}
+  - {fileID: 8662437066119616160}
   - {fileID: 8438121577835087954}
   - {fileID: 5685424330331799829}
   - {fileID: 6534516832620003921}
@@ -302,7 +302,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Intensity: 0.25
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000bb38a8dd432bb8e38fa83ab78162454f498a8b27
+  m_ApplyToSortingLayers: 00000000bb38a8dd432bb8e38fa83ab7498a8b278162454f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1346,6 +1346,10 @@ PrefabInstance:
       propertyPath: _rangeCircleExpandSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6140087112097808838, guid: d21f51ce511587343bbb2cd99d112b38, type: 3}
+      propertyPath: _timeScaleWhileSkillPrepare
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6459289559591411404, guid: d21f51ce511587343bbb2cd99d112b38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1650,13 +1654,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5356279069790347380, guid: b883c3aea1a71994b89182a586801b44, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356279069790347380, guid: b883c3aea1a71994b89182a586801b44, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5356279069790347380, guid: b883c3aea1a71994b89182a586801b44, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7395537747785490111, guid: b883c3aea1a71994b89182a586801b44, type: 3}
       propertyPath: m_Name
       value: RazerEffect
       objectReference: {fileID: 0}
     - target: {fileID: 7395537747785490111, guid: b883c3aea1a71994b89182a586801b44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8478447489861343610, guid: b883c3aea1a71994b89182a586801b44, type: 3}
       propertyPath: m_SortingLayer

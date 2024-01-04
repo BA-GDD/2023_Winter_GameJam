@@ -992,8 +992,8 @@ ParticleSystem:
             outSlope: 0
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
-            outWeight: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           - serializedVersion: 3
             time: 1
             value: 1
@@ -1001,8 +1001,8 @@ ParticleSystem:
             outSlope: 0
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
-            outWeight: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -1016,8 +1016,8 @@ ParticleSystem:
             outSlope: 0
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
-            outWeight: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           - serializedVersion: 3
             time: 1
             value: 1
@@ -1025,8 +1025,8 @@ ParticleSystem:
             outSlope: 0
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0
-            outWeight: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
@@ -1046,30 +1046,30 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.2500996
+          value: 1
+          inSlope: 0.056794804
+          outSlope: 0.056794804
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.25489536
+          outWeight: 0.046475776
+        - serializedVersion: 3
+          time: 1
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.16900128
-          value: 0.84000015
-          inSlope: 0.7085057
-          outSlope: 0.7085057
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.10870139
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: -0.2808269
-          outSlope: -0.2808269
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.13063674
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -4408,28 +4408,28 @@ ParticleSystem:
           value: 1
           inSlope: 0
           outSlope: 0
-          tangentMode: 0
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.13503796
+          time: 0.74953055
           value: 1
-          inSlope: -0.13979155
-          outSlope: -0.13979155
+          inSlope: -0.09756434
+          outSlope: -0.09756434
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.26449913
+          outWeight: 0.5576498
         - serializedVersion: 3
-          time: 0.5009824
+          time: 1
           value: -1
-          inSlope: -4.9658513
-          outSlope: -4.9658513
-          tangentMode: 0
+          inSlope: -7.985006
+          outSlope: -7.985006
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.080550134
-          outWeight: 0.33333334
+          inWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -14688,3 +14688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 0}
+  _shootStartLifeTime: 0.5
+  _shootStartSizeX: 10
+  _shootStartSizeY: 0.1
+  _skillStartLifeTime: 3
+  _skillStartSizeX: 25
+  _skillStartSizeY: 1

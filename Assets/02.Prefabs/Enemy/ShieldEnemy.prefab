@@ -336,7 +336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolingType: 8
   attack: {fileID: 0}
-  isDead: 0
   status: {fileID: 11400000, guid: c432c8ff2fd1caa42a59c68d37e59fae, type: 2}
   isChase: 0
   isAnimFinised: 0
@@ -346,7 +345,7 @@ MonoBehaviour:
   onDieTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 5235258103492806835}
   hitClip: {fileID: 8300000, guid: 68dd3dd8083738f49b72fc3ab8581a38, type: 3}
   shootClip: {fileID: 8300000, guid: 9eea199d5c354a74b94af5b43a45117e, type: 3}
   _animator: {fileID: 8262602653970714215}

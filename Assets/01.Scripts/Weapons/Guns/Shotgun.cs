@@ -89,7 +89,6 @@ public class Shotgun : Gun
 
                 float angle = Random.Range(-_skillShotAngleRange * 0.5f, _skillShotAngleRange * 0.5f);
                 bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angle, Vector3.forward);
-                bullet.ApeendEvent(KillEvnetHandle);
             }
         }
     }
@@ -108,7 +107,8 @@ public class Shotgun : Gun
 
             _skillEffect.Play();
             _skillEffect_01.Play();
-            base.Skill(occurSkill);
+            InitializeSkill();
+
         }
     }
 
@@ -116,5 +116,10 @@ public class Shotgun : Gun
     {
         _skillText.rectTransform.anchoredPosition *= new Vector2(-1f, 1f);
         _skillText.transform.localScale *= new Vector2(-1f, 1f);
+    }
+
+    protected override IEnumerator SkillProcess()
+    {
+        yield return null;
     }
 }
