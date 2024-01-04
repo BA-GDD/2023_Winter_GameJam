@@ -18,11 +18,13 @@ public class InGameSceneUI : SceneUIBase
         _player = FindObjectOfType<Player>();
         _player.inGameSceneUI = this;
 
-        _onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
-        _skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
-        _player.SetWaterGaugeHandle(_onsenWater);
-        _player.SetSkillGroup(_skillBarGroup);
-        SoundManager.Instance.Play(_bgmClip, 0.3f, 1f, 1, true, "InGame");
+
+        onsenWater = transform.Find("GamePanel/OnsenWaterGage").GetComponent<OnsenWaterGage>();
+        skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
+
+        _player.SetWaterGaugeHandle(onsenWater);
+        _player.SetSkillGroup(skillBarGroup);
+        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
     }
     public override void Init()
     {

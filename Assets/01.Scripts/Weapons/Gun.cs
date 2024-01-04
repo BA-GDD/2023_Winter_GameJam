@@ -82,14 +82,6 @@ public abstract class Gun : MonoBehaviour
         _gunSocket.localScale *= new Vector2(-1f, 1f);
     }
 
-    public virtual void Reload()
-    {
-        _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
-        _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-
-        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
-    }
-
     protected virtual void InitializeSkill()
     {
         if (isSkillProcess)
