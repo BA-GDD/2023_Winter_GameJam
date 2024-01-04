@@ -45,12 +45,14 @@ public class Player : MonoBehaviour, IDamageable
         _gunSocket = _playerAnimator.animator.transform.Find("GunSocket");
         _dashTimer = 0f;
 
+        EquipGun(GameManager.Instance.selectGunType);
         _mainCam = Camera.main;
     }
 
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
+        print("�÷��̾�");
     }
 
     private void Update()
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _canReload = false;
+            MapManager.Instance.ExitSpa();
         }
 
         if (_inputReader.isSkillOccur)
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_canReload)
         {
+            MapManager.Instance.EnterSpa();
             Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
@@ -165,6 +169,9 @@ public class Player : MonoBehaviour, IDamageable
 
         UnequipGun();
         (this as IDamageable).OnHit();*/
+        (this as IDamageable).OnHit();
+
+        GameManager.Instance.GameEnd();
     }
 
     private void Dash()
