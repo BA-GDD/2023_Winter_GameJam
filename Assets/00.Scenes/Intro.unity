@@ -240,7 +240,7 @@ MonoBehaviour:
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
   _poolTrm: {fileID: 1171933590}
-  _bgmClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
+  bgmClip: {fileID: 0}
   _inputReader: {fileID: 11400000, guid: f44f2f54643d7fb4f959a707e37e4188, type: 2}
 --- !u!4 &297524670
 Transform:

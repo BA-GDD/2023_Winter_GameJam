@@ -10,5 +10,6 @@ public class LobbySceneUI : SceneUIBase
 
     public override void Init()
     {
+        SoundManager.Instance.Stop("BGM");
     }
 }
