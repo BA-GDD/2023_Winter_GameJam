@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -71,7 +72,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-
         if(File.Exists(_filePath))
         {
             _jsonData = File.ReadAllText(_filePath);
@@ -82,9 +82,13 @@ public class GameManager : MonoSingleton<GameManager>
             _gameData = new GameData();
             SaveData();
         }
+        if(instance != null)
+        {
+            Destroy(gameobject);
+        }
+        instance = this;
 
         _inputReader.DisablePlayer();
-        string data = PlayerPrefs.GetString("GameData", string.Empty);
         //if (string.IsNullOrEmpty(data))
         //{
         //}
@@ -98,11 +102,13 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
+        //SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
         DontDestroyOnLoad(this);
     }
     private void Start()
     {
+        //player = FindObjectOfType<Player>().transform;
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
         isGameEnd = true;
     }
@@ -116,6 +122,10 @@ public class GameManager : MonoSingleton<GameManager>
         {
             GameEnd();
         }
+        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        //{
+        //    GameEnd();
+        //}
     }
 
     public void GameStart()
@@ -134,10 +144,24 @@ public class GameManager : MonoSingleton<GameManager>
 
         _inputReader.DisablePlayer();
         _poolTrm.BroadcastMessage("GotoPool");
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
-        SceneChange("Result");
+
+        StartCoroutine(GameEndAnimation());
+
         onGameEndTrigger?.Invoke();
     }
+
+    public IEnumerator GameEndAnimation()
+    {
+        Time.timeScale = 0.3f;
+
+        player.transform.Find("end").GetComponent<PlayableDirector>().Play();
+        yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 1.0f;
+
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        SceneChange("Result");
+    }
+
     public void SceneChange(string sceneName, Action callback = null)
     {
         StartCoroutine(SceneChangeCor(sceneName, callback));

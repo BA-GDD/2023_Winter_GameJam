@@ -23,4 +23,9 @@ public class SoundObject : MonoBehaviour
         source.loop = loop;
         source.Play();
     }
+
+    public void Stop()
+    {
+        source.Stop();
+    }
 }

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: revolvertest
-  m_Shader: {fileID: 4800000, guid: ca12eabcd976d044b8d15d2d02ca15fd, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 537d2c7cfbc9baa46aac969acb2e7680, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4ccd708eb6b8e8342b43dc757f2c5f8c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2c151bba14418914186386e1f400f1c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -67,11 +67,27 @@ Material:
     m_Floats:
     - _AlphaCutoff: 0.5
     - _EnableExternalAlpha: 0
+    - _OutlineThickness: 4
     - _blink_amount: 0
+    - _isOutline: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.33333334, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _blink_color: {r: 8.574187, g: 8.574187, b: 8.574187, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &959100465547973909
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

@@ -1,4 +1,3 @@
-using AmplifyShaderEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,10 +39,10 @@ public class Player : MonoBehaviour, IDamageable
     public AudioClip dashClip;
     private void Awake()
     {
-        _material = GetComponent<SpriteRenderer>().material;
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
+        _material = _playerAnimator.animator.GetComponent<SpriteRenderer>().material;
+        _gunSocket = _playerAnimator.animator.transform.Find("GunSocket");
         _dashTimer = 0f;
 
         EquipGun(GameManager.Instance.selectGunType);
@@ -53,7 +52,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
-        print("ÇÃ·¹ÀÌ¾î");
+        print("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½");
     }
 
     private void Update()
@@ -125,6 +124,9 @@ public class Player : MonoBehaviour, IDamageable
         if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
         {
             _equipedGun.gameObject.SetActive(!_canReload);
+
+            _playerAnimator.animator.transform.localPosition = new Vector2(0f, -0.1f * (_canReload ? 1f : 0f));
+
             _playerAnimator.SetReload(_canReload);
         }
     }
@@ -157,14 +159,16 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        if (_isDead)
+        /*if (_isDead)
         {
             return;
         }
 
         _isDead = true;
+        _rigidbody2D.velocity = Vector3.zero;
 
         UnequipGun();
+        (this as IDamageable).OnHit();*/
         (this as IDamageable).OnHit();
 
         GameManager.Instance.GameEnd();
@@ -175,7 +179,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_dashTimer <= 0f)
         {
             _dashDirection = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
-            SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
+            SoundManager.Instance.Play(dashClip, 1, 1, 2, false);
 
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();

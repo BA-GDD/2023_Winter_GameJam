@@ -68,6 +68,15 @@ public abstract class Gun : MonoBehaviour
 
     public abstract void ShootProcess();
 
+    public virtual void Reload()
+    {
+        _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
+        _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
+        _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+
+        usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
+    }
 
     public virtual void Skill(bool occurSkill)
     {
@@ -102,7 +111,7 @@ public abstract class Gun : MonoBehaviour
         {
             SetShootTrigger(true);
 
-            SoundManager.Instance.Play(shootClip, 0.7f, 1, 1, false);
+            SoundManager.Instance.Play(shootClip, 0.7f, 1, 2, false);
 
             float before = _usableCapacity;
             _usableCapacity -= gunScriptableObject.useCapacityPerShoot;
