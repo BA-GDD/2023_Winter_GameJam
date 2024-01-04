@@ -21,6 +21,8 @@ public class Revolver : Gun
     private float _rangeCircleRadius;
     [SerializeField]
     private ParticleSystem _revolverSkillFX;
+    [SerializeField]
+    private AudioClip _revolverClip;
 
     protected override void Update()
     {
@@ -103,7 +105,8 @@ public class Revolver : Gun
         isSkillProcess = true;
 
         _revolverSkillFX.Play();
-
+        SoundManager.Instance.Play(_revolverClip, 1, 1, 2, false, "RevolverSkillSE");
+        feedbackPlayer.PlayFeedback();
         foreach (var target in _targets)
         {
             if (!target.TryGetComponent(out MobBrain brain) || brain.IsDead)
@@ -129,8 +132,6 @@ public class Revolver : Gun
             bullet.bulletSpeed = 20.0f;
             bullet.lifeTime = 10f;
             bullet.transform.position = firePosition.position;
-
-            feedbackPlayer.PlayFeedback();
 
             yield return new WaitForSeconds(_skillShootDelay);
         }
