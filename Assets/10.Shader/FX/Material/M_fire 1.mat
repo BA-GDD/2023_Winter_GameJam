@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_fire
+  m_Name: M_fire 1
   m_Shader: {fileID: 4800000, guid: 60dc1c4ae21276b4aa6c11f06b319632, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 6f0f947dc67111148acab15ef806c2d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: e4153ee28eda65e44a8352332728c67a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -84,7 +84,7 @@ Material:
     - _Fade_Ditance: 0
     - _Main_Ins: 1.79
     - _Main_Pow: 0.52
-    - _Opacity: 0.35
+    - _Opacity: 1.7
     - _Pixelize: 60
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -99,6 +99,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _Main_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Main_Color: {r: 0.3796697, g: 1.0575048, b: 1.319508, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

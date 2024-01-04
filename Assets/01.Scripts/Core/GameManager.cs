@@ -94,7 +94,7 @@ public class GameManager : MonoSingleton<GameManager>
         //{
         //}
         //_gameData = JsonUtility.FromJson<GameData>(data);
-            _gameData = new GameData();
+            //_gameData = new GameData();
 
         PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)

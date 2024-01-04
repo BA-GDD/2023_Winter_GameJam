@@ -2086,7 +2086,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.1627079
+  orthographic size: 0.06
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2207,6 +2207,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: b1853caa8c625d24896e1191f42af939, type: 3}
     - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_Intensity
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 4.7324896
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -2238,9 +2250,25 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3064609621679335767, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9998841
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064609621679335767, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064609621679335767, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064609621679335767, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.01522551
+      objectReference: {fileID: 0}
     - target: {fileID: 3664788862436194133, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 0.1627079
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: shootClip
