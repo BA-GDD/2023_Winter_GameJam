@@ -23,6 +23,8 @@ public class Revolver : Gun
     private ParticleSystem _revolverSkillFX;
     [SerializeField]
     private FeedbackPlayer _feedbackPlayer;
+    [SerializeField]
+    private AudioClip _revolverClip;
 
     protected override void Update()
     {
@@ -103,6 +105,7 @@ public class Revolver : Gun
         isSkillProcess = true;
 
         _revolverSkillFX.Play();
+        SoundManager.Instance.Play(_revolverClip, 1, 1, 2, false, "RevolverSkillSE");
         _feedbackPlayer.PlayFeedback();
         foreach (var target in _targets)
         {

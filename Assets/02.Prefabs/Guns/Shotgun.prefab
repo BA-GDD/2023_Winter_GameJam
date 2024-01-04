@@ -151,5 +151,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff385fad16a5c042b4b424281a76829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   firePosition: {fileID: 2528112016714672722}
   gunScriptableObject: {fileID: 11400000, guid: cba3dfe20efeefb429d6ef69caf34268, type: 2}
+  shootClip: {fileID: 8300000, guid: 684c574eecc620b4dbddefa3ee2bbccb, type: 3}
+  _skillEffect: {fileID: 0}
+  _skillEffect_01: {fileID: 0}
+  _skillText: {fileID: 0}
+  _bulletSpeed: 0
+  _lifeTime: 0
+  _skillLifeTime: 0
+  _shotAngleRange: 100
+  _skillShotAngleRange: 150
+  _speedRange: 0
+  _shotsAmount: 7
+  _skillShotsAmount: 15
+  _maximumSkillShot: 5
+  _feedbackPlayer: {fileID: 0}
+  _shotgunClip: {fileID: 8300000, guid: f2602f0df05d64945a8926d575d5ad7e, type: 3}

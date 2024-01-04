@@ -126,8 +126,9 @@ MonoBehaviour:
     m_Bits: 0
   firePosition: {fileID: 4345421249368949826}
   gunScriptableObject: {fileID: 11400000, guid: acee184634a1cf9429b2284192c00aab, type: 2}
-  shootClip: {fileID: 0}
+  shootClip: {fileID: 8300000, guid: b1853caa8c625d24896e1191f42af939, type: 3}
   _razerEffect: {fileID: 0}
+  _razerClip: {fileID: 8300000, guid: cd1e9ae498b364c4bad1e89c1da035fc, type: 3}
 --- !u!1 &7488689908606532538
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class Shotgun : Gun
 
     [SerializeField]
     private FeedbackPlayer _feedbackPlayer;
+    [SerializeField]
+    private AudioClip _shotgunClip;
     protected override void Update()
     {
         base.Update();
@@ -107,6 +109,7 @@ public class Shotgun : Gun
 
             _skillEffect.Play();
             _skillEffect_01.Play();
+            SoundManager.Instance.Play(_shotgunClip, 1, 1, 2, false, "ShotgunSkillClip");
             InitializeSkill();
 
         }

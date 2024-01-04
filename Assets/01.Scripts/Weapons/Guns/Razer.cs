@@ -9,6 +9,8 @@ public class Razer : Gun
 {
     [SerializeField]
     private PlayerRazer _razerEffect;
+    [SerializeField]
+    private AudioClip _razerClip;
 
     protected override void Update()
     {
@@ -68,6 +70,7 @@ public class Razer : Gun
         {
             _razerEffect.SetToSkillRazer();
             _razerEffect.particle.Play();
+            SoundManager.Instance.Play(_razerClip, 1, 1, 2, false, "RazerSkillSE");
 
             skillProcessCoroutine = StartCoroutine(SkillProcess());
         }
