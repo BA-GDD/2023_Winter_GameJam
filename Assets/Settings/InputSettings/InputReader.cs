@@ -28,6 +28,16 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 
         _controls.Player.Enable();
     }
+    public void DisablePlayer()
+    {
+        _controls.Player.Disable();
+        onDashEvent = null;
+        onShootEvent = null;
+    }
+    public void EnablePlayer()
+    {
+        _controls.Player.Enable();
+    }
 
     public void OnDash(InputAction.CallbackContext context)
     {

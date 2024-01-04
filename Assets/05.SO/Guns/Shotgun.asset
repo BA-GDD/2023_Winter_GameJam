@@ -20,9 +20,9 @@ MonoBehaviour:
   skillText: 
   gunAnimator: {fileID: 0}
   shootDelay: 0
-  maximumCapacity: 0
-  fillCapacityPerSecond: 0
-  useCapacityPerShoot: 0
+  maximumCapacity: 20
+  fillCapacityPerSecond: 6
+  useCapacityPerShoot: 2
   requireSkillGauge: 0
   fillSkillGaugePerSecond: 0
   priceValue: 0

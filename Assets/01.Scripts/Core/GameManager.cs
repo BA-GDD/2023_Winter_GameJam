@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -33,12 +34,17 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField]
     private PoolListSO _poolList;
+    [SerializeField]
+    private Transform _poolTrm;
 
     private GameData _gameData;
     public GameData GameData => _gameData;
 
     [SerializeField]
     private AudioClip _bgmClip;
+
+    [SerializeField]
+    private InputReader _inputReader;
 
     private float _score;
     public float Score
@@ -59,18 +65,33 @@ public class GameManager : MonoSingleton<GameManager>
         string data = PlayerPrefs.GetString("GameData", string.Empty);
         //if (string.IsNullOrEmpty(data))
         //{
-            
+
         //}
         _gameData = new GameData();
         //_gameData = JsonUtility.FromJson<GameData>(data); 
+        if (instance != null)
+        {
+            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
 
-        PoolManager poolManager = new PoolManager(transform);
+        _inputReader.DisablePlayer();
+        //if (string.IsNullOrEmpty(data))
+        //{
+        //}
+        //_gameData = JsonUtility.FromJson<GameData>(data);
+            _gameData = new GameData();
+
+        PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)
         {
             poolManager.CreatePool(item.prefab, item.type, item.count);
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
+        //SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
         DontDestroyOnLoad(this);
     }
@@ -78,6 +99,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         //player = FindObjectOfType<Player>().transform;
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+        isGameEnd = true;
     }
 
     private void Update()
@@ -97,24 +119,43 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameStart()
     {
+        _inputReader.EnablePlayer();
         isGameEnd = false;
         _curTime = gameTime;
-
         onGameStartTrigger?.Invoke();
     }
 
     public void GameEnd()
     {
+        if (isGameEnd) return;
         isGameEnd = true;
         _curTime = 0.0f;
 
+        _inputReader.DisablePlayer();
+        _poolTrm.BroadcastMessage("GotoPool");
+
+        StartCoroutine(GameEndAnimation());
+
         onGameEndTrigger?.Invoke();
     }
-    public void SceneChange(string sceneName, Action callback)
+
+    public IEnumerator GameEndAnimation()
+    {
+        Time.timeScale = 0.3f;
+
+        player.transform.Find("end").GetComponent<PlayableDirector>().Play();
+        yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 1.0f;
+
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        SceneChange("Result");
+    }
+
+    public void SceneChange(string sceneName, Action callback = null)
     {
         StartCoroutine(SceneChangeCor(sceneName, callback));
     }
-    private IEnumerator SceneChangeCor(string sceneName, Action callback)
+    private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);

@@ -39,18 +39,20 @@ public class Player : MonoBehaviour, IDamageable
     public AudioClip dashClip;
     private void Awake()
     {
-        _material = GetComponent<SpriteRenderer>().material;
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _gunSocket = transform.Find("GunSocket");
         _playerAnimator = GetComponent<PlayerAnimator>();
+        _material = _playerAnimator.animator.GetComponent<SpriteRenderer>().material;
+        _gunSocket = _playerAnimator.animator.transform.Find("GunSocket");
         _dashTimer = 0f;
 
+        EquipGun(GameManager.Instance.selectGunType);
         _mainCam = Camera.main;
     }
 
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
+        print("�÷��̾�");
     }
 
     private void Update()
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _canReload = false;
+            MapManager.Instance.ExitSpa();
         }
 
         if (_inputReader.isSkillOccur)
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_canReload)
         {
+            MapManager.Instance.EnterSpa();
             Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
@@ -120,6 +124,9 @@ public class Player : MonoBehaviour, IDamageable
         if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
         {
             _equipedGun.gameObject.SetActive(!_canReload);
+
+            _playerAnimator.animator.transform.localPosition = new Vector2(0f, -0.1f * (_canReload ? 1f : 0f));
+
             _playerAnimator.SetReload(_canReload);
         }
     }
@@ -152,15 +159,19 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        if (_isDead)
+        /*if (_isDead)
         {
             return;
         }
 
         _isDead = true;
+        _rigidbody2D.velocity = Vector3.zero;
 
         UnequipGun();
+        (this as IDamageable).OnHit();*/
         (this as IDamageable).OnHit();
+
+        GameManager.Instance.GameEnd();
     }
 
     private void Dash()

@@ -114,8 +114,8 @@ public class MapManager : MonoSingleton<MapManager>
     public bool CheckWater(Vector3 pos)
     {
         pos.z = 0;
-        pos.x -= 1;
-        pos.y -= 1;
+        //pos.x -= 1;
+        //pos.y -= 1;
         return _holeMap.HasTile(Vector3Int.CeilToInt(pos));
     }
 
@@ -182,5 +182,13 @@ public class MapManager : MonoSingleton<MapManager>
                 //_groundMap.SetTile(new Vector3Int(pos.x, pos.y), null);
                 break;
         }
+    }
+    public void EnterSpa()
+    {
+        _spa.Enter();
+    }
+    public void ExitSpa()
+    {
+        _spa.Exit();
     }
 }
