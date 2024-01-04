@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 public class EnemyBrain : PoolableMono, IDamageable
 {
@@ -34,6 +35,9 @@ public class EnemyBrain : PoolableMono, IDamageable
     public AudioClip hitClip;
     public AudioClip shootClip;
 
+    private Vector3Int _lastFootPos;
+    private int _footTileCount;
+
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
@@ -52,9 +56,21 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
-        if (!_isDead && MapManager.Instance.CheckWater(transform.position))
+        if (!_isDead && MapManager.Instance.CheckWater(transform.position, out Vector3Int pos))
         {
-            MapManager.Instance.SetTile(transform.position, TileType.Ground);
+            if (_lastFootPos != pos)
+            {
+                print($"{_lastFootPos}/{pos}");
+                _lastFootPos = pos;
+                _footTileCount++;
+                MapManager.Instance.SetTile(transform.position, TileType.Ground);
+                if(_footTileCount >= 2)
+                {
+                    isDead = true;
+                    EnemySpawner.Instance.DeSpawnEnemy(this);
+                    return;
+                }
+            }
         }
 
 

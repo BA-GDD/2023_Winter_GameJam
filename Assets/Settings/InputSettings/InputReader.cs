@@ -28,6 +28,16 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
 
         _controls.Player.Enable();
     }
+    public void DisablePlayer()
+    {
+        _controls.Player.Disable();
+        onDashEvent = null;
+        onShootEvent = null;
+    }
+    public void EnablePlayer()
+    {
+        _controls.Player.Enable();
+    }
 
     public void OnDash(InputAction.CallbackContext context)
     {
@@ -46,7 +56,7 @@ public class InputReader : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
         {
-            SoundManager.Instance.Play(reloadClip, 100, 1, 2, true, "ReloadSE");
+            SoundManager.Instance.Play(reloadClip, 1, 1, 2, true, "ReloadSE");
             isReload = true;
         }
         else if (context.canceled)

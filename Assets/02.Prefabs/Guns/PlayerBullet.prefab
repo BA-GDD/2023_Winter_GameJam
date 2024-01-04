@@ -4899,7 +4899,7 @@ MonoBehaviour:
   particle: {fileID: 0}
   isMissileMode: 0
   rigidbody2d: {fileID: 4789000781721827222}
-  bulletSpeed: 10
+  bulletSpeed: 25
   lifeTime: 3
   _enemyLayerMask:
     serializedVersion: 2

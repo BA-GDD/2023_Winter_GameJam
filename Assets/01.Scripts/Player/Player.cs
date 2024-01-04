@@ -52,11 +52,13 @@ public class Player : MonoBehaviour, IDamageable
         _dashTimer = 0f;
 
         _mainCam = Camera.main;
+        EquipGun(GameManager.Instance.selectGunType);
     }
 
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
+        print("�÷��̾�");
     }
 
     private void Update()
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour, IDamageable
         else
         {
             _canReload = false;
+            MapManager.Instance.ExitSpa();
         }
 
         if (_inputReader.isSkillOccur)
@@ -96,6 +99,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_canReload)
         {
+            MapManager.Instance.EnterSpa();
             Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
@@ -161,7 +165,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        /*if (_isDead)
+        if (_isDead)
         {
             return;
         }
@@ -169,8 +173,10 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
 
-        UnequipGun();
-        (this as IDamageable).OnHit();*/
+        //UnequipGun();
+        (this as IDamageable).OnHit();
+
+        GameManager.Instance.GameEnd();
     }
 
     private void Dash()

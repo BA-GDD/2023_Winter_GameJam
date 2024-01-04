@@ -14,6 +14,7 @@ public class SniperAttack : EnemyAttack
     private void OnDisable()
     {
         _line.SetPosition(1, _brain.firePos.position);
+        _line.enabled = false;
     }
 
     protected override void Awake()
@@ -23,6 +24,12 @@ public class SniperAttack : EnemyAttack
         _sniperParticle = transform.Find("P_sniper").GetComponent<ParticleSystem>();
         _mainModule = _sniperParticle.main;
         _sniperParticle.transform.position = _brain.firePos.position;
+    }
+
+    private void OnEnable()
+    {
+        _line.SetPosition(1, _brain.firePos.position);
+        _line.enabled = false;
     }
 
     protected override void Update()
@@ -42,6 +49,7 @@ public class SniperAttack : EnemyAttack
     {
         _isChasing = false;
         _isAiming = true;
+        _line.enabled = _isAiming;
         StartCoroutine(Sniping());
     }
 
@@ -56,6 +64,7 @@ public class SniperAttack : EnemyAttack
         yield return new WaitForSeconds(0.5f);
 
         _isAiming = false;
+        _line.enabled = _isAiming;
         (_brain as MobBrain).Animator.SetShootTrigger(true);
 
         yield return new WaitForSeconds(0.5f);

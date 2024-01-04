@@ -21,9 +21,9 @@ MonoBehaviour:
     \uC12C\uBA78\uD55C\uB2E4."
   gunAnimator: {fileID: 0}
   shootDelay: 0.5
-  maximumCapacity: 0
-  fillCapacityPerSecond: 0
-  useCapacityPerShoot: 0
+  maximumCapacity: 100
+  fillCapacityPerSecond: 10
+  useCapacityPerShoot: 5
   requireSkillGauge: 0
   fillSkillGaugePerSecond: 0
   priceValue: 0

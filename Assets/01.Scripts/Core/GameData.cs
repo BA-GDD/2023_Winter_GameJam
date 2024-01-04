@@ -11,6 +11,7 @@ public class GameData
     public bool openRevolver;
     public bool Razer;
     public bool Shotgun;
+    public bool isLookPrologue;
 
     public void SetTime(float time)
     {

@@ -20,7 +20,7 @@ public class Razer : Gun
         }
 
         _razerEffect.transform.position = firePosition.transform.position;
-        /*Vector2 */direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _razerEffect.transform.position;
+        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _razerEffect.transform.position;
 
         direction.Normalize();
 
@@ -35,7 +35,7 @@ public class Razer : Gun
             }
         });
     }
-    Vector2 direction;
+    
     public override void ShootProcess()
     {
         if (isSkillProcess)
