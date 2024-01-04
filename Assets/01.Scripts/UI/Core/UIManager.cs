@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Camera _mainCam;
+    [SerializeField] private ChangeSceneFade _sceneFade;
     private static UIManager _instance;
     public static UIManager Instanace
     {
@@ -65,23 +66,36 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeScene(_startUIType);
+        ChangeSceneFade(_startUIType, false);
     }
 
-    public void ChangeScene(UIType toChangeScene)
+    private void SceneChangeSystem(UIType toChangeScene)
     {
-        if(_currentScene != null)
+        if (_currentScene != null)
         {
             _currentScene.Init();
             Destroy(_currentScene.gameObject);
         }
 
         _currentScene = Instantiate(_uiSelecter[toChangeScene], _sceneUITrm);
+        print(_currentScene);
         currentUIType = toChangeScene;
         _currentScene.name = _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();
 
+        _canvas.worldCamera = Camera.main;
         ButtonGenerate();
+    }
+
+    public void ChangeSceneFade(UIType toChangeScene, bool isFadeScene)
+    {
+        if(isFadeScene)
+        {
+            _sceneFade.FadeStart(() => SceneChangeSystem(toChangeScene));
+            return;
+        }
+
+        SceneChangeSystem(toChangeScene);
     }
 
     private void ButtonGenerate()

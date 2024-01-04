@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class PlayerBullet : Bullet
     [SerializeField]
     private LayerMask _enemyLayerMask;
     private bool _isAlreadyHit;
+
+    private Action _killEvent;
 
     protected override void OnEnable()
     {
@@ -29,6 +32,11 @@ public class PlayerBullet : Bullet
         }
     }
 
+    public void ApeendEvent(Action action)
+    {
+        _killEvent += action;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isMissileMode)
@@ -42,6 +50,7 @@ public class PlayerBullet : Bullet
 
                 _isAlreadyHit = true;
 
+                _killEvent?.Invoke();
                 PoolManager.Instance.Push(this);
             }
         }
@@ -55,8 +64,13 @@ public class PlayerBullet : Bullet
                 targetOfMissile = null;
                 isMissileMode = false;
 
+                _killEvent?.Invoke();
                 PoolManager.Instance.Push(this);
             }
         }
+    }
+    private void OnDisable()
+    {
+        _killEvent = null;
     }
 }

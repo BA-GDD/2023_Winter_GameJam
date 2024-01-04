@@ -19,6 +19,10 @@ public class Revolver : Gun
     private float _timeScaleWhileSkillPrepare = 0.2f;
     private List<Collider2D> _targets = new List<Collider2D>();
     private float _rangeCircleRadius;
+    [SerializeField]
+    private ParticleSystem _revolverSkillFX;
+    [SerializeField]
+    private FeedbackPlayer _feedbackPlayer;
 
     protected override void Update()
     {
@@ -37,9 +41,10 @@ public class Revolver : Gun
             return;
         }
 
-        PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+        PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
         bullet.transform.position = firePosition.position;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
+        bullet.ApeendEvent(KillEvnetHandle);
 
         direction.Normalize();
 
@@ -97,6 +102,8 @@ public class Revolver : Gun
     {
         isSkillProcess = true;
 
+        _revolverSkillFX.Play();
+        _feedbackPlayer.PlayFeedback();
         foreach (var target in _targets)
         {
             if (!target.TryGetComponent(out MobBrain brain) || brain.IsDead)
@@ -119,7 +126,7 @@ public class Revolver : Gun
             Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
             bullet.isMissileMode = true;
             bullet.targetOfMissile = target;
-            bullet.bulletSpeed = 20f;
+            bullet.bulletSpeed = 20.0f;
             bullet.lifeTime = 10f;
             bullet.transform.position = firePosition.position;
 

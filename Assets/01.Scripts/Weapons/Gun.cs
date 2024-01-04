@@ -30,13 +30,14 @@ public abstract class Gun : MonoBehaviour
     private Transform _gunSocket;
     private float _shootDelayTimer;
     private float _usableCapacity;
-    private float _currentSkillGauge;
+    protected float _currentSkillGauge;
 
     public AudioClip shootClip;
 
     protected Camera _mainCam;
 
     public event Action<float> usableCapacityChanged;
+    public event Action<float> currentSkillChanged;
 
     private void Awake()
     {
@@ -83,8 +84,6 @@ public abstract class Gun : MonoBehaviour
     {
         _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
         _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-        _currentSkillGauge += gunScriptableObject.fillSkillGauge * Time.deltaTime;
-        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
 
         usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
     }
@@ -103,6 +102,8 @@ public abstract class Gun : MonoBehaviour
 
             skillProcessCoroutine = null;
         }
+        
+        currentSkillChanged?.Invoke(-1);
     }
 
     public void Reload(ref bool canReload)
@@ -140,9 +141,18 @@ public abstract class Gun : MonoBehaviour
             ShootProcess();
         }
     }
+    protected void KillEvnetHandle()
+    {
+        float before = _currentSkillGauge;
+        _currentSkillGauge += gunScriptableObject.fillSkillGauge;
+        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge,0f,gunScriptableObject.requireSkillGauge);
+
+        currentSkillChanged?.Invoke((_currentSkillGauge - before) / gunScriptableObject.requireSkillGauge);
+    }
 
     protected bool CanUseSkill()
     {
+        print($"{_currentSkillGauge}/{gunScriptableObject.requireSkillGauge}/{_currentSkillGauge >= gunScriptableObject.requireSkillGauge}");  
         return _currentSkillGauge >= gunScriptableObject.requireSkillGauge && !isSkillProcess;
     }
 

@@ -26,9 +26,9 @@ public class MobBrain : EnemyBrain
         
     }
 
-    public override void SetDead()
+    public override void SetDead(bool isBomberMan = false)
     {
-        base.SetDead();
+        base.SetDead(isBomberMan);
         _animator.SetDieTrigger(true);
     }
 

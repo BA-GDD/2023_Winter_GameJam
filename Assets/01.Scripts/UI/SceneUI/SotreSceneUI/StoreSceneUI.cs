@@ -17,7 +17,7 @@ public class StoreSceneUI : SceneUIBase
 
     public void ExitToLobby()
     {
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
     }
 
     public void PurchaseThisGun(GunSO target)

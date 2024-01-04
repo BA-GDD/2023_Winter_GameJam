@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class GameResultSceneUI : SceneUIBase
 {
-    [SerializeField] private GameObject _partyFX;
     [SerializeField] private UnityEvent<float, float, float> _scoreSetEvent;
     [SerializeField] private UnityEvent<int> _milkThrowEvent;
     private GameObject _remainFX;
@@ -15,7 +14,9 @@ public class GameResultSceneUI : SceneUIBase
     {
         GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
         GameManager.Instance.GameData.Save();
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
+        //UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1, 1, true, "BGM");
     }
 
     private void Update()
@@ -31,6 +32,7 @@ public class GameResultSceneUI : SceneUIBase
     private void Start()
     {
         SetUp();
+        SoundManager.Instance.Stop("BGM");
     }
 
     public override void SetUp()
@@ -39,7 +41,6 @@ public class GameResultSceneUI : SceneUIBase
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
                                GameManager.Instance.GameData.beforeTime,
                                GameManager.Instance.GameData.bestTime);
-        _remainFX = Instantiate(_partyFX, transform);
     }
 
     public override void Init()
