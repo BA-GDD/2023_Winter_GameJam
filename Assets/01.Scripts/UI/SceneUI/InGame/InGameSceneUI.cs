@@ -23,18 +23,21 @@ public class InGameSceneUI : SceneUIBase
     }
     public override void Init()
     {
-        _player.DeleteSkillGroup(_skillBarGroup);
+        _player.DeleteSkillGroup(_skillBarGroup); 
         _player.DeleteWaterGaugeHandle(_onsenWater);
         _player.UnequipGun();
         SoundManager.Instance.Stop("InGame");
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
     }
 
     private void Update()
     {
-        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
-            exp.SetText("Á¤¸» ·Îºñ·Î ÅðÀå<br>ÇÏ½Ã°Ú½À´Ï±î?");
+            exp.SetText("ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½<br>ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?");
             exp.SetUpPanel();
         }
     }

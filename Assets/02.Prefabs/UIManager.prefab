@@ -61,7 +61,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1858778461
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &818959955811325005
@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 6525308488425592083}
   - component: {fileID: 3792609892511971319}
   - component: {fileID: 5189671951067510138}
+  - component: {fileID: 6062758828404276799}
   m_Layer: 5
   m_Name: FadePanel
   m_TagString: Untagged
@@ -257,6 +258,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6062758828404276799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318867352754786728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece0ce82fe2c7be44a4834d6bea8e2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myFadePanel: {fileID: 5189671951067510138}
+  _easingTime: 0.4
 --- !u!1 &4474169370230672968
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCam: {fileID: 0}
-  _sceneFade: {fileID: 0}
+  _sceneFade: {fileID: 6062758828404276799}
   _startUIType: 5
   _sceneUIGroup:
   - {fileID: 3350313913458770082, guid: 28c87081849cc0b48905eea8e474a5a3, type: 3}

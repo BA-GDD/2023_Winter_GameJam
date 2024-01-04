@@ -2251,8 +2251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.645508, y: -3.4538}
-  m_SizeDelta: {x: 205.3087, y: 56.9076}
+  m_AnchoredPosition: {x: 111, y: -3.4538}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3934087625366425568
 CanvasRenderer:
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2406,6 +2406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myUIType: 4
   _resultPanel: {fileID: 9092825864166891423, guid: 50c2993f5b455ab4cb538bf7c1aa9d68, type: 3}
+  _milkCountText: {fileID: 3924639432347400575}
 --- !u!1001 &1403420065565535377
 PrefabInstance:
   m_ObjectHideFlags: 0
