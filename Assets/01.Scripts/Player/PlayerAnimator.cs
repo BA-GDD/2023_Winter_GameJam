@@ -8,13 +8,7 @@ public class PlayerAnimator : MonoBehaviour
     private readonly int _isReloadHash = Animator.StringToHash("isReload");
     private readonly int _dashTriggerHash = Animator.StringToHash("dash");
     private readonly int _dieTriggerHash = Animator.StringToHash("die");
-    [HideInInspector]
     public Animator animator;
-
-    private void Awake()
-    {
-        animator = transform.Find("Visual").GetComponent<Animator>();
-    }
 
     public void SetMove(bool value)
     {

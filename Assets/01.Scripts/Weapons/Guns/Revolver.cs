@@ -87,9 +87,12 @@ public class Revolver : Gun
 
                 foreach (var target in _targets)
                 {
-                    if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
+                    if (target.TryGetComponent(out MobBrain brain))
                     {
-                        brain.spriteRenderer.material.SetInt(_isOutlineHash, 1);
+                        if (!brain.IsDead)
+                        {
+                            brain.spriteRenderer.material.SetInt(_isOutlineHash, 1);
+                        }
                     }
                     else
                     {

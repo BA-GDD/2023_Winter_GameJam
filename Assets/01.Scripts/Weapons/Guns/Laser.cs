@@ -9,8 +9,6 @@ public class Laser : Gun
     [SerializeField]
     private PlayerLaser _laserEffect;
 
-    Vector2 direction;
-
     protected override void Update()
     {
         base.Update();
@@ -21,7 +19,7 @@ public class Laser : Gun
         }
 
         _laserEffect.transform.position = firePosition.transform.position;
-        /*Vector2 */direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _laserEffect.transform.position;
+        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _laserEffect.transform.position;
 
         direction.Normalize();
 
@@ -93,12 +91,4 @@ public class Laser : Gun
         base.InitializeSkill();
 
         _laserEffect.rootParticle.Stop();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawRay(_laserEffect.transform.position, direction * _laserEffect.shootParticle.main.startSizeY.constant);
-    }
-}
+    }}
