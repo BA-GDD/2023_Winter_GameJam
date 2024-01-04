@@ -2190,10 +2190,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 730379091811406550, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: shootClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b1853caa8c625d24896e1191f42af939, type: 3}
     - target: {fileID: 1368366047296914287, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -2202,18 +2198,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capybara
       objectReference: {fileID: 0}
-    - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: dashClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9dce0424630be4a4d9fdc2e7b0d4729d, type: 3}
-    - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: movementSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: shootClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 25d73cdc14487d948a26458230f33d6e, type: 3}
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
