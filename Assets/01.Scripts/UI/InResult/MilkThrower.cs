@@ -25,7 +25,8 @@ public class MilkThrower : MonoBehaviour
 
     private IEnumerator ThrowMilkCo(int milkCount)
     {
-        for (int i = 0; i < milkCount; i++)
+        int score = Mathf.Clamp(Mathf.FloorToInt(GameManager.Instance.Score), 0, 15);
+        for (int i = 0; i < score; i++)
         {
             FallingMilk fm = PoolManager.Instance.Pop(PoolingType.FallingMilk) as FallingMilk;
             fm.transform.SetParent(transform);
