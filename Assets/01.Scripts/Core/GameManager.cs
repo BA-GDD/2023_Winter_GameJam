@@ -84,7 +84,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         if(instance != null)
         {
-            Destroy(gameobject);
+            Destroy(gameObject);
         }
         instance = this;
 
