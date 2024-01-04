@@ -9,6 +9,8 @@ public class Shotgun : Gun
     [SerializeField]
     private ParticleSystem _skillEffect;
     [SerializeField]
+    private ParticleSystem _skillEffect_01;
+    [SerializeField]
     private TextMeshPro _skillText;
     [SerializeField]
     private float _bulletSpeed;
@@ -99,6 +101,7 @@ public class Shotgun : Gun
             _skillText.text = _skillShotCount.ToString();
 
             _skillEffect.Play();
+            _skillEffect_01.Play();
             base.Skill(occurSkill);
         }
     }
