@@ -229,7 +229,7 @@ MonoBehaviour:
   gameTime: 100
   mainCamera: {fileID: 592973263}
   selectGunType: 0
-  occupationPercent: 1
+  occupationPercent: 0.05
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
   _poolTrm: {fileID: 1171933590}
