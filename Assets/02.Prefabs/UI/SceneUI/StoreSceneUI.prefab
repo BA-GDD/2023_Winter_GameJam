@@ -2794,6 +2794,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4708022414702924752}
     m_Modifications:
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7236126262294517987}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseThisItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DisplayWeaponCard, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1882327316168752951, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_text
       value: "\uBB34\uCC38\uD788 \uC801\uC744<br>\uAD00\uD1B5\uD558\uB294<br> \uAC15\uB825\uD55C
@@ -3186,6 +3214,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4708022414702924752}
     m_Modifications:
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8426266902757339579}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseThisItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DisplayWeaponCard, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1882327316168752951, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_text
       value: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778\n\uBB3C\uCD1D."
@@ -3475,6 +3531,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4708022414702924752}
     m_Modifications:
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5165821015190167022}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PurchaseThisItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DisplayWeaponCard, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349121291852706281, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1882327316168752951, guid: dacfa037d78c4c846b4bd3d329803584, type: 3}
       propertyPath: m_text
       value: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778\n\uBB3C\uCD1D."

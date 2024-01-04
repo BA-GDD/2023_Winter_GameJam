@@ -14,6 +14,20 @@ public abstract class PanelBase : MonoBehaviour
     public abstract void SetUpPanel();
     public abstract void InitPanel();
 
+    public List<Button> FindButtonInPanel()
+    {
+        List<Button> btns = new List<Button>();
+        foreach(Transform t in transform)
+        {
+            if(t.TryGetComponent<Button>(out Button btn))
+            {
+                btns.Add(btn);
+            }
+        }
+
+        return btns;
+    }
+
     public void ActiveBlackPanel(bool isActive)
     {
         if (_blackPanel == null)
@@ -25,6 +39,7 @@ public abstract class PanelBase : MonoBehaviour
         _blackPanel.color = new Color(0, 0, 0, 0);
 
         Sequence seq = DOTween.Sequence();
+        seq.SetUpdate(true);
         seq.Append(_blackPanel.DOFade(Convert.ToInt32(isActive) * 0.5f, _blackPanelEasingTime));
 
         if(!isActive)
