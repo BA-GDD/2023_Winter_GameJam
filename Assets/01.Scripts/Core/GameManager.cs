@@ -142,6 +142,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         StartCoroutine(GameEndAnimation());
 
+        Score += (_curTime * (int)(occupationPercent * 100.0f)) + (occupationPercent * 100.0f);
         onGameEndTrigger?.Invoke();
     }
 
