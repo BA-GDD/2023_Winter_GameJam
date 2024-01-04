@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameValueCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _occupyText;
+    [SerializeField] private Image _occValue;
+
+    private float _currentOccValue;
 
     private float _currentTime;
     private float CurrentTime
@@ -39,7 +43,9 @@ public class GameValueCounter : MonoBehaviour
         if (MapManager.Instance != null)
         {
              amount = Mathf.Lerp(0, 100, MapManager.Instance.WaterFillAmount());
+            _currentOccValue = amount / 100;
+            _occValue.fillAmount = Mathf.Lerp(_occValue.fillAmount, _currentOccValue, Time.deltaTime * 4);
         }
-        _occupyText.text = $"Á¡·Éµµ : {Mathf.FloorToInt(amount)}%";
+        _occupyText.text = $"{Mathf.FloorToInt(amount)}%";
     }
 }

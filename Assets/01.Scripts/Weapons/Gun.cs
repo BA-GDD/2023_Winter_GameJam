@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 public enum GunType
 {
     Revolver,
-    Razer,
+    Laser,
     Shotgun
 }
 
@@ -22,6 +22,8 @@ public abstract class Gun : MonoBehaviour
     protected LayerMask enemyLayerMask;
     [SerializeField]
     protected Transform firePosition;
+    [SerializeField]
+    protected FeedbackPlayer feedbackPlayer;
     [SerializeField]
     protected GunSO gunScriptableObject;
     protected Coroutine skillProcessCoroutine;

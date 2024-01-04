@@ -6,14 +6,17 @@ using UnityEngine.InputSystem;
 public class InGameSceneUI : SceneUIBase
 {
     private Player _player;
-    private OnsenWaterGage _onsenWater;
-    private SkillBarGroup _skillBarGroup;
+    [HideInInspector]
+    public OnsenWaterGage onsenWater;
+    [HideInInspector]
+    public SkillBarGroup skillBarGroup;
     [SerializeField] private GameExitPanel _exitPanel;
     [SerializeField] private AudioClip _bgmClip;
 
     public override void SetUp()
     {
         _player = FindObjectOfType<Player>();
+        _player.inGameSceneUI = this;
 
         _onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
         _skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
@@ -27,6 +30,7 @@ public class InGameSceneUI : SceneUIBase
         _player.DeleteWaterGaugeHandle(_onsenWater);
         _player.UnequipGun();
         SoundManager.Instance.Stop("InGame");
+
         UIManager.Instanace._canvas.worldCamera = Camera.main;
     }
 

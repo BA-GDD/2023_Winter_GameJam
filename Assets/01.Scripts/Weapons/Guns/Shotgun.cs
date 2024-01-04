@@ -32,8 +32,6 @@ public class Shotgun : Gun
     private int _maximumSkillShot = 5;
     private int _skillShotCount;
 
-    [SerializeField]
-    private FeedbackPlayer _feedbackPlayer;
     protected override void Update()
     {
         base.Update();
@@ -46,7 +44,8 @@ public class Shotgun : Gun
 
     public override void ShootProcess()
     {
-        Debug.Log("¼½½º");
+
+        feedbackPlayer.PlayFeedback();
 
         if (_skillShotCount <= 0)
         {
@@ -105,8 +104,7 @@ public class Shotgun : Gun
 
             _skillText.text = _skillShotCount.ToString();
 
-            _feedbackPlayer.PlayFeedback();
-
+            feedbackPlayer.PlayFeedback();
             _skillEffect.Play();
             _skillEffect_01.Play();
             InitializeSkill();

@@ -19,7 +19,7 @@ MonoBehaviour:
     \uBB3C\uCD1D"
   skillText: 
   gunAnimator: {fileID: 0}
-  shootDelay: 0
+  shootDelay: 0.01
   maximumCapacity: 20
   fillCapacityPerSecond: 6
   useCapacityPerShoot: 2
