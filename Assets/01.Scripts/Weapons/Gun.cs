@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public enum GunType
 {
@@ -133,7 +134,7 @@ public abstract class Gun : MonoBehaviour
 
     private bool CanReload()
     {
-        return MapManager.Instance.CheckWater(owner.transform.position);
+        return MapManager.Instance.CheckWater(owner.transform.position,out Vector3Int pos);
     }
 
     private bool CanShoot()

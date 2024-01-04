@@ -41,6 +41,7 @@ public class MapManager : MonoSingleton<MapManager>
 
     private Spa _spa;
     private EffectPlayer[,] _smokes;
+    private List<Vector2Int> _waterPos = new List<Vector2Int>();
     private Vector2Int _mapSize;
     public float WaterFillAmount()
     {
@@ -67,7 +68,6 @@ public class MapManager : MonoSingleton<MapManager>
         _groundMap.CompressBounds();
         BoundsInt bounds = _groundMap.cellBounds;
         _mapSize = new Vector2Int(bounds.xMax - bounds.xMin, bounds.yMax - bounds.yMin);
-        print($"{_mapSize.x}{_mapSize.y}");
         _smokes = new EffectPlayer[_mapSize.x + 1, _mapSize.y + 1];
         for (int x = minPos.x; x <= maxPos.x; x++)
         {
@@ -81,7 +81,7 @@ public class MapManager : MonoSingleton<MapManager>
                 fx.StartPlay(-1);
                 fx.transform.position = new Vector2(x + 1, y + 1);
                 fx.transform.position -= new Vector3(0.5f, 0.5f);
-
+                _waterPos.Add((Vector2Int)intPos);
                 _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = fx;
             }
         }
@@ -111,11 +111,12 @@ public class MapManager : MonoSingleton<MapManager>
         }
     }
 
-    public bool CheckWater(Vector3 pos)
+    public bool CheckWater(Vector3 pos, out Vector3Int tile)
     {
         pos.z = 0;
         //pos.x -= 1;
         //pos.y -= 1;
+        tile = Vector3Int.CeilToInt(pos);
         return _holeMap.HasTile(Vector3Int.CeilToInt(pos));
     }
 
@@ -135,25 +136,20 @@ public class MapManager : MonoSingleton<MapManager>
         switch (type)
         {
             case TileType.Ground:
-                for (int x = minPos.x; x <= maxPos.x; x++)
-                {
-                    x = Mathf.Clamp(x, bounds.xMin, bounds.xMax);
-                    for (int y = minPos.y; y <= maxPos.y; y++)
-                    {
-                        Vector3Int intPos = new Vector3Int(x, y);
-                        if (_decoMap.HasTile(intPos)) continue;
+                pos.x = Mathf.Clamp(pos.x+1, bounds.xMin, bounds.xMax);
+                pos.y = Mathf.Clamp(pos.y+1, bounds.yMin, bounds.yMax);
+                if (_decoMap.HasTile(pos)) return;
 
-                        y = Mathf.Clamp(y, bounds.yMin, bounds.yMax);
-                        if (_holeMap.HasTile(intPos))
-                        {
-                            PoolManager.Instance.Push(_smokes[x + Mathf.FloorToInt(_mapSize.x * 0.5f), y + Mathf.FloorToInt(_mapSize.y * 0.5f)]);
-                            _smokes[Mathf.FloorToInt(x + _mapSize.x * 0.5f), Mathf.FloorToInt(y + _mapSize.y * 0.5f)] = null;
-                        }
-                        _holeMap.SetTile(intPos, null);
-                        if (GameManager.Instance.occupationPercent < WaterFillAmount())
-                            GameManager.Instance.GameEnd();
-                    }
+                if (_holeMap.HasTile(pos))
+                {
+                    PoolManager.Instance.Push(_smokes[pos.x + Mathf.FloorToInt(_mapSize.x * 0.5f), pos.y + Mathf.FloorToInt(_mapSize.y * 0.5f)]);
+                    _smokes[Mathf.FloorToInt(pos.x + _mapSize.x * 0.5f), Mathf.FloorToInt(pos.y + _mapSize.y * 0.5f)] = null;
+                    _waterPos.Remove((Vector2Int)pos);
                 }
+                _holeMap.SetTile(pos, null);
+                if (GameManager.Instance.occupationPercent < WaterFillAmount())
+                    GameManager.Instance.GameEnd();
+
                 break;
             case TileType.Water:
                 for (int x = minPos.x; x <= maxPos.x; x++)
@@ -171,7 +167,7 @@ public class MapManager : MonoSingleton<MapManager>
                             EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.SpaSmoke) as EffectPlayer;
                             fx.transform.position = intPos + (Vector3Int)Vector2Int.one;
                             fx.transform.position -= new Vector3(0.5f, 0.5f);
-
+                            _waterPos.Add((Vector2Int)intPos);
                             _smokes[x + Mathf.FloorToInt(_mapSize.x * 0.5f), y + Mathf.FloorToInt(_mapSize.y * 0.5f)] = fx;
                         }
                         _holeMap.SetTile(intPos, _holeTile);
@@ -182,6 +178,23 @@ public class MapManager : MonoSingleton<MapManager>
                 //_groundMap.SetTile(new Vector3Int(pos.x, pos.y), null);
                 break;
         }
+    }
+
+
+    public Vector3 GetNearWater(Vector3 pos)
+    {
+        float nearDis = float.MaxValue;
+        Vector3Int returnValue = default;
+        foreach (Vector3Int p in _waterPos)
+        {
+            float dis = Vector3.Distance(p, pos);
+            if (dis < nearDis)
+            {
+                returnValue = p;
+                nearDis = dis;
+            }
+        }
+        return returnValue;
     }
     public void EnterSpa()
     {
