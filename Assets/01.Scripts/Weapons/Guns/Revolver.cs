@@ -20,6 +20,8 @@ public class Revolver : Gun
 
     [SerializeField]
     private ParticleSystem _revolverSkillFX;
+    [SerializeField]
+    private FeedbackPlayer _feedbackPlayer;
 
     public override void ShootProcess()
     {
@@ -90,7 +92,7 @@ public class Revolver : Gun
         isSkillProcess = true;
 
         _revolverSkillFX.Play();
-
+        _feedbackPlayer.PlayFeedback();
         foreach (var target in _targets)
         {
             if (!target.TryGetComponent(out MobBrain brain))
