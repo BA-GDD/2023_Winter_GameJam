@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -64,7 +65,7 @@ public class GameManager : MonoSingleton<GameManager>
         string data = PlayerPrefs.GetString("GameData", string.Empty);
         //if (string.IsNullOrEmpty(data))
         //{
-            
+
         //}
         _gameData = new GameData();
         //_gameData = JsonUtility.FromJson<GameData>(data); 
@@ -132,10 +133,24 @@ public class GameManager : MonoSingleton<GameManager>
 
         _inputReader.DisablePlayer();
         _poolTrm.BroadcastMessage("GotoPool");
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
-        SceneChange("Result");
+
+        StartCoroutine(GameEndAnimation());
+
         onGameEndTrigger?.Invoke();
     }
+
+    public IEnumerator GameEndAnimation()
+    {
+        Time.timeScale = 0.3f;
+
+        player.transform.Find("end").GetComponent<PlayableDirector>().Play();
+        yield return new WaitForSecondsRealtime(5f);
+        Time.timeScale = 1.0f;
+
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        SceneChange("Result");
+    }
+
     public void SceneChange(string sceneName, Action callback = null)
     {
         StartCoroutine(SceneChangeCor(sceneName, callback));

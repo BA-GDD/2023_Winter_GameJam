@@ -2239,7 +2239,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.5
+  orthographic size: 0.06
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2377,7 +2377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3664788862436194133, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 6.5
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: shootClip
@@ -2429,6 +2429,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1821171612}
+    - targetCorrespondingSourceObject: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1281891018}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
 --- !u!4 &1243891850 stripped
@@ -2436,6 +2439,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
   m_PrefabInstance: {fileID: 1243891849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1281891016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281891018}
+  - component: {fileID: 1281891017}
+  m_Layer: 0
+  m_Name: end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1281891017
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281891016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 49c5071ef4eaf8849b12ea4bf307a309, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 4830738657831872801, guid: 49c5071ef4eaf8849b12ea4bf307a309, type: 2}
+    value: {fileID: 1657879629}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1281891018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281891016}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1243891850}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1292264298
 GameObject:
   m_ObjectHideFlags: 0
@@ -58808,7 +58862,7 @@ GameObject:
   - component: {fileID: 1839694456}
   - component: {fileID: 1839694455}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: GlobalLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59007,7 +59061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1959630025
 PlayableDirector:
   m_ObjectHideFlags: 0
