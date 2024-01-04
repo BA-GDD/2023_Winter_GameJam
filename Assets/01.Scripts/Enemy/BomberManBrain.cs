@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class MobBrain : EnemyBrain
+public class BomberManBrain : EnemyBrain
 {
     [SerializeField]
     private MobAnimator _animator;
@@ -21,20 +20,36 @@ public class MobBrain : EnemyBrain
         _animator.SetDieTrigger(false);
     }
 
-    public override void Init()
+    protected override void Update()
     {
-        
+        if (dir.x * transform.localScale.x < 0)
+        {
+            Flip();
+        }
     }
 
-    public override void SetDead(bool isBomberMan = false)
+    public void SetDir()
+    {
+        dir = MapManager.Instance.GetNearWater(transform.position) - transform.position;
+        dir.Normalize();
+    }
+
+    public override void Init()
+    {
+
+    }
+
+    public override void SetDead(bool isBomberMan = true)
     {
         base.SetDead(isBomberMan);
         _animator.SetDieTrigger(true);
+        attack.Attack();
+        EnemySpawner.Instance.DeSpawnEnemy(this);
     }
 
     public void OnHitHandle()
     {
-        SetDead();
+        SetDead(true);
         (this as IDamageable).OnHit();
     }
 }

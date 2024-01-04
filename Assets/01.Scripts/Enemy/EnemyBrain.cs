@@ -59,7 +59,7 @@ public class EnemyBrain : PoolableMono, IDamageable
                 _lastFootPos = pos;
                 _footTileCount++;
                 MapManager.Instance.SetTile(transform.position, TileType.Ground);
-                if(_footTileCount >= 2)
+                if (_footTileCount >= 2)
                 {
                     isDead = true;
                     EnemySpawner.Instance.DeSpawnEnemy(this);
@@ -67,7 +67,6 @@ public class EnemyBrain : PoolableMono, IDamageable
                 }
             }
         }
-
 
         dir = GameManager.Instance.player.position - transform.position;
         dir.Normalize();
@@ -77,7 +76,7 @@ public class EnemyBrain : PoolableMono, IDamageable
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         transform.localScale *= new Vector2(-1, 1);
     }
@@ -87,10 +86,13 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     }
 
-    public virtual void SetDead()
+    public virtual void SetDead(bool isBomberMan = false)
     {
         SoundManager.Instance.Play(hitClip, 1, 1, 1, false);
-        MapManager.Instance.SetTile(transform.position, TileType.Water);
+        if (!isBomberMan)
+        {
+            MapManager.Instance.SetTile(transform.position, TileType.Water);
+        }
         StartCoroutine(Hit());
         EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;
         fx.transform.position = transform.position;
