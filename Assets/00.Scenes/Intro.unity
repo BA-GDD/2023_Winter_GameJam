@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: _mainCam
       value: 
       objectReference: {fileID: 592973263}
+    - target: {fileID: 17377575316506769, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+      propertyPath: _startUIType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2203081626079322355, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -281,7 +285,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a60d30b91cd541d4ca66b4cae950af55, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a00c0095122eac5409f2092b8ae99221, type: 2}
 --- !u!4 &382104890
 Transform:
   m_ObjectHideFlags: 0
