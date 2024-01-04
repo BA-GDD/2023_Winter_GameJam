@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: _sceneFade
       value: 
       objectReference: {fileID: 2013838038}
+    - target: {fileID: 17377575316506769, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+      propertyPath: _startUIType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2203081626079322355, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -240,7 +244,7 @@ MonoBehaviour:
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
   _poolTrm: {fileID: 1171933590}
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
   _inputReader: {fileID: 11400000, guid: f44f2f54643d7fb4f959a707e37e4188, type: 2}
 --- !u!4 &297524670
 Transform:
