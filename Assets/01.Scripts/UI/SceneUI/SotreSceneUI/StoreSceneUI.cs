@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StoreSceneUI : SceneUIBase
 {
     [SerializeField] private ResultOfPurchasePanel _resultPanel;
+    [SerializeField] private TextMeshProUGUI _milkCountText;
 
     public override void SetUp()
     {
+        _milkCountText.text = GameManager.Instance.GameData.milkCoount.ToString();
     }
 
     public override void Init()
@@ -17,7 +20,7 @@ public class StoreSceneUI : SceneUIBase
 
     public void ExitToLobby()
     {
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
     }
 
     public void PurchaseThisGun(GunSO target)

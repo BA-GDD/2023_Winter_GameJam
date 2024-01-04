@@ -35,7 +35,11 @@ public class GameValueCounter : MonoBehaviour
     {
         CurrentTime = GameManager.Instance.CurrentTime;
         _scoreText.text = GameManager.Instance.Score.ToString();
-        float amount = Mathf.Lerp(0, 100, MapManager.Instance.WaterFillAmount());
+        float amount = 0.0f;
+        if (MapManager.Instance != null)
+        {
+             amount = Mathf.Lerp(0, 100, MapManager.Instance.WaterFillAmount());
+        }
         _occupyText.text = $"Á¡·Éµµ : {Mathf.FloorToInt(amount)}%";
     }
 }

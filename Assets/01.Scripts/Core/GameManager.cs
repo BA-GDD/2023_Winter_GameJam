@@ -41,8 +41,8 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
-    [SerializeField]
-    private AudioClip _bgmClip;
+    public AudioClip bgmClip;
+    public AudioClip hawon;
 
     [SerializeField]
     private InputReader _inputReader;
@@ -76,6 +76,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
+            Debug.Log(1);
         }
         else
         {
@@ -88,13 +89,6 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(gameObject);
         }
         instance = this;
-
-        //_inputReader.DisablePlayer();
-        //if (string.IsNullOrEmpty(data))
-        //{
-        //}
-        //_gameData = JsonUtility.FromJson<GameData>(data);
-            _gameData = new GameData();
 
         PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)
@@ -110,7 +104,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+        SoundManager.Instance.Play(bgmClip, 0.3f, 1, 1, true);
         isGameEnd = true;
     }
 
@@ -127,6 +121,7 @@ public class GameManager : MonoSingleton<GameManager>
         //{
         //    GameEnd();
         //}
+        Score = (int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f);
     }
 
     public void GameStart()
@@ -141,6 +136,10 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (isGameEnd) return;
         isGameEnd = true;
+        
+        print(Score);
+        print(_curTime);
+        print(MapManager.Instance.WaterFillAmount());
         _curTime = 0.0f;
 
         _inputReader.DisablePlayer();
@@ -156,10 +155,12 @@ public class GameManager : MonoSingleton<GameManager>
         Time.timeScale = 0.3f;
 
         player.transform.Find("end").GetComponent<PlayableDirector>().Play();
+        yield return new WaitForSecondsRealtime(1f);
+        SoundManager.Instance.Play(hawon, 1, 1, 2);
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1.0f;
 
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.GameResult, true);
         SceneChange("Result");
     }
 
@@ -169,6 +170,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);
         callback?.Invoke();

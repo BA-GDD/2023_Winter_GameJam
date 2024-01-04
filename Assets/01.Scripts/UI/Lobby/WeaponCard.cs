@@ -12,6 +12,14 @@ public class WeaponCard : MonoBehaviour
     public Vector2 gunImgPos;
     public Vector2 gunScale;
 
+    private void Start()
+    {
+        if(GameManager.Instance.selectGunType == myType)
+        {
+            SelectThisWeapon();
+        }
+    }
+
     public void SelectThisWeapon()
     {
         _gunEquipEvent?.Invoke(myType, gunSprite, gunImgPos, gunScale);

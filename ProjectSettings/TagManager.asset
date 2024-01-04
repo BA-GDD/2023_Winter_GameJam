@@ -56,3 +56,6 @@ TagManager:
   - name: MapEffect
     uniqueID: 1329947265
     locked: 0
+  - name: UI
+    uniqueID: 2436188835
+    locked: 0

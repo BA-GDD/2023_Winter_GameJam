@@ -12,7 +12,7 @@ public class BomberManBrain : EnemyBrain
     protected override void OnEnable()
     {
         base.OnEnable();
-        isDead = false;
+        IsDead = false;
         _animator.SetIsMove(false);
         _animator.SetIsAttack(false);
         _animator.SetAttackTrigger(false);

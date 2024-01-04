@@ -33,7 +33,7 @@ public class PrologueSceneUI : SceneUIBase
 
     public void Skip()
     {
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Title);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Title, true);
     }
 
     private void PlayCutPicture()

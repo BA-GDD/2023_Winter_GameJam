@@ -11,14 +11,14 @@ public class LobbyButtonAction : MonoBehaviour
     public void EnterInGame()
     {
         Action callback = null;
-        callback += () => UIManager.Instanace.ChangeScene(UIDefine.UIType.InGame);
+        callback += () => UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.InGame, true);
         callback += () => GameManager.Instance.GameStart();
         GameManager.Instance.SceneChange("Game", callback);
     }
 
     public void EnterStore()
     {
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Store);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Store, true);
     }
 
     public void ActiveOption()

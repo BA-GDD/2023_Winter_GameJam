@@ -15,8 +15,24 @@ public class Revolver : Gun
     private float _rangeCircleMaxRadius;
     [SerializeField]
     private float _skillShootDelay;
-    private List<Collider2D> _targets;
+    [SerializeField]
+    private float _timeScaleWhileSkillPrepare = 0.2f;
+    private List<Collider2D> _targets = new List<Collider2D>();
     private float _rangeCircleRadius;
+    [SerializeField]
+    private ParticleSystem _revolverSkillFX;
+    [SerializeField]
+    private FeedbackPlayer _feedbackPlayer;
+
+    protected override void Update()
+    {
+        if (isSkillProcess)
+        {
+            return;
+        }
+
+        base.Update();
+    }
 
     public override void ShootProcess()
     {
@@ -25,9 +41,10 @@ public class Revolver : Gun
             return;
         }
 
-        PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+        PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
         bullet.transform.position = firePosition.position;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
+        bullet.ApeendEvent(KillEvnetHandle);
 
         direction.Normalize();
 
@@ -48,7 +65,7 @@ public class Revolver : Gun
                 {
                     if (target.TryGetComponent(out MobBrain brain))
                     {
-                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 0);
+                        brain.spriteRenderer.material.SetInt(_isOutlineHash, 0);
                     }
                     else
                     {
@@ -56,11 +73,11 @@ public class Revolver : Gun
                     }
                 }
 
-                StartCoroutine(SkillProcess());
+                skillProcessCoroutine = StartCoroutine(SkillProcess());
             }
             else
             {
-                Time.timeScale = 0.2f;
+                Time.timeScale = _timeScaleWhileSkillPrepare;
                 _rangeCircleRadius += _rangeCircleExpandSpeed * Time.unscaledDeltaTime;
                 _rangeCircleRadius = Mathf.Clamp(_rangeCircleRadius, 0f, _rangeCircleMaxRadius);
                 _skillRangeCircle.localScale = new Vector2(_rangeCircleRadius * 2f, _rangeCircleRadius * 2f);
@@ -68,9 +85,9 @@ public class Revolver : Gun
 
                 foreach (var target in _targets)
                 {
-                    if (target.TryGetComponent(out MobBrain brain))
+                    if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
                     {
-                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 1);
+                        brain.spriteRenderer.material.SetInt(_isOutlineHash, 1);
                     }
                     else
                     {
@@ -81,13 +98,15 @@ public class Revolver : Gun
         }
     }
 
-    private IEnumerator SkillProcess()
+    protected override IEnumerator SkillProcess()
     {
         isSkillProcess = true;
 
+        _revolverSkillFX.Play();
+        _feedbackPlayer.PlayFeedback();
         foreach (var target in _targets)
         {
-            if (!target.TryGetComponent(out MobBrain brain))
+            if (!target.TryGetComponent(out MobBrain brain) || brain.IsDead)
             {
                 continue;
             }
@@ -107,16 +126,27 @@ public class Revolver : Gun
             Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
             bullet.isMissileMode = true;
             bullet.targetOfMissile = target;
-            bullet.bulletSpeed = 20f;
+            bullet.bulletSpeed = 20.0f;
             bullet.lifeTime = 10f;
             bullet.transform.position = firePosition.position;
 
             yield return new WaitForSeconds(_skillShootDelay);
         }
 
-        isSkillProcess = false;
+        InitializeSkill();
+    }
 
-        _targets.Clear();
-        base.Skill(true);
+    protected override void InitializeSkill()
+    {
+        base.InitializeSkill();
+
+        Time.timeScale = 1f;
+        _rangeCircleRadius = 0f;
+        _skillRangeCircle.localScale = Vector2.zero;
+
+        if (_targets.Count > 0)
+        {
+            _targets.Clear();
+        }
     }
 }

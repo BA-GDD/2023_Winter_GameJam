@@ -21,13 +21,14 @@ public class GameExitPanel : PanelBase
                 break;
             case UIDefine.UIType.Lobby:
                 {
+                    GameManager.Instance.SaveData();
                     _acceptBtn.onClick.AddListener(() => Application.Quit());
                 }
                 break;
             case UIDefine.UIType.InGame:
                 {
                     callback = null;
-                    callback += () => UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+                    callback += () => UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
                     _acceptBtn.onClick.AddListener(() => GameManager.Instance.SceneChange("Intro", callback));
                     _acceptBtn.onClick.AddListener(InitPanel);
                 }

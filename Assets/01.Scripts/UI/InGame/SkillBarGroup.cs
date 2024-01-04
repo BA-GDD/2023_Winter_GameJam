@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class SkillBarGroup : MonoBehaviour
 {
-    [SerializeField] private Slider _firstSilder;
+    [SerializeField] private Image _skillGage;
+    private Material _gageMat => _skillGage.material;
     private float _currentSkillValue;
 
     public void ChangeValue(float addValue)
     {
-        _currentSkillValue += addValue;
+        _currentSkillValue = Mathf.Clamp(_currentSkillValue + addValue, 0f, 1f);
     }
 
     private void Update()
     {
-        _firstSilder.value = Mathf.Lerp(_firstSilder.value, _currentSkillValue, Time.deltaTime * 3);
+        _gageMat.SetFloat("_Fill", Mathf.Lerp(_gageMat.GetFloat("_Fill"), _currentSkillValue, Time.deltaTime * 3));
     }
 }
