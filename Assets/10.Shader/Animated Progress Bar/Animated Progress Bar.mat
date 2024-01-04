@@ -97,7 +97,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Fill: 0.0000000018423287
+    - _Fill: 0.9999997
     - _Fill_Edge_Width: 0.0144
     - _Fill_Highlight_Distance: 0.459
     - _Fill_Highlight_Power: 3.51

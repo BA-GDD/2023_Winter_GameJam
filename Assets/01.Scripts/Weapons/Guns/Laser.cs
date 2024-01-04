@@ -9,6 +9,8 @@ public class Laser : Gun
     [SerializeField]
     private PlayerLaser _laserEffect;
 
+    Vector2 direction;
+
     protected override void Update()
     {
         base.Update();
@@ -19,7 +21,7 @@ public class Laser : Gun
         }
 
         _laserEffect.transform.position = firePosition.transform.position;
-        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _laserEffect.transform.position;
+        /*Vector2 */direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _laserEffect.transform.position;
 
         direction.Normalize();
 
@@ -28,7 +30,7 @@ public class Laser : Gun
 
         feedbackPlayer.PlayFeedback();
 
-        Physics2D.BoxCastAll(_laserEffect.transform.position + _laserEffect.transform.right * (transform.parent.localScale.x * direction.x < 0f ? -1f : 1f) * _laserEffect.particle.main.startSizeX.constant * 0.5f, new Vector2(_laserEffect.particle.main.startSizeX.constant, _laserEffect.particle.main.startSizeY.constant), angle, direction, 0f, enemyLayerMask).ToList().ForEach(enemy =>
+        Physics2D.BoxCastAll(_laserEffect.transform.position + _laserEffect.transform.right * (transform.parent.localScale.x * direction.x < 0f ? -1f : 1f) * _laserEffect.shootParticle.main.startSizeY.constant * 0.5f, new Vector2(_laserEffect.shootParticle.main.startSizeY.constant, _laserEffect.shootParticle.main.startSizeX.constant), angle, direction, 0f, enemyLayerMask).ToList().ForEach(enemy =>
         {
             if (enemy.transform.TryGetComponent(out MobBrain brain) && !brain.IsDead)
             {
@@ -45,7 +47,7 @@ public class Laser : Gun
         }
 
         _laserEffect.SetToShootLaser();
-        _laserEffect.particle.Play();
+        _laserEffect.shootParticle.Play();
 
         _laserEffect.transform.position = firePosition.transform.position;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _laserEffect.transform.position;
@@ -56,7 +58,7 @@ public class Laser : Gun
 
         feedbackPlayer.PlayFeedback();
 
-        Physics2D.RaycastAll(_laserEffect.transform.position, direction, _laserEffect.particle.main.startSizeX.constant, enemyLayerMask).ToList().ForEach(enemy =>
+        Physics2D.RaycastAll(_laserEffect.transform.position, direction, _laserEffect.shootParticle.main.startSizeY.constant, enemyLayerMask).ToList().ForEach(enemy =>
         {
             if (enemy.transform.TryGetComponent(out MobBrain brain) && !brain.IsDead)
             {
@@ -71,7 +73,7 @@ public class Laser : Gun
         if (CanUseSkill())
         {
             _laserEffect.SetToSkillLaser();
-            _laserEffect.particle.Play();
+            _laserEffect.rootParticle.Play();
 
             skillProcessCoroutine = StartCoroutine(SkillProcess());
         }
@@ -81,7 +83,7 @@ public class Laser : Gun
     {
         isSkillProcess = true;
 
-        yield return new WaitForSeconds(_laserEffect.particle.main.startLifetime.constant);
+        yield return new WaitForSeconds(_laserEffect.rootParticle.main.startLifetime.constant);
 
         InitializeSkill();
     }
@@ -90,6 +92,13 @@ public class Laser : Gun
     {
         base.InitializeSkill();
 
-        _laserEffect.particle.Stop();
+        _laserEffect.rootParticle.Stop();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawRay(_laserEffect.transform.position, direction * _laserEffect.shootParticle.main.startSizeY.constant);
     }
 }
