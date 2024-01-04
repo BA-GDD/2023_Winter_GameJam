@@ -21,8 +21,6 @@ public class Revolver : Gun
     private float _rangeCircleRadius;
     [SerializeField]
     private ParticleSystem _revolverSkillFX;
-    [SerializeField]
-    private FeedbackPlayer _feedbackPlayer;
 
     protected override void Update()
     {
@@ -44,11 +42,13 @@ public class Revolver : Gun
         PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
         bullet.transform.position = firePosition.position;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
-        bullet.ApeendEvent(KillEvnetHandle);
 
+        bullet.ApeendEvent(KillEvnetHandle);
         direction.Normalize();
 
         bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+
+        feedbackPlayer.PlayFeedback();
     }
 
     public override void Skill(bool occurSkill)
@@ -103,7 +103,7 @@ public class Revolver : Gun
         isSkillProcess = true;
 
         _revolverSkillFX.Play();
-        _feedbackPlayer.PlayFeedback();
+
         foreach (var target in _targets)
         {
             if (!target.TryGetComponent(out MobBrain brain) || brain.IsDead)
@@ -129,6 +129,8 @@ public class Revolver : Gun
             bullet.bulletSpeed = 20.0f;
             bullet.lifeTime = 10f;
             bullet.transform.position = firePosition.position;
+
+            feedbackPlayer.PlayFeedback();
 
             yield return new WaitForSeconds(_skillShootDelay);
         }

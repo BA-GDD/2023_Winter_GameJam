@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RazerController
+  m_Name: LaserController
   m_Controller: {fileID: 9100000, guid: cf52bf28aed811349a84528501087a5e, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: ef76a7f185359cf40a8e2acf98e0b846, type: 2}

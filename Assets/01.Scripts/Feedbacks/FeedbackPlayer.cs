@@ -20,14 +20,4 @@ public class FeedbackPlayer : MonoBehaviour
             feedback.CreateFeedback();
         }
     }
-
-    #region Debug
-    private void Update()
-    {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            PlayFeedback();
-        }
-    }
-    #endregion
 }

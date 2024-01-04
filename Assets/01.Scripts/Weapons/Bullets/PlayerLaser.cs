@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRazer : MonoBehaviour
+public class PlayerLaser : MonoBehaviour
 {
     [HideInInspector]
     public ParticleSystem particle;
 
-    [Header("Shoot Razer Properties")]
+    [Header("Shoot Laser Properties")]
     [SerializeField]
     private float _shootStartLifeTime = 0.5f;
     [SerializeField]
@@ -15,7 +15,7 @@ public class PlayerRazer : MonoBehaviour
     [SerializeField]
     private float _shootStartSizeY = 0.1f;
 
-    [Header("Skill Razer Properties")]
+    [Header("Skill Laser Properties")]
     [SerializeField]
     private float _skillStartLifeTime = 3f;
     [SerializeField]
@@ -31,14 +31,14 @@ public class PlayerRazer : MonoBehaviour
         _mainParticle = particle.main;
     }
 
-    public void SetToShootRazer()
+    public void SetToShootLaser()
     {
         _mainParticle.startLifetime = _shootStartLifeTime;
         _mainParticle.startSizeX = _shootStartSizeX;
         _mainParticle.startSizeY = _shootStartSizeY;
     }
 
-    public void SetToSkillRazer()
+    public void SetToSkillLaser()
     {
         _mainParticle.startLifetime = _skillStartLifeTime;
         _mainParticle.startSizeX = _skillStartSizeX;
