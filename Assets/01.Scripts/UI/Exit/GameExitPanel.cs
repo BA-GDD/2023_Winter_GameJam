@@ -21,6 +21,7 @@ public class GameExitPanel : PanelBase
                 break;
             case UIDefine.UIType.Lobby:
                 {
+                    GameManager.Instance.SaveData();
                     _acceptBtn.onClick.AddListener(() => Application.Quit());
                 }
                 break;
