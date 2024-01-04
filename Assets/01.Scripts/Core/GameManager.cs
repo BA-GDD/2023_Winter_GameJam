@@ -162,6 +162,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
+        yield return new WaitForSeconds(0.2f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);
         callback?.Invoke();

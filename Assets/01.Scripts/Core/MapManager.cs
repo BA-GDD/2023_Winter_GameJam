@@ -27,8 +27,15 @@ public struct SpaData
     public int weight;
 }
 
-public class MapManager : MonoSingleton<MapManager>
+public class MapManager : MonoBehaviour
 {
+    private static MapManager _instance;
+    public static MapManager Instance
+    {
+        get => _instance;
+        set => _instance = value;
+    }  
+
     [SerializeField] private List<SpaData> hotSprings;
     [SerializeField] private Tilemap _groundMap;
     [SerializeField] private Tilemap _holeMap;
@@ -56,7 +63,13 @@ public class MapManager : MonoSingleton<MapManager>
         int groundCnt = _groundMap.GetTilesBlock(_groundMap.cellBounds).Length;
         return (float)waterCnt / groundCnt;
     }
-
+    private void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {

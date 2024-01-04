@@ -2764,6 +2764,10 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: _onDieTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3064609621679335767, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9998841
@@ -61706,7 +61710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1959630025
 PlayableDirector:
   m_ObjectHideFlags: 0

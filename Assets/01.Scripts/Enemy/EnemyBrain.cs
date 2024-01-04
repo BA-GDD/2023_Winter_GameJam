@@ -55,7 +55,7 @@ public class EnemyBrain : PoolableMono, IDamageable
         {
             if (_lastFootPos != pos)
             {
-                print($"{_lastFootPos}/{pos}");
+                //print($"{_lastFootPos}/{pos}");
                 _lastFootPos = pos;
                 _footTileCount++;
                 MapManager.Instance.SetTile(transform.position, TileType.Ground);
@@ -104,7 +104,7 @@ public class EnemyBrain : PoolableMono, IDamageable
     {
         Material mat = _spriteRenderer.material;
         mat.SetFloat("_blink_amount", 0.5f);
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.03f);
         mat.SetFloat("_blink_amount", 0.0f);
     }
 
