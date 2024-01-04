@@ -33,14 +33,14 @@ public class PlayerRazer : MonoBehaviour
 
     public void SetToShootRazer()
     {
-        _mainParticle.startLifetime = _mainParticle.duration = _shootStartLifeTime;
+        _mainParticle.startLifetime = _shootStartLifeTime;
         _mainParticle.startSizeX = _shootStartSizeX;
         _mainParticle.startSizeY = _shootStartSizeY;
     }
 
     public void SetToSkillRazer()
     {
-        _mainParticle.startLifetime = _mainParticle.duration = _skillStartLifeTime;
+        _mainParticle.startLifetime = _skillStartLifeTime;
         _mainParticle.startSizeX = _skillStartSizeX;
         _mainParticle.startSizeY = _skillStartSizeY;
     }

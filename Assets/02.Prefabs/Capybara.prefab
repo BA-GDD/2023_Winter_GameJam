@@ -302,7 +302,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Intensity: 0.25
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000bb38a8dd432bb8e38fa83ab78162454f498a8b27
+  m_ApplyToSortingLayers: 00000000bb38a8dd432bb8e38fa83ab7498a8b278162454f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1345,6 +1345,10 @@ PrefabInstance:
     - target: {fileID: 6140087112097808838, guid: d21f51ce511587343bbb2cd99d112b38, type: 3}
       propertyPath: _rangeCircleExpandSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140087112097808838, guid: d21f51ce511587343bbb2cd99d112b38, type: 3}
+      propertyPath: _timeScaleWhileSkillPrepare
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6459289559591411404, guid: d21f51ce511587343bbb2cd99d112b38, type: 3}
       propertyPath: m_LocalPosition.x

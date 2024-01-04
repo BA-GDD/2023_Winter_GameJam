@@ -35,7 +35,7 @@ public class Razer : Gun
             }
         });
     }
-    
+
     public override void ShootProcess()
     {
         if (isSkillProcess)
@@ -64,21 +64,28 @@ public class Razer : Gun
 
     public override void Skill(bool occurSkill)
     {
-        if (CanUseSkill()/*Debug*/ && !isSkillProcess)
+        if (CanUseSkill())
         {
             _razerEffect.SetToSkillRazer();
             _razerEffect.particle.Play();
-            StartCoroutine(SkillProcess());
-            base.Skill(occurSkill);
+
+            skillProcessCoroutine = StartCoroutine(SkillProcess());
         }
     }
 
-    public IEnumerator SkillProcess()
+    protected override IEnumerator SkillProcess()
     {
         isSkillProcess = true;
 
-        yield return new WaitForSeconds(_razerEffect.particle.main.duration);
+        yield return new WaitForSeconds(_razerEffect.particle.main.startLifetime.constant);
 
-        isSkillProcess = false;
+        InitializeSkill();
+    }
+
+    protected override void InitializeSkill()
+    {
+        base.InitializeSkill();
+
+        _razerEffect.particle.Stop();
     }
 }

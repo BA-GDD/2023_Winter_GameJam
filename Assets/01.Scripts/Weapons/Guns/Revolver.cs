@@ -15,7 +15,9 @@ public class Revolver : Gun
     private float _rangeCircleMaxRadius;
     [SerializeField]
     private float _skillShootDelay;
-    private List<Collider2D> _targets;
+    [SerializeField]
+    private float _timeScaleWhileSkillPrepare = 0.2f;
+    private List<Collider2D> _targets = new List<Collider2D>();
     private float _rangeCircleRadius;
 
     protected override void Update()
@@ -56,9 +58,9 @@ public class Revolver : Gun
 
                 foreach (var target in _targets)
                 {
-                    if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
+                    if (target.TryGetComponent(out MobBrain brain))
                     {
-                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 0);
+                        brain.spriteRenderer.material.SetInt(_isOutlineHash, 0);
                     }
                     else
                     {
@@ -66,11 +68,11 @@ public class Revolver : Gun
                     }
                 }
 
-                StartCoroutine(SkillProcess());
+                skillProcessCoroutine = StartCoroutine(SkillProcess());
             }
             else
             {
-                Time.timeScale = 0.2f;
+                Time.timeScale = _timeScaleWhileSkillPrepare;
                 _rangeCircleRadius += _rangeCircleExpandSpeed * Time.unscaledDeltaTime;
                 _rangeCircleRadius = Mathf.Clamp(_rangeCircleRadius, 0f, _rangeCircleMaxRadius);
                 _skillRangeCircle.localScale = new Vector2(_rangeCircleRadius * 2f, _rangeCircleRadius * 2f);
@@ -80,7 +82,7 @@ public class Revolver : Gun
                 {
                     if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
                     {
-                        brain._spriteRenderer.material.SetInt(_isOutlineHash, 1);
+                        brain.spriteRenderer.material.SetInt(_isOutlineHash, 1);
                     }
                     else
                     {
@@ -91,7 +93,7 @@ public class Revolver : Gun
         }
     }
 
-    private IEnumerator SkillProcess()
+    protected override IEnumerator SkillProcess()
     {
         isSkillProcess = true;
 
@@ -124,9 +126,20 @@ public class Revolver : Gun
             yield return new WaitForSeconds(_skillShootDelay);
         }
 
-        isSkillProcess = false;
+        InitializeSkill();
+    }
 
-        _targets.Clear();
-        base.Skill(true);
+    protected override void InitializeSkill()
+    {
+        base.InitializeSkill();
+
+        Time.timeScale = 1f;
+        _rangeCircleRadius = 0f;
+        _skillRangeCircle.localScale = Vector2.zero;
+
+        if (_targets.Count > 0)
+        {
+            _targets.Clear();
+        }
     }
 }

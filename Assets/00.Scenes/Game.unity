@@ -2202,50 +2202,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 730379091811406550, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: shootClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b1853caa8c625d24896e1191f42af939, type: 3}
-    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[4]
-      value: 663456329
-      objectReference: {fileID: 0}
-    - target: {fileID: 1127621277239517091, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[5]
-      value: 1329947265
-      objectReference: {fileID: 0}
     - target: {fileID: 1368366047296914287, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1856431051}
-    - target: {fileID: 2343808455236176631, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2380723362336200449, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Name
       value: Capybara
-      objectReference: {fileID: 0}
-    - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: dashClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9dce0424630be4a4d9fdc2e7b0d4729d, type: 3}
-    - target: {fileID: 2579976655172713077, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: movementSpeed
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3664788862436194133, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 0.1627079
       objectReference: {fileID: 0}
-    - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: shootClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 25d73cdc14487d948a26458230f33d6e, type: 3}
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2285,10 +2253,6 @@ PrefabInstance:
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182317723573077188, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
-      propertyPath: m_Interpolate
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

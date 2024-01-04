@@ -30,7 +30,8 @@ public class EnemyBrain : PoolableMono, IDamageable
     public UnityEvent onDieTrigger;
     UnityEvent IDamageable.OnDieTrigger => onDieTrigger;
 
-    public SpriteRenderer _spriteRenderer;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
 
     public AudioClip hitClip;
     public AudioClip shootClip;
@@ -41,7 +42,7 @@ public class EnemyBrain : PoolableMono, IDamageable
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
-        _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
     }
 
     protected async virtual void OnEnable()
@@ -66,7 +67,7 @@ public class EnemyBrain : PoolableMono, IDamageable
                 MapManager.Instance.SetTile(transform.position, TileType.Ground);
                 if(_footTileCount >= 2)
                 {
-                    isDead = true;
+                    _isDead = true;
                     EnemySpawner.Instance.DeSpawnEnemy(this);
                     return;
                 }
@@ -105,7 +106,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     private IEnumerator Hit()
     {
-        Material mat = _spriteRenderer.material;
+        Material mat = spriteRenderer.material;
         mat.SetFloat("_blink_amount", 0.5f);
         yield return new WaitForSeconds(0.01f);
         mat.SetFloat("_blink_amount", 0.0f);
