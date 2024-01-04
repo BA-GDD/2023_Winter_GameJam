@@ -71,13 +71,13 @@ public class GameManager : MonoSingleton<GameManager>
         //_gameData = JsonUtility.FromJson<GameData>(data); 
         if (instance != null)
         {
-            Debug.LogError($"{typeof(UIManager)} instance is already exist!");
+            Debug.LogError($"{typeof(GameManager)} instance is already exist!");
             Destroy(gameObject);
             return;
         }
         instance = this;
 
-        _inputReader.DisablePlayer();
+        //_inputReader.DisablePlayer();
         //if (string.IsNullOrEmpty(data))
         //{
         //}

@@ -45,12 +45,12 @@ public class Player : MonoBehaviour, IDamageable
         _gunSocket = _playerAnimator.animator.transform.Find("GunSocket");
         _dashTimer = 0f;
 
-        EquipGun(GameManager.Instance.selectGunType);
         _mainCam = Camera.main;
     }
 
     private void Start()
     {
+        EquipGun(GameManager.Instance.selectGunType);
         _inputReader.onDashEvent += Dash;
         print("�÷��̾�");
     }
@@ -141,11 +141,11 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void SetWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
+        //_equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
     }
     public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
+        //_equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
     }
 
     public void UnequipGun()
