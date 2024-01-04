@@ -8,8 +8,8 @@ public class GameData
     public float beforeTime;
     public float bestTime;
     public int milkCoount;
-    public bool openRevolver;
-    public bool Laser;
+    public bool openRevolver = true;
+    public bool Razer;
     public bool Shotgun;
     public bool isLookPrologue;
 

@@ -32,8 +32,8 @@ public class GameResultSceneUI : SceneUIBase
 
     private void Start()
     {
-        //SetUp();
-        //SoundManager.Instance.Stop("BGM");
+
+        SoundManager.Instance.Stop("BGM");
     }
 
     public override void SetUp()

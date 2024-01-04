@@ -29,7 +29,7 @@ public class StoreSceneUI : SceneUIBase
         if (GameManager.Instance.GameData.milkCoount >= target.priceValue)
         {
             GameManager.Instance.GameData.milkCoount -= target.priceValue;
-            rpp.SetText($"{target.name} 구매를\n 성공하셨습니다.");
+            rpp.SetText($"{target.gunName} 구매를\n 성공하셨습니다.");
 
             switch (target.myType)
             {
@@ -43,11 +43,11 @@ public class StoreSceneUI : SceneUIBase
                     GameManager.Instance.GameData.Shotgun = true;
                     break;
             }
-            
+            GameManager.Instance.SaveData();
         }
         else
         {
-            rpp.SetText($"{target.name} 구매에\n 실패하셨습니다.");
+            rpp.SetText($"{target.gunName} 구매에\n 실패하셨습니다.");
         }
     }
 

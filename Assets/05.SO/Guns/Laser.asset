@@ -26,4 +26,4 @@ MonoBehaviour:
   useCapacityPerShoot: 5
   requireSkillGauge: 5
   fillSkillGauge: 1
-  priceValue: 0
+  priceValue: 100

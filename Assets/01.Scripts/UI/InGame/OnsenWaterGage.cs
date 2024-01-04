@@ -34,14 +34,11 @@ public class OnsenWaterGage : MonoBehaviour
 
     private void Update()
     {
-        if(_currentWaterValue != _targetWaterValue)
-        {
-            _currentWaterValue = Mathf.Lerp(_currentWaterValue, _targetWaterValue, Time.deltaTime * 4);
-            _gageImg.material.SetFloat("_amount", _currentWaterValue);
-            _waterImg.material.SetFloat("_amount", _currentWaterValue);
+        _currentWaterValue = Mathf.Lerp(_currentWaterValue, _targetWaterValue, Time.deltaTime * 4);
+        _gageImg.material.SetFloat("_amount", _currentWaterValue);
+        _waterImg.material.SetFloat("_amount", _currentWaterValue);
 
-            _percentText.text = $"{Mathf.CeilToInt(Mathf.Clamp(_currentWaterValue * 100, 0, 100))}%";
-        }
+        _percentText.text = $"{Mathf.CeilToInt(Mathf.Clamp(_currentWaterValue * 100, 0, 100))}%";
     }
 
     public void NotAllow()
