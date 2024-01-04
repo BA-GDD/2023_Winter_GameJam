@@ -13,6 +13,10 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     [SerializeField]
     private List<Transform> _spawnPoints;
 
+    public bool isIndicateMark;
+    [SerializeField]
+    private Indicator indicator;
+
     private void Start()
     {
 
@@ -46,7 +50,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     public void SpawnEnemy()
     {
-
+        SetIndicateMark(true);
         Vector2 spawnPos = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
         for (int i = 0; i < _spawnCount; ++i)
         {
@@ -75,5 +79,11 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     {
         _enemyCount--;
         PoolManager.Instance.Push(item);
+    }
+
+    public void SetIndicateMark(bool value)
+    {
+        Debug.Log(value);
+        isIndicateMark = value;
     }
 }
