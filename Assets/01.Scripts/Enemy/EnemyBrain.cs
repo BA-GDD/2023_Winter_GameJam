@@ -61,7 +61,6 @@ public class EnemyBrain : PoolableMono, IDamageable
         {
             if (_lastFootPos != pos)
             {
-                //print($"{_lastFootPos}/{pos}");
                 _lastFootPos = pos;
                 _footTileCount++;
                 MapManager.Instance.SetTile(transform.position, TileType.Ground);

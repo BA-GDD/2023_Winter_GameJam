@@ -29,8 +29,7 @@ public class PrologueSceneUI : SceneUIBase
         PlayCutPicture();
         _volume = GameObject.Find("Global Volume").GetComponent<Volume>();
         _volume.enabled = false;
-        Debug.Log(GameManager.Instance.GameData.isLookPrologue);
-        _skipBtn.SetActive(GameManager.Instance.GameData.isLookPrologue);
+        _skipBtn.SetActive(GameManager.Instance.GameDataInstance.isLookPrologue);
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true, "Prologue");
     }
 
@@ -84,8 +83,7 @@ public class PrologueSceneUI : SceneUIBase
     public override void Init()
     {
         SoundManager.Instance.Stop("Prologue");
-        GameManager.Instance.GameData.isLookPrologue = true;
-        Debug.Log(GameManager.Instance.GameData.isLookPrologue);
+        GameManager.Instance.GameDataInstance.isLookPrologue = true;
         _volume.enabled = true;
         GameManager.Instance.SaveData();
     }

@@ -17,10 +17,11 @@ public class MilkThrower : MonoBehaviour
 
     [SerializeField] private GameResultSceneUI _gameResultSceneUI;
 
-    public void ThrwoMilk(int milkCount)
+    public void ThrowMilk(int milkCount)
     {
-        Debug.Log("Milk: " + milkCount);
-        GameManager.Instance.GameData.milkCoount += milkCount;
+        GameManager.Instance.GameDataInstance.milkCount += milkCount;
+
+        GameManager.Instance.SaveData();
         StartCoroutine(ThrowMilkCo(milkCount));
     }
 

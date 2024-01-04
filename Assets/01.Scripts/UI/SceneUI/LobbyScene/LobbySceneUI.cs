@@ -11,7 +11,7 @@ public class LobbySceneUI : SceneUIBase
 
     public override void SetUp()
     {
-        GameData data = GameManager.Instance.GameData;
+        GameData data = GameManager.Instance.GameDataInstance;
 
         SoundManager.Instance.Play(_bgmClip,1,1,1,true,"Lobby");
 
@@ -20,12 +20,12 @@ public class LobbySceneUI : SceneUIBase
             _revolverCards.UnlockThisGun();
         }
 
-        if(data.Shotgun)
+        if(data.openShotgun)
         {
             _shotGunCards.UnlockThisGun();
         }
 
-        if(data.Laser)
+        if(data.openLaser)
         {
             _razerCards.UnlockThisGun();
         }

@@ -15,7 +15,6 @@ public class SoundObject : MonoBehaviour
 
     public void Play(AudioMixerGroup group,AudioClip clip, float volume = 1f, float pitch = 1f, bool loop = false)
     {
-        print($"{group} : {volume} : {pitch}");
         source.outputAudioMixerGroup = group;
         source.clip = clip;
         source.volume = volume;

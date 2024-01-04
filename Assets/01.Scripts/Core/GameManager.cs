@@ -39,7 +39,11 @@ public class GameManager : MonoSingleton<GameManager>
     private Transform _poolTrm;
 
     private GameData _gameData;
-    public GameData GameData => _gameData;
+    public GameData GameDataInstance
+    {
+        get => _gameData;
+        set => _gameData = value;
+    }
 
     public AudioClip hawon;
 
@@ -75,7 +79,6 @@ public class GameManager : MonoSingleton<GameManager>
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
-            Debug.Log(1);
         }
         else
         {
@@ -98,6 +101,8 @@ public class GameManager : MonoSingleton<GameManager>
         mainCamera = Camera.main;
         //SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
+        selectGunType = (GunType)Enum.Parse(typeof(GunType), _gameData.equipedGun);
+
         DontDestroyOnLoad(this);
     }
     private void Start()
@@ -119,11 +124,15 @@ public class GameManager : MonoSingleton<GameManager>
         //{
         //    GameEnd();
         //}]
-        if(MapManager.Instance != null)
+        if (MapManager.Instance != null)
             Score = ((int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f)) * 0.1f;
-        if(Input.GetKeyDown(KeyCode.O))
+
+        // Develper Code
+        if (Keyboard.current.oKey.wasPressedThisFrame)
         {
-            GameData.milkCoount = 100000;
+            GameDataInstance.milkCount = 100000;
+
+            SaveData();
         }
     }
 
@@ -139,10 +148,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (isGameEnd) return;
         isGameEnd = true;
-        
-        print(Score);
-        print(_curTime);
-        print(MapManager.Instance.WaterFillAmount());
+
         _curTime = 0.0f;
 
         _inputReader.DisablePlayer();

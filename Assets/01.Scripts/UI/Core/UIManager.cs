@@ -78,7 +78,6 @@ public class UIManager : MonoBehaviour
         }
 
         _currentScene = Instantiate(_uiSelecter[toChangeScene], _sceneUITrm);
-        print(_currentScene);
         currentUIType = toChangeScene;
         _currentScene.name = _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();

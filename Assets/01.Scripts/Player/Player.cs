@@ -63,7 +63,6 @@ public class Player : MonoBehaviour, IDamageable
         _dashTimer = 0f;
 
         _mainCam = Camera.main;
-        EquipGun(GameManager.Instance.selectGunType);
     }
 
     IEnumerator Muteki()
@@ -74,8 +73,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        EquipGun(GameManager.Instance.selectGunType);
+
         _inputReader.onDashEvent += Dash;
-        print("�÷��̾�");
     }
 
     private void Update()
@@ -156,13 +156,11 @@ public class Player : MonoBehaviour, IDamageable
         {
             if (_canReload)
             {
-                print("들어가서 빼준다");
                 MapManager.Instance.EnterSpa();
                 _inputReader.onShootEvent -= _equipedGun.Shoot;
             }
             else
             {
-                print("나와서 다시 넣어준다");
                 MapManager.Instance.ExitSpa();
                 _inputReader.onShootEvent += _equipedGun.Shoot;
             }
@@ -177,7 +175,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void EquipGun(GunType gunType)
     {
-        print("총기 장착이다");
         _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
         _equipedGun.owner = this;
         _inputReader.onShootEvent += _equipedGun.Shoot;
@@ -186,7 +183,6 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void SetWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        Debug.Log(9);
         _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
     }
     public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
@@ -196,7 +192,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSkillGroup(SkillBarGroup skillBarGroup)
     {
-        Debug.Log(8);
         _equipedGun.currentSkillChanged += skillBarGroup.ChangeValue;
     }
     public void DeleteSkillGroup(SkillBarGroup skillBarGroup)

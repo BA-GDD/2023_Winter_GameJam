@@ -5,24 +5,27 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public float beforeTime;
-    public float bestTime;
-    public int milkCoount;
+    public string equipedGun = "Revolver";
+    public float beforeScore;
+    public float bestScore;
+    public int milkCount;
     public bool openRevolver = true;
-    public bool Laser;
-    public bool Shotgun;
+    public bool openLaser;
+    public bool openShotgun;
     public bool isLookPrologue;
 
-    public void SetTime(float time)
+    public void SetScore(float score)
     {
-        beforeTime = time;
-        if (bestTime > time)
+        beforeScore = score;
+
+        if (bestScore < score)
         {
-            bestTime = time;
+            bestScore = score;
         }
     }
+
     public void Save()
     {
         PlayerPrefs.SetString("SaveData", JsonUtility.ToJson(this));
     }
-}   
+}

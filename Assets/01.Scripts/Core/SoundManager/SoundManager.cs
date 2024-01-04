@@ -60,7 +60,6 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
         else
         {
-            Debug.Log(name);
             soundObjects.Add(name,obj);
         }
     }
@@ -94,7 +93,6 @@ public class SoundManager : MonoSingleton<SoundManager>
                 audioMixerMaster.SetFloat("sfx", sfxVolume);
                 break;
             default:
-                print("잘못된 값!");
                 break;
         }
     }
