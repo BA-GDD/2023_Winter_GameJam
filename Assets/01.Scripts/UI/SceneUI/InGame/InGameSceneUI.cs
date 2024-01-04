@@ -22,14 +22,17 @@ public class InGameSceneUI : SceneUIBase
     }
     public override void Init()
     {
-        _player.DeleteSkillGroup(_skillBarGroup);
+        _player.DeleteSkillGroup(_skillBarGroup); 
         _player.DeleteWaterGaugeHandle(_onsenWater);
         _player.UnequipGun();
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
     }
 
     private void Update()
     {
-        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
             exp.SetText("정말 로비로 퇴장<br>하시겠습니까?");

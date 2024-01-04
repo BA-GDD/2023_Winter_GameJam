@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private Canvas _canvas;
+    public Canvas _canvas;
     public Transform CanvasTrm => _canvas.transform;
 
     [SerializeField] private UIType _startUIType;

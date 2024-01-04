@@ -2792,6 +2792,22 @@ PrefabInstance:
       propertyPath: _skillEffect_01
       value: 
       objectReference: {fileID: 422206180}
+    - target: {fileID: 5774584561029903025, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774584561029903025, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774584561029903025, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774584561029903025, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5991799805500580450, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: shootClip
       value: 
@@ -2846,6 +2862,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7606396705541901979, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7803122906041518430, guid: e816e6284ed5ead4cae60e335eb5c30e, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
