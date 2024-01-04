@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
 {
     private readonly int _materialHalfAmountHash = Shader.PropertyToID("_player_half_amount");
+    [HideInInspector]
+    public InGameSceneUI inGameSceneUI;
     [SerializeField]
     private UnityEvent _onDieTrigger;
     [SerializeField]
@@ -188,6 +191,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public void UnequipGun()
     {
+        _equipedGun.gameObject.SetActive(false);
+
         _inputReader.onShootEvent -= _equipedGun.Shoot;
         _equipedGun.owner = null;
         _equipedGun = null;
@@ -204,10 +209,11 @@ public class Player : MonoBehaviour, IDamageable
 
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
+        //DeleteSkillGroup(inGameSceneUI.skillBarGroup);
+        //DeleteWaterGaugeHandle(inGameSceneUI.onsenWater);
+        UnequipGun();
 
-        _equipedGun.gameObject.SetActive(false);
         (this as IDamageable).OnHit();
-
         GameManager.Instance.GameEnd();
     }
 

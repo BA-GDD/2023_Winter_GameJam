@@ -6,25 +6,25 @@ using UnityEngine.InputSystem;
 public class InGameSceneUI : SceneUIBase
 {
     private Player _player;
-    private OnsenWaterGage _onsenWater;
-    private SkillBarGroup _skillBarGroup;
+    [HideInInspector]
+    public OnsenWaterGage onsenWater;
+    [HideInInspector]
+    public SkillBarGroup skillBarGroup;
     [SerializeField] private GameExitPanel _exitPanel;
 
     public override void SetUp()
     {
         _player = FindObjectOfType<Player>();
+        _player.inGameSceneUI = this;
 
-        _onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
-        _skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
-        _player.SetWaterGaugeHandle(_onsenWater);
-        _player.SetSkillGroup(_skillBarGroup);
+        onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
+        skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
+        _player.SetWaterGaugeHandle(onsenWater);
+        _player.SetSkillGroup(skillBarGroup);
         SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
     }
     public override void Init()
     {
-        _player.DeleteSkillGroup(_skillBarGroup); 
-        _player.DeleteWaterGaugeHandle(_onsenWater);
-        _player.UnequipGun();
         UIManager.Instanace._canvas.worldCamera = Camera.main;
     }
 
