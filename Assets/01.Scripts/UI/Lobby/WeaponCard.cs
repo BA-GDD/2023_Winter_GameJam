@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class WeaponCard : MonoBehaviour
 {
+    [SerializeField] private GameObject _unlockMark;
+    private bool _canEquip;
     [SerializeField] private UnityEvent<GunType, Sprite, Vector2, Vector2> _gunEquipEvent;
 
     public GunType myType;
@@ -20,8 +22,15 @@ public class WeaponCard : MonoBehaviour
         }
     }
 
+    public void UnlockThisGun()
+    {
+        _canEquip = true;
+        _unlockMark.SetActive(false);
+    }
+
     public void SelectThisWeapon()
     {
+        if (!_canEquip) return;
         _gunEquipEvent?.Invoke(myType, gunSprite, gunImgPos, gunScale);
     }
 }

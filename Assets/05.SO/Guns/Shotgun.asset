@@ -17,7 +17,7 @@ MonoBehaviour:
   gunProfile: {fileID: 21300000, guid: 768fc3ff81b86324b9b79c6eb4ffa35d, type: 3}
   flavorText: "\uB180\uC774\uD130\uC5D0\n\uB4E4\uACE0\uC624\uBA74\n\uC778\uC2F8 \uB418\uB294\n'\uADF8'
     \uBB3C\uCD1D"
-  skillText: 
+  skillText: "\uC77C\uC815 \uC2DC\uAC04\n\uB3D9\uC548 \uC9F1\uC9F1\n\uAC15\uD574\uC9C4\uB2E4."
   gunAnimator: {fileID: 0}
   shootDelay: 0
   maximumCapacity: 20
@@ -25,4 +25,4 @@ MonoBehaviour:
   useCapacityPerShoot: 2
   requireSkillGauge: 5
   fillSkillGauge: 1
-  priceValue: 0
+  priceValue: 50

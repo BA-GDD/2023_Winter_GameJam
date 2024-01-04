@@ -180,8 +180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -697, y: 388}
-  m_SizeDelta: {x: 450, y: 220}
+  m_AnchoredPosition: {x: -716, y: 435}
+  m_SizeDelta: {x: 450, y: 163.5275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6612356310213354034
 CanvasRenderer:
@@ -270,7 +270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198, y: 41}
+  m_AnchoredPosition: {x: 206, y: 28}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1895056026407931001
@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 173, y: -46}
+  m_AnchoredPosition: {x: 204, y: -46}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4813082962917394724
@@ -537,8 +537,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gageImg: {fileID: 1705937895081688323}
   _waterImg: {fileID: 3414597834245262623}
-  _percentText: {fileID: 3374860356166065507}
+  _percentText: {fileID: 5238235297155829839}
 --- !u!1 &5973715237306453975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timerText: {fileID: 904567873612528412}
   _scoreText: {fileID: 749297702521606364}
-  _occupyText: {fileID: 5294662507379994704}
+  _occupyText: {fileID: 3840598254808083998}
   _occValue: {fileID: 8441351671776164277}
 --- !u!1 &8392914292223700347
 GameObject:

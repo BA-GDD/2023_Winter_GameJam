@@ -31,7 +31,6 @@ public class GameResultSceneUI : SceneUIBase
 
     private void Start()
     {
-        SetUp();
         SoundManager.Instance.Stop("BGM");
     }
 
