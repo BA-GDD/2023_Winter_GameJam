@@ -76,6 +76,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
+            Debug.Log(1);
         }
         else
         {
@@ -88,13 +89,6 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(gameObject);
         }
         instance = this;
-
-        //_inputReader.DisablePlayer();
-        //if (string.IsNullOrEmpty(data))
-        //{
-        //}
-        //_gameData = JsonUtility.FromJson<GameData>(data);
-            _gameData = new GameData();
 
         PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)

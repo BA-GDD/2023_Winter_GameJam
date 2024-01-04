@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
         _currentScene.name = _currentScene.name.Replace("(Clone)", "");
         _currentScene.SetUp();
 
+        _canvas.worldCamera = Camera.main;
         ButtonGenerate();
     }
 

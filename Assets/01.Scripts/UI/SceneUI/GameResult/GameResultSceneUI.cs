@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class GameResultSceneUI : SceneUIBase
 {
-    [SerializeField] private GameObject _partyFX;
     [SerializeField] private UnityEvent<float, float, float> _scoreSetEvent;
     [SerializeField] private UnityEvent<int> _milkThrowEvent;
     private GameObject _remainFX;
@@ -39,7 +38,6 @@ public class GameResultSceneUI : SceneUIBase
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
                                GameManager.Instance.GameData.beforeTime,
                                GameManager.Instance.GameData.bestTime);
-        _remainFX = Instantiate(_partyFX, transform);
     }
 
     public override void Init()
