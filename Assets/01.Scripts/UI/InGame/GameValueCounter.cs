@@ -26,11 +26,11 @@ public class GameValueCounter : MonoBehaviour
             if(value <= 10)
             {
                 _timerText.color = Color.red;
-                _timerText.text = $"{Mathf.FloorToInt(CurrentTime / 60)} : {CurrentTime % 60}";
+                _timerText.text = $"{Mathf.FloorToInt(CurrentTime / 60).ToString("00")} : {(CurrentTime % 60).ToString("00")}";
             }
             else
             {
-                _timerText.text = $"{Mathf.FloorToInt(CurrentTime / 60)} : {Mathf.FloorToInt(CurrentTime % 60)}";
+                _timerText.text = $"{Mathf.FloorToInt(CurrentTime / 60).ToString("00")} : {Mathf.FloorToInt(CurrentTime % 60).ToString("00")}";
             }
         }
     }
@@ -38,7 +38,7 @@ public class GameValueCounter : MonoBehaviour
     private void Update()
     {
         CurrentTime = GameManager.Instance.CurrentTime;
-        _scoreText.text = GameManager.Instance.Score.ToString();
+        _scoreText.text = GameManager.Instance.Score.ToString("0.#");
         float amount = 0.0f;
         if (MapManager.Instance != null)
         {
