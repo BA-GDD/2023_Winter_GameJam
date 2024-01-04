@@ -23,6 +23,6 @@ MonoBehaviour:
   maximumCapacity: 10
   fillCapacityPerSecond: 20
   useCapacityPerShoot: 1
-  requireSkillGauge: 0
-  fillSkillGaugePerSecond: 0
+  requireSkillGauge: 5
+  fillSkillGauge: 1
   priceValue: 0

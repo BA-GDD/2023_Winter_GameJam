@@ -28,9 +28,10 @@ public class Revolver : Gun
             return;
         }
 
-        PoolableMono bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet);
+        PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
         bullet.transform.position = firePosition.position;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - bullet.transform.position;
+        bullet.ApeendEvent(KillEvnetHandle);
 
         direction.Normalize();
 

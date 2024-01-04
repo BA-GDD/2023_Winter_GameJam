@@ -11,7 +11,8 @@ public class SkillBarGroup : MonoBehaviour
 
     public void ChangeValue(float addValue)
     {
-        _currentSkillValue += addValue;
+        _currentSkillValue = Mathf.Clamp(_currentSkillValue + addValue, 0f, 1f);
+        print(_currentSkillValue);
     }
 
     private void Update()

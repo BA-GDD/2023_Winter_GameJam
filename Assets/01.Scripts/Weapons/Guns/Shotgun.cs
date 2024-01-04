@@ -48,7 +48,7 @@ public class Shotgun : Gun
         {
             for (int i = 0; i < _shotsAmount; ++i)
             {
-                Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
+                PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
                 bullet.bulletSpeed = _bulletSpeed;
                 bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
                 bullet.lifeTime = _lifeTime;
@@ -59,6 +59,7 @@ public class Shotgun : Gun
 
                 float angle = Random.Range(-_shotAngleRange * 0.5f, _shotAngleRange * 0.5f);
                 bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angle, Vector3.forward);
+                bullet.ApeendEvent(KillEvnetHandle);
             }
         }
         else
@@ -75,7 +76,7 @@ public class Shotgun : Gun
 
             for (int i = 0; i < _skillShotsAmount; ++i)
             {
-                Bullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as Bullet;
+                PlayerBullet bullet = PoolManager.Instance.Pop(PoolingType.PlayerBullet) as PlayerBullet;
                 bullet.bulletSpeed = _bulletSpeed;
                 bullet.bulletSpeed += Random.Range(-_speedRange, _speedRange);
                 bullet.lifeTime = _skillLifeTime;
@@ -86,6 +87,7 @@ public class Shotgun : Gun
 
                 float angle = Random.Range(-_skillShotAngleRange * 0.5f, _skillShotAngleRange * 0.5f);
                 bullet.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angle, Vector3.forward);
+                bullet.ApeendEvent(KillEvnetHandle);
             }
         }
     }
