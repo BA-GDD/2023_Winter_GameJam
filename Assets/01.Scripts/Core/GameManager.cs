@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -60,20 +61,31 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    private readonly string _filePath = Path.Combine(Application.dataPath, "GameData.json");
+    private string _jsonData;
+
+    public void SaveData()
+    {
+        string jsonData = JsonUtility.ToJson(_gameData);
+        File.WriteAllText(_filePath, jsonData);
+    }
+
     private void Awake()
     {
-        string data = PlayerPrefs.GetString("GameData", string.Empty);
-        //if (string.IsNullOrEmpty(data))
-        //{
-
-        //}
-        _gameData = new GameData();
-        //_gameData = JsonUtility.FromJson<GameData>(data); 
-        if (instance != null)
+        if(File.Exists(_filePath))
+        {
+            _jsonData = File.ReadAllText(_filePath);
+            _gameData = JsonUtility.FromJson<GameData>(_jsonData);
+        }
+        else
+        {
+            _gameData = new GameData();
+            SaveData();
+        }
+        if(instance != null)
         {
             Debug.LogError($"{typeof(GameManager)} instance is already exist!");
             Destroy(gameObject);
-            return;
         }
         instance = this;
 

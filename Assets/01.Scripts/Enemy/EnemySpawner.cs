@@ -59,7 +59,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             spawnPos = _pointsAroundPlayer[randNum].position;
             spawnPos.x = Mathf.Clamp(spawnPos.x, -33, 35);
             spawnPos.y = Mathf.Clamp(spawnPos.y, -40, 41);
-            if (MapManager.Instance.CheckWater(spawnPos))
+            if (MapManager.Instance.CheckWater(spawnPos, out Vector3Int pos))
             {
                 print("여긴 물이야");
                 spawnPos = Vector2.zero;

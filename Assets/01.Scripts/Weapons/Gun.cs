@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public enum GunType
 {
@@ -67,6 +68,11 @@ public abstract class Gun : MonoBehaviour
 
     public abstract void ShootProcess();
 
+    public virtual void Flip()
+    {
+        _gunSocket.localScale *= new Vector2(-1f, 1f);
+    }
+
     public virtual void Reload()
     {
         _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
@@ -80,11 +86,6 @@ public abstract class Gun : MonoBehaviour
     public virtual void Skill(bool occurSkill)
     {
         _currentSkillGauge = 0f;
-    }
-
-    public void Flip()
-    {
-        _gunSocket.localScale *= new Vector2(-1f, 1f);
     }
 
     public void Reload(ref bool canReload)
@@ -142,7 +143,7 @@ public abstract class Gun : MonoBehaviour
 
     private bool CanReload()
     {
-        return MapManager.Instance.CheckWater(owner.transform.position);
+        return MapManager.Instance.CheckWater(owner.transform.position,out Vector3Int pos);
     }
 
     private bool CanShoot()

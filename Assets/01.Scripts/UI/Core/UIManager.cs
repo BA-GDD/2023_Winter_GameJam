@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
     {
         if(_currentScene != null)
         {
+            _currentScene.Init();
             Destroy(_currentScene.gameObject);
         }
 
