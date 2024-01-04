@@ -40,7 +40,7 @@ public class OnsenWaterGage : MonoBehaviour
             _gageImg.material.SetFloat("_amount", _currentWaterValue);
             _waterImg.material.SetFloat("_amount", _currentWaterValue);
 
-            _percentText.text = $"{Mathf.RoundToInt(Mathf.Clamp(_currentWaterValue * 100, 0, 100))}%";
+            _percentText.text = $"{Mathf.CeilToInt(Mathf.Clamp(_currentWaterValue * 100, 0, 100))}%";
         }
     }
 
