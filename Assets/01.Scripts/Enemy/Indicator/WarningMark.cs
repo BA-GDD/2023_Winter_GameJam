@@ -26,7 +26,7 @@ public class WarningMark : MonoBehaviour
     private void SetFade()
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(_spriteRenderer.DOFade(0f, 2f).SetLoops(4, LoopType.Yoyo));
+        seq.Append(_spriteRenderer.DOFade(0f, 0.5f).SetLoops(4, LoopType.Yoyo));
         seq.AppendCallback(() => gameObject.SetActive(false));
     }
 }

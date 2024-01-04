@@ -77,7 +77,7 @@ public abstract class Gun : MonoBehaviour
     {
         _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
         _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-        _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+        _currentSkillGauge += gunScriptableObject.fillSkillGauge * Time.deltaTime;
         _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
 
         usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
@@ -97,7 +97,7 @@ public abstract class Gun : MonoBehaviour
             float before = _usableCapacity;
             _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
             _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-            _currentSkillGauge += gunScriptableObject.fillSkillGaugePerSecond * Time.deltaTime;
+            _currentSkillGauge += gunScriptableObject.fillSkillGauge * Time.deltaTime;
             _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
             usableCapacityChanged?.Invoke((_usableCapacity-before)/gunScriptableObject.maximumCapacity);
         }

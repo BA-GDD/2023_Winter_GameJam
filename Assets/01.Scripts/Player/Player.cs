@@ -46,11 +46,11 @@ public class Player : MonoBehaviour, IDamageable
         _dashTimer = 0f;
 
         _mainCam = Camera.main;
+        EquipGun(GameManager.Instance.selectGunType);
     }
 
     private void Start()
     {
-        EquipGun(GameManager.Instance.selectGunType);
         _inputReader.onDashEvent += Dash;
         print("�÷��̾�");
     }
@@ -141,11 +141,11 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void SetWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        //_equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
+        _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
     }
     public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        //_equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
+        _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
     }
 
     public void UnequipGun()
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
-        /*if (_isDead)
+        if (_isDead)
         {
             return;
         }
@@ -167,8 +167,7 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
 
-        UnequipGun();
-        (this as IDamageable).OnHit();*/
+        //UnequipGun();
         (this as IDamageable).OnHit();
 
         GameManager.Instance.GameEnd();

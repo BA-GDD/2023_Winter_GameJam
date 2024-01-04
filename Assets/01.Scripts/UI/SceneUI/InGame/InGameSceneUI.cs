@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InGameSceneUI : SceneUIBase
 {
@@ -17,13 +18,13 @@ public class InGameSceneUI : SceneUIBase
     }
     public override void Init()
     {
-        _player.UnequipGun();
         _player.DeleteWaterGaugeHandle(_onsenWater);
+        _player.UnequipGun();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
             exp.SetText("정말 로비로 퇴장<br>하시겠습니까?");
