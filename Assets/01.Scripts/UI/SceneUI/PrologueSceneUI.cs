@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable]
 public struct CutElement
@@ -10,6 +11,8 @@ public struct CutElement
 
 public class PrologueSceneUI : SceneUIBase
 {
+    private Volume _volume;
+    [SerializeField] private GameObject _skipBtn;
     [SerializeField] private Transform _spawnParent;
     [SerializeField] private List<CutElement> _pictureCutBook = new List<CutElement>();
     private List<PictureCut> _savedInPhasePictureCutList = new List<PictureCut>();
@@ -22,6 +25,10 @@ public class PrologueSceneUI : SceneUIBase
     public override void SetUp()
     {
         PlayCutPicture();
+        _volume = GameObject.Find("Global Volume").GetComponent<Volume>();
+        _volume.enabled = false;
+        Debug.Log(GameManager.Instance.GameData.isLookPrologue);
+        _skipBtn.SetActive(GameManager.Instance.GameData.isLookPrologue);
     }
 
     private void PlayCutPicture()
@@ -31,6 +38,7 @@ public class PrologueSceneUI : SceneUIBase
             if (phase == _pictureCutBook.Count)
             {
                 UIManager.Instanace.ChangeScene(UIDefine.UIType.Title);
+                GameManager.Instance.GameData.isLookPrologue = true;
                 return;
             }
                 canNextUp = false;
@@ -68,5 +76,6 @@ public class PrologueSceneUI : SceneUIBase
 
     public override void Init()
     {
+        _volume.enabled = true;
     }
 }

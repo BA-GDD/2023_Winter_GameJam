@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _amount: NaN
+    - _amount: 0.57
     - _height: 0.7
     - _speed: -6.51
     m_Colors:
