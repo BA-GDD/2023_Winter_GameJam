@@ -18,7 +18,7 @@ public class TitleSceneUI : SceneUIBase
     {
         if(Input.anyKeyDown)
         {
-            UIManager.Instanace.ChangeScene(UIType.Lobby);
+            UIManager.Instanace.ChangeSceneFade(UIType.Lobby, true);
         }
     }
 }

@@ -41,7 +41,8 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
-    public AudioClip bgmClip;
+    [SerializeField]
+    private AudioClip _bgmClip;
 
     [SerializeField]
     private InputReader _inputReader;
@@ -63,8 +64,6 @@ public class GameManager : MonoSingleton<GameManager>
     private readonly string _filePath = Path.Combine(Application.dataPath, "GameData.json");
     private string _jsonData;
 
-    private bool _sceneLoad;
-
     public void SaveData()
     {
         string jsonData = JsonUtility.ToJson(_gameData);
@@ -77,6 +76,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
+            Debug.Log(1);
         }
         else
         {
@@ -89,13 +89,6 @@ public class GameManager : MonoSingleton<GameManager>
             Destroy(gameObject);
         }
         instance = this;
-
-        //_inputReader.DisablePlayer();
-        //if (string.IsNullOrEmpty(data))
-        //{
-        //}
-        //_gameData = JsonUtility.FromJson<GameData>(data);
-            //_gameData = new GameData();
 
         PoolManager poolManager = new PoolManager(_poolTrm);
         foreach (var item in _poolList.poolList)
@@ -111,7 +104,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(bgmClip, 0.3f, 1, 1, true,"BGM");
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
         isGameEnd = true;
     }
 
@@ -160,21 +153,18 @@ public class GameManager : MonoSingleton<GameManager>
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1.0f;
 
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.GameResult, true);
         SceneChange("Result");
     }
 
     public void SceneChange(string sceneName, Action callback = null)
     {
-        if (_sceneLoad) return;
         StartCoroutine(SceneChangeCor(sceneName, callback));
     }
     private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
-        _sceneLoad = true;
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);
         callback?.Invoke();
-        _sceneLoad = false;
     }
 }

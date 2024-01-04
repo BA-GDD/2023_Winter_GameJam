@@ -27,7 +27,7 @@ public class GameExitPanel : PanelBase
             case UIDefine.UIType.InGame:
                 {
                     callback = null;
-                    callback += () => UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+                    callback += () => UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
                     _acceptBtn.onClick.AddListener(() => GameManager.Instance.SceneChange("Intro", callback));
                     _acceptBtn.onClick.AddListener(InitPanel);
                 }
