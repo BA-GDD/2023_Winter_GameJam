@@ -77,7 +77,6 @@ public class GameManager : MonoSingleton<GameManager>
         instance = this;
 
         _inputReader.DisablePlayer();
-        string data = PlayerPrefs.GetString("GameData", string.Empty);
         //if (string.IsNullOrEmpty(data))
         //{
         //}
@@ -91,7 +90,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         PoolManager.Instance = poolManager;
         mainCamera = Camera.main;
-        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+        //SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
         DontDestroyOnLoad(this);
     }
