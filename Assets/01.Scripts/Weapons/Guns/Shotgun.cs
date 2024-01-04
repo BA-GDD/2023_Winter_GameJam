@@ -46,6 +46,8 @@ public class Shotgun : Gun
 
     public override void ShootProcess()
     {
+        Debug.Log("¼½½º");
+
         if (_skillShotCount <= 0)
         {
             for (int i = 0; i < _shotsAmount; ++i)

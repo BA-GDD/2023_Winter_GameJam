@@ -132,14 +132,14 @@ public class Player : MonoBehaviour, IDamageable
         {
             if (_canReload)
             {
+                print("들어가서 빼준다");
                 MapManager.Instance.EnterSpa();
-
                 _inputReader.onShootEvent -= _equipedGun.Shoot;
             }
             else
             {
+                print("나와서 다시 넣어준다");
                 MapManager.Instance.ExitSpa();
-
                 _inputReader.onShootEvent += _equipedGun.Shoot;
             }
 
@@ -153,6 +153,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void EquipGun(GunType gunType)
     {
+        print("총기 장착이다");
         _equipedGun = _gunSocket.Find(gunType.ToString()).GetComponent<Gun>();
         _equipedGun.owner = this;
         _inputReader.onShootEvent += _equipedGun.Shoot;
