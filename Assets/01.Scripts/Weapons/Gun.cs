@@ -103,9 +103,10 @@ public abstract class Gun : MonoBehaviour
             }
 
             skillProcessCoroutine = null;
+
+            currentSkillChanged?.Invoke(-1);
         }
-        
-        currentSkillChanged?.Invoke(-1);
+
     }
 
     public void Reload(ref bool canReload)
@@ -145,14 +146,14 @@ public abstract class Gun : MonoBehaviour
     {
         float before = _currentSkillGauge;
         _currentSkillGauge += gunScriptableObject.fillSkillGauge;
-        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge,0f,gunScriptableObject.requireSkillGauge);
+        _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
 
         currentSkillChanged?.Invoke((_currentSkillGauge - before) / gunScriptableObject.requireSkillGauge);
     }
 
     protected bool CanUseSkill()
     {
-        print($"{_currentSkillGauge}/{gunScriptableObject.requireSkillGauge}/{_currentSkillGauge >= gunScriptableObject.requireSkillGauge}");  
+        print($"{_currentSkillGauge}/{gunScriptableObject.requireSkillGauge}/{_currentSkillGauge >= gunScriptableObject.requireSkillGauge}");
         return _currentSkillGauge >= gunScriptableObject.requireSkillGauge && !isSkillProcess;
     }
 

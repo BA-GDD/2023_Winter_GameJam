@@ -6,6 +6,7 @@ public class LobbySceneUI : SceneUIBase
 {
     public override void SetUp()
     {
+
     }
 
     public override void Init()

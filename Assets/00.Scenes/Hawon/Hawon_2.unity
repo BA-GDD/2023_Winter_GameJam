@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCam: {fileID: 579886654}
+  _sceneFade: {fileID: 0}
   _startUIType: 1
   _sceneUIGroup:
   - {fileID: 5817304806659701176, guid: cec0ef289a79bd845bb055fa20bf65a7, type: 3}
@@ -560,7 +561,10 @@ MonoBehaviour:
   occupationPercent: 0
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
-  _bgmClip: {fileID: 0}
+  _poolTrm: {fileID: 0}
+  bgmClip: {fileID: 0}
+  hawon: {fileID: 0}
+  _inputReader: {fileID: 0}
 --- !u!1 &1599178580
 GameObject:
   m_ObjectHideFlags: 0
