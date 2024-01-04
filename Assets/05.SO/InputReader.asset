@@ -16,4 +16,4 @@ MonoBehaviour:
   isReload: 0
   isSkillOccur: 0
   isSkillPrepare: 0
-  reloadClip: {fileID: 8300000, guid: a92c9ff2a8f985c459e584a9eaff97c9, type: 3}
+  reloadClip: {fileID: 8300000, guid: 0c2d09e12551f8845886354b24c554e1, type: 3}

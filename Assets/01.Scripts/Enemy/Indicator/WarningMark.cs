@@ -6,33 +6,27 @@ using DG.Tweening;
 public class WarningMark : MonoBehaviour
 {
     private SpriteRenderer _spriteRenderer;
-    private float _timer = 0f;
-
+    private Vector3 _targetPos;
+    private Transform _playerTrm;
     private void Start()
     {
+        _playerTrm = GameManager.Instance.player;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
-    public void Init() {
-        Debug.Log("TestEnable");
-        _timer = 0f;
-        _spriteRenderer.DOFade(0f, 2f).SetLoops(4, LoopType.Yoyo);
-    }
-
-    private void OnEnable()
-    {
-        Debug.Log("TestEnable");
-        _timer = 0f;
-        _spriteRenderer.DOFade(0f, 2f).SetLoops(4, LoopType.Yoyo);
-    }
-
     private void Update()
     {
-        _timer += Time.deltaTime;
-        if (_timer >= 2f)
-        {
-            Debug.Log("µé¾Æ°¨");
-            EnemySpawner.Instance.SetIndicateMark(false);
-        }
+        transform.position = _playerTrm.position + (_targetPos - _playerTrm.position).normalized * 4f;
+    }
+    public void SetUp(Vector3 pos)
+    {
+        _targetPos = pos;
+        SetFade();
+    }
+
+    private void SetFade()
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(_spriteRenderer.DOFade(0f, 2f).SetLoops(4, LoopType.Yoyo));
+        seq.AppendCallback(() => gameObject.SetActive(false));
     }
 }

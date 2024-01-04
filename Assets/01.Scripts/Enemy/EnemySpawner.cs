@@ -16,9 +16,11 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     [SerializeField]
     private List<Transform> _pointsMap;
 
+    [SerializeField]
+    private WarningMark _warningMark;
+
     private void Start()
     {
-
         SpawnEnemy();
     }
 
@@ -70,10 +72,14 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             }
         }
 
-        if(spawnPos == Vector2.zero)
+        Transform trm = _pointsMap[Random.Range(0, _pointsMap.Count)];
+        if (spawnPos == Vector2.zero)
         {
-            spawnPos = _pointsMap[Random.Range(0, _pointsMap.Count)].position;
+            spawnPos = trm.position;
         }
+
+        _warningMark.gameObject.SetActive(true);
+        _warningMark.SetUp(spawnPos);
 
         for (int i = 0; i < _spawnCount; ++i)
         {

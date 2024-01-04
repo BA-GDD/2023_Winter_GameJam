@@ -84,11 +84,12 @@ public class GameManager : MonoSingleton<GameManager>
         }
         if(instance != null)
         {
+            Debug.LogError($"{typeof(GameManager)} instance is already exist!");
             Destroy(gameObject);
         }
         instance = this;
 
-        _inputReader.DisablePlayer();
+        //_inputReader.DisablePlayer();
         //if (string.IsNullOrEmpty(data))
         //{
         //}
