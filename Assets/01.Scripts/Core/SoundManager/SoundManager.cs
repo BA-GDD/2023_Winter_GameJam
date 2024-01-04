@@ -60,6 +60,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
         else
         {
+            Debug.Log(name);
             soundObjects.Add(name,obj);
         }
     }

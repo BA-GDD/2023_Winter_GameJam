@@ -233,7 +233,7 @@ MonoBehaviour:
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
   _poolTrm: {fileID: 1171933590}
-  _bgmClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
+  bgmClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   _inputReader: {fileID: 11400000, guid: f44f2f54643d7fb4f959a707e37e4188, type: 2}
 --- !u!4 &297524670
 Transform:
@@ -503,7 +503,7 @@ MonoBehaviour:
   - {fileID: -5902500965924720288, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   - {fileID: 8947346983817735521, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   audioObject: {fileID: 7336378116389815741, guid: 30df244d6594c844a8c17b9a626d8ddf, type: 3}
-  btnClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
+  btnClip: {fileID: 8300000, guid: 2a7ba2bc892fa744cbefbba778e4db9d, type: 3}
 --- !u!4 &1588420983
 Transform:
   m_ObjectHideFlags: 0

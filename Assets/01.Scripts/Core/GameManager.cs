@@ -41,8 +41,7 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
-    [SerializeField]
-    private AudioClip _bgmClip;
+    public AudioClip bgmClip;
 
     [SerializeField]
     private InputReader _inputReader;
@@ -63,6 +62,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     private readonly string _filePath = Path.Combine(Application.dataPath, "GameData.json");
     private string _jsonData;
+
+    private bool _sceneLoad;
 
     public void SaveData()
     {
@@ -110,7 +111,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
+        SoundManager.Instance.Play(bgmClip, 0.3f, 1, 1, true,"BGM");
         isGameEnd = true;
     }
 
@@ -165,12 +166,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void SceneChange(string sceneName, Action callback = null)
     {
+        if (_sceneLoad) return;
         StartCoroutine(SceneChangeCor(sceneName, callback));
     }
     private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
+        _sceneLoad = true;
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);
         callback?.Invoke();
+        _sceneLoad = false;
     }
 }

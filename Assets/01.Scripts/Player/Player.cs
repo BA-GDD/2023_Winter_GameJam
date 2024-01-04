@@ -148,6 +148,16 @@ public class Player : MonoBehaviour, IDamageable
         _equipedGun.usableCapacityChanged -= onsen.ChangeWaterValue;
     }
 
+    public void SetSkillGroup(SkillBarGroup skillBarGroup)
+    {
+        _equipedGun.currentSkillChanged += skillBarGroup.ChangeValue;
+    }
+    public void DeleteSkillGroup(SkillBarGroup skillBarGroup)
+    {
+        _equipedGun.currentSkillChanged -= skillBarGroup.ChangeValue;
+    }
+
+
     public void UnequipGun()
     {
         _equipedGun.gameObject.SetActive(false);

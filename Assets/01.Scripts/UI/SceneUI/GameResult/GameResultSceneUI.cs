@@ -16,6 +16,7 @@ public class GameResultSceneUI : SceneUIBase
         GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
         GameManager.Instance.GameData.Save();
         UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1, 1, true, "BGM");
     }
 
     private void Update()
@@ -31,6 +32,7 @@ public class GameResultSceneUI : SceneUIBase
     private void Start()
     {
         SetUp();
+        SoundManager.Instance.Stop("BGM");
     }
 
     public override void SetUp()
