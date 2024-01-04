@@ -135,6 +135,10 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (isGameEnd) return;
         isGameEnd = true;
+        Score = (int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f);
+        print(Score);
+        print(_curTime);
+        print(MapManager.Instance.WaterFillAmount());
         _curTime = 0.0f;
 
         _inputReader.DisablePlayer();
@@ -165,6 +169,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private IEnumerator SceneChangeCor(string sceneName, Action callback = null)
     {
+        UIManager.Instanace._canvas.worldCamera = Camera.main;
+
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         yield return new WaitUntil(() => operation.isDone);
         callback?.Invoke();
