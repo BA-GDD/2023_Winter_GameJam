@@ -49,6 +49,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool _isMutheki;
 
+    [SerializeField]
+    private ParticleSystem _mutekiFX;
+    [SerializeField]
+    private ParticleSystem _mutekiFX_01;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -61,6 +66,12 @@ public class Player : MonoBehaviour, IDamageable
         EquipGun(GameManager.Instance.selectGunType);
     }
 
+    IEnumerator Muteki()
+    {
+        yield return new WaitForSeconds(1.6f);
+        _mutekiFX_01.Play();
+    }
+
     private void Start()
     {
         _inputReader.onDashEvent += Dash;
@@ -69,9 +80,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(!_isMutheki && Input.GetKeyDown(KeyCode.P))
         {
             _isMutheki = true;
+            _mutekiFX.Play();
+            StartCoroutine(Muteki());
         }
 
         if (_isDead || _equipedGun == null)
