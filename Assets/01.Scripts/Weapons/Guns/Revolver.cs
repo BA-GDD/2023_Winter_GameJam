@@ -18,6 +18,16 @@ public class Revolver : Gun
     private List<Collider2D> _targets;
     private float _rangeCircleRadius;
 
+    protected override void Update()
+    {
+        if (isSkillProcess)
+        {
+            return;
+        }
+
+        base.Update();
+    }
+
     public override void ShootProcess()
     {
         if (isSkillProcess)
@@ -46,7 +56,7 @@ public class Revolver : Gun
 
                 foreach (var target in _targets)
                 {
-                    if (target.TryGetComponent(out MobBrain brain))
+                    if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
                     {
                         brain._spriteRenderer.material.SetInt(_isOutlineHash, 0);
                     }
@@ -68,7 +78,7 @@ public class Revolver : Gun
 
                 foreach (var target in _targets)
                 {
-                    if (target.TryGetComponent(out MobBrain brain))
+                    if (target.TryGetComponent(out MobBrain brain) && !brain.IsDead)
                     {
                         brain._spriteRenderer.material.SetInt(_isOutlineHash, 1);
                     }
@@ -87,7 +97,7 @@ public class Revolver : Gun
 
         foreach (var target in _targets)
         {
-            if (!target.TryGetComponent(out MobBrain brain))
+            if (!target.TryGetComponent(out MobBrain brain) || brain.IsDead)
             {
                 continue;
             }

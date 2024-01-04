@@ -9,11 +9,16 @@ public class EnemyBrain : PoolableMono, IDamageable
 {
     [HideInInspector]
     public EnemyAttack attack;
-    public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;
     public bool isAnimFinised;
     public Transform firePos;
+    private bool _isDead;
+    public bool IsDead
+    {
+        get => _isDead;
+        set => _isDead = value;
+    }
 
     public Action animationEvent;
 
@@ -47,7 +52,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
-        if (!isDead && MapManager.Instance.CheckWater(transform.position))
+        if (!_isDead && MapManager.Instance.CheckWater(transform.position))
         {
             MapManager.Instance.SetTile(transform.position, TileType.Ground);
         }
@@ -79,7 +84,7 @@ public class EnemyBrain : PoolableMono, IDamageable
         EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;
         fx.transform.position = transform.position;
         fx.StartPlay(5f);
-        isDead = true;
+        _isDead = true;
     }
 
     private IEnumerator Hit()

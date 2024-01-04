@@ -51,11 +51,6 @@ public abstract class Gun : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isSkillProcess)
-        {
-            return;
-        }
-
         _shootDelayTimer -= Time.deltaTime;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
 

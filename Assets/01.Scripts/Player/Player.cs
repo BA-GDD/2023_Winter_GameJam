@@ -29,13 +29,19 @@ public class Player : MonoBehaviour, IDamageable
     private bool _canReload;
     private bool _isDash;
     private bool _isDead;
+    public bool IsDead
+    {
+        get => _isDead;
+        set => _isDead = value;
+    }
     private bool _isMove;
     public bool IsMove => _isMove;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
+
     private Camera _mainCam;
-    
+
     public AudioClip dashClip;
     private void Awake()
     {
@@ -176,10 +182,10 @@ public class Player : MonoBehaviour, IDamageable
 
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();
-            if(transform.localScale.x < 0.0f)
+            if (transform.localScale.x < 0.0f)
             {
 
-                module.flip = new Vector3(1,0,0);
+                module.flip = new Vector3(1, 0, 0);
             }
             else
             {

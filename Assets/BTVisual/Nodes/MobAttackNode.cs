@@ -27,7 +27,7 @@ public class MobAttackNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (_mBrain.isAnimFinised || _mBrain.isDead)
+        if (_mBrain.isAnimFinised || _mBrain.IsDead)
         {
             return State.SUCCESS;
 
