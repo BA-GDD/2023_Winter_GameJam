@@ -108,7 +108,7 @@ public class Shotgun : Gun
 
             _skillEffect.Play();
             _skillEffect_01.Play();
-            base.Skill(occurSkill);
+            InitializeSkill();
         }
     }
 
@@ -116,5 +116,10 @@ public class Shotgun : Gun
     {
         _skillText.rectTransform.anchoredPosition *= new Vector2(-1f, 1f);
         _skillText.transform.localScale *= new Vector2(-1f, 1f);
+    }
+
+    protected override IEnumerator SkillProcess()
+    {
+        yield return null;
     }
 }

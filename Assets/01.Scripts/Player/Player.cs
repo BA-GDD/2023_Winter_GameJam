@@ -29,13 +29,19 @@ public class Player : MonoBehaviour, IDamageable
     private bool _canReload;
     private bool _isDash;
     private bool _isDead;
+    public bool IsDead
+    {
+        get => _isDead;
+        set => _isDead = value;
+    }
     private bool _isMove;
     public bool IsMove => _isMove;
     private float _dashTimer;
     UnityEvent IDamageable.OnDieTrigger => _onDieTrigger;
 
+
     private Camera _mainCam;
-    
+
     public AudioClip dashClip;
     private void Awake()
     {
@@ -57,7 +63,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (_isDead)
+        if (_isDead || _equipedGun == null)
         {
             return;
         }
@@ -71,29 +77,15 @@ public class Player : MonoBehaviour, IDamageable
 
         if (_inputReader.isReload)
         {
-            _equipedGun.Reload(ref _canReload);
+            _equipedGun?.Reload(ref _canReload);
         }
         else
         {
             _canReload = false;
-            MapManager.Instance.ExitSpa();
-        }
-
-        if (_inputReader.isSkillOccur)
-        {
-            _inputReader.isSkillOccur = false;
-            _inputReader.isSkillPrepare = false;
-
-            _equipedGun.Skill(true);
-        }
-        else if (_inputReader.isSkillPrepare)
-        {
-            _equipedGun.Skill(false);
         }
 
         if (_canReload)
         {
-            MapManager.Instance.EnterSpa();
             Movement(_inputReader.movementDirection, movementSpeed * 0.25f);
 
             if (_isMove)
@@ -105,24 +97,52 @@ public class Player : MonoBehaviour, IDamageable
                 _material.SetFloat(_materialHalfAmountHash, -(1f / 6f * 3f + 1f / 6f * 10f / 34f));
             }
         }
-        else if (_isDash)
-        {
-            if (transform.localScale.x * _dashDirection.x < 0f)
-            {
-                Flip();
-            }
-
-            Movement(_dashDirection, movementSpeed * 5f);
-            _material.SetFloat(_materialHalfAmountHash, 1f);
-        }
         else
         {
-            Movement(_inputReader.movementDirection, movementSpeed);
+            if (_isDash)
+            {
+                if (transform.localScale.x * _dashDirection.x < 0f)
+                {
+                    Flip();
+                }
+
+                Movement(_dashDirection, movementSpeed * 5f);
+            }
+            else
+            {
+                Movement(_inputReader.movementDirection, movementSpeed);
+            }
+
             _material.SetFloat(_materialHalfAmountHash, 1f);
+
+            if (_inputReader.isSkillOccur)
+            {
+                _inputReader.isSkillOccur = false;
+                _inputReader.isSkillPrepare = false;
+
+                _equipedGun?.Skill(true);
+            }
+            else if (_inputReader.isSkillPrepare)
+            {
+                _equipedGun?.Skill(false);
+            }
         }
 
         if (_playerAnimator.GetBoolValueByIndex(1) != _canReload)
         {
+            if (_canReload)
+            {
+                MapManager.Instance.EnterSpa();
+
+                _inputReader.onShootEvent -= _equipedGun.Shoot;
+            }
+            else
+            {
+                MapManager.Instance.ExitSpa();
+
+                _inputReader.onShootEvent += _equipedGun.Shoot;
+            }
+
             _equipedGun.gameObject.SetActive(!_canReload);
 
             _playerAnimator.animator.transform.localPosition = new Vector2(0f, -0.1f * (_canReload ? 1f : 0f));
@@ -160,8 +180,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void UnequipGun()
     {
-        _equipedGun.gameObject.SetActive(false);
-
         _inputReader.onShootEvent -= _equipedGun.Shoot;
         _equipedGun.owner = null;
         _equipedGun = null;
@@ -177,7 +195,7 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
 
-        //UnequipGun();
+        _equipedGun.gameObject.SetActive(false);
         (this as IDamageable).OnHit();
 
         GameManager.Instance.GameEnd();
@@ -192,10 +210,10 @@ public class Player : MonoBehaviour, IDamageable
 
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();
-            if(transform.localScale.x < 0.0f)
+            if (transform.localScale.x < 0.0f)
             {
 
-                module.flip = new Vector3(1,0,0);
+                module.flip = new Vector3(1, 0, 0);
             }
             else
             {

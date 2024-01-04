@@ -24,6 +24,7 @@ public abstract class Gun : MonoBehaviour
     protected Transform firePosition;
     [SerializeField]
     protected GunSO gunScriptableObject;
+    protected Coroutine skillProcessCoroutine;
     protected bool isSkillProcess;
     private Animator _animator;
     private Transform _gunSocket;
@@ -47,13 +48,9 @@ public abstract class Gun : MonoBehaviour
         _shootDelayTimer = gunScriptableObject.shootDelay;
         _currentSkillGauge = 0f;
     }
+
     protected virtual void Update()
     {
-        if (isSkillProcess)
-        {
-            return;
-        }
-
         _shootDelayTimer -= Time.deltaTime;
         Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _gunSocket.position;
 
@@ -67,7 +64,16 @@ public abstract class Gun : MonoBehaviour
         _gunSocket.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + (direction.x < 0f ? 180f : 0f), Vector3.forward);
     }
 
+    private void OnDisable()
+    {
+        InitializeSkill();
+    }
+
     public abstract void ShootProcess();
+
+    public abstract void Skill(bool occurSkill);
+
+    protected abstract IEnumerator SkillProcess();
 
     public virtual void Flip()
     {
@@ -82,9 +88,21 @@ public abstract class Gun : MonoBehaviour
         usableCapacityChanged?.Invoke(gunScriptableObject.fillCapacityPerSecond * Time.deltaTime / gunScriptableObject.maximumCapacity);
     }
 
-    public virtual void Skill(bool occurSkill)
+    protected virtual void InitializeSkill()
     {
-        _currentSkillGauge = 0f;
+        if (isSkillProcess)
+        {
+            isSkillProcess = false;
+            _currentSkillGauge = 0f;
+
+            if (skillProcessCoroutine != null)
+            {
+                StopCoroutine(skillProcessCoroutine);
+            }
+
+            skillProcessCoroutine = null;
+        }
+        
         currentSkillChanged?.Invoke(-1);
     }
 
@@ -97,7 +115,9 @@ public abstract class Gun : MonoBehaviour
             float before = _usableCapacity;
             _usableCapacity += gunScriptableObject.fillCapacityPerSecond * Time.deltaTime;
             _usableCapacity = Mathf.Clamp(_usableCapacity, 0f, gunScriptableObject.maximumCapacity);
-            usableCapacityChanged?.Invoke((_usableCapacity-before)/gunScriptableObject.maximumCapacity);
+            _currentSkillGauge += gunScriptableObject.fillSkillGauge * Time.deltaTime;
+            _currentSkillGauge = Mathf.Clamp(_currentSkillGauge, 0f, gunScriptableObject.requireSkillGauge);
+            usableCapacityChanged?.Invoke((_usableCapacity - before) / gunScriptableObject.maximumCapacity);
         }
         else
             MapManager.Instance.ExitSpa();
@@ -133,7 +153,7 @@ public abstract class Gun : MonoBehaviour
     protected bool CanUseSkill()
     {
         print($"{_currentSkillGauge}/{gunScriptableObject.requireSkillGauge}/{_currentSkillGauge >= gunScriptableObject.requireSkillGauge}");  
-        return _currentSkillGauge >= gunScriptableObject.requireSkillGauge;
+        return _currentSkillGauge >= gunScriptableObject.requireSkillGauge && !isSkillProcess;
     }
 
     private void SetShootTrigger(bool value)
@@ -150,7 +170,7 @@ public abstract class Gun : MonoBehaviour
 
     private bool CanReload()
     {
-        return MapManager.Instance.CheckWater(owner.transform.position,out Vector3Int pos);
+        return MapManager.Instance.CheckWater(owner.transform.position, out Vector3Int pos);
     }
 
     private bool CanShoot()

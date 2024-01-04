@@ -10,11 +10,16 @@ public class EnemyBrain : PoolableMono, IDamageable
 {
     [HideInInspector]
     public EnemyAttack attack;
-    public bool isDead;
     public EnemyStatusSO status;
     public bool isChase;
     public bool isAnimFinised;
     public Transform firePos;
+    private bool _isDead;
+    public bool IsDead
+    {
+        get => _isDead;
+        set => _isDead = value;
+    }
 
     public Action animationEvent;
 
@@ -25,7 +30,8 @@ public class EnemyBrain : PoolableMono, IDamageable
     public UnityEvent onDieTrigger;
     UnityEvent IDamageable.OnDieTrigger => onDieTrigger;
 
-    public SpriteRenderer _spriteRenderer;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
 
     public AudioClip hitClip;
     public AudioClip shootClip;
@@ -36,7 +42,7 @@ public class EnemyBrain : PoolableMono, IDamageable
     protected virtual void Awake()
     {
         attack = transform.GetComponent<EnemyAttack>();
-        _spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Visual").GetComponent<SpriteRenderer>();
     }
 
     protected async virtual void OnEnable()
@@ -51,7 +57,7 @@ public class EnemyBrain : PoolableMono, IDamageable
 
     protected virtual void Update()
     {
-        if (!isDead && MapManager.Instance.CheckWater(transform.position, out Vector3Int pos))
+        if (!_isDead && MapManager.Instance.CheckWater(transform.position, out Vector3Int pos))
         {
             if (_lastFootPos != pos)
             {
@@ -61,7 +67,7 @@ public class EnemyBrain : PoolableMono, IDamageable
                 MapManager.Instance.SetTile(transform.position, TileType.Ground);
                 if (_footTileCount >= 2)
                 {
-                    isDead = true;
+                    _isDead = true;
                     EnemySpawner.Instance.DeSpawnEnemy(this);
                     return;
                 }
@@ -97,12 +103,12 @@ public class EnemyBrain : PoolableMono, IDamageable
         EffectPlayer fx = PoolManager.Instance.Pop(PoolingType.EnemyExplosion) as EffectPlayer;
         fx.transform.position = transform.position;
         fx.StartPlay(5f);
-        isDead = true;
+        _isDead = true;
     }
 
     private IEnumerator Hit()
     {
-        Material mat = _spriteRenderer.material;
+        Material mat = spriteRenderer.material;
         mat.SetFloat("_blink_amount", 0.5f);
         yield return new WaitForSeconds(0.03f);
         mat.SetFloat("_blink_amount", 0.0f);
