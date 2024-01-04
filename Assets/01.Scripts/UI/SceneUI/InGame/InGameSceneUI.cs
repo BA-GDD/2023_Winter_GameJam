@@ -40,7 +40,7 @@ public class InGameSceneUI : SceneUIBase
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
-            exp.SetText("���� �κ�� ����<br>�Ͻðڽ��ϱ�?");
+            exp.SetText("정말로 종료하시겠습니까?");
             exp.SetUpPanel();
         }
     }
