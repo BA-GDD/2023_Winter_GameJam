@@ -97,7 +97,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Fill: 0.19993341
+    - _Fill: 0.49958676
     - _Fill_Edge_Width: 0.0144
     - _Fill_Highlight_Distance: 0.459
     - _Fill_Highlight_Power: 3.51
@@ -128,17 +128,17 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Bars_Colour: {r: 1.1486983, g: 0.60813445, b: 0, a: 1}
+    - _Bars_Colour: {r: 0.3365845, g: 0.52084607, b: 0.38828358, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Fill_Colour: {r: 1, g: 0, b: 0.105882645, a: 1}
-    - _Fill_Colour_A: {r: 1, g: 0, b: 0.1019608, a: 1}
+    - _Fill_Colour_A: {r: 0.16509432, g: 0.2836738, b: 1, a: 1}
     - _Fill_Colour_B: {r: 1, g: 0.32941177, b: 0, a: 1}
     - _Fill_Edge_Colour: {r: 0, g: 3.2627451, b: 8, a: 1}
     - _Fill_Highlight_Colour: {r: 1, g: 0.3296338, b: 0, a: 0.69803923}
     - _Pulse_Colour: {r: 1, g: 0.18798998, b: 0, a: 1}
-    - _Shell_Colour: {r: 3.0672052, g: 3.0672052, b: 3.0672052, a: 1}
+    - _Shell_Colour: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2722484001922370075
