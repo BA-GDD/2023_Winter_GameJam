@@ -39,7 +39,7 @@ public class GameResultSceneUI : SceneUIBase
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
                                GameManager.Instance.GameData.beforeTime,
                                GameManager.Instance.GameData.bestTime);
-        _remainFX = Instantiate(_partyFX);
+        _remainFX = Instantiate(_partyFX, transform);
     }
 
     public override void Init()
