@@ -22,7 +22,7 @@ public class LobbySceneUI : SceneUIBase
             _shotGunCards.UnlockThisGun();
         }
 
-        if(data.Razer)
+        if(data.Laser)
         {
             _razerCards.UnlockThisGun();
         }

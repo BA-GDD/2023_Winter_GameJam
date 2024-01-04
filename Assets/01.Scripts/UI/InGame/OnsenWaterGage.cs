@@ -12,8 +12,8 @@ public class OnsenWaterGage : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _percentText;
 
-    private float _currentWaterValue;
-    private float _targetWaterValue;
+    [SerializeField] private float _currentWaterValue;
+    [SerializeField] private float _targetWaterValue;
 
     private Sequence _notAllowSeq;
 

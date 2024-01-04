@@ -172,6 +172,7 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void SetWaterGaugeHandle(OnsenWaterGage onsen)
     {
+        Debug.Log(9);
         _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
     }
     public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
@@ -181,6 +182,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSkillGroup(SkillBarGroup skillBarGroup)
     {
+        Debug.Log(8);
         _equipedGun.currentSkillChanged += skillBarGroup.ChangeValue;
     }
     public void DeleteSkillGroup(SkillBarGroup skillBarGroup)

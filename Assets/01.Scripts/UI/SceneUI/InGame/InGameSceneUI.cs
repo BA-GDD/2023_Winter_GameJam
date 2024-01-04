@@ -17,8 +17,10 @@ public class InGameSceneUI : SceneUIBase
         _player = FindObjectOfType<Player>();
         _player.inGameSceneUI = this;
 
-        onsenWater = transform.Find("OnsenWaterGage").GetComponent<OnsenWaterGage>();
+        onsenWater = transform.Find("GamePanel/OnsenWaterGage").GetComponent<OnsenWaterGage>();
         skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
+
+        Debug.Log(1);
         _player.SetWaterGaugeHandle(onsenWater);
         _player.SetSkillGroup(skillBarGroup);
         SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
