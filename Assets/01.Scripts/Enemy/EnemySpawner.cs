@@ -11,7 +11,10 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     private int _spawnCount = 10;
 
     [SerializeField]
-    private List<Transform> _spawnPoints;
+    private List<Transform> _pointsAroundPlayer;
+
+    [SerializeField]
+    private List<Transform> _pointsMap;
 
     private void Start()
     {
@@ -46,8 +49,32 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     public void SpawnEnemy()
     {
+        Vector2 spawnPos = Vector2.zero;
 
-        Vector2 spawnPos = _spawnPoints[Random.Range(0, _spawnPoints.Count)].position;
+        for (int i = 0; i < _pointsAroundPlayer.Count; ++i)
+        {
+            int randNum = Random.Range(0, _pointsAroundPlayer.Count);
+            spawnPos = _pointsAroundPlayer[randNum].position;
+            spawnPos.x = Mathf.Clamp(spawnPos.x, -33, 35);
+            spawnPos.y = Mathf.Clamp(spawnPos.y, -40, 41);
+            if (MapManager.Instance.CheckWater(spawnPos))
+            {
+                print("여긴 물이야");
+                spawnPos = Vector2.zero;
+                continue;
+            }
+            else
+            {
+                print($"물이 아니어서 여기다가 소환할게 : {_pointsAroundPlayer[randNum].name}");
+                break;
+            }
+        }
+
+        if(spawnPos == Vector2.zero)
+        {
+            spawnPos = _pointsMap[Random.Range(0, _pointsMap.Count)].position;
+        }
+
         for (int i = 0; i < _spawnCount; ++i)
         {
             RandomEnemy(spawnPos);
