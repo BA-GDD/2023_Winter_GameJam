@@ -16,3 +16,4 @@ MonoBehaviour:
   atkRange: 0.5
   spawnPercent: 30
   type: 6
+  atkMinRange: 0

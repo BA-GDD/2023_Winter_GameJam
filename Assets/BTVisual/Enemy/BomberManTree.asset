@@ -17,7 +17,7 @@ MonoBehaviour:
   nodes:
   - {fileID: 4140189281791395322}
   - {fileID: 4320352145142182253}
-  - {fileID: 8598670488708769012}
+  - {fileID: 6656480492696004990}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -73,8 +73,8 @@ MonoBehaviour:
       m_Bits: 0
   brain: {fileID: 0}
   description: 
-  child: {fileID: 0}
---- !u!114 &8598670488708769012
+  child: {fileID: 6656480492696004990}
+--- !u!114 &6656480492696004990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,13 +83,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889a9332799d13546a2a8d635c2c37f7, type: 3}
-  m_Name: Selector
+  m_Script: {fileID: 11500000, guid: cf9791f6ee0d2df44989fb537bb06bd4, type: 3}
+  m_Name: FindNearWaterNode
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: e7bbaa2821059864c8d858ec23cf3d25
-  position: {x: 0, y: 0}
+  guid: 4cd738e8e3d40b640a63607adf418cef
+  position: {x: -10, y: 281}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     enemySpotPosition: {x: 0, y: 0, z: 0}
@@ -98,4 +98,3 @@ MonoBehaviour:
       m_Bits: 0
   brain: {fileID: 0}
   description: 
-  children: []

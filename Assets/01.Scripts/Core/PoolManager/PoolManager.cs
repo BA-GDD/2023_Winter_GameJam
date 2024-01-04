@@ -17,6 +17,7 @@ public enum PoolingType
     SpaSmoke,
     EnemyExplosion,
     WarningMark,
+    BomberMan,
 }
 
 public class PoolManager

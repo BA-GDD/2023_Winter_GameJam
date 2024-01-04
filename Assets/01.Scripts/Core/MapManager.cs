@@ -126,7 +126,6 @@ public class MapManager : MonoSingleton<MapManager>
         Vector3Int intVec = new Vector3Int(Mathf.CeilToInt(pos.x - 1), Mathf.CeilToInt(pos.y - 1));
         DrawTile(intVec, type);
         _holeMap.CompressBounds();
-
     }
     private void DrawTile(Vector3Int pos, TileType type)
     {
