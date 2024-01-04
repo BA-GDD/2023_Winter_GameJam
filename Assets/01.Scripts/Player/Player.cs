@@ -43,6 +43,9 @@ public class Player : MonoBehaviour, IDamageable
     private Camera _mainCam;
 
     public AudioClip dashClip;
+
+    private bool _isMutheki;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -63,6 +66,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            _isMutheki = true;
+        }
+
         if (_isDead || _equipedGun == null)
         {
             return;
@@ -187,6 +195,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnHitHandle()
     {
+        if (_isMutheki) return;
+
         if (_isDead)
         {
             return;
