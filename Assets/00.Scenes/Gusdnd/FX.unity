@@ -241,6 +241,7 @@ MonoBehaviour:
   occupationPercent: 0
   isGameEnd: 0
   _poolList: {fileID: 0}
+  _bgmClip: {fileID: 0}
 --- !u!114 &77363734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +260,7 @@ MonoBehaviour:
   - {fileID: -5902500965924720288, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   - {fileID: 8947346983817735521, guid: b02fac935ca6a1543b178c2e71707f48, type: 2}
   audioObject: {fileID: 7336378116389815741, guid: 30df244d6594c844a8c17b9a626d8ddf, type: 3}
+  btnClip: {fileID: 0}
 --- !u!114 &77363735
 MonoBehaviour:
   m_ObjectHideFlags: 0

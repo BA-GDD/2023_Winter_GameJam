@@ -1,4 +1,3 @@
-using AmplifyShaderEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -173,7 +172,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_dashTimer <= 0f)
         {
             _dashDirection = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - transform.position;
-            SoundManager.Instance.Play(dashClip, 1, 1, 1, false);
+            SoundManager.Instance.Play(dashClip, 1, 1, 2, false);
 
             _dashDirection.Normalize();
             var module = _playerDashFX.GetComponent<ParticleSystemRenderer>();

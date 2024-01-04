@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: InputReader
   m_EditorClassIdentifier: 
   movementDirection: {x: 0, y: 0}
+  isReload: 0
+  isSkillOccur: 0
+  isSkillPrepare: 0
+  reloadClip: {fileID: 8300000, guid: 0c2d09e12551f8845886354b24c554e1, type: 3}

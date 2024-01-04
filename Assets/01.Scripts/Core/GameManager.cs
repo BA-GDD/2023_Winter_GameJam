@@ -57,11 +57,12 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         string data = PlayerPrefs.GetString("GameData", string.Empty);
-        if (string.IsNullOrEmpty(data))
-        {
-            _gameData = new GameData();
-        }
-        _gameData = JsonUtility.FromJson<GameData>(data); ;
+        //if (string.IsNullOrEmpty(data))
+        //{
+            
+        //}
+        _gameData = new GameData();
+        //_gameData = JsonUtility.FromJson<GameData>(data); 
 
         PoolManager poolManager = new PoolManager(transform);
         foreach (var item in _poolList.poolList)
@@ -76,8 +77,8 @@ public class GameManager : MonoSingleton<GameManager>
     }
     private void Start()
     {
+        //player = FindObjectOfType<Player>().transform;
         SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
-
     }
 
     private void Update()
@@ -89,6 +90,10 @@ public class GameManager : MonoSingleton<GameManager>
         {
             GameEnd();
         }
+        //if (_curTime <= 0.0f || MapManager.Instance.WaterFillAmount() > occupationPercent)
+        //{
+        //    GameEnd();
+        //}
     }
 
     public void GameStart()
