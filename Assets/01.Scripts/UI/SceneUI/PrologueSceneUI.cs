@@ -31,14 +31,18 @@ public class PrologueSceneUI : SceneUIBase
         _skipBtn.SetActive(GameManager.Instance.GameData.isLookPrologue);
     }
 
+    public void Skip()
+    {
+        UIManager.Instanace.ChangeScene(UIDefine.UIType.Title);
+    }
+
     private void PlayCutPicture()
     {
         if (canNextUp)
         {
             if (phase == _pictureCutBook.Count)
             {
-                UIManager.Instanace.ChangeScene(UIDefine.UIType.Title);
-                GameManager.Instance.GameData.isLookPrologue = true;
+                Skip();
                 return;
             }
                 canNextUp = false;
@@ -76,6 +80,9 @@ public class PrologueSceneUI : SceneUIBase
 
     public override void Init()
     {
+        GameManager.Instance.GameData.isLookPrologue = true;
+        Debug.Log(GameManager.Instance.GameData.isLookPrologue);
         _volume.enabled = true;
+        GameManager.Instance.SaveData();
     }
 }
