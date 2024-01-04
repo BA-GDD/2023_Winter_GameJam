@@ -46,11 +46,11 @@ public class PlayerBullet : Bullet
                 if (!_isAlreadyHit && collision.TryGetComponent(out MobBrain brain))
                 {
                     brain.OnHitHandle();
+                    _killEvent?.Invoke();
                 }
 
                 _isAlreadyHit = true;
 
-                _killEvent?.Invoke();
                 PoolManager.Instance.Push(this);
             }
         }
@@ -58,13 +58,15 @@ public class PlayerBullet : Bullet
         {
             if (collision == targetOfMissile)
             {
-                if(collision.TryGetComponent<MobBrain>(out MobBrain brain))
+                if (collision.TryGetComponent<MobBrain>(out MobBrain brain))
+                {
                     brain.OnHitHandle();
+                    _killEvent?.Invoke();
+                }
 
                 targetOfMissile = null;
                 isMissileMode = false;
 
-                _killEvent?.Invoke();
                 PoolManager.Instance.Push(this);
             }
         }

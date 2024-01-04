@@ -36,8 +36,8 @@ public class StoreSceneUI : SceneUIBase
                 case GunType.Revolver:
                     GameManager.Instance.GameData.openRevolver = true;
                     break;
-                case GunType.Razer:
-                    GameManager.Instance.GameData.Razer = true;
+                case GunType.Laser:
+                    GameManager.Instance.GameData.Laser = true;
                     break;
                 case GunType.Shotgun:
                     GameManager.Instance.GameData.Shotgun = true;
@@ -57,8 +57,8 @@ public class StoreSceneUI : SceneUIBase
         {
             case GunType.Revolver:
                 return GameManager.Instance.GameData.openRevolver;
-            case GunType.Razer:
-                return GameManager.Instance.GameData.Razer;
+            case GunType.Laser:
+                return GameManager.Instance.GameData.Laser;
             case GunType.Shotgun:
                 return GameManager.Instance.GameData.Shotgun;
             default:

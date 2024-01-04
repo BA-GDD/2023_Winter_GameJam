@@ -19,7 +19,7 @@ MonoBehaviour:
     \uB9DB\uC774 \uC788\uB2E4."
   skillText: "\uBC94\uC704 \uB0B4\uC758\n\uBAA8\uB4E0 \uC801\uC744\n'\uC12C\uBA78'\uD55C\uB2E4."
   gunAnimator: {fileID: 0}
-  shootDelay: 0
+  shootDelay: 0.01
   maximumCapacity: 10
   fillCapacityPerSecond: 20
   useCapacityPerShoot: 1
