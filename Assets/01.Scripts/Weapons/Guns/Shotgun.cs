@@ -69,6 +69,7 @@ public class Shotgun : Gun
         {
             if (--_skillShotCount <= 0)
             {
+                InitializeSkill();
                 _skillEffect.Stop();
                 _skillText.gameObject.SetActive(false);
             }
@@ -107,8 +108,7 @@ public class Shotgun : Gun
             feedbackPlayer.PlayFeedback();
             _skillEffect.Play();
             _skillEffect_01.Play();
-            InitializeSkill();
-
+            isSkillProcess = true;
         }
     }
 

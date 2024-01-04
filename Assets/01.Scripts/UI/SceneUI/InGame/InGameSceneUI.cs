@@ -24,13 +24,10 @@ public class InGameSceneUI : SceneUIBase
 
         _player.SetWaterGaugeHandle(onsenWater);
         _player.SetSkillGroup(skillBarGroup);
-        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1f, 1, true, "InGame");
     }
     public override void Init()
     {
-        _player.DeleteSkillGroup(_skillBarGroup); 
-        _player.DeleteWaterGaugeHandle(_onsenWater);
-        _player.UnequipGun();
         SoundManager.Instance.Stop("InGame");
 
         UIManager.Instanace._canvas.worldCamera = Camera.main;

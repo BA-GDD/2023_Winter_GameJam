@@ -30,12 +30,6 @@ public class GameResultSceneUI : SceneUIBase
         }
     }
 
-    private void Start()
-    {
-
-        SoundManager.Instance.Stop("BGM");
-    }
-
     public override void SetUp()
     {
         _milkThrowEvent?.Invoke(Mathf.FloorToInt(GameManager.Instance.Score));
