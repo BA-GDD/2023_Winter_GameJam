@@ -22,6 +22,8 @@ public class PrologueSceneUI : SceneUIBase
     public bool canNextUp;
     private bool _isClearPhase;
 
+    [SerializeField] private AudioClip _bgmClip;
+
     public override void SetUp()
     {
         PlayCutPicture();
@@ -29,6 +31,7 @@ public class PrologueSceneUI : SceneUIBase
         _volume.enabled = false;
         Debug.Log(GameManager.Instance.GameData.isLookPrologue);
         _skipBtn.SetActive(GameManager.Instance.GameData.isLookPrologue);
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true, "Prologue");
     }
 
     public void Skip()
@@ -80,6 +83,7 @@ public class PrologueSceneUI : SceneUIBase
 
     public override void Init()
     {
+        SoundManager.Instance.Stop("Prologue");
         GameManager.Instance.GameData.isLookPrologue = true;
         Debug.Log(GameManager.Instance.GameData.isLookPrologue);
         _volume.enabled = true;

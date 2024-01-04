@@ -195,6 +195,7 @@ public class Player : MonoBehaviour, IDamageable
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
 
+        _material.SetFloat(_materialHalfAmountHash, 1f);
         _equipedGun.gameObject.SetActive(false);
         (this as IDamageable).OnHit();
 

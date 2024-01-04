@@ -4079,6 +4079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myUIType: 1
+  _bgmClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
 --- !u!1 &8577371415117368579
 GameObject:
   m_ObjectHideFlags: 0

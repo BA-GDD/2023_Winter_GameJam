@@ -9,6 +9,7 @@ public class InGameSceneUI : SceneUIBase
     private OnsenWaterGage _onsenWater;
     private SkillBarGroup _skillBarGroup;
     [SerializeField] private GameExitPanel _exitPanel;
+    [SerializeField] private AudioClip _bgmClip;
 
     public override void SetUp()
     {
@@ -18,13 +19,14 @@ public class InGameSceneUI : SceneUIBase
         _skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
         _player.SetWaterGaugeHandle(_onsenWater);
         _player.SetSkillGroup(_skillBarGroup);
-        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1f, 1, true, "InGame");
     }
     public override void Init()
     {
         _player.DeleteSkillGroup(_skillBarGroup);
         _player.DeleteWaterGaugeHandle(_onsenWater);
         _player.UnequipGun();
+        SoundManager.Instance.Stop("InGame");
     }
 
     private void Update()

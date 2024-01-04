@@ -10,13 +10,14 @@ public class GameResultSceneUI : SceneUIBase
     private GameObject _remainFX;
     public bool isEndTimeLine;
 
+    [SerializeField] private AudioClip _bgmClip;
+
     public void GoToLobby()
     {
         GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
         GameManager.Instance.GameData.Save();
         UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
         //UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
-        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1, 1, true, "BGM");
     }
 
     private void Update()
@@ -31,8 +32,8 @@ public class GameResultSceneUI : SceneUIBase
 
     private void Start()
     {
-        SetUp();
-        SoundManager.Instance.Stop("BGM");
+        //SetUp();
+        //SoundManager.Instance.Stop("BGM");
     }
 
     public override void SetUp()
@@ -41,10 +42,12 @@ public class GameResultSceneUI : SceneUIBase
         _scoreSetEvent?.Invoke(GameManager.Instance.Score, 
                                GameManager.Instance.GameData.beforeTime,
                                GameManager.Instance.GameData.bestTime);
+        SoundManager.Instance.Play(_bgmClip,1,1,1,true,"GameResult");
     }
 
     public override void Init()
     {
+        SoundManager.Instance.Stop("GameResult");
         Destroy(_remainFX);
     }
 }

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myUIType: 2
   _exitPanel: {fileID: 8806939260723730131, guid: 4e64439ebe9c69b418f13b07a2a9b0d1, type: 3}
+  _bgmClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
 --- !u!1 &722392130368127291
 GameObject:
   m_ObjectHideFlags: 0

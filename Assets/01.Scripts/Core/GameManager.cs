@@ -41,7 +41,6 @@ public class GameManager : MonoSingleton<GameManager>
     private GameData _gameData;
     public GameData GameData => _gameData;
 
-    public AudioClip bgmClip;
     public AudioClip hawon;
 
     [SerializeField]
@@ -72,7 +71,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        if(File.Exists(_filePath))
+        if (File.Exists(_filePath))
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
@@ -83,7 +82,7 @@ public class GameManager : MonoSingleton<GameManager>
             _gameData = new GameData();
             SaveData();
         }
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogError($"{typeof(GameManager)} instance is already exist!");
             Destroy(gameObject);
@@ -104,7 +103,6 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(bgmClip, 0.3f, 1, 1, true);
         isGameEnd = true;
     }
 

@@ -824,6 +824,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isEndTimeLine: 0
+  _bgmClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
 --- !u!1 &4271020389466661944
 GameObject:
   m_ObjectHideFlags: 0
