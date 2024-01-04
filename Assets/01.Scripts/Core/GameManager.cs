@@ -153,7 +153,7 @@ public class GameManager : MonoSingleton<GameManager>
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1.0f;
 
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.GameResult);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.GameResult, true);
         SceneChange("Result");
     }
 

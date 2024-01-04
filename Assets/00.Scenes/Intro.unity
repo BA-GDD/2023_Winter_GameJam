@@ -136,9 +136,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 592973263}
     - target: {fileID: 17377575316506769, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
-      propertyPath: _startUIType
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: _sceneFade
+      value: 
+      objectReference: {fileID: 2013838038}
     - target: {fileID: 2203081626079322355, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -190,7 +190,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2318867352754786728, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2013838038}
   m_SourcePrefab: {fileID: 100100000, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
 --- !u!1 &297524668
 GameObject:
@@ -523,6 +526,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2013838034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2318867352754786728, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+  m_PrefabInstance: {fileID: 137950201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2013838036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5189671951067510138, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+  m_PrefabInstance: {fileID: 137950201}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013838034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2013838038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013838034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece0ce82fe2c7be44a4834d6bea8e2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myFadePanel: {fileID: 2013838036}
+  _easingTime: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

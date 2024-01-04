@@ -14,7 +14,7 @@ public class GameResultSceneUI : SceneUIBase
     {
         GameManager.Instance.GameData.SetTime(GameManager.Instance.Score);
         GameManager.Instance.GameData.Save();
-        UIManager.Instanace.ChangeScene(UIDefine.UIType.Lobby);
+        UIManager.Instanace.ChangeSceneFade(UIDefine.UIType.Lobby, true);
     }
 
     private void Update()
