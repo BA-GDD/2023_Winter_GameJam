@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4474169370230672968, guid: 43e070989d2294e46bdad4de73f52764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -808,7 +812,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 0.06
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -911,6 +915,7 @@ MonoBehaviour:
     weight: 1
   _groundMap: {fileID: 1868085291}
   _holeMap: {fileID: 638660885}
+  _decoMap: {fileID: 0}
   _holeTile: {fileID: 11400000, guid: 3f384d7077ca3c241802dac4e17afa78, type: 2}
   _groundTile: {fileID: 11400000, guid: ec7219d52da4f0c439b42f2191939e7b, type: 2}
   _defaultSpaSize: {x: 10, y: 10}
@@ -970,7 +975,7 @@ MonoBehaviour:
   gameTime: 5
   mainCamera: {fileID: 0}
   selectGunType: 0
-  occupationPercent: 24.5
+  occupationPercent: 1
   isGameEnd: 0
   _poolList: {fileID: 11400000, guid: 586068977d119da40b6c936d8c065671, type: 2}
   _bgmClip: {fileID: 0}

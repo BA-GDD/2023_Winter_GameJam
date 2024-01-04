@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6243425e5845c6a4794a4ca05bf2a4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 11
+  poolingType: 7
   attack: {fileID: 0}
   isDead: 0
   status: {fileID: 11400000, guid: 50d38fcce8774394f85cf800483643cd, type: 2}
@@ -180,7 +180,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2898878081853443733}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

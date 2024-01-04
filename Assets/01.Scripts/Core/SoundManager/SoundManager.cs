@@ -15,7 +15,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     public AudioMixerGroup[] audioMixers;
     public GameObject audioObject;
 
+    public Dictionary<string,SoundObject> soundObjects = new Dictionary<string, SoundObject>();
+
     Queue<SoundObject> audioQueue = new Queue<SoundObject>();
+
+    public AudioClip btnClip;
     
     private void Awake()
     {
@@ -33,9 +37,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         audioMixerMaster.SetFloat("master", masterVolume);
         audioMixerMaster.SetFloat("bgm", bgmVolume);
         audioMixerMaster.SetFloat("sfx", sfxVolume);
+        UIManager.Instanace.EveryButtonClickCallback += PlayBtnSE;
     }
 
-    public void Play(AudioClip clip, float volume = 1f, float pitch = 1f, int channel = 0, bool loop=false)
+    public void Play(AudioClip clip, float volume = 1f, float pitch = 1f, int channel = 0, bool loop=false, string name = "")
     {
         SoundObject obj = null;
         if (audioQueue.Count > 0)
@@ -53,6 +58,18 @@ public class SoundManager : MonoSingleton<SoundManager>
         {
             StartCoroutine(DQ(clip.length, obj));
         }
+        else
+        {
+            soundObjects.Add(name,obj);
+        }
+    }
+
+    public void Stop(string name)
+    {
+        soundObjects[name].Stop();
+        soundObjects[name].gameObject.SetActive(false);
+        audioQueue.Enqueue(soundObjects[name]);
+        soundObjects.Remove(name);
     }
 
     IEnumerator DQ(float time, SoundObject obj)
@@ -79,5 +96,10 @@ public class SoundManager : MonoSingleton<SoundManager>
                 print("잘못된 값!");
                 break;
         }
+    }
+
+    public void PlayBtnSE()
+    {
+        Play(btnClip, 3, 1, 2, false);
     }
 }

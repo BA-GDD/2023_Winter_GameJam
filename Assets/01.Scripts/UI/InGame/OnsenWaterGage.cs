@@ -29,7 +29,7 @@ public class OnsenWaterGage : MonoBehaviour
         {
             NotAllow();
         }
-        _targetWaterValue = Mathf.Clamp(_currentWaterValue + changingValue, 0, 1f);
+        _targetWaterValue = Mathf.Clamp(_targetWaterValue + changingValue, 0, 1f);
     }
 
     private void Update()

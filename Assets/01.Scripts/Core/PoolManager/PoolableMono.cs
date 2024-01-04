@@ -6,4 +6,8 @@ public abstract class PoolableMono : MonoBehaviour
 {
     public PoolingType poolingType;
     public abstract void Init();
+    public virtual void GotoPool()
+    {
+        PoolManager.Instance.Push(this);
+    }
 }

@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00.Scenes/Gusdnd/Playing.unity
-    guid: d4222db30ce91d647abcfb152e933312
+    path: Assets/00.Scenes/Intro.unity
+    guid: 4e253e3c2b3f9e347a21065ec7e5349a
   - enabled: 1
     path: Assets/00.Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/00.Scenes/Intro.unity
-    guid: 4e253e3c2b3f9e347a21065ec7e5349a
+    path: Assets/00.Scenes/Result.unity
+    guid: 4b4487383c6caba41856ee10a19f83c3
   m_configObjects: {}

@@ -7,13 +7,12 @@ public class SpeedUpSpa : Spa
     private float _beforeSpeed;
     public SpeedUpSpa() : base()
     {
-
+        _beforeSpeed = _player.movementSpeed;
     }
 
     public override void Enter()
     {
-        _beforeSpeed = _player.movementSpeed;
-        _player.movementSpeed = 10;
+        _player.movementSpeed = 60;
     }
 
     public override void Exit()

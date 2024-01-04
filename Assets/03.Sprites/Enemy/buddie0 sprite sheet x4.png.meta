@@ -106,6 +106,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,10 +139,10 @@ TextureImporter:
       name: buddie0 sprite sheet x4_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 24
         y: 3712
-        width: 128
-        height: 128
+        width: 36
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,11 +161,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3456
+        y: 3452
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,11 +182,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 3456
+        y: 3452
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,11 +203,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 3456
+        y: 3452
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,11 +224,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 3456
+        y: 3452
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,11 +245,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,11 +266,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,11 +287,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,11 +308,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,11 +329,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,11 +350,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,11 +371,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,11 +392,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 896
-        y: 3200
+        y: 3196
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -387,11 +413,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3072
+        y: 3068
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -408,11 +434,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 3072
+        y: 3068
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -429,11 +455,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 3072
+        y: 3068
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -449,12 +475,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_16
       rect:
         serializedVersion: 2
-        x: 384
-        y: 3072
+        x: 0
+        y: 2812
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,12 +496,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_17
       rect:
         serializedVersion: 2
-        x: 512
-        y: 3072
+        x: 128
+        y: 2812
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -491,12 +517,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_18
       rect:
         serializedVersion: 2
-        x: 640
-        y: 3072
+        x: 256
+        y: 2812
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -512,12 +538,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_19
       rect:
         serializedVersion: 2
-        x: 768
-        y: 3072
+        x: 384
+        y: 2812
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -533,12 +559,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_20
       rect:
         serializedVersion: 2
-        x: 896
-        y: 3072
+        x: 512
+        y: 2812
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -555,11 +581,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2816
+        y: 2684
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -576,11 +602,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 2816
+        y: 2684
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -597,11 +623,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 2816
+        y: 2684
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -618,11 +644,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 2816
+        y: 2684
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -639,11 +665,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 2816
+        y: 2684
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -660,11 +686,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2688
+        y: 2428
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -681,11 +707,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 2688
+        y: 2428
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -702,11 +728,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 2688
+        y: 2428
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -722,12 +748,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_29
       rect:
         serializedVersion: 2
-        x: 384
-        y: 2688
+        x: 0
+        y: 2300
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -743,12 +769,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_30
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2688
+        x: 128
+        y: 2300
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -764,12 +790,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_31
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2432
+        x: 256
+        y: 2300
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -785,12 +811,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_32
       rect:
         serializedVersion: 2
-        x: 128
-        y: 2432
+        x: 384
+        y: 2300
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -806,12 +832,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_33
       rect:
         serializedVersion: 2
-        x: 256
-        y: 2432
+        x: 0
+        y: 2044
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -827,12 +853,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_34
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2304
+        x: 128
+        y: 2044
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -848,12 +874,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_35
       rect:
         serializedVersion: 2
-        x: 128
-        y: 2304
+        x: 256
+        y: 2044
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -869,12 +895,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_36
       rect:
         serializedVersion: 2
-        x: 256
-        y: 2304
+        x: 384
+        y: 2044
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -890,12 +916,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_37
       rect:
         serializedVersion: 2
-        x: 384
-        y: 2304
+        x: 0
+        y: 1916
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -911,12 +937,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_38
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2176
+        x: 128
+        y: 1916
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -932,12 +958,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_39
       rect:
         serializedVersion: 2
-        x: 128
-        y: 2176
+        x: 256
+        y: 1916
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -953,12 +979,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_40
       rect:
         serializedVersion: 2
-        x: 256
-        y: 2176
+        x: 384
+        y: 1916
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -974,12 +1000,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_41
       rect:
         serializedVersion: 2
-        x: 384
-        y: 2176
+        x: 0
+        y: 1788
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -992,183 +1018,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_no_gun_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2048
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a54f708c6a7e49458c66f1fc824a4ef
-      internalID: 367837983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_no_gun_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 2048
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58bc149373474c548826c9d6387125b8
-      internalID: -1721262979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_no_gun_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 2048
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3dcc1b31d95f63c4380c8349618b7399
-      internalID: -538596293
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_no_gun_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 2048
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcf03b2af3e2add43967b9e7ea372c43
-      internalID: 883167687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_gun_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1920
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a82e3d671b25d2e41828f810e447b28f
-      internalID: -1862066352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_gun_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 1920
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0752c641e5b64742b1bfef6a139f1ce
-      internalID: -1210904843
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_gun_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1920
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 748bfb236190db141aaf706e59e20b2f
-      internalID: 434730365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_gun_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 1920
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e141278b4f9fd804f998679eb07eafdc
-      internalID: 1863968474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: buddie0 sprite sheet x4_50
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1792
+        x: 128
+        y: 1532
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1184,12 +1042,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_51
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1792
+        x: 256
+        y: 1532
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1205,12 +1063,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_52
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1792
+        x: 384
+        y: 1532
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1226,12 +1084,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_53
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1792
+        x: 0
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1247,12 +1105,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_54
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1664
+        x: 128
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1268,12 +1126,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_55
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1664
+        x: 256
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1289,12 +1147,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_56
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1664
+        x: 384
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1310,12 +1168,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_57
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1664
+        x: 512
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1331,12 +1189,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_58
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1536
+        x: 640
+        y: 1276
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1352,12 +1210,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_59
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1536
+        x: 0
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1373,12 +1231,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_60
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1536
+        x: 128
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1394,12 +1252,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_61
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1536
+        x: 256
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1415,12 +1273,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_62
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1408
+        x: 384
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1436,12 +1294,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_63
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1408
+        x: 512
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1457,12 +1315,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_64
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1280
+        x: 640
+        y: 1148
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1478,12 +1336,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_65
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1280
+        x: 0
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1499,12 +1357,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_66
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1280
+        x: 128
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1520,12 +1378,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_67
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1280
+        x: 256
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1541,12 +1399,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_68
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1280
+        x: 384
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1562,12 +1420,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_69
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1280
+        x: 512
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1583,12 +1441,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_70
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1152
+        x: 640
+        y: 1020
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1604,12 +1462,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_71
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1152
+        x: 0
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1625,12 +1483,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_72
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1152
+        x: 128
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1646,12 +1504,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_73
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1152
+        x: 256
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1667,12 +1525,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_74
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1152
+        x: 384
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1688,12 +1546,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_75
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1152
+        x: 512
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1709,12 +1567,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_76
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
+        x: 640
+        y: 892
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1730,12 +1588,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_77
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1024
+        x: 0
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1751,12 +1609,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_78
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1024
+        x: 128
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1772,12 +1630,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_79
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1024
+        x: 256
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1793,12 +1651,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_80
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1024
+        x: 384
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1814,12 +1672,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_81
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1024
+        x: 512
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1835,12 +1693,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_82
       rect:
         serializedVersion: 2
-        x: 0
-        y: 896
+        x: 640
+        y: 764
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1856,12 +1714,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_83
       rect:
         serializedVersion: 2
-        x: 128
-        y: 896
+        x: 0
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1877,12 +1735,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_84
       rect:
         serializedVersion: 2
-        x: 256
-        y: 896
+        x: 128
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1898,12 +1756,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_85
       rect:
         serializedVersion: 2
-        x: 384
-        y: 896
+        x: 256
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1919,12 +1777,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_86
       rect:
         serializedVersion: 2
-        x: 512
-        y: 896
+        x: 384
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1940,12 +1798,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_87
       rect:
         serializedVersion: 2
-        x: 640
-        y: 896
+        x: 512
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1961,12 +1819,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_88
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
+        x: 640
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1982,12 +1840,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_89
       rect:
         serializedVersion: 2
-        x: 128
-        y: 768
+        x: 768
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2003,12 +1861,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_90
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
+        x: 896
+        y: 508
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2024,12 +1882,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_91
       rect:
         serializedVersion: 2
-        x: 384
-        y: 768
+        x: 0
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2045,12 +1903,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_92
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
+        x: 128
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2066,12 +1924,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_93
       rect:
         serializedVersion: 2
-        x: 640
-        y: 768
+        x: 256
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2087,12 +1945,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_94
       rect:
         serializedVersion: 2
-        x: 0
-        y: 640
+        x: 384
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2108,12 +1966,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_95
       rect:
         serializedVersion: 2
-        x: 128
-        y: 640
+        x: 512
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2129,12 +1987,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_96
       rect:
         serializedVersion: 2
-        x: 256
-        y: 640
+        x: 640
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2150,12 +2008,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_97
       rect:
         serializedVersion: 2
-        x: 384
-        y: 640
+        x: 768
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2171,12 +2029,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_98
       rect:
         serializedVersion: 2
-        x: 512
-        y: 640
+        x: 896
+        y: 380
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2192,12 +2050,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_99
       rect:
         serializedVersion: 2
-        x: 640
-        y: 640
+        x: 0
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2213,12 +2071,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_100
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
+        x: 128
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2234,12 +2092,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_101
       rect:
         serializedVersion: 2
-        x: 128
-        y: 512
+        x: 256
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2255,12 +2113,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_102
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
+        x: 384
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2276,12 +2134,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_103
       rect:
         serializedVersion: 2
-        x: 384
-        y: 512
+        x: 512
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2297,12 +2155,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_104
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
+        x: 640
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2318,12 +2176,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_105
       rect:
         serializedVersion: 2
-        x: 640
-        y: 512
+        x: 768
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2339,12 +2197,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_106
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
+        x: 896
+        y: 252
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2360,12 +2218,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_107
       rect:
         serializedVersion: 2
-        x: 896
-        y: 512
+        x: 0
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2381,12 +2239,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_108
       rect:
         serializedVersion: 2
-        x: 0
-        y: 384
+        x: 128
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2402,12 +2260,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_109
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
+        x: 256
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2423,12 +2281,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_110
       rect:
         serializedVersion: 2
-        x: 256
-        y: 384
+        x: 384
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2444,12 +2302,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_111
       rect:
         serializedVersion: 2
-        x: 384
-        y: 384
+        x: 512
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2465,12 +2323,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_112
       rect:
         serializedVersion: 2
-        x: 512
-        y: 384
+        x: 640
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2486,12 +2344,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_113
       rect:
         serializedVersion: 2
-        x: 640
-        y: 384
+        x: 768
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2507,12 +2365,12 @@ TextureImporter:
       name: buddie0 sprite sheet x4_114
       rect:
         serializedVersion: 2
-        x: 768
-        y: 384
+        x: 896
+        y: 124
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2525,442 +2383,169 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_115
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0ba74336618b9f4eabace8edfe1703c
-      internalID: 1431448318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_116
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4b7f443daed93541a9a6aba1ccceb6c
-      internalID: 952960301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_117
+      name: buddie0 sprite sheet x4_42
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 1788
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42185ea3433f4d449bc3eaa7cb59dadf
-      internalID: -825477319
+      spriteID: c6ec0bf63a38d4c479c6e011433a6557
+      internalID: 1556751168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_118
+      name: buddie0 sprite sheet x4_43
       rect:
         serializedVersion: 2
         x: 256
-        y: 256
+        y: 1788
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36c0142fc27d5d74bb615e52e18bc839
-      internalID: -858501478
+      spriteID: f33190a597968df41b5f5063a86210bd
+      internalID: 813201757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_119
+      name: buddie0 sprite sheet x4_44
       rect:
         serializedVersion: 2
         x: 384
-        y: 256
+        y: 1788
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afdb2b7a747b0b543a138ab508b7573f
-      internalID: -254597718
+      spriteID: 47b9fe6e590a27b4a8af06c7fcc293d5
+      internalID: -1483067900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_120
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1974888d31d08e4daa78c349acf5a21
-      internalID: 1205217951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_121
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5939f2b5a212b9d4cbc06b981d0ad4cd
-      internalID: 1031186614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_122
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43b9a5fc2f7de2946aaf88988632a139
-      internalID: 1235032304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_123
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 773c3432ddfa58a489b91ff2dcaea183
-      internalID: -477256765
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_124
+      name: buddie0 sprite sheet x4_45
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 1660
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27c22c15a0cf6cf44b42c973f8a004a5
-      internalID: -1925159317
+      spriteID: 2b340786d06a91545a7cceceeee42ce3
+      internalID: -649578104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_125
+      name: buddie0 sprite sheet x4_46
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 1660
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 155ccba5453f0ba4e8112d76c91b6da2
-      internalID: -478336541
+      spriteID: 71defbc888e390f4dbd696edd7794c02
+      internalID: -980157489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_126
+      name: buddie0 sprite sheet x4_47
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 1660
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28265ce293b733e4d86bf0cc80cb8a60
-      internalID: 1632194762
+      spriteID: 19f80a6128845e444b809d3c56533dc6
+      internalID: -369959586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_127
+      name: buddie0 sprite sheet x4_48
       rect:
         serializedVersion: 2
         x: 384
-        y: 128
+        y: 1660
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5edeaab3ad1aadc49afa91dbe8de7399
-      internalID: -746760176
+      spriteID: c69e404dffd6a8b4aa2f664657a22510
+      internalID: 708593372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: buddie0 sprite sheet x4_128
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad7bb71d8a7692049bcb756bb4cd1f7f
-      internalID: 1073450116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_129
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ef542eb8c0023c4a9a6ed6f0b914544
-      internalID: -448927561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_130
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0babe604cb9ac554a877a7c4877a586a
-      internalID: 1244437286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_131
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b59a75c2afa59f4fa68bcddc82e8012
-      internalID: 1700613227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_132
+      name: buddie0 sprite sheet x4_49
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1532
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c864552b9106ca4b8134642e451baa6
-      internalID: -1336065377
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_133
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b10bf1df4239ceb4db67183c6c23586c
-      internalID: -1034308516
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_134
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: befd2bd2064dce64d919cafa0f786492
-      internalID: 415794358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: buddie0 sprite sheet x4_135
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21138a9fca9ebea488fe7fbcf84aa76f
-      internalID: 1879290817
+      spriteID: 0cc74bc8b54223a429f32ed19be91341
+      internalID: -1592403632
       vertices: []
       indices: 
       edges: []
@@ -2995,29 +2580,8 @@ TextureImporter:
       buddie0 sprite sheet x4_112: 1825879457
       buddie0 sprite sheet x4_113: 24217767
       buddie0 sprite sheet x4_114: -1067389120
-      buddie0 sprite sheet x4_115: 1431448318
-      buddie0 sprite sheet x4_116: 952960301
-      buddie0 sprite sheet x4_117: -825477319
-      buddie0 sprite sheet x4_118: -858501478
-      buddie0 sprite sheet x4_119: -254597718
       buddie0 sprite sheet x4_12: -1101332873
-      buddie0 sprite sheet x4_120: 1205217951
-      buddie0 sprite sheet x4_121: 1031186614
-      buddie0 sprite sheet x4_122: 1235032304
-      buddie0 sprite sheet x4_123: -477256765
-      buddie0 sprite sheet x4_124: -1925159317
-      buddie0 sprite sheet x4_125: -478336541
-      buddie0 sprite sheet x4_126: 1632194762
-      buddie0 sprite sheet x4_127: -746760176
-      buddie0 sprite sheet x4_128: 1073450116
-      buddie0 sprite sheet x4_129: -448927561
       buddie0 sprite sheet x4_13: -2061289216
-      buddie0 sprite sheet x4_130: 1244437286
-      buddie0 sprite sheet x4_131: 1700613227
-      buddie0 sprite sheet x4_132: -1336065377
-      buddie0 sprite sheet x4_133: -1034308516
-      buddie0 sprite sheet x4_134: 415794358
-      buddie0 sprite sheet x4_135: 1879290817
       buddie0 sprite sheet x4_14: 2020059652
       buddie0 sprite sheet x4_15: 699133272
       buddie0 sprite sheet x4_16: -1963378735
@@ -3049,6 +2613,14 @@ TextureImporter:
       buddie0 sprite sheet x4_4: 712836803
       buddie0 sprite sheet x4_40: 1585860488
       buddie0 sprite sheet x4_41: -449928346
+      buddie0 sprite sheet x4_42: 1556751168
+      buddie0 sprite sheet x4_43: 813201757
+      buddie0 sprite sheet x4_44: -1483067900
+      buddie0 sprite sheet x4_45: -649578104
+      buddie0 sprite sheet x4_46: -980157489
+      buddie0 sprite sheet x4_47: -369959586
+      buddie0 sprite sheet x4_48: 708593372
+      buddie0 sprite sheet x4_49: -1592403632
       buddie0 sprite sheet x4_5: -1534872844
       buddie0 sprite sheet x4_50: 716612278
       buddie0 sprite sheet x4_51: -1418770283
@@ -3104,14 +2676,6 @@ TextureImporter:
       buddie0 sprite sheet x4_97: 1267502551
       buddie0 sprite sheet x4_98: -1524316217
       buddie0 sprite sheet x4_99: -254536758
-      idle_gun_0: -1862066352
-      idle_gun_1: -1210904843
-      idle_gun_2: 434730365
-      idle_gun_3: 1863968474
-      idle_no_gun_0: 367837983
-      idle_no_gun_1: -1721262979
-      idle_no_gun_2: -538596293
-      idle_no_gun_3: 883167687
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

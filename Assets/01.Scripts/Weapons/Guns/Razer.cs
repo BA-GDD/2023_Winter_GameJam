@@ -14,7 +14,7 @@ public class Razer : Gun
         _razerEffect.gameObject.SetActive(true);
 
         _razerEffect.transform.position = firePosition.transform.position;
-        Vector2 direction = GameManager.Instance.mainCamera.ScreenToWorldPoint(Mouse.current.position.value) - _razerEffect.transform.position;
+        Vector2 direction = _mainCam.ScreenToWorldPoint(Mouse.current.position.value) - _razerEffect.transform.position;
 
         direction.Normalize();
 
