@@ -42,6 +42,7 @@ public class GameManager : MonoSingleton<GameManager>
     public GameData GameData => _gameData;
 
     public AudioClip bgmClip;
+    public AudioClip hawon;
 
     [SerializeField]
     private InputReader _inputReader;
@@ -149,6 +150,8 @@ public class GameManager : MonoSingleton<GameManager>
         Time.timeScale = 0.3f;
 
         player.transform.Find("end").GetComponent<PlayableDirector>().Play();
+        yield return new WaitForSecondsRealtime(1f);
+        SoundManager.Instance.Play(hawon, 1, 1, 2);
         yield return new WaitForSecondsRealtime(5f);
         Time.timeScale = 1.0f;
 
