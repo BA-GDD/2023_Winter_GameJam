@@ -37,7 +37,7 @@ public class SniperAttack : EnemyAttack
         base.Update();
         if (_isChasing)
         {
-            _target = Vector2.Lerp(_target, GameManager.Instance.player.position, Time.deltaTime);
+            _target = GameManager.Instance.player.position;
         }
         if (_isAiming)
         {
@@ -56,7 +56,7 @@ public class SniperAttack : EnemyAttack
     private void Aim()
     {
         _line.SetPosition(0, _brain.firePos.position);
-        _line.SetPosition(1, (GameManager.Instance.player.position - _brain.firePos.position).normalized * 100);
+        _line.SetPosition(1, (_target - _brain.firePos.position) * 100);
     }
 
     private IEnumerator Sniping()

@@ -121,6 +121,7 @@ public class GameManager : MonoSingleton<GameManager>
         //{
         //    GameEnd();
         //}
+        Score = (int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f);
     }
 
     public void GameStart()
@@ -135,7 +136,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (isGameEnd) return;
         isGameEnd = true;
-        Score = (int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f);
+        
         print(Score);
         print(_curTime);
         print(MapManager.Instance.WaterFillAmount());
