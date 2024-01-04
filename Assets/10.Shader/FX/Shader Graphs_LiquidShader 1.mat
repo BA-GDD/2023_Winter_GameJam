@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _amount: 0
-    - _height: 0.7
+    - _height: 0.1
     - _speed: -6.51
     m_Colors:
     - _Color: {r: 0.53040224, g: 0.8867924, b: 0.6596404, a: 0}
