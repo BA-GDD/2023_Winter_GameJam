@@ -121,10 +121,10 @@ public class GameManager : MonoSingleton<GameManager>
         //}]
         if(MapManager.Instance != null)
             Score = ((int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f)) * 0.1f;
-        if(Input.GetKeyDown(KeyCode.O))
+        /*if(Input.GetKeyDown(KeyCode.O))
         {
             GameData.milkCoount = 100000;
-        }
+        }*/
     }
 
     public void GameStart()
