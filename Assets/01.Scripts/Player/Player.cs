@@ -80,12 +80,12 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(!_isMutheki && Input.GetKeyDown(KeyCode.P))
+/*        if(!_isMutheki && Input.GetKeyDown(KeyCode.P))
         {
             _isMutheki = true;
             _mutekiFX.Play();
             StartCoroutine(Muteki());
-        }
+        }*/
 
         if (_isDead || _equipedGun == null)
         {
