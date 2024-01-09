@@ -15,6 +15,7 @@ public class EquipGunSystem : MonoBehaviour
     [SerializeField] private Transform _capZone;
     [SerializeField] private Animator _lobbyCapAnimator;
     [SerializeField] private Image _gunImg;
+    [SerializeField] private Transform _plzClickPanel;
 
     [Header("¼ÂÆÃ °ª")]
     [SerializeField] private Vector2 _normalCapPos;
@@ -56,6 +57,7 @@ public class EquipGunSystem : MonoBehaviour
         seq.Join(_btnGroup.DOLocalMoveX(-640, 0.3f));
         seq.Join(_capybaraTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.2f));
         seq.Join(_weaponBar.DOLocalMove(_weaponBarMovePos, 0.3f));
+        seq.Join(_plzClickPanel.DOLocalMoveX(1292, 0.3f));
         seq.AppendCallback(() => _inEquipping = true);
 
         _capybaraEquipEvent -= StartEquip;
@@ -70,6 +72,7 @@ public class EquipGunSystem : MonoBehaviour
         seq.Join(_btnGroup.DOLocalMoveX(0, 0.3f));
         seq.Join(_capybaraTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, -13), 0.2f));
         seq.Join(_weaponBar.DOLocalMove(_weaponBarNormalPos, 0.3f));
+        seq.Join(_plzClickPanel.DOLocalMoveX(620, 0.3f));
         seq.AppendCallback(() => _inEquipping = false);
         seq.AppendCallback(() => _lobbyCapAnimator.enabled = true);
 
