@@ -145,7 +145,6 @@ public abstract class Gun : MonoBehaviour
 
     protected bool CanUseSkill()
     {
-        print($"{_currentSkillGauge}/{gunScriptableObject.requireSkillGauge}/{_currentSkillGauge >= gunScriptableObject.requireSkillGauge}");
         return _currentSkillGauge >= gunScriptableObject.requireSkillGauge && !isSkillProcess;
     }
 

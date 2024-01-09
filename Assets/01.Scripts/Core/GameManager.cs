@@ -39,9 +39,12 @@ public class GameManager : MonoSingleton<GameManager>
     private Transform _poolTrm;
 
     private GameData _gameData;
-    public GameData GameData => _gameData;
+    public GameData GameDataInstance
+    {
+        get => _gameData;
+        set => _gameData = value;
+    }
 
-    public AudioClip bgmClip;
     public AudioClip hawon;
 
     [SerializeField]
@@ -72,18 +75,17 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        if(File.Exists(_filePath))
+        if (File.Exists(_filePath))
         {
             _jsonData = File.ReadAllText(_filePath);
             _gameData = JsonUtility.FromJson<GameData>(_jsonData);
-            Debug.Log(1);
         }
         else
         {
             _gameData = new GameData();
             SaveData();
         }
-        if(instance != null)
+        if (instance != null)
         {
             Debug.LogError($"{typeof(GameManager)} instance is already exist!");
             Destroy(gameObject);
@@ -99,12 +101,13 @@ public class GameManager : MonoSingleton<GameManager>
         mainCamera = Camera.main;
         //SoundManager.Instance.Play(_bgmClip, 0.3f, 1, 1, true);
 
+        selectGunType = (GunType)Enum.Parse(typeof(GunType), _gameData.equipedGun);
+
         DontDestroyOnLoad(this);
     }
     private void Start()
     {
         //player = FindObjectOfType<Player>().transform;
-        SoundManager.Instance.Play(bgmClip, 0.3f, 1, 1, true);
         isGameEnd = true;
     }
 
@@ -121,11 +124,15 @@ public class GameManager : MonoSingleton<GameManager>
         //{
         //    GameEnd();
         //}]
-        if(MapManager.Instance != null)
+        if (MapManager.Instance != null)
             Score = ((int)((gameTime - _curTime) * (int)(MapManager.Instance.WaterFillAmount() * 100.0f)) + ((int)MapManager.Instance.WaterFillAmount() * 100.0f)) * 0.1f;
-        if(Input.GetKeyDown(KeyCode.O))
+
+        // Develper Code
+        if (Keyboard.current.oKey.wasPressedThisFrame)
         {
-            GameData.milkCoount = 100000;
+            GameDataInstance.milkCount = 100000;
+
+            SaveData();
         }
     }
 
@@ -141,10 +148,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (isGameEnd) return;
         isGameEnd = true;
-        
-        print(Score);
-        print(_curTime);
-        print(MapManager.Instance.WaterFillAmount());
+
         _curTime = 0.0f;
 
         _inputReader.DisablePlayer();

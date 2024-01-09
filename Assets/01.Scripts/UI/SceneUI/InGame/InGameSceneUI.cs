@@ -11,22 +11,25 @@ public class InGameSceneUI : SceneUIBase
     [HideInInspector]
     public SkillBarGroup skillBarGroup;
     [SerializeField] private GameExitPanel _exitPanel;
+    [SerializeField] private AudioClip _bgmClip;
 
     public override void SetUp()
     {
         _player = FindObjectOfType<Player>();
         _player.inGameSceneUI = this;
 
+
         onsenWater = transform.Find("GamePanel/OnsenWaterGage").GetComponent<OnsenWaterGage>();
         skillBarGroup = transform.Find("SkillBarGroup").GetComponent<SkillBarGroup>();
 
-        Debug.Log(1);
         _player.SetWaterGaugeHandle(onsenWater);
         _player.SetSkillGroup(skillBarGroup);
-        SoundManager.Instance.Play(GameManager.Instance.bgmClip, 0.3f, 1f, 1, true, "BGM");
+        SoundManager.Instance.Play(_bgmClip, 0.3f, 1f, 1, true, "InGame");
     }
     public override void Init()
     {
+        SoundManager.Instance.Stop("InGame");
+
         UIManager.Instanace._canvas.worldCamera = Camera.main;
     }
 
@@ -37,7 +40,7 @@ public class InGameSceneUI : SceneUIBase
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             GameExitPanel exp = UIManager.Instanace.CreatePanel(_exitPanel, false) as GameExitPanel;
-            exp.SetText("Á¤¸» ·Îºñ·Î ÅğÀå<br>ÇÏ½Ã°Ú½À´Ï±î?");
+            exp.SetText("ì •ë§ë¡œ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
             exp.SetUpPanel();
         }
     }

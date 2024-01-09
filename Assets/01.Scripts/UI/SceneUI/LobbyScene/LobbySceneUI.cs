@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class LobbySceneUI : SceneUIBase
 {
+    [SerializeField] private AudioClip _bgmClip;
     [SerializeField] private WeaponCard _revolverCards;
     [SerializeField] private WeaponCard _shotGunCards;
     [SerializeField] private WeaponCard _razerCards;
 
     public override void SetUp()
     {
-        GameData data = GameManager.Instance.GameData;
+        GameData data = GameManager.Instance.GameDataInstance;
+
+        SoundManager.Instance.Play(_bgmClip,1,1,1,true,"Lobby");
 
         if(data.openRevolver)
         {
             _revolverCards.UnlockThisGun();
         }
 
-        if(data.Shotgun)
+        if(data.openShotgun)
         {
             _shotGunCards.UnlockThisGun();
         }
 
-        if(data.Laser)
+        if(data.openLaser)
         {
             _razerCards.UnlockThisGun();
         }
@@ -30,6 +33,6 @@ public class LobbySceneUI : SceneUIBase
 
     public override void Init()
     {
-        //SoundManager.Instance.Stop("BGM");
+        SoundManager.Instance.Stop("Lobby");
     }
 }

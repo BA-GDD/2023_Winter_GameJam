@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -49,6 +48,11 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool _isMutheki;
 
+    [SerializeField]
+    private ParticleSystem _mutekiFX;
+    [SerializeField]
+    private ParticleSystem _mutekiFX_01;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -58,20 +62,28 @@ public class Player : MonoBehaviour, IDamageable
         _dashTimer = 0f;
 
         _mainCam = Camera.main;
-        EquipGun(GameManager.Instance.selectGunType);
+    }
+
+    IEnumerator Muteki()
+    {
+        yield return new WaitForSeconds(1.6f);
+        _mutekiFX_01.Play();
     }
 
     private void Start()
     {
+        EquipGun(GameManager.Instance.selectGunType);
+
         _inputReader.onDashEvent += Dash;
-        print("�÷��̾�");
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(!_isMutheki && Input.GetKeyDown(KeyCode.P))
         {
             _isMutheki = true;
+            _mutekiFX.Play();
+            StartCoroutine(Muteki());
         }
 
         if (_isDead || _equipedGun == null)
@@ -144,13 +156,11 @@ public class Player : MonoBehaviour, IDamageable
             if (_canReload)
             {
                 MapManager.Instance.EnterSpa();
-
                 _inputReader.onShootEvent -= _equipedGun.Shoot;
             }
             else
             {
                 MapManager.Instance.ExitSpa();
-
                 _inputReader.onShootEvent += _equipedGun.Shoot;
             }
 
@@ -172,7 +182,6 @@ public class Player : MonoBehaviour, IDamageable
     }
     public void SetWaterGaugeHandle(OnsenWaterGage onsen)
     {
-        Debug.Log(9);
         _equipedGun.usableCapacityChanged += onsen.ChangeWaterValue;
     }
     public void DeleteWaterGaugeHandle(OnsenWaterGage onsen)
@@ -182,7 +191,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSkillGroup(SkillBarGroup skillBarGroup)
     {
-        Debug.Log(8);
         _equipedGun.currentSkillChanged += skillBarGroup.ChangeValue;
     }
     public void DeleteSkillGroup(SkillBarGroup skillBarGroup)
@@ -193,8 +201,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public void UnequipGun()
     {
-        _equipedGun.gameObject.SetActive(false);
-
         _inputReader.onShootEvent -= _equipedGun.Shoot;
         _equipedGun.owner = null;
         _equipedGun = null;
@@ -209,12 +215,14 @@ public class Player : MonoBehaviour, IDamageable
             return;
         }
 
+        _equipedGun.gameObject.SetActive(false);
         _isDead = true;
         _rigidbody2D.velocity = Vector3.zero;
-        //DeleteSkillGroup(inGameSceneUI.skillBarGroup);
-        //DeleteWaterGaugeHandle(inGameSceneUI.onsenWater);
+        DeleteSkillGroup(inGameSceneUI.skillBarGroup);
+        DeleteWaterGaugeHandle(inGameSceneUI.onsenWater);
         UnequipGun();
 
+        _material.SetFloat(_materialHalfAmountHash, 1f);
         (this as IDamageable).OnHit();
         GameManager.Instance.GameEnd();
     }

@@ -451,3 +451,4 @@ MonoBehaviour:
   - pcs:
     - {fileID: 3601537353835309336, guid: 078ec78b220a7064b883f13aa4beebc8, type: 3}
   canNextUp: 1
+  _bgmClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}

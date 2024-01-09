@@ -32,6 +32,8 @@ public class Shotgun : Gun
     private int _maximumSkillShot = 5;
     private int _skillShotCount;
 
+    [SerializeField]
+    private AudioClip _shotgunClip;
     protected override void Update()
     {
         base.Update();
@@ -44,6 +46,7 @@ public class Shotgun : Gun
 
     public override void ShootProcess()
     {
+
         feedbackPlayer.PlayFeedback();
 
         if (_skillShotCount <= 0)
@@ -68,6 +71,7 @@ public class Shotgun : Gun
         {
             if (--_skillShotCount <= 0)
             {
+                InitializeSkill();
                 _skillEffect.Stop();
                 _skillText.gameObject.SetActive(false);
             }
@@ -106,8 +110,8 @@ public class Shotgun : Gun
             feedbackPlayer.PlayFeedback();
             _skillEffect.Play();
             _skillEffect_01.Play();
-            InitializeSkill();
-
+            isSkillProcess = true;
+            SoundManager.Instance.Play(_shotgunClip, 1, 1, 2, false, "ShotgunSkillClip");
         }
     }
 

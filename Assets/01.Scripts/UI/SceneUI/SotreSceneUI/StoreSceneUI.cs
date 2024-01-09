@@ -10,7 +10,7 @@ public class StoreSceneUI : SceneUIBase
 
     public override void SetUp()
     {
-        _milkCountText.text = GameManager.Instance.GameData.milkCoount.ToString();
+        _milkCountText.text = GameManager.Instance.GameDataInstance.milkCount.ToString();
     }
 
     public override void Init()
@@ -26,21 +26,21 @@ public class StoreSceneUI : SceneUIBase
     public void PurchaseThisGun(GunSO target)
     {
         ResultOfPurchasePanel rpp = (ResultOfPurchasePanel)UIManager.Instanace.CreatePanel(_resultPanel, true);
-        if (GameManager.Instance.GameData.milkCoount >= target.priceValue)
+        if (GameManager.Instance.GameDataInstance.milkCount >= target.priceValue)
         {
-            GameManager.Instance.GameData.milkCoount -= target.priceValue;
+            GameManager.Instance.GameDataInstance.milkCount -= target.priceValue;
             rpp.SetText($"{target.gunName} 구매를\n 성공하셨습니다.");
 
             switch (target.myType)
             {
                 case GunType.Revolver:
-                    GameManager.Instance.GameData.openRevolver = true;
+                    GameManager.Instance.GameDataInstance.openRevolver = true;
                     break;
                 case GunType.Laser:
-                    GameManager.Instance.GameData.Laser = true;
+                    GameManager.Instance.GameDataInstance.openLaser = true;
                     break;
                 case GunType.Shotgun:
-                    GameManager.Instance.GameData.Shotgun = true;
+                    GameManager.Instance.GameDataInstance.openShotgun = true;
                     break;
             }
             GameManager.Instance.SaveData();
@@ -56,11 +56,11 @@ public class StoreSceneUI : SceneUIBase
         switch (target.myType)
         {
             case GunType.Revolver:
-                return GameManager.Instance.GameData.openRevolver;
+                return GameManager.Instance.GameDataInstance.openRevolver;
             case GunType.Laser:
-                return GameManager.Instance.GameData.Laser;
+                return GameManager.Instance.GameDataInstance.openLaser;
             case GunType.Shotgun:
-                return GameManager.Instance.GameData.Shotgun;
+                return GameManager.Instance.GameDataInstance.openShotgun;
             default:
                 return false;
         }

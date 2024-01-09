@@ -32,5 +32,7 @@ public class WeaponCard : MonoBehaviour
     {
         if (!_canEquip) return;
         _gunEquipEvent?.Invoke(myType, gunSprite, gunImgPos, gunScale);
+        GameManager.Instance.GameDataInstance.equipedGun = myType.ToString();
+        GameManager.Instance.SaveData();
     }
 }

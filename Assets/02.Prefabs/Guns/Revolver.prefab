@@ -120,8 +120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bbaf0a165800e43ab9a34ff4dfc46a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   firePosition: {fileID: 5385617572853211973}
   gunScriptableObject: {fileID: 11400000, guid: ad182b1888db12e45808f205e48c672b, type: 2}
+  shootClip: {fileID: 8300000, guid: 25d73cdc14487d948a26458230f33d6e, type: 3}
+  _skillRangeCircle: {fileID: 0}
+  _rangeCircleExpandSpeed: 0
+  _rangeCircleMaxRadius: 0
+  _skillShootDelay: 0
+  _timeScaleWhileSkillPrepare: 0.2
+  _revolverSkillFX: {fileID: 0}
+  _feedbackPlayer: {fileID: 0}
+  _revolverClip: {fileID: 8300000, guid: 40da4ffb8c9c3014fbc21399a8dddb14, type: 3}
 --- !u!1 &2980655981521207417
 GameObject:
   m_ObjectHideFlags: 0
